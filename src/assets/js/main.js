@@ -16,6 +16,10 @@ $(function () {
   });
 });
 
+function toggleBar() {
+  $('.page-wrapper').toggleClass('toggled');
+}
+
 // Todays Date
 $(function () {
   var interval = setInterval(function () {
