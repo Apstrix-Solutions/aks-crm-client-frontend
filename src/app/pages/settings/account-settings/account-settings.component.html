@@ -1,0 +1,140 @@
+<!-- *************
+				************ Main container start *************
+			************* -->
+<div class="main-container">
+  <app-topbar></app-topbar>
+
+
+  <!-- Content wrapper scroll start -->
+  <div class="content-wrapper">
+    <!-- Content wrapper start -->
+    <div class="content-wrapper">
+      <!-- Row start -->
+      <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <!-- Card start -->
+          <div class="card">
+            <div class="card-header-lg">
+              <h4>Account Settings</h4>
+            </div>
+            <div class="card-body">
+              <div class="row gutters">
+                <form class="form-horizontal" [formGroup]="newSettingsData" (ngSubmit)="updateSettings();"  >
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="row gutters">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                      <img src="{{ImageProp}}" class="img-fluid change-img-avatar" alt="Image" />
+                    </div>
+
+                    <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12" >
+                      <ngx-dropzone (change)="onSelect($event)">
+                        <ngx-dropzone-label>
+                          <button type="button" class="dz-button" class="btn btn-outline-primary">Change Image</button>
+                        </ngx-dropzone-label>
+                        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)"  >
+                          <ngx-dropzone-label >{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                      </ngx-dropzone>
+                    </div> 
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <!-- Field wrapper start -->
+                      <div class="field-wrapper">
+                        <div class="input-group">
+                          <input placeholder="App Name" [ngClass]="{'is-invalid': f['app_name'].touched && f['app_name'].invalid}" value="{{settingsList.AppName}}" class="form-control" type="text" name="app_name" formControlName="app_name">
+                          <span class="input-group-text">
+                              <i class="fa fa-user"></i>
+                          </span>
+                      </div>
+
+                        
+                        <p *ngIf="f['app_name'].touched && f['app_name'].invalid" class="small text-danger font-italic">*app name is required.</p>
+                        <div class="field-placeholder">App Name</div>
+                      </div>
+                      <!-- Field wrapper end -->
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <!-- Field wrapper start -->
+                      <div class="field-wrapper">
+                        <div class="input-group">
+                          <input placeholder="en-US" [ngClass]="{'is-invalid': f['language'].touched && f['language'].invalid}" value="{{settingsList.Language}}" class="form-control" type="text" name="language" formControlName="language">
+                          <span class="input-group-text">
+                              <i class="fa fa-language"></i>
+                          </span>
+                      </div>
+                        
+                        <p *ngIf="f['language'].touched && f['language'].invalid" class="small text-danger font-italic">*language is required.</p>
+                        <div class="field-placeholder">Language</div>
+                      </div>
+                      <!-- Field wrapper end -->
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <!-- Field wrapper start -->
+                      <div class="field-wrapper">
+                        <div class="input-group">
+                            <input placeholder="UTC+8" [ngClass]="{'is-invalid': f['timezone'].touched && f['timezone'].invalid}" value="{{settingsList.Timezone}}" class="form-control" type="text" name="timezone" formControlName="timezone">
+                            <span class="input-group-text">
+                                <i class="fa fa-clock"></i>
+                            </span>
+                        </div>
+                        
+                        <p *ngIf="f['timezone'].touched && f['timezone'].invalid" class="small text-danger font-italic">*timezone is required.</p>
+                        
+                        <div class="field-placeholder">Timezone</div>
+                      </div>
+                      <!-- Field wrapper end -->
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <!-- Field wrapper start -->
+                      <div class="field-wrapper">
+                        <div class="input-group">
+                          <input placeholder="SGD" [ngClass]="{'is-invalid': f['currency'].touched && f['currency'].invalid}" value="{{settingsList.Currency}}" class="form-control" type="text" name="currency" formControlName="currency">
+                          <span class="input-group-text">
+                              <i class="fa fa-money"></i>
+                          </span>
+                      </div>
+                       
+                        <p *ngIf="f['currency'].touched && f['currency'].invalid" class="small text-danger font-italic">*currency is required.</p>
+                        <div class="field-placeholder">Currency</div>
+                      </div>
+                      <!-- Field wrapper end -->
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                      <!-- Field wrapper start -->
+                        <div class="field-wrapper">
+                          <div class="input-group">
+                            <input placeholder="SGD" [ngClass]="{'is-invalid': f['symbol'].touched && f['symbol'].invalid}" value="{{settingsList.CurrSymbol}}" class="form-control" type="text" name="symbol" formControlName="symbol">
+                            <span class="input-group-text">
+                                <i class="fa fa-dollar"></i>
+                            </span>
+                        </div>
+                        
+                        <p *ngIf="f['symbol'].touched && f['symbol'].invalid" class="small text-danger font-italic">*currency symbol is required.</p>
+                        <div class="field-placeholder">Symbol</div>
+                      </div>
+                      <!-- Field wrapper end -->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <button [disabled]="newSettingsData.invalid" class="btn btn-primary mb-3">Save Settings</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Card end -->
+        </div>
+      </div>
+      <!-- Row end -->
+    </div>
+    <!-- Content wrapper end -->
+    <app-footer></app-footer>
+
+  </div>
+  <!-- Content wrapper scroll end -->
+</div>
+<!-- *************
+        ************ Main container end *************
+      ************* -->
