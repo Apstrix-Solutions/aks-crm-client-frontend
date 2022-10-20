@@ -13,8 +13,8 @@ export const environment = {
   production: false,
   // version: env['npm_package_version'] + '-dev',
   version: '1.0.0',
-  serverUrl: 'http://localhost:8085',
-  apiUrl: 'http://35.223.254.252/api/',
+  serverUrl: 'http://akstech.sg/admin/api/v1/',
+  apiUrl: 'http://akstech.sg/admin/api/v1/',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'fr-FR'],
 };

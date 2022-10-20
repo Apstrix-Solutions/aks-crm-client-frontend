@@ -8,7 +8,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '@env/environment';
-import { RouteReusableStrategy, ApiPrefixInterceptor, ErrorHandlerInterceptor, SharedModule } from '@shared';
+import {
+  RouteReusableStrategy,
+  ApiPrefixInterceptor,
+  ErrorHandlerInterceptor,
+  SharedModule,
+} from '@shared';
 import { AuthModule } from '@app/auth';
 import { HomeModule } from './home/home.module';
 import { ShellModule } from './shell/shell.module';
@@ -19,12 +24,16 @@ import { AccountSettingsModule } from './pages/settings/account-settings/account
 import { ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from './@shared/http/api.service';
 import { AuthService } from './auth.service';
-import { NgHttpLoaderModule } from 'ng-http-loader'; // <============
+import { NgHttpLoaderModule } from 'ng-http-loader';
+import { ListLeadsModule } from './pages/leads/list-leads/list-leads.module';
+import { AddLeadsModule } from './pages/leads/add-leads/add-leads.module'; // <============
 
 @NgModule({
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('./ngsw-worker.js', {
+      enabled: environment.production,
+    }),
     FormsModule,
     HttpClientModule,
     RouterModule,
@@ -37,6 +46,8 @@ import { NgHttpLoaderModule } from 'ng-http-loader'; // <============
     AccountSettingsModule,
     UserProfileModule,
     ReactiveFormsModule,
+    ListLeadsModule,
+    AddLeadsModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
