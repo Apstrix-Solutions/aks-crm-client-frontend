@@ -9,8 +9,8 @@ export const environment = {
   production: true,
   // version: env['npm_package_version'],
   version: '1.0.0',
-  serverUrl: 'http://34.122.58.61:8080',
-  apiUrl: 'http://35.223.254.252/api/',
+  serverUrl: 'http://akstech.sg/admin/api/v1/',
+  apiUrl: 'http://akstech.sg/admin/api/v1/',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'fr-FR'],
 };
