@@ -20,12 +20,12 @@
               <span class="menu-text">Dashboards</span>
             </a>
           </li>
-          <li class="default-sidebar-dropdown">
-            <a>
+          <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
+            <a (click)="toggleSettingsMenu()">
               <i class="icon-calendar1"></i>
               <span class="menu-text">Settings</span>
             </a>
-            <div class="default-sidebar-submenu">
+            <div class="default-sidebar-submenu" [ngStyle]="{'display': settingsMenuHidden ? 'block' : 'none' }">
               <ul>
                 <li>
                   <a routerLink="/account-settings">Account Settings</a>
@@ -33,12 +33,12 @@
               </ul>
             </div>
           </li>
-          <li class="default-sidebar-dropdown">
-            <a>
+          <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHidden }">
+            <a (click)="toggleMenu()">
               <i class="icon-calendar1"></i>
               <span class="menu-text">Lead Management</span>
             </a>
-            <div class="default-sidebar-submenu">
+            <div class="default-sidebar-submenu" [ngStyle]="{'display': menuHidden ? 'block' : 'none' }">
               <ul>
                 <li>
                   <a routerLink="/leads">Leads</a>

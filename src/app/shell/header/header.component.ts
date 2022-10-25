@@ -9,7 +9,8 @@ import { AuthenticationService, CredentialsService } from '@app/auth';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  menuHidden = true;
+  menuHidden = false;
+  settingsMenuHidden = false;
 
   constructor(
     private router: Router,
@@ -21,6 +22,10 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
+  }
+
+  toggleSettingsMenu() {
+    this.settingsMenuHidden = !this.settingsMenuHidden;
   }
 
   logout() {

@@ -79,17 +79,17 @@ $(function () {
 // Custom Default/Compact/Pinned Sidebars JS
 jQuery(function ($) {
   // Default Compact menu
-  $('.default-sidebar-dropdown > a').on('click', function () {
-    $('.default-sidebar-submenu').slideUp(200);
-    if ($(this).parent().hasClass('active')) {
-      $('.default-sidebar-dropdown').removeClass('active');
-      $(this).parent().removeClass('active');
-    } else {
-      $('.default-sidebar-dropdown').removeClass('active');
-      $(this).next('.default-sidebar-submenu').slideDown(200);
-      $(this).parent().addClass('active');
-    }
-  });
+  // $('.default-sidebar-dropdown > a').on('click', function () {
+  //   $('.default-sidebar-submenu').slideUp(200);
+  //   if ($(this).parent().hasClass('active')) {
+  //     $('.default-sidebar-dropdown').removeClass('active');
+  //     $(this).parent().removeClass('active');
+  //   } else {
+  //     $('.default-sidebar-dropdown').removeClass('active');
+  //     $(this).next('.default-sidebar-submenu').slideDown(200);
+  //     $(this).parent().addClass('active');
+  //   }
+  // });
 
   // Compact menu
   $('.compact-sidebar-dropdown > a').on('click', function () {
