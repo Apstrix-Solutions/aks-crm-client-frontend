@@ -11,7 +11,9 @@ import { AuthenticationService, CredentialsService } from '@app/auth';
 export class HeaderComponent implements OnInit {
   menuHidden = false;
   settingsMenuHidden = false;
-
+  campaignMenuHidden = false;
+  marketingMenuHidden = false;
+  postMenuHidden = false;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -27,7 +29,15 @@ export class HeaderComponent implements OnInit {
   toggleSettingsMenu() {
     this.settingsMenuHidden = !this.settingsMenuHidden;
   }
-
+  toggleCampaignMenu(){
+    this.campaignMenuHidden =!this.campaignMenuHidden;
+  }
+  toggleMarketingMenu(){
+    this.marketingMenuHidden =!this.marketingMenuHidden;
+  }
+  togglePostMenu(){
+    this.postMenuHidden =!this.postMenuHidden;
+  }
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
   }
