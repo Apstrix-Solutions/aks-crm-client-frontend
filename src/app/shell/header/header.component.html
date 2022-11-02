@@ -20,19 +20,7 @@
               <span class="menu-text">Dashboards</span>
             </a>
           </li>
-          <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
-            <a (click)="toggleSettingsMenu()">
-              <i class="icon-calendar1"></i>
-              <span class="menu-text">Settings</span>
-            </a>
-            <div class="default-sidebar-submenu" [ngStyle]="{'display': settingsMenuHidden ? 'block' : 'none' }">
-              <ul>
-                <li>
-                  <a routerLink="/account-settings">Account Settings</a>
-                </li>
-              </ul>
-            </div>
-          </li>
+         
           <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHidden }">
             <a (click)="toggleMenu()">
               <i class="icon-calendar1"></i>
@@ -42,6 +30,62 @@
               <ul>
                 <li>
                   <a routerLink="/leads">Leads</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+      
+        
+          <li class="default-sidebar-dropdown" [ngClass]="{'active': marketingMenuHidden }">
+            <a (click)="toggleMarketingMenu()">
+              <i class="icon-shopping-basket"></i>
+              <span class="menu-text">Marketing</span>
+            </a>
+            <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+              <a (click)="toggleCampaignMenu()">
+                <span class="menu-text">Campaigns</span>
+              </a>
+              <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
+                <ul>
+                  <li>
+                    <a routerLink="/campaigns">Dashbord</a>
+                  </li>
+                  <li>
+                    <a routerLink="/home">List Campaigns</a>
+                  </li>
+                  <li>
+                    <a routerLink="/home">Calendar</a>
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+            <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+              <a (click)="togglePostMenu()">
+                <span class="menu-text">Post</span>
+              </a>
+              <div class="default-sidebar-submenu" [ngStyle]="{'display': postMenuHidden ? 'block' : 'none' }">
+                <ul>
+                  <li>
+                    <a routerLink="/home">Dashbord</a>
+                  </li>
+                  <li>
+                    <a routerLink="/home">Calendar</a>
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+          
+          <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
+            <a (click)="toggleSettingsMenu()">
+              <i class="icon-calendar1"></i>
+              <span class="menu-text">Settings</span>
+            </a>
+            <div class="default-sidebar-submenu" [ngStyle]="{'display': settingsMenuHidden ? 'block' : 'none' }">
+              <ul>
+                <li>
+                  <a routerLink="/account-settings">Account Settings</a>
                 </li>
               </ul>
             </div>
