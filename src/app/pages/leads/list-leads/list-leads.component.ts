@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -17,9 +17,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./list-leads.component.scss'],
 })
 export class ListLeadsComponent implements OnInit {
+  @ViewChild('closebutton') closebutton;
   newLeadForm!: FormGroup;
-  id: string;
-  isAddMode: boolean;
   leadListById: any = [];
   leadsList: any = [];
 
@@ -32,15 +31,7 @@ export class ListLeadsComponent implements OnInit {
     public toastr: ToastrService
   ) {}
   ngOnInit(): void {
-    this.leadService.getLead().subscribe((data) => {
-      let response = data;
-      console.log('ddd', data);
-      this.leadsList = response['data']['users'];
-      console.log('leadlist', this.leadsList);
-    });
-
-    this.id = this.route.snapshot.params['id'];
-    this.isAddMode = !this.id;
+    this.getLeads();
 
     this.newLeadForm = this.formBulider.group({
       firstName: [null, [Validators.required]],
@@ -52,15 +43,14 @@ export class ListLeadsComponent implements OnInit {
     });
   }
   addLead() {
-    //  return
-    console.log('addLeads data', this.newLeadForm.value);
     this.leadService.addLead(this.newLeadForm.value).subscribe((res) => {
       if (res['code'] == 200) {
+        this.getLeads();
+        this.closebutton.nativeElement.click();
         this.toastr.success(res['message'], 'Success!');
       } else {
-        this.toastr.error(res['message'], 'Error!');
+        this.toastr.error(res['errorMessage'], 'Error!');
       }
-      this.ngZone.run(() => this.router.navigateByUrl('/leads'));
     });
   }
 
@@ -74,20 +64,6 @@ export class ListLeadsComponent implements OnInit {
       this.ngZone.run(() => this.router.navigateByUrl('/leads'));
     });
   }
-
-  updateAgency() {
-    this.leadService
-      .updateLead(this.newLeadForm.value, this.id)
-      .subscribe((res) => {
-        if (res['code'] == 200) {
-          this.toastr.success(res['message'], 'Success!');
-        } else {
-          this.toastr.error(res['message'], 'Error!');
-        }
-        this.ngZone.run(() => this.router.navigateByUrl('/leads'));
-      });
-  }
-
   get f() {
     return this.newLeadForm.controls;
   }
@@ -96,11 +72,12 @@ export class ListLeadsComponent implements OnInit {
     if (this.newLeadForm.invalid) {
       return;
     }
+    this.addLead();
+  }
 
-    if (this.isAddMode) {
-      this.addLead();
-    } else {
-      this.updateAgency();
-    }
+  getLeads() {
+    this.leadService.getLead().subscribe((data) => {
+      this.leadsList = data['data']['users'];
+    });
   }
 }

@@ -145,7 +145,7 @@
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="addUserModalLabel">Create Lead</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form class="form-horizontal" [formGroup]= "newLeadForm" (ngSubmit)="addLead()">
             <div class="modal-body">
@@ -250,10 +250,4 @@
         </div>
     </div>
 </div>
-<script>
-$('#save').click(function() {
-    $select_value = $("#exampleSelect").value();
-    $('#addUserModal').modal('hide');
-  });
-</script>
 <!-- Modal end -->
