@@ -55,14 +55,7 @@ export class ListLeadsComponent implements OnInit {
   }
 
   searchLead() {
-    this.leadService.searchLead(this.newLeadForm.value).subscribe((res) => {
-      if (res['code'] == 200) {
-        this.toastr.success(res['message'], 'Success!');
-      } else {
-        this.toastr.error(res['message'], 'Error!');
-      }
-      this.ngZone.run(() => this.router.navigateByUrl('/leads'));
-    });
+    this.leadService.searchLead(this.newLeadForm.value).subscribe((res) => {});
   }
   get f() {
     return this.newLeadForm.controls;
