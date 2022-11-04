@@ -1,7 +1,8 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LeadService } from '../lead.service';
 
 @Component({
   selector: 'app-add-leads',
@@ -10,24 +11,81 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddLeadsComponent implements OnInit {
   newAddLeadForm!: FormGroup;
+  id: string;
+  isAddMode: boolean;
+  addLeadListById: any = [];
+  addLeadsList: any;
+  addLeadService: any;
 
   constructor(
     private formBulider: FormBuilder,
     private ngZone: NgZone,
     private router: Router,
+    private leadService: LeadService,
     private route: ActivatedRoute,
     public toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.id;
     this.newAddLeadForm = this.formBulider.group({
-      title: [null, []],
-      firstName: [null, []],
-      middleName: [null, []],
-      lastName: [null, []],
-      primaryNumber: [null, []],
-      secondaryNumber: [null, []],
-      whatsappNumber: [null, []],
+      title: [null, [Validators.required]],
+      firstName: [null, [Validators.required]],
+      middleName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      primaryNumber: [null, [Validators.required]],
+      secondaryNumber: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
+      leadSource: [null, [Validators.required]],
+      address: [null, [Validators.required]],
+      city: [null, [Validators.required]],
+      state: [null, [Validators.required]],
+      country: [null, [Validators.required]],
+      zip: [null, [Validators.required]],
+      website: [null, [Validators.required]],
+      linkedin: [null, [Validators.required]],
+      facebook: [null, [Validators.required]],
+      background_info: [null, [Validators.required]],
     });
+  }
+  addLeads() {
+    console.log('addLeads data', this.newAddLeadForm.value);
+    this.leadService.addLead(this.newAddLeadForm.value).subscribe((res) => {
+      if (res['code'] == 200) {
+        this.toastr.success(res['message'], 'Success!');
+        this.ngZone.run(() => this.router.navigateByUrl('/leads'));
+      } else {
+        this.toastr.error(res['message'], 'Error!');
+      }
+    });
+  }
+
+  updateLeads() {
+    this.leadService
+      .updateLead(this.newAddLeadForm.value, this.id)
+      .subscribe((res) => {
+        if (res['code'] == 200) {
+          this.ngZone.run(() => this.router.navigateByUrl('/leads'));
+          this.toastr.success(res['message'], 'Success!');
+        } else {
+          this.toastr.error(res['message'], 'Error!');
+        }
+      });
+  }
+
+  get f() {
+    return this.newAddLeadForm.controls;
+  }
+
+  onSubmit() {
+    if (this.newAddLeadForm.invalid) {
+      return;
+    }
+    if (this.isAddMode) {
+      this.addLeads();
+    } else {
+      this.updateLeads();
+    }
   }
 }
