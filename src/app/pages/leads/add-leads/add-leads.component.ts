@@ -50,6 +50,7 @@ export class AddLeadsComponent implements OnInit {
       facebook: [null, [Validators.required]],
       background_info: [null, [Validators.required]],
     });
+    //recieving data
     this.leadService.sub.subscribe(
       response => {
         this.recievedData = response;

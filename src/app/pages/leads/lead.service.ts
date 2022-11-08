@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class LeadService {
+  
   private dataSource = new BehaviorSubject<any>({});
   sub = this.dataSource.asObservable();
 
@@ -43,6 +44,7 @@ export class LeadService {
   }
 
   public setData(data:any){
+    //sending the data
     this.dataSource.next(data);
   }
 

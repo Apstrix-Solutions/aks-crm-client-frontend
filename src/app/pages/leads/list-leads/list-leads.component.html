@@ -244,7 +244,7 @@
             </div>
             <div class="modal-footer" id="exampleSelect">
                 <button class="btn btn-primary"[disabled]="newLeadForm.invalid">Save</button>
-                <button id="save" type="button" data-bs-dismiss="modal" class="btn btn-primary" routerLink="/add-lead">Go To Full Form</button>
+                <button id="save" type="button" data-bs-dismiss="modal" class="btn btn-primary" routerLink="/add-lead" (click)="goToFullForm()">Go To Full Form</button>
             </div>
         </form>
         </div>
