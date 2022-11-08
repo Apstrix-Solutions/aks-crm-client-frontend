@@ -25,7 +25,9 @@
                                       <!-- Field wrapper start -->
                                       <div class="field-wrapper">
                                           <div class="input-group">
-                                              <input [ngClass]="{'is-invalid': f['firstName'].touched && f['firstName'].invalid}" value="{{addLeadListById.firstName}}" type="text"  class="form-control" type="text" name="firstName" formControlName="firstName">
+                                          
+                                              <input [ngClass]="{'is-invalid': f['firstName'].touched && f['firstName'].invalid}" value="{{recievedData.firstName}}"  type="text"  class="form-control"  formControlName="firstName" >
+    
                                               <span class="input-group-text">
                                                   <i class="icon-user1"></i>
                                               </span>
@@ -58,7 +60,7 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input [ngClass]="{'is-invalid': f['lastName'].touched && f['lastName'].invalid}" value="{{addLeadListById.lastName}}" class="form-control" type="text" name="lastName" formControlName="lastName">
+                                            <input [ngClass]="{'is-invalid': f['lastName'].touched && f['lastName'].invalid}" value="{{recievedData.lastName}}"  class="form-control" type="text" name="lastName" formControlName="lastName">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
@@ -75,7 +77,7 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input [ngClass]="{'is-invalid': f['title'].touched && f['title'].invalid}" value="{{addLeadListById.title}}" class="form-control" type="text" name="title" formControlName="title">
+                                            <input [ngClass]="{'is-invalid': f['title'].touched && f['title'].invalid}" value="{{recievedData.title}}"   class="form-control" type="text" name="title" formControlName="title">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
@@ -92,7 +94,7 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}" value="{{addLeadListById.primaryNumber}}"  class="form-control" type="text" name="primaryNumber" formControlName="primaryNumber">
+                                            <input [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}" value="{{recievedData.primaryNumber}}"   class="form-control" type="text" name="primaryNumber" formControlName="primaryNumber">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
@@ -108,7 +110,7 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input  [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}" value="{{addLeadListById.secondaryNumber}}"   class="form-control" type="text" name="secondaryNumber" formControlName="secondaryNumber">
+                                            <input  [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}" value="{{recievedData.secondaryNumber}}"  class="form-control" type="text" name="secondaryNumber" formControlName="secondaryNumber">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
@@ -137,7 +139,7 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input [ngClass]="{'is-invalid': f['email'].touched && f['email'].invalid}" value="{{addLeadListById.email}}" class="form-control" type="text" name="email" formControlName="email">
+                                            <input [ngClass]="{'is-invalid': f['email'].touched && f['email'].invalid}" value="{{recievedData.email}}" class="form-control" type="text" name="email" formControlName="email">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>

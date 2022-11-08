@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs';
 import { LeadService } from '../lead.service';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-leads',
@@ -52,10 +53,27 @@ export class ListLeadsComponent implements OnInit {
         this.toastr.error(res['errorMessage'], 'Error!');
       }
     });
+    this.leadService.setData(this.newLeadForm.value);
+
   }
 
   searchLead() {
-    this.leadService.searchLead(this.newLeadForm.value).subscribe((res) => {});
+    console.log('this.newLeadForm.value',this.newLeadForm.value)
+    const leadForm  = this.newLeadForm.value;
+    let queryParams = new HttpParams();
+
+    const keys = Object.keys(leadForm);
+
+    keys.forEach((key, index) => {
+      console.log(`${key}=${leadForm[key]}`);
+      queryParams = queryParams.append(key,leadForm[key]);
+    });
+    console.log('queryParams',queryParams)
+    
+    this.leadService.searchLead(queryParams).subscribe((data) =>{
+       console.log('response',data);
+       this.leadsList = data['data']['users'];
+      });
   }
   get f() {
     return this.newLeadForm.controls;

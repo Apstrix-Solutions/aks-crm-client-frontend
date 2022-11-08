@@ -16,6 +16,8 @@ export class AddLeadsComponent implements OnInit {
   addLeadListById: any = [];
   addLeadsList: any;
   addLeadService: any;
+  recievedData: any = {};
+
 
   constructor(
     private formBulider: FormBuilder,
@@ -48,7 +50,14 @@ export class AddLeadsComponent implements OnInit {
       facebook: [null, [Validators.required]],
       background_info: [null, [Validators.required]],
     });
+    this.leadService.sub.subscribe(
+      response => {
+        this.recievedData = response;
+        this.newAddLeadForm.patchValue(this.recievedData)
+    });
+    
   }
+
   addLeads() {
     console.log('addLeads data', this.newAddLeadForm.value);
     this.leadService.addLead(this.newAddLeadForm.value).subscribe((res) => {

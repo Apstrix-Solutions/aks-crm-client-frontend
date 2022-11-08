@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { ToastrService } from 'ngx-toastr';
@@ -9,11 +9,15 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class LeadService {
+  private dataSource = new BehaviorSubject<any>({});
+  sub = this.dataSource.asObservable();
+
   createLead(value: any) {
     throw new Error('Method not implemented.');
   }
 
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
+  
 
   public getLead() {
     return this.httpClient.get(`${environment.apiUrl}${'leads'}`);
@@ -27,7 +31,7 @@ export class LeadService {
 
   public searchLead(data: any) {
     return this.httpClient
-      .post(`${environment.apiUrl}${'search-leads'}`, JSON.stringify(data))
+      .get(`${environment.apiUrl}${'leads'}`,{params:data})
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
@@ -36,6 +40,10 @@ export class LeadService {
       `${environment.apiUrl}${'leads/'}${id}`,
       JSON.stringify(data)
     );
+  }
+
+  public setData(data:any){
+    this.dataSource.next(data);
   }
 
   // Error handling
