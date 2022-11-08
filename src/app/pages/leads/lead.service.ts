@@ -9,9 +9,12 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class LeadService {
-  
+   
+   
+   //datasource is set as a BehaviorSubject with initial value to hold the data that
+   //we want to access throughout the application
   private dataSource = new BehaviorSubject<any>({});
-  sub = this.dataSource.asObservable();
+  sub = this.dataSource.asObservable(); 
 
   createLead(value: any) {
     throw new Error('Method not implemented.');
@@ -43,8 +46,9 @@ export class LeadService {
     );
   }
 
-  public setData(data:any){
+  public setData(data:any){ //changes the value of the BehaviorSubject
     //sending the data
+    //calls next on the BehaviorSubject to change its value
     this.dataSource.next(data);
   }
 

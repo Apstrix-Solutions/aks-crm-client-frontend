@@ -51,6 +51,7 @@ export class AddLeadsComponent implements OnInit {
       background_info: [null, [Validators.required]],
     });
     //recieving data
+    //A subscription is made to listen to changes in the BehaviorSubject.
     this.leadService.sub.subscribe(
       response => {
         this.recievedData = response;

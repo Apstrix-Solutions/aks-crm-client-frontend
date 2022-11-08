@@ -55,7 +55,7 @@ export class ListLeadsComponent implements OnInit {
     });
   
   }
-  goToFullForm(){
+  goToFullForm(){ //change the value of the BehaviorSubject with newLeadForm.
     this.leadService.setData(this.newLeadForm.value);
   }
 
