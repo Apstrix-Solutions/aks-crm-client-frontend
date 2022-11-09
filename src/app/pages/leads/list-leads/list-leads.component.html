@@ -91,7 +91,8 @@
                                                                 <th>Phone Number</th>
                                                                 <th>Mobile</th>
                                                                 <th>Email</th>
-                                                                <!-- <th></th> -->
+                                                                <th>Edit</th>
+                                                                <th>Delete</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -103,6 +104,12 @@
                                                                 <td>{{ list.primaryNumber}}</td>
                                                                 <td>{{ list.secondaryNumber}}</td>
                                                                 <td>{{ list.email}}</td>
+                                                                <td>
+                                                                     <i class="icon-edit1" style="color: #0073dd;"  (click)="editLeads(list)"  ></i>
+                                                                </td>
+                                                                <td>
+                                                                    <i class="icon-delete" style="color: #0073dd;"  (click)="deleteLeads(list)"  ></i>
+                                                               </td>
                                                                 <!-- <td>
                                                                      <a [routerLink]="['/update-leads', list.Id]">
                                                                         <i class="icon-edit1"></i>
@@ -154,7 +161,7 @@
                         <!-- Field wrapper start -->
                         <div class="field-wrapper">
                             <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['firstName'].touched && f['firstName'].invalid}" value="{{leadListById.firstName}}" type="text" name="firstName" formControlName="firstName">
+                                <input [ngClass]="{'is-invalid': f['firstName'].touched && f['firstName'].invalid}" value="{{editLeadsList?editLeadsList.firstName:leadListById.firstName}}" type="text" name="firstName" formControlName="firstName">
                                 
                             </div>
                             <p *ngIf="f['firstName'].touched && f['firstName'].invalid" class="small text-danger font-italic">*First name is required.</p>
@@ -168,7 +175,7 @@
                         <!-- Field wrapper start -->
                         <div class="field-wrapper">
                             <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['lastName'].touched && f['lastName'].invalid}" value="{{leadListById.lastName}}"  type="text" name="lastName" formControlName="lastName">
+                                <input [ngClass]="{'is-invalid': f['lastName'].touched && f['lastName'].invalid}" value="{{editLeadsList?editLeadsList.lastName:leadListById.lastName}}"  type="text" name="lastName" formControlName="lastName">
                                 
                             </div>
                             <p *ngIf="f['lastName'].touched && f['lastName'].invalid" class="small text-danger font-italic">*Last name is required.</p>
@@ -182,7 +189,7 @@
                         <!-- Field wrapper start -->
                         <div class="field-wrapper">
                             <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['title'].touched && f['title'].invalid}" value="{{leadListById.title}}"  type="text" name="title" formControlName="title">
+                                <input [ngClass]="{'is-invalid': f['title'].touched && f['title'].invalid}" value="{{editLeadsList?editLeadsList.firstName:leadListById.title}}"  type="text" name="title" formControlName="title">
                                 
                                 </div>
                               <p *ngIf="f['title'].touched && f['title'].invalid" class="small text-danger font-italic">*Company is required.</p>
@@ -195,7 +202,7 @@
                         <!-- Field wrapper start -->
                         <div class="field-wrapper">
                             <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}"  type="text" name="primaryNumber" formControlName="primaryNumber">
+                                <input [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}"  value="{{editLeadsList?editLeadsList.primaryNumber:leadListById.title}}" type="text" name="primaryNumber" formControlName="primaryNumber">
                                 
                             </div>
                              <p *ngIf="f['primaryNumber'].touched && f['primaryNumber'].invalid" class="small text-danger font-italic">*Contact number is required.</p>
@@ -208,7 +215,7 @@
                         <!-- Field wrapper start -->
                         <div class="field-wrapper">
                             <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}" type="text" name="secondaryNumber" formControlName="secondaryNumber">
+                                <input [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}"  value="{{editLeadsList?editLeadsList.secondaryNumber:leadListById.title}}" type="text" name="secondaryNumber" formControlName="secondaryNumber">
                                 
                             </div>
                             <p *ngIf="f['secondaryNumber'].touched && f['secondaryNumber'].invalid" class="small text-danger font-italic">*phone no is required.</p>
@@ -232,7 +239,7 @@
                         <!-- Field wrapper start -->
                         <div class="field-wrapper">
                             <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['email'].touched && f['email'].invalid}" type="email" name="email" formControlName="email">
+                                <input [ngClass]="{'is-invalid': f['email'].touched && f['email'].invalid}"  value="{{editLeadsList?editLeadsList.email:leadListById.title}}" type="email" name="email" formControlName="email">
                                 
                             </div>
                             <p *ngIf="f['email'].touched && f['email'].invalid" class="small text-danger font-italic">*email is required.</p>   

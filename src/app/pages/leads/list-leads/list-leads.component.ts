@@ -22,6 +22,8 @@ export class ListLeadsComponent implements OnInit {
   newLeadForm!: FormGroup;
   leadListById: any = [];
   leadsList: any = [];
+  editLeadsList: any = {};
+  leadId: number;
 
   constructor(
     private formBulider: FormBuilder,
@@ -30,7 +32,8 @@ export class ListLeadsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public toastr: ToastrService
-  ) {}
+  ) { }
+
   ngOnInit(): void {
     this.getLeads();
 
@@ -43,7 +46,9 @@ export class ListLeadsComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
     });
   }
+
   addLead() {
+
     this.leadService.addLead(this.newLeadForm.value).subscribe((res) => {
       if (res['code'] == 200) {
         this.getLeads();
@@ -53,26 +58,27 @@ export class ListLeadsComponent implements OnInit {
         this.toastr.error(res['errorMessage'], 'Error!');
       }
     });
-  
   }
-  goToFullForm(){ //change the value of the BehaviorSubject with newLeadForm.
+
+  goToFullForm() { //change the value of the BehaviorSubject with newLeadForm.
     this.leadService.setData(this.newLeadForm.value);
   }
 
   searchLead() {
-    const leadForm  = this.newLeadForm.value;
+    const leadForm = this.newLeadForm.value;
     let queryParams = new HttpParams();
-
     const keys = Object.keys(leadForm);
 
     keys.forEach((key, index) => {
-      queryParams = queryParams.append(key,leadForm[key]);
+      if (leadForm[key] != null)
+        queryParams = queryParams.append(key, leadForm[key]);
     });
-    
-    this.leadService.searchLead(queryParams).subscribe((data) =>{
-       this.leadsList = data['data']['users'];
-      });
+
+    this.leadService.searchLead(queryParams).subscribe((data) => {
+      this.leadsList = data['data']['leads'];
+    });
   }
+
   get f() {
     return this.newLeadForm.controls;
   }
@@ -86,7 +92,24 @@ export class ListLeadsComponent implements OnInit {
 
   getLeads() {
     this.leadService.getLead().subscribe((data) => {
-      this.leadsList = data['data']['users'];
+      this.leadsList = data['data']['leads'];
     });
   }
+
+  editLeads(list: any) {
+    this.leadService.setData(list);
+    this.ngZone.run(() => this.router.navigateByUrl(`add-lead/${list.id}`));
+  }
+
+  deleteLeads(list: any) {
+
+    this.leadService.deleteLead(list.id).subscribe((res) => {
+      if (res['code'] == 200) {
+        this.toastr.success(res['message'], 'Success!');
+      } else {
+        this.toastr.error(res['errorMessage'], 'Error!');
+      }
+    })
+  }
+
 }

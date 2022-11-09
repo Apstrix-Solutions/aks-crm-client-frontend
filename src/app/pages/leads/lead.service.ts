@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class LeadService {
-   
-   
-   //datasource is set as a BehaviorSubject with initial value to hold the data that
-   //we want to access throughout the application
   private dataSource = new BehaviorSubject<any>({});
-  sub = this.dataSource.asObservable(); 
+  sub = this.dataSource.asObservable();
 
   createLead(value: any) {
     throw new Error('Method not implemented.');
@@ -45,10 +42,13 @@ export class LeadService {
       JSON.stringify(data)
     );
   }
+  public deleteLead( id: any) {
+    return this.httpClient.put(
+      `${environment.apiUrl}${'leads_delete'}`,{leadId:id}
+    );
+  }
 
-  public setData(data:any){ //changes the value of the BehaviorSubject
-    //sending the data
-    //calls next on the BehaviorSubject to change its value
+  public setData(data:any){
     this.dataSource.next(data);
   }
 

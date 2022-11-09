@@ -12,6 +12,11 @@ const routes: Routes = [
       component: AddLeadsComponent,
       data: { title: marker(' Add Lead') },
     },
+    {
+      path: 'add-lead/:id',
+      component: AddLeadsComponent,
+      data: { title: marker(' Update Lead') },
+    },
   ]),
 ];
 

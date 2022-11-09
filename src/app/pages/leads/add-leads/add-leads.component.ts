@@ -54,14 +54,16 @@ export class AddLeadsComponent implements OnInit {
     //A subscription is made to listen to changes in the BehaviorSubject.
     this.leadService.sub.subscribe(
       response => {
+        this.id = response.id        
         this.recievedData = response;
         this.newAddLeadForm.patchValue(this.recievedData)
+        // console.log('received data',this.newAddLeadForm.value);
+        
     });
     
   }
 
   addLeads() {
-    console.log('addLeads data', this.newAddLeadForm.value);
     this.leadService.addLead(this.newAddLeadForm.value).subscribe((res) => {
       if (res['code'] == 200) {
         this.toastr.success(res['message'], 'Success!');
@@ -74,11 +76,11 @@ export class AddLeadsComponent implements OnInit {
 
   updateLeads() {
     this.leadService
-      .updateLead(this.newAddLeadForm.value, this.id)
+      .updateLead(this.newAddLeadForm.value,this.id)
       .subscribe((res) => {
         if (res['code'] == 200) {
           this.ngZone.run(() => this.router.navigateByUrl('/leads'));
-          this.toastr.success(res['message'], 'Success!');
+          this.toastr.success(res['message'], 'Successfully updated!');
         } else {
           this.toastr.error(res['message'], 'Error!');
         }
