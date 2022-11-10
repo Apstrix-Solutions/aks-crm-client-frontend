@@ -108,7 +108,7 @@
                                                                      <i class="icon-edit1" style="color: #0073dd;"  (click)="editLeads(list)"  ></i>
                                                                 </td>
                                                                 <td>
-                                                                    <i class="icon-delete" style="color: #0073dd;"  (click)="deleteLeads(list)"  ></i>
+                                                                    <i class="icon-delete" style="color: #0073dd;"   (click)="setDeleteItem(list)" data-bs-toggle="modal" data-bs-target="#addConfirmModal" ></i>
                                                                </td>
                                                                 <!-- <td>
                                                                      <a [routerLink]="['/update-leads', list.Id]">
@@ -258,3 +258,20 @@
     </div>
 </div>
 <!-- Modal end -->
+
+<div class="modal fade" id="addConfirmModal" tabindex="1" aria-labelledby="addConfirmModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="addConfirmModalLabel">Please Confirm</h5>
+            <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <p>Are you sure want to delete?</p>
+       
+            <div class="modal-footer" id="exampleSelect">
+                <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                <button id="save" type="button" data-bs-dismiss="modal" class="btn btn-primary" (click)="deleteLeads()">ok</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -61,6 +61,7 @@ export class ListLeadsComponent implements OnInit {
   }
 
   goToFullForm() { //change the value of the BehaviorSubject with newLeadForm.
+
     this.leadService.setData(this.newLeadForm.value);
   }
 
@@ -101,15 +102,25 @@ export class ListLeadsComponent implements OnInit {
     this.ngZone.run(() => this.router.navigateByUrl(`add-lead/${list.id}`));
   }
 
-  deleteLeads(list: any) {
+  setDeleteItem(list: any) {
+    this.leadService.setData(list);
+  }
 
-    this.leadService.deleteLead(list.id).subscribe((res) => {
-      if (res['code'] == 200) {
-        this.toastr.success(res['message'], 'Success!');
-      } else {
-        this.toastr.error(res['errorMessage'], 'Error!');
-      }
-    })
+  deleteLeads() {
+    this.leadService.sub.subscribe(
+      list => {
+        this.leadService.deleteLead(list.id).subscribe((res) => {
+          this.leadService.setData({})
+
+          if (res['code'] == 200) {
+            this.toastr.success(res['message'], 'Success!');
+          } else {
+            this.toastr.error(res['errorMessage'], 'Error!');
+          }
+        })
+
+      });
+
   }
 
 }
