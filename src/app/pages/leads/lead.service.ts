@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '@env/environment';
 import { ToastrService } from 'ngx-toastr';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -50,6 +51,19 @@ export class LeadService {
 
   public setData(data:any){
     this.dataSource.next(data);
+  }
+
+  public leadStatus(){
+    return this.httpClient.get(
+      `${environment.apiUrl}${'lead_status_all'}`
+    )
+  }
+  
+
+  public leadSource( ){
+    return this.httpClient.get(
+      `${environment.apiUrl}${'lead_source_all'}`
+    )
   }
 
   // Error handling

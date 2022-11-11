@@ -156,13 +156,36 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <select [ngClass]="{'is-invalid': f['leadSource'].touched && f['leadSource'].invalid}" value="{{addLeadListById.leadSource}}"  name="leadSource" formControlName="leadSource">
-                                                <option value="0">Source 1</option>
-                                                <option value="1">Source 2</option>
+                                            <select 
+                                            [ngClass]="{'is-invalid': f['leadSource'].touched && f['leadSource'].invalid}" 
+                                            name="leadSource" 
+                                            formControlName="leadSource"
+                                            >
+                                                <option value="0"  *ngFor="let list of lSource" >{{list.name}}</option>
                                               </select>
                                         </div>
                                         <p *ngIf="f['leadSource'].touched && f['leadSource'].invalid" class="small text-danger font-italic">*Source is required.</p>
                                         <div class="field-placeholder">Lead Source <span class="text-danger">*</span></div>
+                                    </div>
+                                    <!-- Field wrapper end -->
+                                </div>
+
+                                <div class="clear"></div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+                                    <!-- Field wrapper start -->
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                            <select 
+                                            [ngClass]="{'is-invalid': f['leadStatus'].touched && f['leadStatus'].invalid}" 
+                                            name="leadStatus" 
+                                            formControlName="leadStatus"
+                                            >
+                                                <option value="0"  *ngFor="let list of lStatus" >{{list.name}}</option>
+                                              </select>
+                                        </div>
+                                        <p *ngIf="f['leadStatus'].touched && f['leadStatus'].invalid" class="small text-danger font-italic">*Source is required.</p>
+                                        <div class="field-placeholder">Lead Status <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>

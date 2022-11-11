@@ -17,6 +17,8 @@ export class AddLeadsComponent implements OnInit {
   addLeadsList: any;
   addLeadService: any;
   recievedData: any = {};
+  lStatus: any = [];
+  lSource: any = [];
 
 
   constructor(
@@ -40,6 +42,7 @@ export class AddLeadsComponent implements OnInit {
       secondaryNumber: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       leadSource: [null, [Validators.required]],
+      leadStatus: [null, [Validators.required]],
       address: [null, [Validators.required]],
       city: [null, [Validators.required]],
       state: [null, [Validators.required]],
@@ -60,7 +63,8 @@ export class AddLeadsComponent implements OnInit {
         // console.log('received data',this.newAddLeadForm.value);
         
     });
-    
+    this.leadStatus();
+    this.leadSource();
   }
 
   addLeads() {
@@ -85,6 +89,18 @@ export class AddLeadsComponent implements OnInit {
           this.toastr.error(res['message'], 'Error!');
         }
       });
+  }
+
+  leadStatus(){
+    this.leadService.leadStatus().subscribe((res) => {
+      this.lStatus = res['data']['status']
+    })
+  }
+
+  leadSource(){
+    this.leadService.leadSource().subscribe((res) => {
+      this.lSource = res['data']['data']
+    })
   }
 
   get f() {
