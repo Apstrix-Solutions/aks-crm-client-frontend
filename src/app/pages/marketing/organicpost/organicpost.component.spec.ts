@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CampaignsComponent } from './campaigns.component';
+import { OrganicpostComponent } from './organicpost.component';
 
-describe('CampaignsComponent', () => {
-  let component: CampaignsComponent;
-  let fixture: ComponentFixture<CampaignsComponent>;
+describe('OrganicpostComponent', () => {
+  let component: OrganicpostComponent;
+  let fixture: ComponentFixture<OrganicpostComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CampaignsComponent ]
+      declarations: [ OrganicpostComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CampaignsComponent);
+    fixture = TestBed.createComponent(OrganicpostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

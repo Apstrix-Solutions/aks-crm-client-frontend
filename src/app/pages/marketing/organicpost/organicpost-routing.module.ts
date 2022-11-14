@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
-import {CampaignsComponent } from './campaigns.component';
+import { OrganicpostComponent } from './organicpost.component';
 import { Shell } from '@app/shell/shell.service';
 const routes: Routes = [
   Shell.childRoutes([
     {
-      path: 'campaigns',
-      component: CampaignsComponent,
-      data: { title: marker('Campaigns') },
+      path: 'organicpost',
+      component: OrganicpostComponent,
+      data: { title: marker('Organic Contents') },
     },
   ]),
 ];
@@ -18,4 +18,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class CampaignsRoutingModule {}
+export class OrganicpostRoutingModule {}
