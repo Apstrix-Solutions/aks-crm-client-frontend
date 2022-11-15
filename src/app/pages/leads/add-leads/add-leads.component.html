@@ -14,7 +14,7 @@
                   <!-- Card start -->
                   <div class="card">
                       <div class="card-body">
-                          <form class="form-horizontal">
+                          <form class="form-horizontal" [formGroup]= "newAddLeadForm" (ngSubmit)="addLeads()">
                               <!-- Row start -->
                               <div class="row gutters">
                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
@@ -25,13 +25,15 @@
                                       <!-- Field wrapper start -->
                                       <div class="field-wrapper">
                                           <div class="input-group">
-                                              <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                          
+                                              <input [ngClass]="{'is-invalid': f['firstName'].touched && f['firstName'].invalid}" value="{{recievedData.firstName}}"  type="text"  class="form-control"  formControlName="firstName" >
+    
                                               <span class="input-group-text">
                                                   <i class="icon-user1"></i>
                                               </span>
                                           </div>
-                                          
-                                          <div class="field-placeholder">First Name <span class="text-danger">*</span></div>
+                                          <p *ngIf="f['firstName'].touched && f['firstName'].invalid" class="small text-danger font-italic">*First name is required.</p>
+                                          <div  class="field-placeholder">First Name <span class="text-danger">*</span></div>
                                       </div>
                                       <!-- Field wrapper end -->
   
@@ -41,12 +43,13 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                          
+                                            <input [ngClass]="{'is-invalid': f['middleName'].touched && f['middleName'].invalid}" value="{{addLeadListById.middleName}}"  class="form-control" type="text" name="middleName" formControlName="middleName">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['middleName'].touched && f['middleName'].invalid" class="small text-danger font-italic">*Middle name is required.</p>
                                         <div class="field-placeholder">Middle Name <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -57,12 +60,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input [ngClass]="{'is-invalid': f['lastName'].touched && f['lastName'].invalid}" value="{{recievedData.lastName}}"  class="form-control" type="text" name="lastName" formControlName="lastName">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['lastName'].touched && f['lastName'].invalid" class="small text-danger font-italic">*last name is required.</p>
                                         <div class="field-placeholder">Last Name <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -74,12 +77,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input [ngClass]="{'is-invalid': f['title'].touched && f['title'].invalid}" value="{{recievedData.title}}"   class="form-control" type="text" name="title" formControlName="title">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['title'].touched && f['title'].invalid" class="small text-danger font-italic">*Company name is required.</p>
                                         <div class="field-placeholder">Company <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -91,12 +94,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}" value="{{recievedData.primaryNumber}}"   class="form-control" type="text" name="primaryNumber" formControlName="primaryNumber">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['primaryNumber'].touched && f['primaryNumber'].invalid" class="small text-danger font-italic">*Phone Number is required.</p>
                                         <div class="field-placeholder">Phone <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -107,12 +110,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}" value="{{recievedData.secondaryNumber}}"  class="form-control" type="text" name="secondaryNumber" formControlName="secondaryNumber">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['secondaryNumber'].touched && f['secondaryNumber'].invalid" class="small text-danger font-italic">*Mobile number is required.</p>
                                         <div class="field-placeholder">Mobile <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -136,12 +139,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input [ngClass]="{'is-invalid': f['email'].touched && f['email'].invalid}" value="{{recievedData.email}}" class="form-control" type="text" name="email" formControlName="email">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['email'].touched && f['email'].invalid" class="small text-danger font-italic">*Email is required.</p>
                                         <div class="field-placeholder">Email <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -153,12 +156,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <select name="status" formControlName="status">
+                                            <select [ngClass]="{'is-invalid': f['leadSource'].touched && f['leadSource'].invalid}" value="{{addLeadListById.leadSource}}"  name="leadSource" formControlName="leadSource">
                                                 <option value="0">Source 1</option>
                                                 <option value="1">Source 2</option>
                                               </select>
                                         </div>
-                                        
+                                        <p *ngIf="f['leadSource'].touched && f['leadSource'].invalid" class="small text-danger font-italic">*Source is required.</p>
                                         <div class="field-placeholder">Lead Source <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -173,13 +176,13 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['address'].touched && f['address'].invalid}" value="{{addLeadListById.address}}" class="form-control" type="text" name="address" formControlName="address">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
-                                        <div class="field-placeholder">Street <span class="text-danger">*</span></div>
+                                        <p *ngIf="f['address'].touched && f['address'].invalid" class="small text-danger font-italic">*Address is required.</p>
+                                        <div class="field-placeholder">Address <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -189,12 +192,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['city'].touched && f['city'].invalid}" value="{{addLeadListById.city}}"  class="form-control" type="text" name="city" formControlName="city">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['city'].touched && f['city'].invalid" class="small text-danger font-italic">*City is required.</p>
                                         <div class="field-placeholder">City <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -205,12 +208,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['state'].touched && f['state'].invalid}" value="{{addLeadListById.state}}" class="form-control" type="text" name="state" formControlName="state">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['state'].touched && f['state'].invalid" class="small text-danger font-italic">*State is required.</p>
                                         <div class="field-placeholder">State <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -221,12 +224,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['zip'].touched && f['zip'].invalid}" value="{{addLeadListById.zip}}" class="form-control" type="text" name="zip" formControlName="zip">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['zip'].touched && f['zip'].invalid" class="small text-danger font-italic">*Postal Code is required.</p>
                                         <div class="field-placeholder">Postal Code <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -237,12 +240,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <select name="status" formControlName="status">
+                                            <select  [ngClass]="{'is-invalid': f['country'].touched && f['country'].invalid}" value="{{addLeadListById.country}}"  name="country" formControlName="country">
                                                 <option value="0">India</option>
                                                 <option value="1">Singapore</option>
                                               </select>
                                         </div>
-                                        
+                                        <p *ngIf="f['country'].touched && f['country'].invalid" class="small text-danger font-italic">*Country name is required.</p>
                                         <div class="field-placeholder">Country <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -257,12 +260,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['facebook'].touched && f['facebook'].invalid}" value="{{addLeadListById.facebook}}"  class="form-control" type="text" name="facebook" formControlName="facebook">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['facebook'].touched && f['facebook'].invalid" class="small text-danger font-italic">*Facebook id is required.</p>
                                         <div class="field-placeholder">Facebook <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -273,12 +276,12 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['website'].touched && f['website'].invalid}" value="{{addLeadListById.website}}" class="form-control" type="text" name="website" formControlName="website">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
+                                        <p *ngIf="f['website'].touched && f['website'].invalid" class="small text-danger font-italic">*Website name is required.</p>
                                         <div class="field-placeholder">Website <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
@@ -289,13 +292,13 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['linkedin'].touched && f['linkedin'].invalid}" value="{{addLeadListById.linkedin}}"  class="form-control" type="text" name="linkedin" formControlName="linkedin">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
-                                        <div class="field-placeholder">Google  <span class="text-danger">*</span></div>
+                                        <p *ngIf="f['linkedin'].touched && f['linkedin'].invalid" class="small text-danger font-italic">*Linkedin is required.</p>
+                                        <div class="field-placeholder">Linkedin  <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -305,13 +308,13 @@
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
-                                            <input class="form-control" type="text" name="agency_name" formControlName="agency_name">
+                                            <input  [ngClass]="{'is-invalid': f['background_info'].touched && f['background_info'].invalid}" value="{{addLeadListById.background_info}}" class="form-control" type="text" name="background_info" formControlName="background_info">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
                                         </div>
-                                        
-                                        <div class="field-placeholder">Instagram <span class="text-danger">*</span></div>
+                                        <p *ngIf="f['background_info'].touched && f['background_info'].invalid" class="small text-danger font-italic">*Background info is required.</p>
+                                        <div class="field-placeholder">Background info <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -320,16 +323,16 @@
                               
                               
                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                                      <button class="btn btn-primary">Cancel</button>
-                                      <button class="btn btn-primary">Save and New</button>
-                                      <button class="btn btn-primary">Save</button>
+                                      <button class="btn btn-primary" routerLink="/leads">Cancel</button>
+                                      <button class="btn btn-primary" [disabled]="newAddLeadForm.invalid">Save and New</button>
+                                      <button class="btn btn-primary" [disabled]="newAddLeadForm.invalid">Save</button>
                                   </div>
                               </div>
                           <!-- Row end -->
                           </form>
                       </div>
                   </div>
-                  <!-- Card end -->
+                  <!-- Card end --> 
               </div>
           
           <!-- Row end -->
