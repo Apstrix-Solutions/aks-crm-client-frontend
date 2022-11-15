@@ -22,6 +22,7 @@ export class ListLeadsComponent implements OnInit {
   newLeadForm!: FormGroup;
   leadListById: any = [];
   leadsList: any = [];
+  refreshToken: string;
 
   constructor(
     private formBulider: FormBuilder,
@@ -30,7 +31,7 @@ export class ListLeadsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public toastr: ToastrService
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.getLeads();
 
@@ -43,9 +44,15 @@ export class ListLeadsComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
     });
   }
+  ngDoCheck() {
+    if (this.refreshToken) {
+      localStorage.setItem('refreshToken', this.refreshToken)
+    }
+  }
   addLead() {
     this.leadService.addLead(this.newLeadForm.value).subscribe((res) => {
-      if (res['code'] == 200) {
+      this.refreshToken = res.headers.get('refresh_token');
+      if (res['body']['code'] == 200) {
         this.getLeads();
         this.closebutton.nativeElement.click();
         this.toastr.success(res['message'], 'Success!');
@@ -53,25 +60,25 @@ export class ListLeadsComponent implements OnInit {
         this.toastr.error(res['errorMessage'], 'Error!');
       }
     });
-  
   }
-  goToFullForm(){ //change the value of the BehaviorSubject with newLeadForm.
+  goToFullForm() { //change the value of the BehaviorSubject with newLeadForm.
     this.leadService.setData(this.newLeadForm.value);
   }
 
   searchLead() {
-    const leadForm  = this.newLeadForm.value;
-    let queryParams = new HttpParams();
+    const leadForm = this.newLeadForm.value;
 
+    let queryParams = new HttpParams();
     const keys = Object.keys(leadForm);
 
     keys.forEach((key, index) => {
-      queryParams = queryParams.append(key,leadForm[key]);
+      queryParams = queryParams.append(key, leadForm[key]);
     });
-    
-    this.leadService.searchLead(queryParams).subscribe((data) =>{
-       this.leadsList = data['data']['users'];
-      });
+
+    this.leadService.searchLead(queryParams).subscribe((data) => {
+      this.refreshToken = data.headers.get('refresh_token');
+      this.leadsList = data['body']['data']['leads'];
+    });
   }
   get f() {
     return this.newLeadForm.controls;
@@ -86,7 +93,9 @@ export class ListLeadsComponent implements OnInit {
 
   getLeads() {
     this.leadService.getLead().subscribe((data) => {
-      this.leadsList = data['data']['users'];
+      this.refreshToken = data.headers.get('refresh_token');
+      this.leadsList = data['body']['data']['leads'];
     });
   }
+
 }
