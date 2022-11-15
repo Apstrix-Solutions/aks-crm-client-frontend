@@ -20,6 +20,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class ListLeadsComponent implements OnInit {
   @ViewChild('closebutton') closebutton;
   newLeadForm!: FormGroup;
+  newSearchForm!: FormGroup;
   leadListById: any = [];
   leadsList: any = [];
   editLeadsList: any = {};
@@ -32,7 +33,7 @@ export class ListLeadsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     public toastr: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getLeads();
@@ -45,10 +46,18 @@ export class ListLeadsComponent implements OnInit {
       secondaryNumber: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
     });
+
+    this.newSearchForm = this.formBulider.group({
+      firstName: [null],
+      lastName: [null],
+      title: [null],
+      primaryNumber: [null],
+      secondaryNumber: [null],
+      email: [null],
+    });
   }
 
   addLead() {
-
     this.leadService.addLead(this.newLeadForm.value).subscribe((res) => {
       if (res['code'] == 200) {
         this.getLeads();
@@ -59,20 +68,20 @@ export class ListLeadsComponent implements OnInit {
       }
     });
   }
-
-  goToFullForm() { //change the value of the BehaviorSubject with newLeadForm.
-
+  goToFullForm() {
+    //change the value of the BehaviorSubject with newLeadForm.
     this.leadService.setData(this.newLeadForm.value);
   }
 
   searchLead() {
-    const leadForm = this.newLeadForm.value;
+    const leadForm = this.newSearchForm.value;
     let queryParams = new HttpParams();
     const keys = Object.keys(leadForm);
 
     keys.forEach((key, index) => {
-      if (leadForm[key] != null)
+      if (leadForm[key] != null) {
         queryParams = queryParams.append(key, leadForm[key]);
+      }
     });
 
     this.leadService.searchLead(queryParams).subscribe((data) => {
@@ -107,20 +116,16 @@ export class ListLeadsComponent implements OnInit {
   }
 
   deleteLeads() {
-    this.leadService.sub.subscribe(
-      list => {
-        this.leadService.deleteLead(list.id).subscribe((res) => {
-          this.leadService.setData({})
+    this.leadService.sub.subscribe((list) => {
+      this.leadService.deleteLead(list.id).subscribe((res) => {
+        this.leadService.setData({});
 
-          if (res['code'] == 200) {
-            this.toastr.success(res['message'], 'Success!');
-          } else {
-            this.toastr.error(res['errorMessage'], 'Error!');
-          }
-        })
-
+        if (res['code'] == 200) {
+          this.toastr.success(res['message'], 'Success!');
+        } else {
+          this.toastr.error(res['errorMessage'], 'Error!');
+        }
       });
-
+    });
   }
-
 }
