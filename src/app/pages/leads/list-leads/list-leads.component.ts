@@ -20,6 +20,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class ListLeadsComponent implements OnInit {
   @ViewChild('closebutton') closebutton;
   newLeadForm!: FormGroup;
+  newSearchForm!: FormGroup;
   leadListById: any = [];
   leadsList: any = [];
 
@@ -42,6 +43,15 @@ export class ListLeadsComponent implements OnInit {
       secondaryNumber: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
     });
+
+    this.newSearchForm = this.formBulider.group({
+      firstName: [null],
+      lastName: [null],
+      title: [null],
+      primaryNumber: [null],
+      secondaryNumber: [null],
+      email: [null],
+    });
   }
   addLead() {
     this.leadService.addLead(this.newLeadForm.value).subscribe((res) => {
@@ -53,25 +63,27 @@ export class ListLeadsComponent implements OnInit {
         this.toastr.error(res['errorMessage'], 'Error!');
       }
     });
-  
   }
-  goToFullForm(){ //change the value of the BehaviorSubject with newLeadForm.
+  goToFullForm() {
+    //change the value of the BehaviorSubject with newLeadForm.
     this.leadService.setData(this.newLeadForm.value);
   }
 
   searchLead() {
-    const leadForm  = this.newLeadForm.value;
+    const leadForm = this.newSearchForm.value;
     let queryParams = new HttpParams();
 
     const keys = Object.keys(leadForm);
 
     keys.forEach((key, index) => {
-      queryParams = queryParams.append(key,leadForm[key]);
+      if (leadForm[key] != null) {
+        queryParams = queryParams.append(key, leadForm[key]);
+      }
     });
-    
-    this.leadService.searchLead(queryParams).subscribe((data) =>{
-       this.leadsList = data['data']['users'];
-      });
+
+    this.leadService.searchLead(queryParams).subscribe((data) => {
+      this.leadsList = data['data']['leads'];
+    });
   }
   get f() {
     return this.newLeadForm.controls;
@@ -86,7 +98,7 @@ export class ListLeadsComponent implements OnInit {
 
   getLeads() {
     this.leadService.getLead().subscribe((data) => {
-      this.leadsList = data['data']['users'];
+      this.leadsList = data['data']['leads'];
     });
   }
 }
