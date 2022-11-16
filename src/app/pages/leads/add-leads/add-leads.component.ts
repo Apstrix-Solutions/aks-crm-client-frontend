@@ -20,7 +20,6 @@ export class AddLeadsComponent implements OnInit {
   lStatus: any = [];
   lSource: any = [];
 
-
   constructor(
     private formBulider: FormBuilder,
     private ngZone: NgZone,
@@ -55,14 +54,16 @@ export class AddLeadsComponent implements OnInit {
     });
     //recieving data
     //A subscription is made to listen to changes in the BehaviorSubject.
-    this.leadService.sub.subscribe(
-      response => {
-        this.id = response.id        
+
+    if (!this.id) {
+      this.leadService.sub.subscribe((response) => {
+        this.id = response.id;
         this.recievedData = response;
-        this.newAddLeadForm.patchValue(this.recievedData)
-        // console.log('received data',this.newAddLeadForm.value);
-        
-    });
+        this.newAddLeadForm.patchValue(this.recievedData);
+      });
+    } else {
+    }
+
     this.leadStatus();
     this.leadSource();
   }
@@ -80,7 +81,7 @@ export class AddLeadsComponent implements OnInit {
 
   updateLeads() {
     this.leadService
-      .updateLead(this.newAddLeadForm.value,this.id)
+      .updateLead(this.newAddLeadForm.value, this.id)
       .subscribe((res) => {
         if (res['code'] == 200) {
           this.ngZone.run(() => this.router.navigateByUrl('/leads'));
@@ -91,16 +92,16 @@ export class AddLeadsComponent implements OnInit {
       });
   }
 
-  leadStatus(){
+  leadStatus() {
     this.leadService.leadStatus().subscribe((res) => {
-      this.lStatus = res['data']['status']
-    })
+      this.lStatus = res['data']['status'];
+    });
   }
 
-  leadSource(){
+  leadSource() {
     this.leadService.leadSource().subscribe((res) => {
-      this.lSource = res['data']['data']
-    })
+      this.lSource = res['data']['data'];
+    });
   }
 
   get f() {

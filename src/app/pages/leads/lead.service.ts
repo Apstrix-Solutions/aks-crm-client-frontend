@@ -6,7 +6,6 @@ import { environment } from '@env/environment';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +18,6 @@ export class LeadService {
   }
 
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
-  
 
   public getLead() {
     return this.httpClient.get(`${environment.apiUrl}${'leads'}`);
@@ -33,7 +31,7 @@ export class LeadService {
 
   public searchLead(data: any) {
     return this.httpClient
-      .get(`${environment.apiUrl}${'leads'}`,{params:data})
+      .get(`${environment.apiUrl}${'leads'}`, { params: data })
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
@@ -43,27 +41,22 @@ export class LeadService {
       JSON.stringify(data)
     );
   }
-  public deleteLead( id: any) {
-    return this.httpClient.put(
-      `${environment.apiUrl}${'leads_delete'}`,{leadId:id}
-    );
+  public deleteLead(id: any) {
+    return this.httpClient.put(`${environment.apiUrl}${'leads_delete'}`, {
+      leadId: id,
+    });
   }
 
-  public setData(data:any){
+  public setData(data: any) {
     this.dataSource.next(data);
   }
 
-  public leadStatus(){
-    return this.httpClient.get(
-      `${environment.apiUrl}${'lead_status_all'}`
-    )
+  public leadStatus() {
+    return this.httpClient.get(`${environment.apiUrl}${'status_all'}`);
   }
-  
 
-  public leadSource( ){
-    return this.httpClient.get(
-      `${environment.apiUrl}${'lead_source_all'}`
-    )
+  public leadSource() {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_source_all'}`);
   }
 
   // Error handling
