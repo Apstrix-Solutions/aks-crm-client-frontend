@@ -2,6 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { of } from 'rxjs';
 import { LeadService } from '../lead.service';
 
 @Component({
@@ -35,22 +36,25 @@ export class AddLeadsComponent implements OnInit {
     this.newAddLeadForm = this.formBulider.group({
       title: [null, [Validators.required]],
       firstName: [null, [Validators.required]],
-      middleName: [null, [Validators.required]],
+      middleName: [null],
       lastName: [null, [Validators.required]],
       primaryNumber: [null, [Validators.required]],
-      secondaryNumber: [null, [Validators.required]],
+      secondaryNumber: [null],
+      whatsappNumber: [null],
+      leadScore: [null],
+      leadValue: [null],
       email: [null, [Validators.required, Validators.email]],
-      leadSource: [null, [Validators.required]],
-      leadStatus: [null, [Validators.required]],
-      address: [null, [Validators.required]],
-      city: [null, [Validators.required]],
-      state: [null, [Validators.required]],
-      country: [null, [Validators.required]],
-      zip: [null, [Validators.required]],
-      website: [null, [Validators.required]],
-      linkedin: [null, [Validators.required]],
-      facebook: [null, [Validators.required]],
-      background_info: [null, [Validators.required]],
+      leadSourceId: [null],
+      currentStatus: [null, [Validators.required]],
+      address: [null],
+      city: [null],
+      state: [null],
+      country: [null],
+      zip: [null],
+      website: [null],
+      linkedin: [null],
+      facebook: [null],
+      background_info: [null],
     });
     //recieving data
     //A subscription is made to listen to changes in the BehaviorSubject.
@@ -62,6 +66,13 @@ export class AddLeadsComponent implements OnInit {
         this.newAddLeadForm.patchValue(this.recievedData);
       });
     } else {
+      this.leadService.getLeadById(this.id).subscribe((res) => {
+        this.recievedData = res['data']['users'];
+        this.newAddLeadForm.patchValue(this.recievedData);
+
+        this.getLeadAddress();
+        this.getLeadSocials();
+      });
     }
 
     this.leadStatus();
@@ -74,7 +85,7 @@ export class AddLeadsComponent implements OnInit {
         this.toastr.success(res['message'], 'Success!');
         this.ngZone.run(() => this.router.navigateByUrl('/leads'));
       } else {
-        this.toastr.error(res['message'], 'Error!');
+        this.toastr.error(res['errorMessage'], 'Error!');
       }
     });
   }
@@ -85,7 +96,7 @@ export class AddLeadsComponent implements OnInit {
       .subscribe((res) => {
         if (res['code'] == 200) {
           this.ngZone.run(() => this.router.navigateByUrl('/leads'));
-          this.toastr.success(res['message'], 'Successfully updated!');
+          this.toastr.success(res['message'], 'Successfully updated the lead');
         } else {
           this.toastr.error(res['message'], 'Error!');
         }
@@ -106,6 +117,37 @@ export class AddLeadsComponent implements OnInit {
 
   get f() {
     return this.newAddLeadForm.controls;
+  }
+
+  getLeadAddress() {
+    this.leadService.getLeadAddressByLeadId(this.id).subscribe((res) => {
+      let addressdata = res['data']['address'];
+
+      if (addressdata) {
+        this.newAddLeadForm.patchValue({
+          address: addressdata.address,
+          city: addressdata.city,
+          state: addressdata.state,
+          country: addressdata.country,
+          zip: addressdata.zip,
+        });
+      }
+    });
+  }
+
+  getLeadSocials() {
+    this.leadService.getLeadSocialsByLeadId(this.id).subscribe((res) => {
+      let socialdata = res['data']['social'];
+      console.log(socialdata);
+      if (socialdata) {
+        this.newAddLeadForm.patchValue({
+          facebook: socialdata.facebook,
+          website: socialdata.website,
+          linkedin: socialdata.linkedin,
+          background_info: socialdata.background_info,
+        });
+      }
+    });
   }
 
   onSubmit() {

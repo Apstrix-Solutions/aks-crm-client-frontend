@@ -11,6 +11,7 @@ import { first } from 'rxjs';
 import { LeadService } from '../lead.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-leads',
@@ -25,6 +26,7 @@ export class ListLeadsComponent implements OnInit {
   leadsList: any = [];
   editLeadsList: any = {};
   leadId: number;
+  closeResult: string;
 
   constructor(
     private formBulider: FormBuilder,
@@ -32,7 +34,8 @@ export class ListLeadsComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -107,18 +110,13 @@ export class ListLeadsComponent implements OnInit {
   }
 
   editLeads(list: any) {
-    this.leadService.setData(list);
     this.ngZone.run(() => this.router.navigateByUrl(`add-lead/${list.id}`));
   }
 
-  setDeleteItem(list: any) {
-    this.leadService.setData(list);
-  }
-
-  deleteLeads() {
-    this.leadService.sub.subscribe((list) => {
-      this.leadService.deleteLead(list.id).subscribe((res) => {
-        this.leadService.setData({});
+  open(content, listId) {
+    if (confirm('Are you sure to delete ?')) {
+      this.leadService.deleteLead(listId).subscribe((res) => {
+        this.getLeads();
 
         if (res['code'] == 200) {
           this.toastr.success(res['message'], 'Success!');
@@ -126,6 +124,6 @@ export class ListLeadsComponent implements OnInit {
           this.toastr.error(res['errorMessage'], 'Error!');
         }
       });
-    });
+    }
   }
 }

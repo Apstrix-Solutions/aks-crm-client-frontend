@@ -46,7 +46,7 @@
                                                             <!-- Field wrapper start -->
                                                                 <div class="field-wrapper">
                                                                     <div class="input-group">
-                                                                        <input placeholder="Company" class="form-control" type="text" name="title" formControlName="title">
+                                                                        <input placeholder="Title" class="form-control" type="text" name="title" formControlName="title">
                                                                     </div>
                                                                 </div>
                                                             <!-- Field wrapper end -->
@@ -87,7 +87,7 @@
                                                             <tr>
                                                                 <th>First Name</th>
                                                                 <th>Last Name</th>
-                                                                <th>Company</th>
+                                                                <th>Title</th>
                                                                 <th>Phone Number</th>
                                                                 <th>Mobile</th>
                                                                 <th>Email</th>
@@ -108,17 +108,8 @@
                                                                      <i class="icon-edit1" style="color: #0073dd;"  (click)="editLeads(list)"  ></i>
                                                                 </td>
                                                                 <td>
-                                                                    <i class="icon-delete" style="color: #0073dd;"   (click)="setDeleteItem(list)" data-bs-toggle="modal" data-bs-target="#addConfirmModal" ></i>
+                                                                    <i class="icon-delete" style="color: #0073dd;" (click) = "open(content,list.id)"></i>
                                                                </td>
-                                                                <!-- <td>
-                                                                     <a [routerLink]="['/update-leads', list.Id]">
-                                                                        <i class="icon-edit1"></i>
-                                                                      </a>
-                                    
-                                                                      <a [routerLink]="['/leads', list.Id]">setFname
-                                                                        <i class="icon-eye"></i>
-                                                                      </a> 
-                                                                </td> -->
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -147,7 +138,7 @@
 			************* -->
 
 <!-- Modal start to display add user popup-->
-<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+<div class="modal fade" #content tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
@@ -193,7 +184,7 @@
                                 
                                 </div>
                               <p *ngIf="f['title'].touched && f['title'].invalid" class="small text-danger font-italic">*Company is required.</p>
-                            <div class="field-placeholder">Company <span class="text-danger">*</span></div>
+                            <div class="field-placeholder">Title <span class="text-danger">*</span></div>
                         </div>
                         <!-- Field wrapper end -->
                     </div>
@@ -259,19 +250,18 @@
 </div>
 <!-- Modal end -->
 
-<div class="modal fade" id="addConfirmModal" tabindex="1" aria-labelledby="addConfirmModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="addConfirmModalLabel">Please Confirm</h5>
-            <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <p>Are you sure want to delete?</p>
-       
-            <div class="modal-footer" id="exampleSelect">
-                <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">cancel</button>
-                <button id="save" type="button" data-bs-dismiss="modal" class="btn btn-primary" (click)="deleteLeads()">ok</button>
-            </div>
-        </div>
-    </div>
-</div>
+<ng-template #content let-c="close" let-d="dismiss">    
+    <div class="modal-header">    
+        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>    
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">    
+            <span aria-hidden="true">×</span>    
+        </button>    
+    </div>    
+    <div class="modal-body">    
+        <p>Are you sure to delete this?</p>    
+    </div>    
+    <div class="modal-footer">    
+        <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>    
+        <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>    
+    </div>    
+</ng-template>

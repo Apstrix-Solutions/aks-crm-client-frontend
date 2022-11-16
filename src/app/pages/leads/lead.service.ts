@@ -42,9 +42,7 @@ export class LeadService {
     );
   }
   public deleteLead(id: any) {
-    return this.httpClient.put(`${environment.apiUrl}${'leads_delete'}`, {
-      leadId: id,
-    });
+    return this.httpClient.get(`${environment.apiUrl}${'leads_delete/'}${id}`);
   }
 
   public setData(data: any) {
@@ -75,6 +73,14 @@ export class LeadService {
   }
 
   public getLeadById(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'leads/'}${id}`);
+    return this.httpClient.get(`${environment.apiUrl}${'lead_details/'}${id}`);
+  }
+
+  public getLeadAddressByLeadId(id: string) {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_address/'}${id}`);
+  }
+
+  public getLeadSocialsByLeadId(id: string) {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_social/'}${id}`);
   }
 }

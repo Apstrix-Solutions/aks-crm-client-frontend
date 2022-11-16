@@ -50,7 +50,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['middleName'].touched && f['middleName'].invalid" class="small text-danger font-italic">*Middle name is required.</p>
-                                        <div class="field-placeholder">Middle Name <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Middle Name</div>
                                     </div>
                                     <!-- Field wrapper end -->
 
@@ -83,7 +83,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['title'].touched && f['title'].invalid" class="small text-danger font-italic">*Company name is required.</p>
-                                        <div class="field-placeholder">Company <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Title <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
 
@@ -116,21 +116,23 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['secondaryNumber'].touched && f['secondaryNumber'].invalid" class="small text-danger font-italic">*Mobile number is required.</p>
-                                        <div class="field-placeholder">Mobile <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Mobile</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
   
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                       
-                                    <!-- Field wrapper start -->
                                     <div class="field-wrapper">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">Whatsapp</label>
+                                        <div class="input-group">
+                                            <input  [ngClass]="{'is-invalid': f['whatsappNumber'].touched && f['whatsappNumber'].invalid}" value="{{recievedData.whatsappNumber}}"  class="form-control" type="text" name="whatsappNumber" formControlName="whatsappNumber">
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
                                         </div>
+                                        <p *ngIf="f['whatsappNumber'].touched && f['whatsappNumber'].invalid" class="small text-danger font-italic">*Whatsapp number is required.</p>
+                                        <div class="field-placeholder">Whatsapp Number</div>
                                     </div>
-                                    <!-- Field wrapper end -->
 
                                 </div>
                                 <div class="clear"></div>
@@ -157,37 +159,67 @@
                                     <div class="field-wrapper">
                                         <div class="input-group">
                                             <select 
-                                            [ngClass]="{'is-invalid': f['leadSource'].touched && f['leadSource'].invalid}" 
-                                            name="leadSource" 
-                                            formControlName="leadSource"
+                                            [ngClass]="{'is-invalid': f['leadSourceId'].touched && f['leadSourceId'].invalid}" 
+                                            name="leadSourceId" 
+                                            formControlName="leadSourceId"
                                             >
-                                                <option value="0"  *ngFor="let list of lSource" >{{list.name}}</option>
+                                                <option value="{{list.id}}"  *ngFor="let list of lSource" >{{list.name}} {{list.id}}</option>
                                               </select>
                                         </div>
-                                        <p *ngIf="f['leadSource'].touched && f['leadSource'].invalid" class="small text-danger font-italic">*Source is required.</p>
-                                        <div class="field-placeholder">Lead Source <span class="text-danger">*</span></div>
+                                        <p *ngIf="f['leadSourceId'].touched && f['leadSourceId'].invalid" class="small text-danger font-italic">*Source is required.</p>
+                                        <div class="field-placeholder">Lead Source</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
 
-                                <div class="clear"></div>
+                                
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                       
                                     <!-- Field wrapper start -->
                                     <div class="field-wrapper">
                                         <div class="input-group">
                                             <select 
-                                            [ngClass]="{'is-invalid': f['leadStatus'].touched && f['leadStatus'].invalid}" 
-                                            name="leadStatus" 
-                                            formControlName="leadStatus"
+                                            [ngClass]="{'is-invalid': f['currentStatus'].touched && f['currentStatus'].invalid}" 
+                                            name="currentStatus" 
+                                            formControlName="currentStatus"
                                             >
-                                                <option value="0"  *ngFor="let list of lStatus" >{{list.name}}</option>
+                                                <option value="{{list.id}}"  *ngFor="let list of lStatus" >{{list.name}}</option>
                                               </select>
                                         </div>
-                                        <p *ngIf="f['leadStatus'].touched && f['leadStatus'].invalid" class="small text-danger font-italic">*Source is required.</p>
+                                        <p *ngIf="f['currentStatus'].touched && f['currentStatus'].invalid" class="small text-danger font-italic">*Source is required.</p>
                                         <div class="field-placeholder">Lead Status <span class="text-danger">*</span></div>
                                     </div>
                                     <!-- Field wrapper end -->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                            <input  [ngClass]="{'is-invalid': f['leadScore'].touched && f['leadScore'].invalid}" value="{{recievedData.leadScore}}"  class="form-control" type="text" name="leadScore" formControlName="leadScore">
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['leadScore'].touched && f['leadScore'].invalid" class="small text-danger font-italic">*Lead Score is required.</p>
+                                        <div class="field-placeholder">Lead Score</div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                            <input  [ngClass]="{'is-invalid': f['leadValue'].touched && f['leadValue'].invalid}" value="{{recievedData.leadValue}}"  class="form-control" type="number" name="leadValue" formControlName="leadValue">
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['leadValue'].touched && f['leadValue'].invalid" class="small text-danger font-italic">*Whatsapp number is required.</p>
+                                        <div class="field-placeholder">Lead value</div>
+                                    </div>
+
                                 </div>
 
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
@@ -205,7 +237,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['address'].touched && f['address'].invalid" class="small text-danger font-italic">*Address is required.</p>
-                                        <div class="field-placeholder">Address <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Address</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -221,7 +253,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['city'].touched && f['city'].invalid" class="small text-danger font-italic">*City is required.</p>
-                                        <div class="field-placeholder">City <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">City</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -237,7 +269,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['state'].touched && f['state'].invalid" class="small text-danger font-italic">*State is required.</p>
-                                        <div class="field-placeholder">State <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">State</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -253,7 +285,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['zip'].touched && f['zip'].invalid" class="small text-danger font-italic">*Postal Code is required.</p>
-                                        <div class="field-placeholder">Postal Code <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Postal Code</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -264,12 +296,12 @@
                                     <div class="field-wrapper">
                                         <div class="input-group">
                                             <select  [ngClass]="{'is-invalid': f['country'].touched && f['country'].invalid}" value="{{addLeadListById.country}}"  name="country" formControlName="country">
-                                                <option value="0">India</option>
-                                                <option value="1">Singapore</option>
+                                                <option value="India">India</option>
+                                                <option value="Singapore">Singapore</option>
                                               </select>
                                         </div>
                                         <p *ngIf="f['country'].touched && f['country'].invalid" class="small text-danger font-italic">*Country name is required.</p>
-                                        <div class="field-placeholder">Country <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Country</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -289,7 +321,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['facebook'].touched && f['facebook'].invalid" class="small text-danger font-italic">*Facebook id is required.</p>
-                                        <div class="field-placeholder">Facebook <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Facebook</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -305,11 +337,11 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['website'].touched && f['website'].invalid" class="small text-danger font-italic">*Website name is required.</p>
-                                        <div class="field-placeholder">Website <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Website</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
-                                <div class="clear"></div>
+                                
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                       
                                     <!-- Field wrapper start -->
@@ -321,7 +353,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['linkedin'].touched && f['linkedin'].invalid" class="small text-danger font-italic">*Linkedin is required.</p>
-                                        <div class="field-placeholder">Linkedin  <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Linkedin </div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -337,7 +369,7 @@
                                             </span>
                                         </div>
                                         <p *ngIf="f['background_info'].touched && f['background_info'].invalid" class="small text-danger font-italic">*Background info is required.</p>
-                                        <div class="field-placeholder">Background info <span class="text-danger">*</span></div>
+                                        <div class="field-placeholder">Background info</div>
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
@@ -347,7 +379,7 @@
                               
                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
                                       <button class="btn btn-primary" routerLink="/leads">Cancel</button>
-                                      <button class="btn btn-primary" [disabled]="newAddLeadForm.invalid">Save and New</button>
+                                      <button class="btn btn-primary" *ngIf="!id" [disabled]="newAddLeadForm.invalid">Save and New</button>
                                       <button class="btn btn-primary" [disabled]="newAddLeadForm.invalid">Save</button>
                                   </div>
                               </div>
