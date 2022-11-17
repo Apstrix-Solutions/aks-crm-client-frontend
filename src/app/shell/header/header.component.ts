@@ -10,6 +10,7 @@ import { AuthenticationService, CredentialsService } from '@app/auth';
 })
 export class HeaderComponent implements OnInit {
   menuHidden = false;
+  menuHiddenContact = false;
   settingsMenuHidden = false;
   campaignMenuHidden = false;
   marketingMenuHidden = false;
@@ -24,6 +25,10 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
+  }
+
+  toggleMenuContact() {
+    this.menuHiddenContact = !this.menuHiddenContact;
   }
 
   toggleSettingsMenu() {
