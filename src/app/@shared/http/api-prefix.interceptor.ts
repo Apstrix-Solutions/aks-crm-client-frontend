@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 //import { SweetAlertService } from 'angular-sweetalert-service/js';
 import { Injectable } from '@angular/core';
-import {AuthService } from '../../auth.service';
+import { AuthService } from '../../auth.service';
 
 import {
   HttpRequest,
@@ -29,13 +29,18 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
     // setTimeout(function () { document.getElementById('nb-global-spinner').style.display = 'none'; }, 500);
   }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     this._requestCount++;
 
     request = request.clone({
       setHeaders: {
-        'Authorisation': `${this.authService.getAuthToken()}`
-      }
+        Authorisation: `${this.authService.getAuthToken()}`,
+        'x-token': `${this.authService.getAuthToken()}`,
+        'content-type': 'application/json',
+      },
     });
 
     return next.handle(request).pipe(
@@ -72,7 +77,8 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
                 window.location.reload();
                 break;
               case 422:
-                errorMessage = err.error.errors[Object.keys(err.error.errors)[0]][0];
+                errorMessage =
+                  err.error.errors[Object.keys(err.error.errors)[0]][0];
                 break;
               case 423:
                 errorMessage = err.error.message;

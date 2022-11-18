@@ -28,9 +28,9 @@ export class AuthenticationService {
    * @return The user credentials.
    */
   login(context: LoginContext): Observable<Credentials> {
-    var path = 'auth/login';
+    var path = 'login';
 
-    return this.apiService.post(path, [context]).pipe(
+    return this.apiService.post(path, context).pipe(
       map((res) => {
         
         // const data = {
