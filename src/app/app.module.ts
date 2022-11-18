@@ -29,7 +29,9 @@ import { ListLeadsModule } from './pages/leads/list-leads/list-leads.module';
 import { AddLeadsModule } from './pages/leads/add-leads/add-leads.module';
 import {CampaignsModule } from './pages/campaigns/campaigns/campaigns.module';
 import { AddCampaignModule } from './pages/campaigns/add-campaign/add-campaign.module';
-import { CreateContentsModule} from './pages/campaigns/create-contents/create-contents.module'; // <============
+import { CreateContentsModule} from './pages/campaigns/create-contents/create-contents.module';
+import { AddContactModule } from './pages/contact/add-contact/add-contact.module';
+import { ListContactModule } from './pages/contact/list-contact/list-contact.module'; // <============
 
 @NgModule({
   imports: [
@@ -54,6 +56,8 @@ import { CreateContentsModule} from './pages/campaigns/create-contents/create-co
     CampaignsModule,
     AddCampaignModule,
     CreateContentsModule,
+    AddContactModule,
+    ListContactModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

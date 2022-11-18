@@ -1,0 +1,69 @@
+
+<div class="main-container">
+
+    <app-topbar></app-topbar>
+
+    <!-- Content wrapper scroll start -->
+    <div class="content-wrapper-scroll">
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-end">
+                                <div class="custom-btn-group">
+                                    <button type="button" class="btn btn-primary"
+                                        routerLink="/add-contacts">Add Contact</button>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Name</th>
+                                                    <th>Phone</th>
+                                                    <th>Address</th>
+                                                    <th>Lead Id</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let list of contactList">
+                                                    <td>{{ list.id }}</td>
+                                                    <td>{{ list.name}}</td>
+                                                    <td>{{ list.phone}}</td>
+                                                    <td>{{ list.address}}</td>
+                                                    <td>{{ list.lead_id}}</td>
+                                                    <td>
+                                                        <i class="icon-edit1" style="color: #0073dd;"></i>
+                                                    </td>
+                                                    <td>
+                                                        <i class="icon-delete" style="color: #0073dd;"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#addConfirmModal"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row end -->
+            </div>
+            <!-- Content wrapper end -->
+            <app-footer></app-footer>
+        </div>
+        <!-- Content wrapper scroll end -->
+    </div>
