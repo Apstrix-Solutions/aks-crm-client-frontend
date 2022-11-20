@@ -31,6 +31,7 @@ import {DashbordModule } from './pages/marketing/dashbord/dashbord.module';
 import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-campaign.module';
 import { CreateContentsModule} from './pages/marketing/campaigns/create-contents/create-contents.module';
 import { OrganicpostModule } from './pages/marketing/organicpost/organicpost.module';
+import { CalenderModule } from './pages/marketing/calender/calender.module';
  // <============
 
 @NgModule({
@@ -57,6 +58,7 @@ import { OrganicpostModule } from './pages/marketing/organicpost/organicpost.mod
     CreateContentsModule,
     DashbordModule,
     OrganicpostModule,
+    CalenderModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

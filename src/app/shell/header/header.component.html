@@ -41,36 +41,46 @@
               <i class="icon-shopping-basket"></i>
               <span class="menu-text">Marketing</span>
             </a>
-            <div class="default-sidebar" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
-              <a routerLink="/marketingdashbord">
-                <span class="menu-text"> Marketing Dashbord </span>
-              </a>
-            </div>
-            <div class="default-sidebar" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
-              <a  routerLink ="/organicpost">
-                <span class="menu-text">Organic Contents</span>
-              </a>
-             
-              
-            </div>
-          
-            <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
-              <a (click)="toggleCampaignMenu()">
-                <span class="menu-text">Campaigns</span>
-              </a>
-              <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
-                <ul>
-                 
-                  <li>
-                    <a routerLink="/add-campaigns">Add Campaign </a>
-                  </li>
-                  <li>
-                    <a routerLink="/home">List Campaign</a>
-                  </li>
-                </ul>
+            <ul>
+              <li>
+                <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+                  <a routerLink="/marketingdashbord">
+                    <span class="menu-text"> Marketing Dashbord </span>
+                  </a>
+                </div>
+              </li>
+              <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+                <a routerLink="/calender">
+                  <span class="menu-text">Calendar </span>
+                </a>
               </div>
-              
-            </div>
+              <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+                <a  routerLink ="/organicpost">
+                  <span class="menu-text">Organic Contents</span>
+                </a>
+               
+                
+              </div>
+            
+              <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+                <a (click)="toggleCampaignMenu()">
+                  <span class="menu-text">Campaigns</span>
+                </a>
+                <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
+                  <ul>
+                   
+                    <li>
+                      <a routerLink="/add-campaigns">Add Campaign </a>
+                    </li>
+                    <li>
+                      <a routerLink="/home">List Campaign</a>
+                    </li>
+                  </ul>
+                </div>
+                
+              </div>
+            </ul>
+           
           
           <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
             <a (click)="toggleSettingsMenu()">
