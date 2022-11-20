@@ -28,10 +28,10 @@ import { NgHttpLoaderModule } from 'ng-http-loader';
 import { ListLeadsModule } from './pages/leads/list-leads/list-leads.module';
 import { AddLeadsModule } from './pages/leads/add-leads/add-leads.module';
 import {DashbordModule } from './pages/marketing/dashbord/dashbord.module';
-import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-campaign.module';
-import { CreateContentsModule} from './pages/marketing/campaigns/create-contents/create-contents.module';
 import { OrganicpostModule } from './pages/marketing/organicpost/organicpost.module';
 import { CalenderModule } from './pages/marketing/calender/calender.module';
+import { CreateContentsModule } from './pages/marketing/campaigns/create-contents/create-contents.module';
+import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-campaign.module';
  // <============
 
 @NgModule({
