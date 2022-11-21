@@ -34,6 +34,9 @@ import { CreateContentsModule } from './pages/marketing/campaigns/create-content
 import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-campaign.module';
  // <============
 
+import { AddContactModule } from './pages/contact/add-contact/add-contact.module';
+import { ListContactModule } from './pages/contact/list-contact/list-contact.module'; // <============
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -59,6 +62,8 @@ import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-
     DashbordModule,
     OrganicpostModule,
     CalenderModule,
+    AddContactModule,
+    ListContactModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
