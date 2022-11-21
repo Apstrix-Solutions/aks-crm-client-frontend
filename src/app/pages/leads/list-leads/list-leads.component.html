@@ -1,267 +1,446 @@
-	<!-- *************
+<!-- *************
 				************ Main container start *************
 			************* -->
-			<div class="main-container">
+<div class="main-container">
 
-				<app-topbar></app-topbar>
+    <app-topbar></app-topbar>
 
 
-				<!-- Content wrapper scroll start -->
-				<div class="content-wrapper-scroll">
+    <!-- Content wrapper scroll start -->
+    <div class="content-wrapper-scroll">
 
-					<!-- Content wrapper start -->
-					<div class="content-wrapper">
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
 
-						<!-- Row start -->
-						<div class="row gutters">
-							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-	
-								<div class="card">
-									<div class="card-body">
-										<div class="d-flex justify-content-end">
-											<div class="custom-btn-group">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">Quick Lead</button>
-											</div>
-										</div>
-                                        <div class="row gutters">
-                                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
-                                                <div class="filter-form" >
-                                                    <form class="form-horizontal"  [formGroup]= "newSearchForm" (ngSubmit)="searchLead()">
-                                                        <div class="row gutters">
-                                                            <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <div class="input-group">
-                                                                        <input placeholder="First name" class="form-control" type="text" name="firstName"  formControlName="firstName">
-                                                                        
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-end">
+                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                                    <ul class="header-actions">
+                                        <li class="dropdown">
+                                            <div class="container-md ml-2 mt-3 p-2 rounded-2">Filter
+                                                <span class="icon-filter_list ms-5" id="notifications"
+                                                    data-toggle="dropdown" aria-haspopup="true"> </span>
+                                            </div>
+
+                                            <div class="dropdown-menu dropdown-menu-end lrg " style="width: 500px;"
+                                                aria-labelledby="notifications">
+                                                <div>
+                                                    <form class="form-horizontal" [formGroup]="newSearchForm"
+                                                        (ngSubmit)="searchLead()">
+                                                        <!-- Row start -->
+                                                        <div class="wrapper container ">
+                                                            <div class="row gutters "
+                                                                style="display: flex;justify-content:space-between">
+                                                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control-search"
+                                                                                name="firstName"
+                                                                                formControlName="firstName"
+                                                                                placeholder="First Name" readonly>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            <!-- Field wrapper end -->
-                                                            <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <div class="input-group">
-                                                                        <input placeholder="Last name" class="form-control" type="text" name="lastName" formControlName="lastName">
+                                                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control ms-3 "
+                                                                                name="firstName"
+                                                                                formControlName="firstName"
+                                                                                placeholder="Type">
+                                                                            <span class="input-group-text ">
+                                                                                <i class="search icon icon-search1"></i></span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            <!-- Field wrapper end -->
-                                                            <!-- Field wrapper start -->
-                                                                <div class="field-wrapper">
-                                                                    <div class="input-group">
-                                                                        <input placeholder="Title" class="form-control" type="text" name="title" formControlName="title">
+                                                            </div>
+                                                        </div>
+                                                        <!-- Row end -->
+                                                        <!-- Row start -->
+                                                        <div class="wrapper container ">
+                                                            <div class="row gutters "
+                                                                style="display: flex;justify-content:space-between">
+                                                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control-search"
+                                                                                name="lastName"
+                                                                                formControlName="lastName"
+                                                                                placeholder="Last Name" readonly>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            <!-- Field wrapper end -->
-                                                            <!-- Field wrapper start -->
-                                                            <div class="field-wrapper">
-                                                                <div class="input-group">
-                                                                    <input placeholder="Phone" class="form-control" type="text" name="primaryNumber" formControlName="primaryNumber">
+                                                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control ms-3 "
+                                                                                name="lastName"
+                                                                                formControlName="lastName"
+                                                                                placeholder="Type">
+                                                                            <span class="input-group-text "
+                                                                                style="background: none;">
+                                                                                <i class="search icon icon-search1"></i></span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- Field wrapper end -->
-                                                            <!-- Field wrapper start -->
-                                                            <div class="field-wrapper">
-                                                                <div class="input-group">
-                                                                    <input placeholder="Mobile"  class="form-control" type="text" name="secondaryNumber" formControlName="secondaryNumber">
+                                                        </div>
+                                                        <!-- Row end -->
+                                                        <!-- Row start -->
+                                                        <div class="wrapper container ">
+                                                            <div class="row gutters "
+                                                                style="display: flex;justify-content:space-between">
+                                                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control-search" name="title"
+                                                                                formControlName="title"
+                                                                                placeholder="Company Name" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control ms-3 " name="title"
+                                                                                formControlName="title"
+                                                                                placeholder="Type">
+                                                                            <span class="input-group-text ">
+                                                                                <i class="search icon icon-search1"></i></span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- Field wrapper end -->
-                                                            <!-- Field wrapper start -->
-                                                            <div class="field-wrapper">
-                                                                <div class="input-group">
-                                                                    <input placeholder="Email" class="form-control" type="text" name="email" formControlName="email">
+                                                        </div>
+                                                        <!-- Row end -->
+                                                        <!-- Row start -->
+                                                        <div class="wrapper container ">
+                                                            <div class="row gutters "
+                                                                style="display: flex;justify-content:space-between">
+                                                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control-search"
+                                                                                name="primaryNumber"
+                                                                                formControlName="primaryNumber"
+                                                                                placeholder="Primary Number" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control ms-3 "
+                                                                                name="primaryNumber"
+                                                                                formControlName="primaryNumber"
+                                                                                placeholder="Type">
+                                                                            <span class="input-group-text">
+                                                                                <i class="search icon icon-search1"></i></span>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- Field wrapper end -->
+                                                        </div>
+                                                        <!-- Row end -->
+                                                        <!-- Row start -->
+                                                        <div class="wrapper container ">
+                                                            <div class="row gutters "
+                                                                style="display: flex;justify-content:space-between">
+                                                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control-search"
+                                                                                name="secondaryNumber"
+                                                                                formControlName="secondaryNumber"
+                                                                                placeholder="Secondary Number" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control ms-3 "
+                                                                                name="secondaryNumber"
+                                                                                formControlName="secondaryNumber"
+                                                                                placeholder="Type">
+                                                                            <span class="input-group-text">
+                                                                                <i class="search icon icon-search1"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Row end -->
+                                                        <!-- Row start -->
+                                                        <div class="wrapper container ">
+                                                            <div class="row gutters "
+                                                                style="display: flex;justify-content:space-between">
+                                                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control-search" name="email"
+                                                                                formControlName="email"
+                                                                                placeholder="Email" readonly>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-5 col-8">
+                                                                    <div class="field-wrapper">
+                                                                        <div class="input-group">
+                                                                            <input type="text"
+                                                                                class="form-control ms-3 " name="email"
+                                                                                formControlName="email"
+                                                                                placeholder="Type">
+                                                                            <span class="input-group-text">
+                                                                                <i class="search icon icon-search1"></i></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Row end -->
 
-                                                            <div class="clear"></div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                                                                <button class="btn btn-primary float-right" >Search</button>
-                                                            </div>
+                                                        <div class="search-footer">
+                                                            <button class="btn btn-primary">search</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover table-bordered m-0">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>First Name</th>
-                                                                <th>Last Name</th>
-                                                                <th>Title</th>
-                                                                <th>Phone Number</th>
-                                                                <th>Mobile</th>
-                                                                <th>Email</th>
-                                                                <th>Edit</th>
-                                                                <th>Delete</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr *ngFor="let list of leadsList">
+                                        </li>
+                                    </ul>
+                                </div>
 
-                                                                <td>{{ list.firstName}}</td>
-                                                                <td>{{ list.lastName}}</td>
-                                                                <td>{{ list.title}}</td>
-                                                                <td>{{ list.primaryNumber}}</td>
-                                                                <td>{{ list.secondaryNumber}}</td>
-                                                                <td>{{ list.email}}</td>
-                                                                <td>
-                                                                     <i class="icon-edit1" style="color: #0073dd;"  (click)="editLeads(list)"  ></i>
-                                                                </td>
-                                                                <td>
-                                                                    <i class="icon-delete" style="color: #0073dd;" (click) = "open(content,list.id)"></i>
-                                                               </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-									</div>
-								
-	
-							</div>
-						</div>
-						<!-- Row end -->
+                                <div class="custom-btn-group quick_lead_btn">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#addUserModal">Quick Lead</button>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Title</th>
+                                                    <th>Phone Number</th>
+                                                    <th>Mobile</th>
+                                                    <th>Email</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let list of leadsList">
 
-					</div>
-					<!-- Content wrapper end -->
+                                                    <td>{{ list.firstName}}</td>
+                                                    <td>{{ list.lastName}}</td>
+                                                    <td>{{ list.title}}</td>
+                                                    <td>{{ list.primaryNumber}}</td>
+                                                    <td>{{ list.secondaryNumber}}</td>
+                                                    <td>{{ list.email}}</td>
+                                                    <td>
+                                                        <i class="icon-edit1" style="color: #0073dd;"
+                                                            (click)="editLeads(list)"></i>
+                                                    </td>
+                                                    <td>
+                                                        <i class="icon-delete" style="color: #0073dd;"
+                                                            (click)="open(content,list.id)"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-					<app-footer></app-footer>
+
+                    </div>
+                </div>
+                <!-- Row end -->
+
+            </div>
+            <!-- Content wrapper end -->
+
+            <app-footer></app-footer>
 
 
-				</div>
-				<!-- Content wrapper scroll end -->
+        </div>
+        <!-- Content wrapper scroll end -->
 
-			</div>
-			<!-- *************
+    </div>
+    <!-- *************
 				************ Main container end *************
 			************* -->
 
-<!-- Modal start to display add user popup-->
-<div class="modal fade" #content tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="addUserModalLabel">Create Lead</h5>
-            <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form class="form-horizontal" [formGroup]= "newLeadForm" (ngSubmit)="addLead()">
-            <div class="modal-body">
-                <div class="row gutters">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!-- Field wrapper start -->
-                        <div class="field-wrapper">
-                            <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['firstName'].touched && f['firstName'].invalid}" value="{{editLeadsList?editLeadsList.firstName:leadListById.firstName}}" type="text" name="firstName" formControlName="firstName">
-                                
-                            </div>
-                            <p *ngIf="f['firstName'].touched && f['firstName'].invalid" class="small text-danger font-italic">*First name is required.</p>
-                            
-                            <div class="field-placeholder">First Name <span class="text-danger">*</span></div>
-                        </div>
-                        <!-- Field wrapper end -->
-                    </div>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!-- Field wrapper start -->
-                        <div class="field-wrapper">
-                            <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['lastName'].touched && f['lastName'].invalid}" value="{{editLeadsList?editLeadsList.lastName:leadListById.lastName}}"  type="text" name="lastName" formControlName="lastName">
-                                
-                            </div>
-                            <p *ngIf="f['lastName'].touched && f['lastName'].invalid" class="small text-danger font-italic">*Last name is required.</p>
-                            
-                            <div class="field-placeholder">Last Name <span class="text-danger">*</span></div>
-                        </div>
-                        <!-- Field wrapper end -->
-                    </div>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!-- Field wrapper start -->
-                        <div class="field-wrapper">
-                            <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['title'].touched && f['title'].invalid}" value="{{editLeadsList?editLeadsList.firstName:leadListById.title}}"  type="text" name="title" formControlName="title">
-                                
-                                </div>
-                              <p *ngIf="f['title'].touched && f['title'].invalid" class="small text-danger font-italic">*Company is required.</p>
-                            <div class="field-placeholder">Title <span class="text-danger">*</span></div>
-                        </div>
-                        <!-- Field wrapper end -->
-                    </div>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!-- Field wrapper start -->
-                        <div class="field-wrapper">
-                            <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}"  value="{{editLeadsList?editLeadsList.primaryNumber:leadListById.title}}" type="text" name="primaryNumber" formControlName="primaryNumber">
-                                
-                            </div>
-                             <p *ngIf="f['primaryNumber'].touched && f['primaryNumber'].invalid" class="small text-danger font-italic">*Contact number is required.</p>
-                            <div class="field-placeholder">Phone <span class="text-danger">*</span></div>
-                        </div>
-                        <!-- Field wrapper end -->
-                    </div>
-
-                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
-                        <!-- Field wrapper start -->
-                        <div class="field-wrapper">
-                            <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}"  value="{{editLeadsList?editLeadsList.secondaryNumber:leadListById.title}}" type="text" name="secondaryNumber" formControlName="secondaryNumber">
-                                
-                            </div>
-                            <p *ngIf="f['secondaryNumber'].touched && f['secondaryNumber'].invalid" class="small text-danger font-italic">*phone no is required.</p>
-                            <div class="field-placeholder">Mobile <span class="text-danger">*</span></div>
-                        </div>
-                        <!-- Field wrapper end -->
-                    </div>
-
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-                        <!-- Field wrapper start -->
-                        <div class="field-wrapper">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                <label class="form-check-label" for="inlineCheckbox2">Whatsapp</label>
-                            </div>
-                        </div>
-                        <!-- Field wrapper end -->
-                    </div>
-
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <!-- Field wrapper start -->
-                        <div class="field-wrapper">
-                            <div class="input-group">
-                                <input [ngClass]="{'is-invalid': f['email'].touched && f['email'].invalid}"  value="{{editLeadsList?editLeadsList.email:leadListById.title}}" type="email" name="email" formControlName="email">
-                                
-                            </div>
-                            <p *ngIf="f['email'].touched && f['email'].invalid" class="small text-danger font-italic">*email is required.</p>   
-                            <div class="field-placeholder">Email <span class="text-danger">*</span></div>
-                        </div>
-                        <!-- Field wrapper end -->
-                    </div>
+    <!-- Modal start to display add user popup-->
+    <div class="modal fade" #content tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Create Lead</h5>
+                    <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
+                <form class="form-horizontal" [formGroup]="newLeadForm" (ngSubmit)="addLead()">
+                    <div class="modal-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <div class="input-group">
+                                        <input
+                                            [ngClass]="{'is-invalid': f['firstName'].touched && f['firstName'].invalid}"
+                                            value="{{editLeadsList?editLeadsList.firstName:leadListById.firstName}}"
+                                            type="text" name="firstName" formControlName="firstName">
+
+                                    </div>
+                                    <p *ngIf="f['firstName'].touched && f['firstName'].invalid"
+                                        class="small text-danger font-italic">*First name is required.</p>
+
+                                    <div class="field-placeholder">First Name <span class="text-danger">*</span></div>
+                                </div>
+                                <!-- Field wrapper end -->
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <div class="input-group">
+                                        <input
+                                            [ngClass]="{'is-invalid': f['lastName'].touched && f['lastName'].invalid}"
+                                            value="{{editLeadsList?editLeadsList.lastName:leadListById.lastName}}"
+                                            type="text" name="lastName" formControlName="lastName">
+
+                                    </div>
+                                    <p *ngIf="f['lastName'].touched && f['lastName'].invalid"
+                                        class="small text-danger font-italic">*Last name is required.</p>
+
+                                    <div class="field-placeholder">Last Name <span class="text-danger">*</span></div>
+                                </div>
+                                <!-- Field wrapper end -->
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <div class="input-group">
+                                        <input [ngClass]="{'is-invalid': f['title'].touched && f['title'].invalid}"
+                                            value="{{editLeadsList?editLeadsList.firstName:leadListById.title}}"
+                                            type="text" name="title" formControlName="title">
+
+                                    </div>
+                                    <p *ngIf="f['title'].touched && f['title'].invalid"
+                                        class="small text-danger font-italic">*Company is required.</p>
+                                    <div class="field-placeholder">Title <span class="text-danger">*</span></div>
+                                </div>
+                                <!-- Field wrapper end -->
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <div class="input-group">
+                                        <input
+                                            [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}"
+                                            value="{{editLeadsList?editLeadsList.primaryNumber:leadListById.title}}"
+                                            type="text" name="primaryNumber" formControlName="primaryNumber">
+
+                                    </div>
+                                    <p *ngIf="f['primaryNumber'].touched && f['primaryNumber'].invalid"
+                                        class="small text-danger font-italic">*Contact number is required.</p>
+                                    <div class="field-placeholder">Phone <span class="text-danger">*</span></div>
+                                </div>
+                                <!-- Field wrapper end -->
+                            </div>
+
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <div class="input-group">
+                                        <input
+                                            [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}"
+                                            value="{{editLeadsList?editLeadsList.secondaryNumber:leadListById.title}}"
+                                            type="text" name="secondaryNumber" formControlName="secondaryNumber">
+
+                                    </div>
+                                    <p *ngIf="f['secondaryNumber'].touched && f['secondaryNumber'].invalid"
+                                        class="small text-danger font-italic">*phone no is required.</p>
+                                    <div class="field-placeholder">Mobile <span class="text-danger">*</span></div>
+                                </div>
+                                <!-- Field wrapper end -->
+                            </div>
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2"
+                                            value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">Whatsapp</label>
+                                    </div>
+                                </div>
+                                <!-- Field wrapper end -->
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <div class="input-group">
+                                        <input [ngClass]="{'is-invalid': f['email'].touched && f['email'].invalid}"
+                                            value="{{editLeadsList?editLeadsList.email:leadListById.title}}"
+                                            type="email" name="email" formControlName="email">
+
+                                    </div>
+                                    <p *ngIf="f['email'].touched && f['email'].invalid"
+                                        class="small text-danger font-italic">*email is required.</p>
+                                    <div class="field-placeholder">Email <span class="text-danger">*</span></div>
+                                </div>
+                                <!-- Field wrapper end -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="exampleSelect">
+                        <button class="btn btn-primary" [disabled]="newLeadForm.invalid">Save</button>
+                        <button id="save" type="button" data-bs-dismiss="modal" class="btn btn-primary"
+                            routerLink="/add-lead" (click)="goToFullForm()">Go To Full Form</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer" id="exampleSelect">
-                <button class="btn btn-primary"[disabled]="newLeadForm.invalid">Save</button>
-                <button id="save" type="button" data-bs-dismiss="modal" class="btn btn-primary" routerLink="/add-lead" (click)="goToFullForm()">Go To Full Form</button>
-            </div>
-        </form>
         </div>
     </div>
-</div>
-<!-- Modal end -->
+    <!-- Modal end -->
 
-<ng-template #content let-c="close" let-d="dismiss">    
-    <div class="modal-header">    
-        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>    
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">    
-            <span aria-hidden="true">×</span>    
-        </button>    
-    </div>    
-    <div class="modal-body">    
-        <p>Are you sure to delete this?</p>    
-    </div>    
-    <div class="modal-footer">    
-        <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>    
-        <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>    
-    </div>    
-</ng-template>
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure to delete this?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+            <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+        </div>
+    </ng-template>
