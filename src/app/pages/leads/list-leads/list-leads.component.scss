@@ -2,3 +2,35 @@
     border: 1px solid #1273eb;
     padding:10px;
 }
+
+.container-md {
+    border:1px solid rgb(216, 213, 213);
+    border-radius:2px;
+}
+
+.form-control-search {
+    background: none;
+}
+
+.input-group-text {
+    background: none;
+}
+
+.search-footer button {
+    margin-bottom: 3px;
+    text-align: right; 
+    margin-left: 396px;
+    margin-top: 30px; 
+    border-radius: 5px;
+}
+
+.quick_lead_btn {
+    display: -webkit-box!important;
+    margin: 10px 0 0;
+    
+}
+
+.quick_lead_btn button {
+    padding: 8px 0.75rem;
+    
+}

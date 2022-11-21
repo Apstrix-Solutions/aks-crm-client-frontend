@@ -11,6 +11,7 @@ import { first } from 'rxjs';
 import { LeadService } from '../lead.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-leads',
@@ -20,9 +21,13 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class ListLeadsComponent implements OnInit {
   @ViewChild('closebutton') closebutton;
   newLeadForm!: FormGroup;
+  newSearchForm!: FormGroup;
   leadListById: any = [];
   leadsList: any = [];
   refreshToken: string;
+  editLeadsList: any = {};
+  leadId: number;
+  closeResult: string;
 
   constructor(
     private formBulider: FormBuilder,
@@ -30,8 +35,10 @@ export class ListLeadsComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    public toastr: ToastrService
-  ) { }
+    public toastr: ToastrService,
+    private modalService: NgbModal
+  ) {}
+
   ngOnInit(): void {
     this.getLeads();
 
@@ -42,6 +49,15 @@ export class ListLeadsComponent implements OnInit {
       primaryNumber: [null, [Validators.required]],
       secondaryNumber: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
+    });
+
+    this.newSearchForm = this.formBulider.group({
+      firstName: [null],
+      lastName: [null],
+      title: [null],
+      primaryNumber: [null],
+      secondaryNumber: [null],
+      email: [null],
     });
   }
   ngDoCheck() {
@@ -61,25 +77,27 @@ export class ListLeadsComponent implements OnInit {
       }
     });
   }
-  goToFullForm() { //change the value of the BehaviorSubject with newLeadForm.
+  goToFullForm() {
+    //change the value of the BehaviorSubject with newLeadForm.
     this.leadService.setData(this.newLeadForm.value);
   }
 
   searchLead() {
-    const leadForm = this.newLeadForm.value;
-
+    const leadForm = this.newSearchForm.value;
     let queryParams = new HttpParams();
     const keys = Object.keys(leadForm);
 
     keys.forEach((key, index) => {
-      queryParams = queryParams.append(key, leadForm[key]);
+      if (leadForm[key] != null) {
+        queryParams = queryParams.append(key, leadForm[key]);
+      }
     });
 
     this.leadService.searchLead(queryParams).subscribe((data) => {
-      this.refreshToken = data.headers.get('refresh_token');
-      this.leadsList = data['body']['data']['leads'];
+      this.leadsList = data['data']['leads'];
     });
   }
+
   get f() {
     return this.newLeadForm.controls;
   }
@@ -98,4 +116,21 @@ export class ListLeadsComponent implements OnInit {
     });
   }
 
+  editLeads(list: any) {
+    this.ngZone.run(() => this.router.navigateByUrl(`add-lead/${list.id}`));
+  }
+
+  open(content, listId) {
+    if (confirm('Are you sure to delete ?')) {
+      this.leadService.deleteLead(listId).subscribe((res) => {
+        this.getLeads();
+
+        if (res['code'] == 200) {
+          this.toastr.success(res['message'], 'Success!');
+        } else {
+          this.toastr.error(res['errorMessage'], 'Error!');
+        }
+      });
+    }
+  }
 }
