@@ -6,6 +6,7 @@ import { environment } from '@env/environment';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,27 +19,28 @@ export class LeadService {
   }
 
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
-
+  
   public getLead() {
-    return this.httpClient.get(`${environment.apiUrl}${'leads'}`);
+    return this.httpClient.get(`${environment.apiUrl}${'leads'}`,{observe: 'response'});
   }
 
   public addLead(data: any) {
     return this.httpClient
-      .post(`${environment.apiUrl}${'leads'}`, JSON.stringify(data))
+      .post(`${environment.apiUrl}${'leads'}`, JSON.stringify(data),{observe: 'response'})
       .pipe(retry(1), catchError(this.errorHandl));
-  }
+  } 
 
   public searchLead(data: any) {
     return this.httpClient
-      .get(`${environment.apiUrl}${'leads'}`, { params: data })
+      .get(`${environment.apiUrl}${'leads'}`,{params:data, observe: 'response'})
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
   public updateLead(data: any, id: any) {
     return this.httpClient.put(
       `${environment.apiUrl}${'leads/'}${id}`,
-      JSON.stringify(data)
+      JSON.stringify(data),
+      {observe: 'response'}
     );
   }
   public deleteLead(id: any) {

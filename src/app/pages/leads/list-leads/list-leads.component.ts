@@ -24,6 +24,7 @@ export class ListLeadsComponent implements OnInit {
   newSearchForm!: FormGroup;
   leadListById: any = [];
   leadsList: any = [];
+  refreshToken: string;
   editLeadsList: any = {};
   leadId: number;
   closeResult: string;
@@ -59,10 +60,15 @@ export class ListLeadsComponent implements OnInit {
       email: [null],
     });
   }
-
+  ngDoCheck() {
+    if (this.refreshToken) {
+      localStorage.setItem('refreshToken', this.refreshToken)
+    }
+  }
   addLead() {
     this.leadService.addLead(this.newLeadForm.value).subscribe((res) => {
-      if (res['code'] == 200) {
+      this.refreshToken = res.headers.get('refresh_token');
+      if (res['body']['code'] == 200) {
         this.getLeads();
         this.closebutton.nativeElement.click();
         this.toastr.success(res['message'], 'Success!');
@@ -105,7 +111,8 @@ export class ListLeadsComponent implements OnInit {
 
   getLeads() {
     this.leadService.getLead().subscribe((data) => {
-      this.leadsList = data['data']['leads'];
+      this.refreshToken = data.headers.get('refresh_token');
+      this.leadsList = data['body']['data']['leads'];
     });
   }
 

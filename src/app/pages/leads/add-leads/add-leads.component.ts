@@ -18,6 +18,7 @@ export class AddLeadsComponent implements OnInit {
   addLeadsList: any;
   addLeadService: any;
   recievedData: any = {};
+  refreshToken: string;
   lStatus: any = [];
   lSource: any = [];
 
@@ -28,7 +29,7 @@ export class AddLeadsComponent implements OnInit {
     private leadService: LeadService,
     private route: ActivatedRoute,
     public toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -79,9 +80,16 @@ export class AddLeadsComponent implements OnInit {
     this.leadSource();
   }
 
+  ngDoCheck() {
+    if (this.refreshToken) {
+      localStorage.setItem('refreshToken', this.refreshToken)
+    }
+  }
+
   addLeads() {
     this.leadService.addLead(this.newAddLeadForm.value).subscribe((res) => {
-      if (res['code'] == 200) {
+      this.refreshToken = res.headers.get('refresh_token');
+      if (res['body']['code'] == 200) {
         this.toastr.success(res['message'], 'Success!');
         this.ngZone.run(() => this.router.navigateByUrl('/leads'));
       } else {
@@ -93,8 +101,10 @@ export class AddLeadsComponent implements OnInit {
   updateLeads() {
     this.leadService
       .updateLead(this.newAddLeadForm.value, this.id)
+
       .subscribe((res) => {
-        if (res['code'] == 200) {
+        this.refreshToken = res.headers.get('refresh_token');
+        if (res['body']['code'] == 200) {
           this.ngZone.run(() => this.router.navigateByUrl('/leads'));
           this.toastr.success(res['message'], 'Successfully updated the lead');
         } else {
