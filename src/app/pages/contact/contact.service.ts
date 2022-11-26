@@ -10,33 +10,31 @@ import { throwError } from 'rxjs';
 export class ContactService {
   constructor(private httpClient: HttpClient) {}
 
-
-  getAllContact(){
+  getAllContact() {
     return this.httpClient.get(`${environment.apiUrl}${'contacts_all'}`);
   }
 
-  createContact(data: any){
+  createContact(data: any) {
     return this.httpClient
-    .post(`${environment.apiUrl}${'contacts'}`, JSON.stringify(data))
-    .pipe(retry(1), catchError(this.errorHandl));
+      .post(`${environment.apiUrl}${'contacts'}`, JSON.stringify(data))
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  updateContact(leadId: any, data: any){
+  updateContact(leadId: any, data: any) {
     return this.httpClient
-    .put(`${environment.apiUrl}${'contacts/'}${leadId}`,JSON.stringify(data))
-    .pipe(retry(1), catchError(this.errorHandl));
+      .put(`${environment.apiUrl}${'contacts/'}${leadId}`, JSON.stringify(data))
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  deleteContact(leadId: any){
+  deleteContact(leadId: any) {
     return this.httpClient
-    .put(`${environment.apiUrl}${'contacts_delete'}`,{id:leadId})
-    .pipe(retry(1), catchError(this.errorHandl));
+      .put(`${environment.apiUrl}${'contacts_delete'}`, { id: leadId })
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getContactById(id:string) {
+  getContactById(id: string) {
     return this.httpClient.get(`${environment.apiUrl}${'contacts/'}${id}`);
   }
-
 
   // Error handling
   errorHandl(error) {
@@ -51,5 +49,11 @@ export class ContactService {
     return throwError(() => {
       return errorMessage;
     });
+  }
+
+  getContactByContactId(contactId: string) {
+    return this.httpClient.get(
+      `${environment.apiUrl}${'contact-contact-id'}/${contactId}`
+    );
   }
 }

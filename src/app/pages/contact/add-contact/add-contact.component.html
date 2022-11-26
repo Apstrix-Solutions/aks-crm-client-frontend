@@ -19,25 +19,6 @@
                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
                                       <div class="form-section-header">General</div>
                                   </div>
-
-                                  <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                      
-
-                                    <div class="field-wrapper">
-                                        <div class="input-group">
-                                        
-                                            <input [ngClass]="{'is-invalid': f['id'].touched && f['id'].invalid}" value="{{ContactListById.id?ContactListById.id:''}}"  type="text"  class="form-control"  formControlName="id" >
-  
-                                            <span class="input-group-text">
-                                                <i class="icon-user1"></i>
-                                            </span>
-                                        </div>
-                                        <p *ngIf="f['id'].touched && f['id'].invalid" class="small text-danger font-italic">*Id is required.</p>
-                                        <div  class="field-placeholder">Id <span class="text-danger">*</span></div>
-                                    </div>
-
-                                </div> -->
-
                                   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                       
 
@@ -88,40 +69,9 @@
                                     </div>
 
                                 </div>
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                      
-                                    <div class="field-wrapper">
-                                        <div class="input-group">
-                                          
-                                            <input [ngClass]="{'is-invalid': f['lead_id'].touched && f['lead_id'].invalid}" value="{{newContact?ContactListById.lead_id:''}}"  class="form-control" type="text" name="lead_id" formControlName="lead_id">
-                                            <span class="input-group-text">
-                                                <i class="icon-user1"></i>
-                                            </span>
-                                        </div>
-                                        <p *ngIf="f['lead_id'].touched && f['lead_id'].invalid" class="small text-danger font-italic">*Lead Id  is required.</p>
-                                        <div class="field-placeholder">Lead Id <span class="text-danger">*</span></div>
-                                    </div>
-
-                                </div>
-                                <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                      
-                                    <div class="field-wrapper">
-                                        <div class="input-group" >
-                                            <input [ngClass]="{'is-invalid': f['lead_id'].touched && f['lead_id'].invalid}" class="form-control" type="text" name="address" formControlName="address">
-                                            <select name="lead_id" formControlName="lead_id" >
-                                                <option *ngFor="let id of leadIds" [value]="id" [selected]="selectedLeadId">{{id}}</option>
-                                              </select>
-                                        </div>
-                                        <p *ngIf="f['lead_id'].touched && f['lead_id'].invalid" class="small text-danger font-italic">*Lead Id is required.</p>
-                                        <div class="field-placeholder">Lead Id <span class="text-danger">*</span></div>
-                                    </div>
-
-                                </div> -->
-
                                 <div class="clear"></div>
                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                                      <button class="btn btn-primary" routerLink="/contacts">Cancel</button>
-                                      <button class="btn btn-primary" *ngIf="!id" [disabled]="newAddContactForm.invalid">Save and New</button>
+                                      <button class="btn btn-primary" [routerLink]="['/contacts', selectedLeadId]">Cancel</button>
                                       <button class="btn btn-primary" [disabled]="newAddContactForm.invalid">Save</button>
                                   </div>
                               </div>

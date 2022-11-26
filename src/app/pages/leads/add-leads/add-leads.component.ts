@@ -30,7 +30,7 @@ export class AddLeadsComponent implements OnInit {
     private leadService: LeadService,
     private route: ActivatedRoute,
     public toastr: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -57,9 +57,9 @@ export class AddLeadsComponent implements OnInit {
       linkedin: [null],
       facebook: [null],
       background_info: [null],
-      companyName:[null,[Validators.required]],
-      designation:[null,[Validators.required]],
-      industryId:[null,[Validators.required]],
+      companyName: [null, [Validators.required]],
+      designation: [null, [Validators.required]],
+      industryId: [null],
     });
     //recieving data
     //A subscription is made to listen to changes in the BehaviorSubject.
@@ -86,7 +86,7 @@ export class AddLeadsComponent implements OnInit {
 
   ngDoCheck() {
     if (this.refreshToken) {
-      localStorage.setItem('refreshToken', this.refreshToken)
+      localStorage.setItem('refreshToken', this.refreshToken);
     }
   }
 
@@ -104,7 +104,7 @@ export class AddLeadsComponent implements OnInit {
 
   updateLeads() {
     console.log('entered to update');
-    
+
     this.leadService
       .updateLead(this.newAddLeadForm.value, this.id)
 

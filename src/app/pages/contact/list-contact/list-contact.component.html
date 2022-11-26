@@ -17,9 +17,9 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-end">
                                 <div class="custom-btn-group">
-                                    <button type="button" class="btn btn-primary"
-                                        routerLink="/add-contacts">Add Contact</button>
-                                        <button type="button" class="btn btn-primary"
+                                    <button type="button" class="btn btn-primary btn-md"
+                                    [routerLink]="['/add-contacts', id]">Add Contact</button>
+                                        <button type="button" class="btn btn-primary btn-md"
                                         (click)="goBackToLead()">Back to Lead</button>
                                 </div>
                             </div>
@@ -33,9 +33,7 @@
                                                     <th>Name</th>
                                                     <th>Phone</th>
                                                     <th>Address</th>
-                                                    <th>Lead Id</th>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -44,11 +42,8 @@
                                                     <td>{{ list.name}}</td>
                                                     <td>{{ list.phone}}</td>
                                                     <td>{{ list.address}}</td>
-                                                    <td>{{ list.lead_id}}</td>
                                                     <td>
                                                         <i class="icon-edit1 text-primary" (click)="editContact(list.id,list.lead_id)"></i>
-                                                    </td>
-                                                    <td>
                                                         <i class="icon-delete text-primary"
                                                         (click)="open(content,list.id)"></i>
                                                     </td>
