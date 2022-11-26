@@ -35,7 +35,8 @@ import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-
  // <============
 
 import { AddContactModule } from './pages/contact/add-contact/add-contact.module';
-import { ListContactModule } from './pages/contact/list-contact/list-contact.module'; // <============
+import { ListContactModule } from './pages/contact/list-contact/list-contact.module';
+import { ViewLeadsModule } from './pages/leads/view-leads/view-leads.module';// <============
 
 @NgModule({
   imports: [
@@ -64,6 +65,7 @@ import { ListContactModule } from './pages/contact/list-contact/list-contact.mod
     CalenderModule,
     AddContactModule,
     ListContactModule,
+    ViewLeadsModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

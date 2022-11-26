@@ -21,6 +21,7 @@ export class AddLeadsComponent implements OnInit {
   refreshToken: string;
   lStatus: any = [];
   lSource: any = [];
+  industry_ids: any = [];
 
   constructor(
     private formBulider: FormBuilder,
@@ -56,6 +57,9 @@ export class AddLeadsComponent implements OnInit {
       linkedin: [null],
       facebook: [null],
       background_info: [null],
+      companyName:[null,[Validators.required]],
+      designation:[null,[Validators.required]],
+      industryId:[null,[Validators.required]],
     });
     //recieving data
     //A subscription is made to listen to changes in the BehaviorSubject.
@@ -99,6 +103,8 @@ export class AddLeadsComponent implements OnInit {
   }
 
   updateLeads() {
+    console.log('entered to update');
+    
     this.leadService
       .updateLead(this.newAddLeadForm.value, this.id)
 

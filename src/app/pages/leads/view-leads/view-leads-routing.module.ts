@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 import { Shell } from '@app/shell/shell.service';
-import { ListContactComponent } from './list-contact.component';
+import { ViewLeadsComponent } from './view-leads.component';
+
 const routes: Routes = [
   Shell.childRoutes([
     {
-      path: 'contacts',
-      component: ListContactComponent,
-      data: { title: marker(' List Contacts') },
+      path: 'view-lead',
+      component: ViewLeadsComponent,
+      data: { title: marker(' View Lead') },
     },
     {
-      path: 'contacts/:id',
-      component: ListContactComponent,
-      data: { title: marker(' List Contact') },
+      path: 'view-lead/:id',
+      component: ViewLeadsComponent,
+      data: { title: marker(' View Lead') },
     },
   ]),
 ];
@@ -23,4 +24,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class ListContactRoutingModule {}
+export class ViewLeadsRoutingModule {}
