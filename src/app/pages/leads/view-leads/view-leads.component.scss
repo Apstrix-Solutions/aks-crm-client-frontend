@@ -1,0 +1,36 @@
+
+.form-control-details {
+    border-bottom:1px solid rgb(212, 198, 198);
+    border-top:transparent;
+    border-right:transparent;
+    border-left:transparent;
+    background: none;
+}
+
+.card-body .statistics{
+    display: flex;
+    margin-left:200px ;
+}
+
+figure.user-card {
+    background: #fff;
+}
+
+.statistics {
+    display: flex;
+    margin-left: 162px;
+}
+
+.view-lead .field-wrapper input:hover, .field-wrapper textarea:hover{
+    border-bottom: 1px solid #d4c6c6;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: none;
+}
+
+.task-header h4.contact-head{
+    margin: 0;
+    font-size: 1.2rem;
+    color: #1273eb;
+}

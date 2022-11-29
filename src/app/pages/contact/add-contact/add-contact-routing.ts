@@ -9,8 +9,19 @@ const routes: Routes = [
     {
       path: 'add-contacts',
       component: AddContactComponent,
-      data: { title: marker(' Add Contacts') },
+      data: { title: marker(' Add Contact') },
     },
+    {
+      path: 'add-contacts/:lead_id',
+      component: AddContactComponent,
+      data: { title: marker(' Add Contact') },
+    },
+    {
+      path: 'add-contacts/:lead_id/:contact_id',
+      component: AddContactComponent,
+      data: { title: marker(' Edit Contact') },
+    },
+   
   ]),
 ];
 

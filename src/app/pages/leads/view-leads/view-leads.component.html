@@ -1,0 +1,389 @@
+<!--  Main container start  -->
+<div class="main-container">
+
+    <app-topbar></app-topbar>
+
+    <!-- Content wrapper scroll start -->
+    <div class="content-wrapper-scroll">
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper view-lead">
+
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7">
+                    <figure class="user-card">
+                        <figcaption>
+                            <img src="{{ImageProp}}" alt="Le Meilleur Admin" class="profile">
+                            <ul class="list-group">
+                                <li><span>{{leadDetails.firstName}} </span>{{leadDetails.lastName}}</li>
+                                <li >{{leadDetails.title}}</li>
+                                <li >{{leadDetails.email}}</li>
+                                <li >Lead</li>
+                                <li>
+                                    <ul class="statistics">
+                                        <li>
+                                            <span class="stat-icon" data-bs-toggle="modal" data-bs-target="#editContact" >
+                                                <i  class="icon-phone"></i>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="stat-icon">
+                                                <i class="icon-message"></i>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="stat-icon">
+                                                <i class="icon-mail"></i>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </figcaption>
+                    </figure>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Activity</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="customScroll250">
+                                <div class="timeline-activity">
+                                    <div class="activity-log">
+                                        <p class="log-name">Corey Haggard</p>
+                                        <div class="log-details">University dashboard has been created<span class="text-success ml-1"> #New</span></div>
+                                    </div>
+                                    <div class="activity-log">
+                                        <p class="log-name">Gleb Kuznetsov</p>
+                                        <div class="log-details">
+                                            Farewell day photos uploaded.
+                                        </div>											
+                                    </div>
+                                    <div class="activity-log">
+                                        <p class="log-name">Emily Russell</p>
+                                        <div class="log-details">Developed 30 multipurpose Bootstrap 4 Admin Templates</div>
+                                    </div>
+                                    <div class="activity-log">
+                                        <p class="log-name">Nathan James</p>
+                                        <div class="log-details">Best Design Award</div>
+                                    </div>
+                                    <div class="activity-log">
+                                        <p class="log-name">Gleb Kuznetsov<small class="log-time">- 4 hrs ago</small></p>
+                                        <div class="log-details">
+                                            Farewell day photos uploaded.
+                                        </div>											
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
+                    <div class="account-settings-block">
+                        <!-- <div class="settings-block"> -->
+                        <figure class="user-card">
+                            <div class="usersContainerScroll">
+                                <div class="container task-header" style="text-align: center;">
+                                    <h4 class="contact-head">Contact Details </h4>
+                                     <div style="display:flex;justify-content: center; ">
+                                        <p>{{leadDetails.firstName}}</p>
+                                        <p class="ms-2">{{leadDetails.lastName}}</p>
+                                     </div>
+                                    </div>
+                                    <div class="row gutters">
+                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
+                                            <a class="btn btn-outline-primary btn-sm" (click)="addContact()">New Lead Contact</a>
+                                            <a class="btn btn-outline-success btn-sm" [routerLink]="['/contacts', leadDetails.id]">Lead Contacts</a>
+                                        </div>
+                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
+                                    </div>
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
+                                            <div class="form-section-header">General</div>
+                                        </div>
+
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.firstName}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">First Name </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.middleName}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Middle Name </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.lastName}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Last Name </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.title}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Title </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.primaryNumber}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Phone </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.secondaryNumber}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Mobile </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.whatsappNumber}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">whatsapp Number </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.email}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Email </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.leadSource}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Lead Source </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.leadStatus}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Lead Status </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.leadScore}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Lead Score </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadDetails.leadValue}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Lead Value </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
+                                            <div class="form-section-header">Address Information</div>
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadAddressDetails.address}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Address </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadAddressDetails.city}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">City </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadAddressDetails.state}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">State </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadAddressDetails.zip}}"  type="text"  class="form-control-details"  formControlName="firstName">
+                                                </div>
+                                                <div  class="field-placeholder">Postel Code </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadAddressDetails.country}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Country </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
+                                            <div class="form-section-header">Social Media</div>
+                                        </div>
+
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadSocialDetails.facebook}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Facebook </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadSocialDetails.website}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">website </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadSocialDetails.linkedin}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Linked In </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+                                        <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
+                      
+                                            <!-- Field wrapper start -->
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                    <input value="{{leadSocialDetails.background_info}}"  type="text"  class="form-control-details" readonly>
+                                                </div>
+                                                <div  class="field-placeholder">Background info </div>
+                                            </div>
+                                            <!-- Field wrapper end -->
+        
+                                        </div>
+
+                                    </div>
+                            </div>
+                           
+                        <!-- </div> -->
+                        
+                    </figure>
+                </div>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+            <!-- Content wrapper end -->
+
+            <app-footer></app-footer>
+
+        </div>
+        <!-- Content wrapper scroll end -->
+
+    </div>
+    <!--  Main container end  -->

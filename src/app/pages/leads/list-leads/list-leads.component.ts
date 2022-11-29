@@ -92,9 +92,12 @@ export class ListLeadsComponent implements OnInit {
         queryParams = queryParams.append(key, leadForm[key]);
       }
     });
+    console.log(queryParams);
+    
 
     this.leadService.searchLead(queryParams).subscribe((data) => {
-      this.leadsList = data['data']['leads'];
+      console.log(data)
+      this.leadsList = data['body']['data']['leads'];
     });
   }
 

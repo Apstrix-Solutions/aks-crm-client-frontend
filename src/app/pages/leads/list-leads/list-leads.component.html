@@ -245,6 +245,7 @@
                                                     <th>Email</th>
                                                     <th>Edit</th>
                                                     <th>Delete</th>
+                                                    <th>View</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -257,12 +258,16 @@
                                                     <td>{{ list.secondaryNumber}}</td>
                                                     <td>{{ list.email}}</td>
                                                     <td>
-                                                        <i class="icon-edit1" style="color: #0073dd;"
+                                                        <i class="icon-edit1 text-primary"
                                                             (click)="editLeads(list)"></i>
                                                     </td>
                                                     <td>
-                                                        <i class="icon-delete" style="color: #0073dd;"
+                                                        <i class="icon-delete text-primary"
                                                             (click)="open(content,list.id)"></i>
+                                                    </td>
+                                                    <td>
+                                                        <i class="icon-eye1 text-primary"
+                                                            [routerLink]="['/view-lead',list.id]"></i>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -292,7 +297,7 @@
 			************* -->
 
     <!-- Modal start to display add user popup-->
-    <div class="modal fade" #content tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal fade" #content id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
