@@ -3,11 +3,14 @@ import { Router } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
 import { ApiService } from '../@shared/http/api.service';
 import { Credentials, CredentialsService } from './credentials.service';
+import { environment } from '@env/environment';
+import { version } from 'process';
 
 export interface LoginContext {
   email: string;
   password: string;
   remember: boolean;
+
 }
 
 /**
@@ -18,7 +21,7 @@ export interface LoginContext {
   providedIn: 'root',
 })
 export class AuthenticationService {
-  constructor(private credentialsService: CredentialsService, private apiService: ApiService,
+  constructor(private credentialsService: CredentialsService, private apiService: ApiService, 
     private ngZone: NgZone,
     private router: Router,) {}
 
@@ -28,7 +31,8 @@ export class AuthenticationService {
    * @return The user credentials.
    */
   login(context: LoginContext): Observable<Credentials> {
-    var path = 'login';
+    var version = environment.apiVersion;
+    var path = 'auth/api/'+version+'/login';
 
     return this.apiService.post(path, context).pipe(
       map((res) => {
