@@ -28,6 +28,11 @@ export class ListLeadsComponent implements OnInit {
   editLeadsList: any = {};
   leadId: number;
   closeResult: string;
+  convertedLeads = [];
+  isConverted: any = false;
+  contactsList:any  = [];
+  leadID: any  ;
+  
 
   constructor(
     private formBulider: FormBuilder,
@@ -40,6 +45,7 @@ export class ListLeadsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getAllCustomer();
     this.getLeads();
 
     this.newLeadForm = this.formBulider.group({
@@ -59,6 +65,7 @@ export class ListLeadsComponent implements OnInit {
       secondaryNumber: [null],
       email: [null],
     });
+    
   }
   ngDoCheck() {
     if (this.refreshToken) {
@@ -92,36 +99,67 @@ export class ListLeadsComponent implements OnInit {
         queryParams = queryParams.append(key, leadForm[key]);
       }
     });
-    console.log(queryParams);
-    
 
     this.leadService.searchLead(queryParams).subscribe((data) => {
-      console.log(data)
       this.leadsList = data['body']['data']['leads'];
     });
   }
-
-  get f() {
-    return this.newLeadForm.controls;
-  }
-
-  onSubmit() {
-    if (this.newLeadForm.invalid) {
-      return;
-    }
-    this.addLead();
-  }
+  
 
   getLeads() {
+    
     this.leadService.getLead().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
-      this.leadsList = data['body']['data']['leads'];
+      const leadData =  data['body']['data']['leads'];
+      console.log('leadData',leadData);
+      
+      
+      if( leadData.length!=0 && this.contactsList.length!=0 ){
+        this.contactsList.forEach( contact =>{
+          leadData.forEach( (lead: any) =>{
+            if(contact.lead_id === lead.id){
+              lead['customer'] = true;
+            }
+          })
+        })
+        this.leadsList = leadData;
+        console.log('---leadsList---',this.leadsList);
+      }else{
+        this.leadsList = data['body']['data']['leads'];
+      }
+
     });
   }
 
   editLeads(list: any) {
     this.ngZone.run(() => this.router.navigateByUrl(`add-lead/${list.id}`));
   }
+
+  customerConversion(leadId: any){
+    
+    this.leadService.customerConversion(leadId).subscribe((data) => {
+      if(data['code']==200){
+        this.convertedLeads.push(leadId)
+        // console.log('convereted leads',this.convertedLeads)
+        this.toastr.success(data['message'], 'Success!');
+        this.leadService.leadStatusUpdate(leadId).subscribe((data) => {
+          console.log(data)
+        })
+      }
+      else  if(data['code']==500){
+        this.toastr.error(data['error'],'Error!')
+      }
+    })
+  }
+
+  getAllCustomer(){
+    this.leadService.getAllCustomer().subscribe( (data) =>{
+       this.contactsList = data['data']['data'];
+       console.log('contactsList',this.contactsList)
+    })
+  }
+
+
 
   open(content, listId) {
     if (confirm('Are you sure to delete ?')) {
@@ -135,5 +173,16 @@ export class ListLeadsComponent implements OnInit {
         }
       });
     }
+  }
+
+  onSubmit() {
+    if (this.newLeadForm.invalid) {
+      return;
+    }
+    this.addLead();
+  }
+
+  get f() {
+    return this.newLeadForm.controls;
   }
 }

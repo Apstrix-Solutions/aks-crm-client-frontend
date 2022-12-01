@@ -12,6 +12,7 @@
 export const environment = {
   production: false,
   // version: env['npm_package_version'] + '-dev',
+  leadStatus:'deal',
   version: '1.0.0',
   serverUrl: 'https://akstech.sg/auth/api/v1/',
   apiUrl: 'http://localhost:3001/api/',

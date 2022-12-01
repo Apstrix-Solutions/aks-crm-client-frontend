@@ -47,10 +47,6 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'leads_delete/'}${id}`);
   }
 
-  public setData(data: any) {
-    this.dataSource.next(data);
-  }
-
   public leadStatus() {
     return this.httpClient.get(`${environment.apiUrl}${'status_all'}`);
   }
@@ -59,8 +55,37 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'lead_source_all'}`);
   }
 
-  // Error handling
-  errorHandl(error) {
+ 
+  public getLeadById(id: string) {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_details/'}${id}`);
+  }
+
+  public getLeadAddressByLeadId(id: string) {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_address/'}${id}`);
+  }
+
+  public getLeadSocialsByLeadId(id: string) {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_social/'}${id}`);
+  }
+
+  public getAllCustomer(){
+    return this.httpClient.get(`${environment.apiUrl}${'customer_all'}`);
+  }
+
+  public customerConversion(leadId: string){
+    return this.httpClient.post(`${environment.apiUrl}${'customerconversion'}`,{id:leadId});
+  }
+
+  public leadStatusUpdate(leadId: any){
+    return this.httpClient.put(`${environment.apiUrl}${'leads_status_update/'}${leadId}`,{currentStatus:environment.leadStatus})
+  }
+
+  public setData(data: any) {
+    this.dataSource.next(data);
+  }
+
+   // Error handling
+   errorHandl(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -74,15 +99,4 @@ export class LeadService {
     });
   }
 
-  public getLeadById(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_details/'}${id}`);
-  }
-
-  public getLeadAddressByLeadId(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_address/'}${id}`);
-  }
-
-  public getLeadSocialsByLeadId(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_social/'}${id}`);
-  }
 }
