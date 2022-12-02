@@ -18,6 +18,7 @@ export class LeadService {
     throw new Error('Method not implemented.');
   }
 
+
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
   
   public getLead() {
@@ -84,5 +85,13 @@ export class LeadService {
 
   public getLeadSocialsByLeadId(id: string) {
     return this.httpClient.get(`${environment.apiUrl}${'lead_social/'}${id}`);
+  }
+
+  public getAllUserDetails(){
+    return this.httpClient.get(`${environment.apiUrl}${''}`)
+  }
+
+  public leadAssignment(data : any){
+    return this.httpClient.post(`${environment.apiUrl}${'leads_assignment'}`,data)
   }
 }
