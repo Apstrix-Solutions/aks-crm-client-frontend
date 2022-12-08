@@ -60,6 +60,32 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'lead_source_all'}`);
   }
 
+
+  public getLeadById(id: string) {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_details/'}${id}`);
+  }
+
+  public getLeadAddressByLeadId(id: string) {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_address/'}${id}`);
+  }
+
+  public getLeadSocialsByLeadId(id: any) {
+    return this.httpClient.get(`${environment.apiUrl}${'lead_social/'}${id}`);
+  }
+
+  public importLead(file: any){
+    return this.httpClient.post(`${environment.apiUrl}${'lead_csv'}`,file);
+  }
+
+  public getAllUserDetails(){
+    return this.httpClient.get(`${environment.apiUrl}${''}`)
+  }
+
+  public leadAssignment(data : any){
+    return this.httpClient.post(`${environment.apiUrl}${'leads_assignment'}`,data)
+  }
+
+
   // Error handling
   errorHandl(error) {
     let errorMessage = '';
@@ -73,25 +99,5 @@ export class LeadService {
     return throwError(() => {
       return errorMessage;
     });
-  }
-
-  public getLeadById(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_details/'}${id}`);
-  }
-
-  public getLeadAddressByLeadId(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_address/'}${id}`);
-  }
-
-  public getLeadSocialsByLeadId(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_social/'}${id}`);
-  }
-
-  public getAllUserDetails(){
-    return this.httpClient.get(`${environment.apiUrl}${''}`)
-  }
-
-  public leadAssignment(data : any){
-    return this.httpClient.post(`${environment.apiUrl}${'leads_assignment'}`,data)
   }
 }
