@@ -6,7 +6,7 @@
 // bundle, and you should not use it for any sensitive information like passwords or keys.
 
 export const environment = {
-  production: false,
+  production: true,
   // version: env['npm_package_version'] + '-dev',
   version: '1.0.0',
   serverUrl: 'https://akstech.sg/auth/api/v1/',
