@@ -69,10 +69,20 @@
                 </a>
               </div>
               <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
-                <a  routerLink ="/organicpost">
+                <a (click)="togglePostMenu()" routerLink ="/organicpost">
                   <span class="menu-text">Organic Contents</span>
                 </a>
-               
+                <div class="default-sidebar-submenu" [ngStyle]="{'display': postMenuHidden ? 'block' : 'none' }">
+                  <ul>
+                  
+                    <li>
+                      <a routerLink="/add-campaigns">Add Organic </a>
+                    </li>
+                    <li>
+                      <a routerLink="/home">List Organic</a>
+                    </li>
+                  </ul>
+                </div>
                 
               </div>
             
@@ -82,7 +92,7 @@
                 </a>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
                   <ul>
-                   
+                  
                     <li>
                       <a routerLink="/add-campaigns">Add Campaign </a>
                     </li>

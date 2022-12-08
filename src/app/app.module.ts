@@ -94,7 +94,7 @@ import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } fro
         providers: [
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1473922069701469'),
+            provider: new FacebookLoginProvider('894397105306540'),
           },
         ],
       } as SocialAuthServiceConfig,
