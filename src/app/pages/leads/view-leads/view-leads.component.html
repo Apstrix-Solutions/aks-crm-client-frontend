@@ -17,6 +17,7 @@
                             <div class="custom-btn-group">
                                 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#leadAddisnModal">Assign Lead</button>
+                               
                             </div>
                         </div>
                         <figcaption>
@@ -57,10 +58,10 @@
                             <div class="customScroll250">
                                 <div class="timeline-activity">
                                     <div class="activity-log">
-                                        <p class="log-name">Corey Haggard</p>
-                                        <div class="log-details">University dashboard has been created<span class="text-success ml-1"> #New</span></div>
+                                        <p class="log-name">User</p>
+                                        <div class="log-details" *ngFor="let activity of activityList">{{activity.contact_mode}}<span class="text-success ml-1"> # {{activity.createdAt | date:'yyyy-MM-dd @ h:mma'}}</span></div>
                                     </div>
-                                    <div class="activity-log">
+                                    <!-- <div class="activity-log">
                                         <p class="log-name">Gleb Kuznetsov</p>
                                         <div class="log-details">
                                             Farewell day photos uploaded.
@@ -79,7 +80,7 @@
                                         <div class="log-details">
                                             Farewell day photos uploaded.
                                         </div>											
-                                    </div>
+                                    </div> -->
                                    
                                 </div>
                             </div>
@@ -103,7 +104,8 @@
                                         <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
                                             <a class="btn btn-outline-primary btn-sm" (click)="addContact()">New Lead Contact</a>
                                             <a class="btn btn-outline-success btn-sm" [routerLink]="['/contacts', leadDetails.id]">Lead Contacts</a>
-                                            <!-- <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#leadAddisnModal">Assign Lead</a> -->
+                                            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ActivityModal">Activity</a>
+                                            
                                         </div>
                                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
                                     </div>
@@ -392,7 +394,8 @@
         </div>
         <!-- Content wrapper scroll end -->
 
-    </div>
+ </div>
+</div>
     <!--  Main container end  -->
 
      <!-- Modal start to display add user popup-->
@@ -439,3 +442,67 @@
         </div>
     </div>
     <!-- Modal end -->
+
+     <!-- Modal start to display add user popup-->
+     <div class="modal fade" #content  id="ActivityModal" tabindex="-1" aria-labelledby="ActivityModalLabel"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ActivityModalLabel">Activity</h5>
+                    <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal" id="activityModelClose"
+                        aria-label="Close"></button>
+                </div>
+                <form class="form-horizontal" [formGroup]="activityForm" (ngSubmit)="createActivity()">
+                    <div class="modal-body">
+                        <div class="row gutters">
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
+                      
+                                <div class="field-wrapper">
+                                    <div class="input-group">
+                                        
+                                        <select 
+                                        [ngClass]="{'is-invalid': log['contact_mode'].touched && log['contact_mode'].invalid}"
+                                         class="form-control" 
+                                         name="Contact_mode" 
+                                         formControlName="contact_mode"
+                                         >
+                                            <!-- <option value="">Select</option> -->
+                                            <option value="email" >Email</option>
+                                            <option value="contact" >Contact</option>
+                                            
+                                        </select>
+                                    </div>
+                                    <p *ngIf="log['contact_mode'].touched && log['contact_mode'].invalid" class="small text-danger font-italic">*Mode of contact is required.</p>
+                                    <div  class="field-placeholder">Mode of Contact</div>
+                                </div>
+                            </div>
+
+                          
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="field-wrapper-text-area">
+                                  <div class="input-groups-text-area">
+                                       <textarea 
+                                       [ngClass]="{'is-invalid': log['comment'].touched && log['comment'].invalid}"
+                                       class="form-control rounded-0" 
+                                       name="Comment"
+                                       formControlName="comment"
+                                       >
+                                       </textarea>
+                                  </div>
+                                  <p *ngIf="log['comment'].touched && log['comment'].invalid" class="small text-danger font-italic">*User is required.</p>
+                                  <div class="field-placeholder">Comment</div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="exampleSelect">
+                        <button class="btn btn-primary" [disabled]="activityForm.invalid"  >Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->
+
+    

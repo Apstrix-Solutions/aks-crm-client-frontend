@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,15 +11,20 @@ import { LeadService } from '../lead.service';
   styleUrls: ['./view-leads.component.scss'],
 })
 export class ViewLeadsComponent implements OnInit {
+  @ViewChild('closebutton') closebutton;
   id: string;
   ImageProp = '../../../../assets/img/user.svg';
   leadAssignForm!: FormGroup;
+  activityForm!: FormGroup;
   leadDetails: any = [];
   leadSocialDetails: any = [];
   leadAddressDetails: any = [];
   leadId: string;
   userId: any;
   usersList: any = [];
+  currentUser: any;
+  activityList: any = [];
+  IsmodelShow:boolean = false;
 
 
   constructor(
@@ -37,11 +42,23 @@ export class ViewLeadsComponent implements OnInit {
     this.leadAssignForm = this.formBulider.group({
       lead_id:[this.id],
       assigned_to:[null,[Validators.required]]
-    })
+    });
+
+    this.activityForm = this.formBulider.group({
+      user_id:[null],
+      lead_id:[null],
+      contact_mode:[null,[Validators.required]],
+      comment:[null,[Validators.required]]
+    });
+
 
     this.getLeadById();
     this.getLeadAddressById();
     this.getLeadSocialById();
+    this.currentUser = localStorage.getItem('userId');
+
+    this.activityForm.patchValue({user_id:this.currentUser,lead_id:this.leadId})
+    this.getActivitiesByeLeadId();
   }
 
   addContact() {
@@ -77,9 +94,9 @@ export class ViewLeadsComponent implements OnInit {
   getAllUserDetails(){
     this.leadService.getAllUserDetails().subscribe((res) => {
       this.usersList = res;
-      console.log('usersList',this.usersList)
     })
   }
+
 
   leadAssignedTo(){
   
@@ -96,7 +113,39 @@ export class ViewLeadsComponent implements OnInit {
 
   }
 
+  createActivity(){
+    
+    this.leadService.createActivities(this.activityForm.value).subscribe((res) => {
+      // console.log(res)
+      if (res['code'] == 200) {
+        this.toastr.success(res['message'], 'Success!');
+        this.getActivitiesByeLeadId();
+        this.closeModal('activityModelClose');
+
+      } else {
+        this.toastr.error(res['errorMessage'], 'Error!');
+      }
+    })
+
+  }
+
+  getActivitiesByeLeadId(){
+    this.leadService.getActivitiesByLeadId(this.leadId).subscribe((res) =>{
+      console.log(res)
+      this.activityList = res['data']['activities']
+    })
+  }
+
+
+  closeModal(idElm: any) {
+    let element: HTMLElement = document.getElementById(idElm) as HTMLElement;
+    element.click();
+  }
+
   get f(){
     return this.leadAssignForm.controls;
+  }
+  get log(){
+    return this.activityForm.controls;
   }
 }

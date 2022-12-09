@@ -85,6 +85,13 @@ export class LeadService {
     return this.httpClient.post(`${environment.apiUrl}${'leads_assignment'}`,data)
   }
 
+  public createActivities(data: any){
+    return this.httpClient.post(`${environment.apiUrl}${'activities'}`,data);
+  }
+
+  public getActivitiesByLeadId(leadId: any){
+    return this.httpClient.get(`${environment.apiUrl}${'activities-all/'}${leadId}`);
+  }
 
   // Error handling
   errorHandl(error) {
@@ -100,4 +107,5 @@ export class LeadService {
       return errorMessage;
     });
   }
+  
 }
