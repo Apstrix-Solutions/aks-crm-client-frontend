@@ -45,7 +45,7 @@ export class ApiService {
       this._showLoader();
     }
     return this.http
-      .request('get', `${environment.apiUrl}${path}${this.getUrlParams(params)}`, {
+      .request('get', `${environment.baseUrl}${path}${this.getUrlParams(params)}`, {
         headers: new HttpHeaders(this._getHeadersConfig()),
       })
       .pipe(
@@ -61,7 +61,7 @@ export class ApiService {
       this._showLoader();
     }
     return this.http
-      .put(`${environment.apiUrl}${path}`, JSON.stringify(body), {
+      .put(`${environment.baseUrl}${path}`, JSON.stringify(body), {
         headers: new HttpHeaders(this._getHeadersConfig()),
       })
       .pipe(
@@ -74,7 +74,7 @@ export class ApiService {
   post(path: string, body: Object = {}): Observable<any> {
     this._showLoader();
     return this.http
-        .post(`${environment.apiUrl}${path}`, JSON.stringify(body), {
+        .post(`${environment.baseUrl}${path}`, JSON.stringify(body), {
         headers: new HttpHeaders(this._getHeadersConfig()),
       })
       .pipe(
@@ -104,7 +104,7 @@ export class ApiService {
       }
     }
     return this.http
-      .post(`${environment.apiUrl}${path}`, fd, { headers: new HttpHeaders(this._getHeadersConfig(true)) })
+      .post(`${environment.baseUrl}${path}`, fd, { headers: new HttpHeaders(this._getHeadersConfig(true)) })
       .pipe(
         map(
           (res: any) => res,
@@ -116,7 +116,7 @@ export class ApiService {
   delete(path: string, body: Object = {}): Observable<any> {
     this._showLoader();
     return this.http
-      .request('delete', `${environment.apiUrl}${path}`, {
+      .request('delete', `${environment.baseUrl}${path}`, {
         body: JSON.stringify(body),
         headers: new HttpHeaders(this._getHeadersConfig()),
       })
