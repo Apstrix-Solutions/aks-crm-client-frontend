@@ -13,6 +13,12 @@
             <div class="row gutters">
                 <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7">
                     <figure class="user-card">
+                        <div class="d-flex justify-content-end">
+                            <div class="custom-btn-group">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#leadAddisnModal">Assign Lead</button>
+                            </div>
+                        </div>
                         <figcaption>
                             <img src="{{ImageProp}}" alt="Le Meilleur Admin" class="profile">
                             <ul class="list-group">
@@ -97,6 +103,7 @@
                                         <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
                                             <a class="btn btn-outline-primary btn-sm" (click)="addContact()">New Lead Contact</a>
                                             <a class="btn btn-outline-success btn-sm" [routerLink]="['/contacts', leadDetails.id]">Lead Contacts</a>
+                                            <!-- <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#leadAddisnModal">Assign Lead</a> -->
                                         </div>
                                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
                                     </div>
@@ -387,3 +394,48 @@
 
     </div>
     <!--  Main container end  -->
+
+     <!-- Modal start to display add user popup-->
+     <div class="modal fade" #content id="leadAddisnModal" tabindex="-1" aria-labelledby="leadAddisnModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="leadAddisnModalLabel"> Lead Assignment </h5>
+                    <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <form class="form-horizontal" [formGroup]="leadAssignForm" (ngSubmit)="leadAssignedTo()">
+                    <div class="modal-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
+                      
+                                <div class="field-wrapper">
+                                    <div class="input-group">
+                                        
+                                        <select 
+                                        [ngClass]="{'is-invalid': f['assigned_to'].touched && f['assigned_to'].invalid}"
+                                         class="form-control" 
+                                         name="userId" 
+                                         formControlName="assigned_to"
+                                         >
+                                            <option value="">Users</option>
+                                            <option value="1"   >1</option>
+                                            <option value="2"   >2</option>
+                                            
+                                            <!-- <option *ngFor="let user of usersList" value="{{user}}">{{user}}</option> -->
+                                        </select>
+                                    </div>
+                                    <p *ngIf="f['assigned_to'].touched && f['assigned_to'].invalid" class="small text-danger font-italic">*User is required.</p>
+                                    <div  class="field-placeholder">User</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="exampleSelect">
+                        <button class="btn btn-primary" [disabled]="leadAssignForm.invalid" >Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal end -->

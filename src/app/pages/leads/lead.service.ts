@@ -18,6 +18,7 @@ export class LeadService {
     throw new Error('Method not implemented.');
   }
 
+
   constructor(private httpClient: HttpClient, private toastr: ToastrService) {}
   
   public getLead() {
@@ -55,7 +56,6 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'lead_source_all'}`);
   }
 
- 
   public getLeadById(id: string) {
     return this.httpClient.get(`${environment.apiUrl}${'lead_details/'}${id}`);
   }
@@ -84,8 +84,23 @@ export class LeadService {
     this.dataSource.next(data);
   }
 
-   // Error handling
-   errorHandl(error) {
+
+  
+  public importLead(file: any){
+    return this.httpClient.post(`${environment.apiUrl}${'lead_csv'}`,file);
+  }
+
+  public getAllUserDetails(){
+    return this.httpClient.get(`${environment.apiUrl}${''}`)
+  }
+
+  public leadAssignment(data : any){
+    return this.httpClient.post(`${environment.apiUrl}${'leads_assignment'}`,data)
+  }
+
+
+  // Error handling
+  errorHandl(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -98,5 +113,4 @@ export class LeadService {
       return errorMessage;
     });
   }
-
 }
