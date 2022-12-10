@@ -131,7 +131,6 @@ export class ViewLeadsComponent implements OnInit {
 
   getActivitiesByeLeadId(){
     this.leadService.getActivitiesByLeadId(this.leadId).subscribe((res) =>{
-      console.log(res)
       this.activityList = res['data']['activities']
     })
   }
@@ -140,6 +139,21 @@ export class ViewLeadsComponent implements OnInit {
   closeModal(idElm: any) {
     let element: HTMLElement = document.getElementById(idElm) as HTMLElement;
     element.click();
+  }
+
+  openConfirmBox(content, activityId) {
+    if (confirm('Are you sure to delete ?')) {
+      
+      this.leadService.deleteActivities(activityId).subscribe((res) => {
+        this.getActivitiesByeLeadId();
+
+        if (res['code'] == 200) {
+          this.toastr.success(res['message'], 'Success!');
+        } else {
+          this.toastr.error(res['errorMessage'], 'Error!');
+        }
+      });
+    }
   }
 
   get f(){

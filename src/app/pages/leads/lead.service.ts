@@ -93,6 +93,10 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'activities-all/'}${leadId}`);
   }
 
+  public deleteActivities(id: any){
+    return this.httpClient.delete(`${environment.apiUrl}${'activities-delete/'}${id}`);
+  }
+
   // Error handling
   errorHandl(error) {
     let errorMessage = '';
