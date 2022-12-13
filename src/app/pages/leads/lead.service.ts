@@ -84,10 +84,11 @@ export class LeadService {
     this.dataSource.next(data);
   }
 
-
-  
   public importLead(file: any){
-    return this.httpClient.post(`${environment.apiUrl}${'lead_csv'}`,file);
+    const formData = new FormData(); 
+    formData.set("newfile",file);
+    
+    return this.httpClient.post(`${environment.apiUrl}${'lead-csv-upload'}`,formData);
   }
 
   public getAllUserDetails(){
