@@ -12,6 +12,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class ImportLeadsComponent implements OnInit {
   fileChosen: boolean = false;
   importLeadsData!: FormGroup;
+  file:any;
+  isDisabled: boolean = true;
 
   constructor(
     private leadsService: LeadService,
@@ -24,40 +26,51 @@ export class ImportLeadsComponent implements OnInit {
 
   ngOnInit(): void {
     this.importLeadsData = this.formBuilder.group({
-      fileSelected:[null,[Validators.required, this.requiredFileType('csv')]],
+      fileSelected:[null,[Validators.required]],
     })
 
   }
 
-  requiredFileType(type: string){
-    return (control: FormControl) => {
-      const file = control.value;
-      console.log('file',file);
+  // requiredFileType(type: string){
+  //   return (control: FormControl) => {
+  //     const file = control.value;
+  //     console.log('file',file);
 
-      if(file){
-          const extension = file.split('.')[1].toLowerCase();
-          console.log('extension',extension);
-          if(type.toLowerCase() != extension.toLowerCase()){
-            return true;
-          }
-          return false;
+  //     if(file){
+  //         const extension = file.split('.')[1].toLowerCase();
+  //         console.log('extension',extension);
+  //         if(type.toLowerCase() != extension.toLowerCase()){
+  //           return true;
+  //         }
+  //         return false;
+  //     }
+  //     return false;
+  //   }
+  // }
+
+  onFilePicked(event: any){
+    this.file = event.target.files[0];
+    console.log(this.file)
+    
+    if(this.file) {
+      this.fileChosen = !this.importLeadsData.value.fileSelected.includes('.csv') 
+      if(this.file.type === "text/csv"){
+      this.isDisabled = false;
+      }else{
+        this.isDisabled = true;   
       }
-      return false;
     }
   }
 
-  onFilePicked(event: any){
-    this.fileChosen = this.importLeadsData.value.fileSelected.includes('.csv') 
-  }
-
   uploadFile(){
+    console.log(this.file)
     
-    console.log('upload importLeadsData - ',this.importLeadsData.value)
-    const formData = new FormData();
-
-    formData.append("filec", this.importLeadsData.value.fileSelected);
-    this.leadsService.importLead(formData).subscribe( res => {
-      console.log(res)
+    this.leadsService.importLead(this.file).subscribe( res => {
+      if (res['code'] == 200) {
+        this.toastr.success(res['message'], 'Success');
+      } else {
+        this.toastr.error(res['message'], 'Error!');
+      }
     })
     
   }
