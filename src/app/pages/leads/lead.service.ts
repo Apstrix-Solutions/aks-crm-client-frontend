@@ -98,6 +98,10 @@ export class LeadService {
     return this.httpClient.post(`${environment.apiUrl}${'leads_assignment'}`,data)
   }
 
+  public updateLeadAssignment(data : any,leadId: any){
+    return this.httpClient.put(`${environment.apiUrl}${'update-leads-assignment/'}${leadId}`,{assigned_to:data})
+  }
+
   public createActivities(data: any){
     return this.httpClient.post(`${environment.apiUrl}${'activities'}`,data);
   }
@@ -108,6 +112,10 @@ export class LeadService {
 
   public deleteActivities(id: any){
     return this.httpClient.delete(`${environment.apiUrl}${'activities-delete/'}${id}`);
+  }
+
+  public getAllIndustries(){
+    return this.httpClient.get(`${environment.apiUrl}${'industry-all'}`);
   }
 
   // Error handling

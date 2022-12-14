@@ -39,10 +39,7 @@ export class ViewLeadsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.leadId = this.id;
-    this.leadAssignForm = this.formBulider.group({
-      lead_id:[this.id],
-      assigned_to:[null,[Validators.required]]
-    });
+    
 
     this.activityForm = this.formBulider.group({
       user_id:[null],
@@ -156,9 +153,6 @@ export class ViewLeadsComponent implements OnInit {
     }
   }
 
-  get f(){
-    return this.leadAssignForm.controls;
-  }
   get log(){
     return this.activityForm.controls;
   }
