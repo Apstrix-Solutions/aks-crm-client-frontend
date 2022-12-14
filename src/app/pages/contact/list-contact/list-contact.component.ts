@@ -53,14 +53,16 @@ export class ListContactComponent implements OnInit {
 
   getContactById() {
     this.contactService.getContactById(this.id).subscribe((data) => {
+
       if (data['data']['contact'] == null && !this.id) {
         this.ngZone.run(() => this.router.navigateByUrl(`leads`));
         this.toastr.error('No contacts found', 'Error!');
       } else if (data['data']['contact'] == null) {
         this.contactList = [];
       } else {
-        this.contactList.push(data['data']['contact']);
+        this.contactList = data['data']['contact']
       }
+
     });
   }
 }

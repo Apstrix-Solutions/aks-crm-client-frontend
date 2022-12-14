@@ -40,7 +40,7 @@ export class AddContactComponent implements OnInit {
       name: [null, [Validators.required]],
       phone: [null, [Validators.required]],
       address: [null, [Validators.required]],
-      lead_id: [this.selectedLeadId, [Validators.required]],
+      lead_id: [null],
     });
 
     if (!this.selectedContactId) {
@@ -50,9 +50,10 @@ export class AddContactComponent implements OnInit {
       this.getContactByContactId();
       this.newContact = true;
     }
-  }
+  };
 
   addContact() {
+    this.newAddContactForm.patchValue({lead_id:this.id})
     this.contactService
       .createContact(this.newAddContactForm.value)
       .subscribe((data) => {
@@ -70,7 +71,7 @@ export class AddContactComponent implements OnInit {
           this.toastr.error(data['message'], 'Error!');
         }
       });
-  }
+  };
 
   updateContact() {
     this.contactService
@@ -89,16 +90,16 @@ export class AddContactComponent implements OnInit {
           this.toastr.error(data['message'], 'Error!');
         }
       });
-  }
+  };
 
   getContactById() {
     this.contactService
-      .getContactById(this.selectedContactId)
+      .getContactById(this.selectedLeadId)
       .subscribe((data) => {
         this.ContactListById = data['data']['contact'];
         this.newAddContactForm.patchValue(this.ContactListById);
       });
-  }
+  };
 
   onSubmit() {
     if (this.newAddContactForm.invalid) {
@@ -109,11 +110,7 @@ export class AddContactComponent implements OnInit {
     } else if (this.selectedContactId) {
       this.updateContact();
     }
-  }
-
-  get f() {
-    return this.newAddContactForm.controls;
-  }
+  };
 
   getContactByContactId() {
     this.contactService
@@ -122,5 +119,9 @@ export class AddContactComponent implements OnInit {
         this.ContactListById = data['data']['contact'];
         this.newAddContactForm.patchValue(this.ContactListById);
       });
-  }
+  };
+
+  get f() {
+    return this.newAddContactForm.controls;
+  };
 }

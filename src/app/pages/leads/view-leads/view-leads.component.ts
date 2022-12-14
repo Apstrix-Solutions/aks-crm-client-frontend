@@ -71,7 +71,6 @@ export class ViewLeadsComponent implements OnInit {
       res['data']['users'].forEach((lead: any) => { 
         this.leadDetails = lead;
       });
-      console.log('get lead by id', this.leadDetails);
     });
   }
 
