@@ -59,7 +59,7 @@ export class ListContactComponent implements OnInit {
       } else if (data['data']['contact'] == null) {
         this.contactList = [];
       } else {
-        this.contactList.push(data['data']['contact']);
+        this.contactList = data['data']['contact'];
       }
     });
   }
