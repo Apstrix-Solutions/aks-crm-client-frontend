@@ -12,7 +12,8 @@ export class SettingsService {
 
     public addSettings(data:any){
         return this.httpClient.post(`${environment.apiUrl}${'settings/general/add'}`,
-            JSON.stringify(data)
+            JSON.stringify(data),
+            {observe: 'response'}
         )
         .pipe(retry(1),catchError(this.errorHandl));
     }
@@ -22,7 +23,8 @@ export class SettingsService {
         formParams.append('fileupload',JSON.stringify(data.file_uploaded))
         
         return this.httpClient.put(`${environment.apiUrl}${'settings/update'}`,
-            JSON.stringify(data)
+            JSON.stringify(data),
+            {observe: 'response'}
         )
         .pipe(retry(1), catchError(this.errorHandl));
     }
@@ -32,6 +34,7 @@ export class SettingsService {
         formParams.set('siteLogo', data)
         return this.httpClient.post(`${environment.apiUrl}${'settings/general/upload_file'}`,
             formParams,
+            {observe: 'response'}
         )
         .pipe(retry(1),catchError(this.errorHandl));
     }
@@ -50,6 +53,6 @@ export class SettingsService {
     }
 
     public getSettings(){
-        return this.httpClient.get(`${environment.apiUrl}${'settings/all'}`);
+        return this.httpClient.get(`${environment.apiUrl}${'settings/all'}`,{observe: 'response'});
       }
 }

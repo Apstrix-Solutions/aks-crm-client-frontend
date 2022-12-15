@@ -75,7 +75,7 @@ export class AddLeadsComponent implements OnInit {
       });
     } else {
       this.leadService.getLeadById(this.id).subscribe((res) => {
-        this.recievedData = res['data']['users'];
+        this.recievedData = res['body']['data']['users'];
         this.newAddLeadForm.patchValue(this.recievedData);
 
         this.getLeadAddress();
@@ -124,19 +124,22 @@ export class AddLeadsComponent implements OnInit {
 
   leadStatus() {
     this.leadService.leadStatus().subscribe((res) => {
-      this.lStatus = res['data']['status'];
+      this.refreshToken = res.headers.get('refresh_token');
+      this.lStatus = res['body']['data']['status'];
     });
   };
 
   leadSource() {
     this.leadService.leadSource().subscribe((res) => {
-      this.lSource = res['data']['data'];
+      this.refreshToken = res.headers.get('refresh_token');
+      this.lSource = res['body']['data']['data'];
     });
   };
 
   getLeadAddress() {
     this.leadService.getLeadAddressByLeadId(this.id).subscribe((res) => {
-      let addressdata = res['data']['address'];
+      this.refreshToken = res.headers.get('refresh_token');
+      let addressdata = res['body']['data']['address'];
 
       if (addressdata) {
         this.newAddLeadForm.patchValue({
@@ -152,7 +155,8 @@ export class AddLeadsComponent implements OnInit {
 
   getLeadSocials() {
     this.leadService.getLeadSocialsByLeadId(this.id).subscribe((res) => {
-      let socialdata = res['data']['social'];
+      this.refreshToken = res.headers.get('refresh_token');
+      let socialdata = res['body']['data']['social'];
       // console.log(socialdata);
       if (socialdata) {
         this.newAddLeadForm.patchValue({
@@ -167,13 +171,15 @@ export class AddLeadsComponent implements OnInit {
 
   industries(){
     this.leadService.getAllIndustries().subscribe((res) => {
-      this.industryNames = res['data']['data'];
+      this.refreshToken = res.headers.get('refresh_token');
+      this.industryNames = res['body']['data']['data'];
     })
   };
 
   updateLeadAssignment(){
     this.leadService.updateLeadAssignment(this.assigned_to,this.id).subscribe( (res) => {
-      if(res['code']==200){
+      this.refreshToken = res.headers.get('refresh_token');
+      if(res['body']['code']==200){
         this.toastr.success(res['message'], 'Success');
       }else{
         this.toastr.error(res['message'],'Error')

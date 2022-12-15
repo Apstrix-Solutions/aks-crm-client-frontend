@@ -43,6 +43,12 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
       },
     });
 
+    if(request.url.endsWith('upload')){
+      if (request.headers.has('content-type')) {
+        request = request.clone({ headers: request.headers.delete('content-type','application/json') });
+    }
+  }
+
     return next.handle(request).pipe(
       tap(
         (event: HttpEvent<any>) => {
