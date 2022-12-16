@@ -35,7 +35,8 @@ import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-
  // <============
 
 import { AddContactModule } from './pages/contact/add-contact/add-contact.module';
-import { ListContactModule } from './pages/contact/list-contact/list-contact.module';
+import { ListContactModule } from './pages/contact/list-contact/list-contact.module'; // <============
+import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { ViewLeadsModule } from './pages/leads/view-leads/view-leads.module';
 import { ImportLeadsModule } from './pages/leads/import-leads/import-leads.module';
 import { ListPostModule } from './pages/marketing/organicpost/list-post/list-post.module';
@@ -71,6 +72,7 @@ import { LandingPageModule } from './pages/marketing/campaigns/landing-page/land
     CalenderModule,
     AddContactModule,
     ListContactModule,
+    SocialLoginModule,
     ViewLeadsModule,
     ImportLeadsModule,
     ListPostModule,
@@ -98,6 +100,18 @@ import { LandingPageModule } from './pages/marketing/campaigns/landing-page/land
     },
     ApiService,
     AuthService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('894397105306540'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
   ],
   bootstrap: [AppComponent],
 })
