@@ -44,7 +44,7 @@
                                     <div class="field-wrapper">
                                         <div class="input-group">
                                           
-                                            <input [ngClass]="{'is-invalid': f['middleName'].touched && f['middleName'].invalid}" value="{{addLeadListById.middleName}}"  class="form-control" type="text" name="middleName" formControlName="middleName">
+                                            <input [ngClass]="{'is-invalid': f['middleName'].touched && f['middleName'].invalid}" value="{{recievedData.middleName}}"  class="form-control" type="text" name="middleName" formControlName="middleName">
                                             <span class="input-group-text">
                                                 <i class="icon-user1"></i>
                                             </span>
@@ -305,6 +305,60 @@
                                     </div>
                                     <!-- Field wrapper end -->
                                 </div>
+                                   <!-- --------------------------------------------------- -->
+                                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
+                                    <div class="form-section-header">Company</div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+                                    <!-- Field wrapper start -->
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                            <input  [ngClass]="{'is-invalid': f['companyName'].touched && f['companyName'].invalid}" value="{{addLeadListById.companyName}}" class="form-control" type="text" name="companyName" formControlName="companyName">
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['companyName'].touched && f['companyName'].invalid" class="small text-danger font-italic">*Company Name is required.</p>
+                                        <div class="field-placeholder">Company Name<span class="text-danger">*</span></div>
+                                    </div>
+                                    <!-- Field wrapper end -->
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+                                    <!-- Field wrapper start -->
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                            <input  [ngClass]="{'is-invalid': f['designation'].touched && f['designation'].invalid}" value="{{addLeadListById.designation}}"  class="form-control" type="text" name="designation" formControlName="designation">
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['designation'].touched && f['designation'].invalid" class="small text-danger font-italic">*Designation is required.</p>
+                                        <div class="field-placeholder">Designation<span class="text-danger">*</span></div>
+                                    </div>
+                                    <!-- Field wrapper end -->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+                                    <!-- Field wrapper start -->
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                            <select 
+                                            [ngClass]="{'is-invalid': f['industryId'].touched && f['industryId'].invalid}" 
+                                            name="industryId" 
+                                            formControlName="industryId"
+                                            >
+                                                <option value="{{list}}"  *ngFor="let list of industry_ids" >{{list}}</option>
+                                              </select>
+                                        </div>
+                                        <p *ngIf="f['industryId'].touched && f['industryId'].invalid" class="small text-danger font-italic">*Industry Id is required.</p>
+                                        <div class="field-placeholder">Industry<span class="text-danger">*</span></div>
+                                    </div>
+                                    <!-- Field wrapper end -->
+                                </div>
+                                <!-- --------------------------------------------------- -->
 
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
                                     <div class="form-section-header">Social Media</div>

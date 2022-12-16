@@ -1,0 +1,81 @@
+
+.form-control-details {
+    border-bottom:1px solid rgb(212, 198, 198);
+    border-top:transparent;
+    border-right:transparent;
+    border-left:transparent;
+    background: none;
+}
+
+.card-body .statistics{
+    display: flex;
+    margin-left:200px ;
+}
+
+figure.user-card {
+    background: #fff;
+}
+
+.statistics {
+    display: flex;
+    margin-left: 162px;
+}
+
+.view-lead .field-wrapper input:hover, .field-wrapper textarea:hover{
+    border-bottom: 1px solid #d4c6c6;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: none;
+}
+
+.task-header h4.contact-head{
+    margin: 0;
+    font-size: 1.2rem;
+    color: #1273eb;
+}
+
+// textarea {
+//  pointer-events: none;
+// }
+
+.field-wrapper-text-area {
+    position: relative;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    min-width: 90px;
+
+}
+.input-groups-text-area {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.field-wrapper-text-area .field-placeholder {
+    position: absolute;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #1273eb;
+    background: #ffffff;
+    border-radius: 30px;
+    font-size: .75rem;
+    font-weight: 600;
+    top: -12px;
+    left: 7px;
+    padding: 2px 7px;
+    z-index: 10;
+    text-align: left;
+}
+
+.read-input{
+ background: none;
+}
+
+ul.statistics {
+    margin: 15px 0 0!important;
+    padding: 0;
+    justify-content: center;
+}

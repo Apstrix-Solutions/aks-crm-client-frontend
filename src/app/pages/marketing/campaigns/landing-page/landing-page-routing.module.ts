@@ -1,19 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
+import {LandingPageComponent } from './landing-page.component';
 import { Shell } from '@app/shell/shell.service';
-import { ListContactComponent } from './list-contact.component';
 const routes: Routes = [
   Shell.childRoutes([
     {
-      path: 'contacts',
-      component: ListContactComponent,
-      data: { title: marker(' List Contacts') },
-    },
-    {
-      path: 'contacts/:id',
-      component: ListContactComponent,
-      data: { title: marker(' List Contact') },
+      path: 'campaign',
+      component: LandingPageComponent,
+      data: { title: marker('Campaign') },
     },
   ]),
 ];
@@ -23,4 +18,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class ListContactRoutingModule {}
+export class LandingPageRoutingModule {}

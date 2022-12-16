@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ShellModule } from '@app/shell/shell.module';
-import { ListLeadsRoutingModule } from './list-leads-routing.module';
-import { ListLeadsComponent } from './list-leads.component';
+import { ViewLeadsRoutingModule } from './view-leads-routing.module';
+import { ViewLeadsComponent } from './view-leads.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     CommonModule,
     TranslateModule,
-    ListLeadsRoutingModule,
+    ViewLeadsRoutingModule,
     ShellModule,
     FormsModule,
     ReactiveFormsModule,
@@ -22,6 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule
   ],
-  declarations: [ListLeadsComponent],
+  declarations: [ViewLeadsComponent],
 })
-export class ListLeadsModule {}
+export class ViewLeadsModule {}

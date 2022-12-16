@@ -18,8 +18,10 @@ export class AddLeadsComponent implements OnInit {
   addLeadsList: any;
   addLeadService: any;
   recievedData: any = {};
+  refreshToken: string;
   lStatus: any = [];
   lSource: any = [];
+  industry_ids: any = [];
 
   constructor(
     private formBulider: FormBuilder,
@@ -55,6 +57,9 @@ export class AddLeadsComponent implements OnInit {
       linkedin: [null],
       facebook: [null],
       background_info: [null],
+      companyName: [null, [Validators.required]],
+      designation: [null, [Validators.required]],
+      industryId: [null],
     });
     //recieving data
     //A subscription is made to listen to changes in the BehaviorSubject.
@@ -79,9 +84,16 @@ export class AddLeadsComponent implements OnInit {
     this.leadSource();
   }
 
+  ngDoCheck() {
+    if (this.refreshToken) {
+      localStorage.setItem('refreshToken', this.refreshToken);
+    }
+  }
+
   addLeads() {
     this.leadService.addLead(this.newAddLeadForm.value).subscribe((res) => {
-      if (res['code'] == 200) {
+      this.refreshToken = res.headers.get('refresh_token');
+      if (res['body']['code'] == 200) {
         this.toastr.success(res['message'], 'Success!');
         this.ngZone.run(() => this.router.navigateByUrl('/leads'));
       } else {
@@ -91,10 +103,14 @@ export class AddLeadsComponent implements OnInit {
   }
 
   updateLeads() {
+    console.log('entered to update');
+
     this.leadService
       .updateLead(this.newAddLeadForm.value, this.id)
+
       .subscribe((res) => {
-        if (res['code'] == 200) {
+        this.refreshToken = res.headers.get('refresh_token');
+        if (res['body']['code'] == 200) {
           this.ngZone.run(() => this.router.navigateByUrl('/leads'));
           this.toastr.success(res['message'], 'Successfully updated the lead');
         } else {

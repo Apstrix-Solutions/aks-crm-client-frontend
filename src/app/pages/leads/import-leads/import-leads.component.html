@@ -1,0 +1,53 @@
+<div class="main-container">
+    <app-topbar></app-topbar>
+    <div class="content-wrapper-scroll">
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <!-- card start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Import Leads</div>
+                        </div>
+                        <div class="card-body">
+                            <!-- Row start -->
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <form class="form-horizontal" [formGroup]="importLeadsData" (ngSubmit)="uploadFile()">
+                                    <!-- Field wrapper start -->
+                                    <div class="field-wrapper">
+                                        <div class="input-group">														
+                                            <input
+                                             [ngClass]="{'is-invalid': f['fileSelected'].touched && f['fileSelected'].invalid || fileChosen}"
+                                             type="file" 
+                                             class="form-control"  
+                                             formControlName="fileSelected" 
+                                             multiple 
+                                             (change)="onFilePicked($event)" 
+                                             id="inputGroupFile01"
+                                            >
+                                        </div>
+                                        <!-- <p class="small text-danger font-italic" *ngIf="!fileChosen"> *File with .csv is required.</p> -->
+                                        <p *ngIf="f['fileSelected'].touched && f['fileSelected'].invalid || fileChosen" class="small text-danger font-italic">*File with .csv is required.</p>
+                                    </div>
+                                    <!-- Field wrapper end -->
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary rounded-1" [disabled]="isDisabled" >upload</button>
+                                      </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Row end -->				
+                        </div>
+                    </div>
+                    <!-- card end -->
+                </div>
+            </div>
+            <!-- Row end -->
+            <app-footer></app-footer>
+        </div>
+        <!-- content-wrapper end -->
+    </div>
+</div>

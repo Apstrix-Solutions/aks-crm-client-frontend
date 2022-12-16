@@ -37,6 +37,13 @@ import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-
 import { AddContactModule } from './pages/contact/add-contact/add-contact.module';
 import { ListContactModule } from './pages/contact/list-contact/list-contact.module'; // <============
 import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { ViewLeadsModule } from './pages/leads/view-leads/view-leads.module';
+import { ImportLeadsModule } from './pages/leads/import-leads/import-leads.module';
+import { ListPostModule } from './pages/marketing/organicpost/list-post/list-post.module';
+import { ListCampainsModule } from './pages/marketing/campaigns/list-campains/list-campains.module';
+import { LandingModule } from './pages/marketing/organicpost/lanading-page/landing-page.module';
+import { LandingPageModule } from './pages/marketing/campaigns/landing-page/landing-page.module';
+// <============
 
 @NgModule({
   imports: [
@@ -66,6 +73,12 @@ import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } fro
     AddContactModule,
     ListContactModule,
     SocialLoginModule,
+    ViewLeadsModule,
+    ImportLeadsModule,
+    ListPostModule,
+    ListCampainsModule,
+    LandingModule,
+    LandingPageModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

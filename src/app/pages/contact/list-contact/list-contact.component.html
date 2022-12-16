@@ -17,12 +17,14 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-end">
                                 <div class="custom-btn-group">
-                                    <button type="button" class="btn btn-primary"
-                                        routerLink="/add-contacts">Add Contact</button>
+                                    <button type="button" class="btn btn-primary btn-md"
+                                    [routerLink]="['/add-contacts', id]">Add Contact</button>
+                                        <button type="button" class="btn btn-primary btn-md"
+                                        (click)="goBackToLead()">Back to Lead</button>
                                 </div>
                             </div>
                             <div class="row gutters">
-                                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="table-responsive">
                                         <table class="table table-hover table-bordered m-0">
                                             <thead>
@@ -31,9 +33,7 @@
                                                     <th>Name</th>
                                                     <th>Phone</th>
                                                     <th>Address</th>
-                                                    <th>Lead Id</th>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -42,14 +42,10 @@
                                                     <td>{{ list.name}}</td>
                                                     <td>{{ list.phone}}</td>
                                                     <td>{{ list.address}}</td>
-                                                    <td>{{ list.lead_id}}</td>
                                                     <td>
-                                                        <i class="icon-edit1" style="color: #0073dd;"></i>
-                                                    </td>
-                                                    <td>
-                                                        <i class="icon-delete" style="color: #0073dd;"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#addConfirmModal"></i>
+                                                        <i class="icon-edit1 text-primary" (click)="editContact(list.id,list.lead_id)"></i>
+                                                        <i class="icon-delete text-primary"
+                                                        (click)="open(content,list.id)"></i>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -67,3 +63,20 @@
         </div>
         <!-- Content wrapper scroll end -->
     </div>
+
+
+    <ng-template #content id="deleteConfirmModal" let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure to delete this?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+            <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+        </div>
+    </ng-template>

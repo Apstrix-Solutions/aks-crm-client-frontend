@@ -68,18 +68,20 @@
                   <span class="menu-text">Calendar </span>
                 </a>
               </div>
-              <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+              <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
                 <a (click)="togglePostMenu()" routerLink ="/organicpost">
                   <span class="menu-text">Organic Contents</span>
                 </a>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': postMenuHidden ? 'block' : 'none' }">
                   <ul>
-                  
                     <li>
-                      <a routerLink="/add-campaigns">Add Organic </a>
+                      <a routerLink="/organic">Organic Contents</a>
                     </li>
                     <li>
-                      <a routerLink="/home">List Organic</a>
+                      <a routerLink="/organicpost">Add Contents </a>
+                    </li>
+                    <li>
+                      <a routerLink="/list-post">List Contents</a>
                     </li>
                   </ul>
                 </div>
@@ -92,12 +94,14 @@
                 </a>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
                   <ul>
-                  
+                    <li>
+                      <a routerLink="/campaign">Campaign </a>
+                    </li>
                     <li>
                       <a routerLink="/add-campaigns">Add Campaign </a>
                     </li>
                     <li>
-                      <a routerLink="/home">List Campaign</a>
+                      <a routerLink="/list-campains">List Campaigns</a>
                     </li>
                   </ul>
                 </div>

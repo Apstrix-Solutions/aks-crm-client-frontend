@@ -8,9 +8,13 @@
 export const environment = {
   production: true,
   // version: env['npm_package_version'],
+  leadStatus:'deal',
   version: '1.0.0',
   serverUrl: 'https://akstech.sg/auth/api/v1/',
-  apiUrl: 'https://akstech.sg/auth/api/v1/',
+  apiUrl: 'https://akstech.sg/client/lead/api/',
+  authApiUrl: 'https://akstech.sg/auth/api/v1/',
+  baseUrl: 'https://akstech.sg/',
+  apiVersion: 'v1',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'fr-FR'],
 };
