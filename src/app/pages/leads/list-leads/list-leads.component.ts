@@ -101,6 +101,7 @@ export class ListLeadsComponent implements OnInit {
     });
 
     this.leadService.searchLead(queryParams).subscribe((data) => {
+      this.refreshToken = data.headers.get('refresh_token');
       this.leadsList = data['body']['data']['leads'];
     });
   }
@@ -123,7 +124,6 @@ export class ListLeadsComponent implements OnInit {
           })
         })
         this.leadsList = leadData;
-        console.log('---leadsList---',this.leadsList);
       }else{
         this.leadsList = data['body']['data']['leads'];
       }
@@ -138,6 +138,7 @@ export class ListLeadsComponent implements OnInit {
   customerConversion(leadId: any){
     
     this.leadService.customerConversion(leadId).subscribe((data) => {
+      this.refreshToken = data.headers.get('refresh_token');
       if(data['code']==200){
         this.convertedLeads.push(leadId)
         // console.log('convereted leads',this.convertedLeads)
@@ -154,7 +155,8 @@ export class ListLeadsComponent implements OnInit {
 
   getAllCustomer(){
     this.leadService.getAllCustomer().subscribe( (data) =>{
-       this.contactsList = data['data']['data'];
+      this.refreshToken = data.headers.get('refresh_token');
+       this.contactsList = data['body']['data']['data'];
        console.log('contactsList',this.contactsList)
     })
   }
@@ -164,6 +166,7 @@ export class ListLeadsComponent implements OnInit {
   open(content, listId) {
     if (confirm('Are you sure to delete ?')) {
       this.leadService.deleteLead(listId).subscribe((res) => {
+        this.refreshToken = res.headers.get('refresh_token');
         this.getLeads();
 
         if (res['code'] == 200) {

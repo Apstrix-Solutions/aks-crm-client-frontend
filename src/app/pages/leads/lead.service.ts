@@ -44,40 +44,41 @@ export class LeadService {
       {observe: 'response'}
     );
   }
+
   public deleteLead(id: any) {
-    return this.httpClient.get(`${environment.apiUrl}${'leads_delete/'}${id}`);
+    return this.httpClient.get(`${environment.apiUrl}${'leads_delete/'}${id}`,{observe: 'response'});
   }
 
   public leadStatus() {
-    return this.httpClient.get(`${environment.apiUrl}${'status_all'}`);
+    return this.httpClient.get(`${environment.apiUrl}${'status_all'}`,{observe: 'response'});
   }
 
   public leadSource() {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_source_all'}`);
+    return this.httpClient.get(`${environment.apiUrl}${'lead_source_all'}`,{observe: 'response'});
   }
 
   public getLeadById(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_details/'}${id}`);
+    return this.httpClient.get(`${environment.apiUrl}${'lead_details/'}${id}`,{observe: 'response'});
   }
 
   public getLeadAddressByLeadId(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_address/'}${id}`);
+    return this.httpClient.get(`${environment.apiUrl}${'lead_address/'}${id}`,{observe: 'response'});
   }
 
   public getLeadSocialsByLeadId(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'lead_social/'}${id}`);
+    return this.httpClient.get(`${environment.apiUrl}${'lead_social/'}${id}`,{observe: 'response'});
   }
 
   public getAllCustomer(){
-    return this.httpClient.get(`${environment.apiUrl}${'customer_all'}`);
+    return this.httpClient.get(`${environment.apiUrl}${'customer_all'}`,{observe: 'response'});
   }
 
   public customerConversion(leadId: string){
-    return this.httpClient.post(`${environment.apiUrl}${'customerconversion'}`,{id:leadId});
+    return this.httpClient.post(`${environment.apiUrl}${'customerconversion'}`,{id:leadId},{observe: 'response'});
   }
 
   public leadStatusUpdate(leadId: any){
-    return this.httpClient.put(`${environment.apiUrl}${'leads_status_update/'}${leadId}`,{currentStatus:environment.leadStatus})
+    return this.httpClient.put(`${environment.apiUrl}${'leads_status_update/'}${leadId}`,{currentStatus:environment.leadStatus},{observe: 'response'})
   }
 
   public setData(data: any) {
@@ -88,27 +89,35 @@ export class LeadService {
     const formData = new FormData(); 
     formData.set("newfile",file);
     
-    return this.httpClient.post(`${environment.apiUrl}${'lead-csv-upload'}`,formData);
+    return this.httpClient.post(`${environment.apiUrl}${'lead-csv-upload'}`,formData,{observe: 'response'});
   }
 
   public getAllUserDetails(){
-    return this.httpClient.get(`${environment.apiUrl}${''}`)
+    return this.httpClient.get(`${environment.apiUrl}${''}`,{observe: 'response'})
   }
 
   public leadAssignment(data : any){
-    return this.httpClient.post(`${environment.apiUrl}${'leads_assignment'}`,data)
+    return this.httpClient.post(`${environment.apiUrl}${'leads_assignment'}`,data,{observe: 'response'})
+  }
+
+  public updateLeadAssignment(data : any,leadId: any){
+    return this.httpClient.put(`${environment.apiUrl}${'update-leads-assignment/'}${leadId}`,{assigned_to:data},{observe: 'response'})
   }
 
   public createActivities(data: any){
-    return this.httpClient.post(`${environment.apiUrl}${'activities'}`,data);
+    return this.httpClient.post(`${environment.apiUrl}${'activities'}`,data,{observe: 'response'});
   }
 
   public getActivitiesByLeadId(leadId: any){
-    return this.httpClient.get(`${environment.apiUrl}${'activities-all/'}${leadId}`);
+    return this.httpClient.get(`${environment.apiUrl}${'activities-all/'}${leadId}`,{observe: 'response'});
   }
 
   public deleteActivities(id: any){
-    return this.httpClient.delete(`${environment.apiUrl}${'activities-delete/'}${id}`);
+    return this.httpClient.delete(`${environment.apiUrl}${'activities-delete/'}${id}`,{observe: 'response'});
+  }
+
+  public getAllIndustries(){
+    return this.httpClient.get(`${environment.apiUrl}${'industry-all'}`,{observe: 'response'});
   }
 
   // Error handling

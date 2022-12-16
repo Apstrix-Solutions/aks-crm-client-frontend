@@ -32,13 +32,13 @@
                   <a routerLink="/leads">Leads</a>
                 </li>
                 <li>
-                  <a routerLink="/import-lead">Lead Import</a>
+                  <a routerLink="/import-lead">Import Leads</a>
                 </li>
               </ul>
             </div>
           </li>
 
-          <!-- <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenContact }">
+          <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenContact }">
             <a (click)="toggleMenuContact()">
               <i class="icon-user1"></i>
               <span class="menu-text">Contacts</span>
@@ -51,7 +51,7 @@
               </ul>
             </div>
           </li>
-       -->
+      
         
           <li class="default-sidebar-dropdown" [ngClass]="{'active': marketingMenuHidden }">
             <a (click)="toggleMarketingMenu()">
@@ -71,11 +71,23 @@
                   <span class="menu-text">Calendar </span>
                 </a>
               </div>
-              <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
-                <a  routerLink ="/organicpost">
+              <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+                <a (click)="togglePostMenu()" routerLink ="/organicpost">
                   <span class="menu-text">Organic Contents</span>
                 </a>
-               
+                <div class="default-sidebar-submenu" [ngStyle]="{'display': postMenuHidden ? 'block' : 'none' }">
+                  <ul>
+                    <li>
+                      <a routerLink="/organic">Organic Contents</a>
+                    </li>
+                    <li>
+                      <a routerLink="/organicpost">Add Contents </a>
+                    </li>
+                    <li>
+                      <a routerLink="/list-post">List Contents</a>
+                    </li>
+                  </ul>
+                </div>
                 
               </div>
             
@@ -85,12 +97,14 @@
                 </a>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
                   <ul>
-                   
+                    <li>
+                      <a routerLink="/campaign">Campaign </a>
+                    </li>
                     <li>
                       <a routerLink="/add-campaigns">Add Campaign </a>
                     </li>
                     <li>
-                      <a routerLink="/home">List Campaign</a>
+                      <a routerLink="/list-campains">List Campaigns</a>
                     </li>
                   </ul>
                 </div>

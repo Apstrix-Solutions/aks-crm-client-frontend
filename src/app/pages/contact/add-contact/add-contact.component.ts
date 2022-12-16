@@ -40,7 +40,8 @@ export class AddContactComponent implements OnInit {
       name: [null, [Validators.required]],
       phone: [null, [Validators.required]],
       address: [null, [Validators.required]],
-      lead_id: [null],
+      lead_id: [this.selectedLeadId, [Validators.required]],
+      is_active: [1],
     });
 
     if (!this.selectedContactId) {
@@ -94,10 +95,9 @@ export class AddContactComponent implements OnInit {
 
   getContactById() {
     this.contactService
-      .getContactById(this.selectedLeadId)
+      .getContactById(this.id)
       .subscribe((data) => {
         this.ContactListById = data['data']['contact'];
-        this.newAddContactForm.patchValue(this.ContactListById);
       });
   };
 

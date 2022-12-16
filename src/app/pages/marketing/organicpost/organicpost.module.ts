@@ -5,6 +5,7 @@ import { ShellModule } from '@app/shell/shell.module';
 import { OrganicpostRoutingModule } from './organicpost-routing.module';
 import { OrganicpostComponent } from './organicpost.component';
 
+
 @NgModule({
   imports: [CommonModule, TranslateModule,  OrganicpostRoutingModule, ShellModule],
   declarations: [ OrganicpostComponent],

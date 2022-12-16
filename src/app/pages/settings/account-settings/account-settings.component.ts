@@ -22,6 +22,7 @@ export class AccountSettingsComponent implements OnInit {
   files: File[] = [];
   uploadedFileResponse:any =[];
   settingsList: any = [];
+  refreshToken:string;
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -49,10 +50,20 @@ export class AccountSettingsComponent implements OnInit {
     this.ImageProp="../../../../assets/img/user.svg";
 
     this.settingsService.getSettings().pipe(first()).subscribe(res => {
+      
+      this.refreshToken = res.headers.get('refresh_token');
+      localStorage.setItem('refreshToken', this.refreshToken)
+
       this.settingsList = res['data']['data'];
       console.log(this.settingsList)
       this.showFormData();
     });
+  }
+
+  ngDoCheck() {
+    if (this.refreshToken) {
+      localStorage.setItem('refreshToken', this.refreshToken)
+    }
   }
 
   get f() { return this.newSettingsData.controls; }
@@ -68,7 +79,8 @@ export class AccountSettingsComponent implements OnInit {
     }
 
     this.settingsService.updateSettings(this.newSettingsData.value,this.id).subscribe( (res) => {
-      if(res['status'] == 200) {
+      this.refreshToken = res.headers.get('refresh_token');
+      if(res['body']['status'] == 200) {
         this.toastr.success(res['message'], 'Success!');
       } else {
         this.toastr.error(res['message'], 'Error!');
@@ -90,6 +102,7 @@ export class AccountSettingsComponent implements OnInit {
   uploadFile(){
     if(this.files){
       this.settingsService.uploadFile(this.files[0]).subscribe( (res) => {
+        this.refreshToken = res.headers.get('refresh_token');
         this.uploadedFileResponse = res;
       })
     }
