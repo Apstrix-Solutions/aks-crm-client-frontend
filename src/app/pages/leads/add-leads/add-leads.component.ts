@@ -12,6 +12,7 @@ import { LeadService } from '../lead.service';
 })
 export class AddLeadsComponent implements OnInit {
   newAddLeadForm!: FormGroup;
+  leadAssignForm!: FormGroup;
   id: string;
   isAddMode: boolean;
   addLeadListById: any = [];
@@ -21,7 +22,8 @@ export class AddLeadsComponent implements OnInit {
   refreshToken: string;
   lStatus: any = [];
   lSource: any = [];
-  industry_ids: any = [];
+  industryNames: any = [];
+  assigned_to: any = 0;
 
   constructor(
     private formBulider: FormBuilder,
@@ -59,8 +61,9 @@ export class AddLeadsComponent implements OnInit {
       background_info: [null],
       companyName: [null, [Validators.required]],
       designation: [null, [Validators.required]],
-      industryId: [null],
+      industryId: [null,[Validators.required]],
     });
+
     //recieving data
     //A subscription is made to listen to changes in the BehaviorSubject.
 
@@ -72,7 +75,7 @@ export class AddLeadsComponent implements OnInit {
       });
     } else {
       this.leadService.getLeadById(this.id).subscribe((res) => {
-        this.recievedData = res['data']['users'];
+        this.recievedData = res['body']['data']['users'];
         this.newAddLeadForm.patchValue(this.recievedData);
 
         this.getLeadAddress();
@@ -82,6 +85,7 @@ export class AddLeadsComponent implements OnInit {
 
     this.leadStatus();
     this.leadSource();
+    this.industries();
   }
 
   ngDoCheck() {
@@ -103,8 +107,7 @@ export class AddLeadsComponent implements OnInit {
   }
 
   updateLeads() {
-    console.log('entered to update');
-
+    
     this.leadService
       .updateLead(this.newAddLeadForm.value, this.id)
 
@@ -117,27 +120,26 @@ export class AddLeadsComponent implements OnInit {
           this.toastr.error(res['message'], 'Error!');
         }
       });
-  }
+  };
 
   leadStatus() {
     this.leadService.leadStatus().subscribe((res) => {
-      this.lStatus = res['data']['status'];
+      this.refreshToken = res.headers.get('refresh_token');
+      this.lStatus = res['body']['data']['status'];
     });
-  }
+  };
 
   leadSource() {
     this.leadService.leadSource().subscribe((res) => {
-      this.lSource = res['data']['data'];
+      this.refreshToken = res.headers.get('refresh_token');
+      this.lSource = res['body']['data']['data'];
     });
-  }
-
-  get f() {
-    return this.newAddLeadForm.controls;
-  }
+  };
 
   getLeadAddress() {
     this.leadService.getLeadAddressByLeadId(this.id).subscribe((res) => {
-      let addressdata = res['data']['address'];
+      this.refreshToken = res.headers.get('refresh_token');
+      let addressdata = res['body']['data']['address'];
 
       if (addressdata) {
         this.newAddLeadForm.patchValue({
@@ -153,8 +155,9 @@ export class AddLeadsComponent implements OnInit {
 
   getLeadSocials() {
     this.leadService.getLeadSocialsByLeadId(this.id).subscribe((res) => {
-      let socialdata = res['data']['social'];
-      console.log(socialdata);
+      this.refreshToken = res.headers.get('refresh_token');
+      let socialdata = res['body']['data']['social'];
+      // console.log(socialdata);
       if (socialdata) {
         this.newAddLeadForm.patchValue({
           facebook: socialdata.facebook,
@@ -164,7 +167,29 @@ export class AddLeadsComponent implements OnInit {
         });
       }
     });
-  }
+  };
+
+  industries(){
+    this.leadService.getAllIndustries().subscribe((res) => {
+      this.refreshToken = res.headers.get('refresh_token');
+      this.industryNames = res['body']['data']['data'];
+    })
+  };
+
+  updateLeadAssignment(){
+    this.leadService.updateLeadAssignment(this.assigned_to,this.id).subscribe( (res) => {
+      this.refreshToken = res.headers.get('refresh_token');
+      if(res['body']['code']==200){
+        this.toastr.success(res['message'], 'Success');
+      }else{
+        this.toastr.error(res['message'],'Error')
+      }
+    })
+  };
+
+  leadAssign(event: any){
+    this.assigned_to = event.target.value;
+  };
 
   onSubmit() {
     if (this.newAddLeadForm.invalid) {
@@ -174,6 +199,13 @@ export class AddLeadsComponent implements OnInit {
       this.addLeads();
     } else {
       this.updateLeads();
+      this.updateLeadAssignment();
     }
   }
+
+
+  get f() {
+    return this.newAddLeadForm.controls;
+  }
+
 }

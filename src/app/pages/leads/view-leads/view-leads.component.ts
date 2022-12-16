@@ -16,6 +16,7 @@ export class ViewLeadsComponent implements OnInit {
   ImageProp = '../../../../assets/img/user.svg';
   leadAssignForm!: FormGroup;
   activityForm!: FormGroup;
+  refreshToken: string;
   leadDetails: any = [];
   leadSocialDetails: any = [];
   leadAddressDetails: any = [];
@@ -39,10 +40,7 @@ export class ViewLeadsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.leadId = this.id;
-    this.leadAssignForm = this.formBulider.group({
-      lead_id:[this.id],
-      assigned_to:[null,[Validators.required]]
-    });
+    
 
     this.activityForm = this.formBulider.group({
       user_id:[null],
@@ -61,6 +59,12 @@ export class ViewLeadsComponent implements OnInit {
     this.getActivitiesByeLeadId();
   }
 
+  ngDoCheck() {
+    if (this.refreshToken) {
+      localStorage.setItem('refreshToken', this.refreshToken)
+    }
+  }
+
   addContact() {
     this.ngZone.run(() =>
       this.router.navigateByUrl(`add-contacts/${this.leadId}`)
@@ -68,7 +72,8 @@ export class ViewLeadsComponent implements OnInit {
   }
   getLeadById() {
     this.leadService.getLeadById(this.leadId).subscribe((res) => {
-      res['data']['users'].forEach((lead: any) => { 
+      this.refreshToken = res.headers.get('refresh_token');
+      res['body']['data']['users'].forEach((lead: any) => { 
         this.leadDetails = lead;
       });
       console.log('get lead by id', this.leadDetails);
@@ -77,7 +82,8 @@ export class ViewLeadsComponent implements OnInit {
 
   getLeadSocialById() {
     this.leadService.getLeadSocialsByLeadId(this.leadId).subscribe((res) => {
-      res['data']['social'].forEach((social: any) => {
+      this.refreshToken = res.headers.get('refresh_token');
+      res['body']['data']['social'].forEach((social: any) => {
         this.leadSocialDetails = social;
       });
     });
@@ -85,7 +91,8 @@ export class ViewLeadsComponent implements OnInit {
 
   getLeadAddressById() {
     this.leadService.getLeadAddressByLeadId(this.leadId).subscribe((res) => {
-      res['data']['address'].forEach((address: any) => {
+      this.refreshToken = res.headers.get('refresh_token');
+      res['body']['data']['address'].forEach((address: any) => {
         this.leadAddressDetails = address;
       });
     });
@@ -93,6 +100,7 @@ export class ViewLeadsComponent implements OnInit {
 
   getAllUserDetails(){
     this.leadService.getAllUserDetails().subscribe((res) => {
+      this.refreshToken = res.headers.get('refresh_token');
       this.usersList = res;
     })
   }
@@ -117,7 +125,8 @@ export class ViewLeadsComponent implements OnInit {
     
     this.leadService.createActivities(this.activityForm.value).subscribe((res) => {
       // console.log(res)
-      if (res['code'] == 200) {
+      this.refreshToken = res.headers.get('refresh_token');
+      if (res['body']['code'] == 200) {
         this.toastr.success(res['message'], 'Success!');
         this.getActivitiesByeLeadId();
         this.closeModal('activityModelClose');
@@ -131,7 +140,8 @@ export class ViewLeadsComponent implements OnInit {
 
   getActivitiesByeLeadId(){
     this.leadService.getActivitiesByLeadId(this.leadId).subscribe((res) =>{
-      this.activityList = res['data']['activities']
+      this.refreshToken = res.headers.get('refresh_token');
+      this.activityList = res['body']['data']['activities']
     })
   }
 
@@ -145,6 +155,7 @@ export class ViewLeadsComponent implements OnInit {
     if (confirm('Are you sure to delete ?')) {
       
       this.leadService.deleteActivities(activityId).subscribe((res) => {
+        this.refreshToken = res.headers.get('refresh_token');
         this.getActivitiesByeLeadId();
 
         if (res['code'] == 200) {
@@ -156,9 +167,6 @@ export class ViewLeadsComponent implements OnInit {
     }
   }
 
-  get f(){
-    return this.leadAssignForm.controls;
-  }
   get log(){
     return this.activityForm.controls;
   }

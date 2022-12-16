@@ -14,6 +14,7 @@ export class ImportLeadsComponent implements OnInit {
   importLeadsData!: FormGroup;
   file:any;
   isDisabled: boolean = true;
+  refreshToken:string;
 
   constructor(
     private leadsService: LeadService,
@@ -29,6 +30,11 @@ export class ImportLeadsComponent implements OnInit {
       fileSelected:[null,[Validators.required]],
     })
 
+  }
+  ngDoCheck() {
+    if (this.refreshToken) {
+      localStorage.setItem('refreshToken', this.refreshToken);
+    }
   }
 
   // requiredFileType(type: string){
@@ -63,17 +69,17 @@ export class ImportLeadsComponent implements OnInit {
   }
 
   uploadFile(){
-    console.log(this.file)
     
     this.leadsService.importLead(this.file).subscribe( res => {
-      if (res['code'] == 200) {
+      this.refreshToken = res.headers.get('refresh_token');
+      if (res['body']['code'] == 200) {
         this.toastr.success(res['message'], 'Success');
       } else {
         this.toastr.error(res['message'], 'Error!');
       }
-    })
     
-  }
+  })
+}
 
   get f(){ return this.importLeadsData.controls; }
 
