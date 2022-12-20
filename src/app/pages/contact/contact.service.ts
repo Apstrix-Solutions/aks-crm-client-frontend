@@ -33,7 +33,7 @@ export class ContactService {
   }
 
   getContactById(id: string) {
-    return this.httpClient.get(`${environment.apiUrl}${'contacts/'}${id}`);
+    return this.httpClient.get(`${environment.apiUrl}${'contacts-all/'}${id}`);
   }
 
   // Error handling

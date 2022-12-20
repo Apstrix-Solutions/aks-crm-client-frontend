@@ -15,13 +15,16 @@ export class AddLeadsComponent implements OnInit {
   leadAssignForm!: FormGroup;
   id: string;
   isAddMode: boolean;
-  addLeadListById: any = [];
+  addLeadListById: any = {};
   addLeadsList: any;
   addLeadService: any;
   recievedData: any = {};
   refreshToken: string;
   lStatus: any = [];
   lSource: any = [];
+  industry_ids: any = [];
+  companyData: any = {};
+  socialData:  any = {};
   industryNames: any = [];
   assigned_to: any = 0;
 
@@ -75,7 +78,9 @@ export class AddLeadsComponent implements OnInit {
       });
     } else {
       this.leadService.getLeadById(this.id).subscribe((res) => {
-        this.recievedData = res['body']['data']['users'];
+        res['data']['users'].forEach( data => {
+          this.recievedData = data
+        })
         this.newAddLeadForm.patchValue(this.recievedData);
 
         this.getLeadAddress();
@@ -138,8 +143,9 @@ export class AddLeadsComponent implements OnInit {
 
   getLeadAddress() {
     this.leadService.getLeadAddressByLeadId(this.id).subscribe((res) => {
-      this.refreshToken = res.headers.get('refresh_token');
-      let addressdata = res['body']['data']['address'];
+      let addressdata = res['data']['address'];
+      
+      addressdata.forEach( data => this.addLeadListById = data);
 
       if (addressdata) {
         this.newAddLeadForm.patchValue({
@@ -155,9 +161,10 @@ export class AddLeadsComponent implements OnInit {
 
   getLeadSocials() {
     this.leadService.getLeadSocialsByLeadId(this.id).subscribe((res) => {
-      this.refreshToken = res.headers.get('refresh_token');
-      let socialdata = res['body']['data']['social'];
-      // console.log(socialdata);
+      let socialdata = res['data']['social'];
+      
+      socialdata.forEach( data => this.socialData = data);
+
       if (socialdata) {
         this.newAddLeadForm.patchValue({
           facebook: socialdata.facebook,

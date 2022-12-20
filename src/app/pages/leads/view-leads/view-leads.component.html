@@ -59,7 +59,7 @@
                                         <p class="log-name">User</p>
                                         <div class="log-details" *ngFor="let activity of activityList">
                                             {{activity.contact_mode}}
-                                            <span class="text-success ml-1"> # {{activity.createdAt | date:'yyyy-MM-dd @  h:mma'}}</span>
+                                            <span class="text-success ml-1"> # {{activity.createdAt | date:'yyyy-MM-dd @h:mma'}}</span>
                                             <span> <i class="icon-delete text-primary"  (click)="openConfirmBox(content,activity.id)"></i></span>
                                         </div>
                                     </div>
