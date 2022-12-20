@@ -78,7 +78,7 @@ export class AddLeadsComponent implements OnInit {
       });
     } else {
       this.leadService.getLeadById(this.id).subscribe((res) => {
-        res['data']['users'].forEach( data => {
+        res['body']['data']['users'].forEach( data => {
           this.recievedData = data
         })
         this.newAddLeadForm.patchValue(this.recievedData);
@@ -143,7 +143,7 @@ export class AddLeadsComponent implements OnInit {
 
   getLeadAddress() {
     this.leadService.getLeadAddressByLeadId(this.id).subscribe((res) => {
-      let addressdata = res['data']['address'];
+      let addressdata = res['body']['data']['address'];
       
       addressdata.forEach( data => this.addLeadListById = data);
 
@@ -161,7 +161,7 @@ export class AddLeadsComponent implements OnInit {
 
   getLeadSocials() {
     this.leadService.getLeadSocialsByLeadId(this.id).subscribe((res) => {
-      let socialdata = res['data']['social'];
+      let socialdata = res['body']['data']['social'];
       
       socialdata.forEach( data => this.socialData = data);
 
