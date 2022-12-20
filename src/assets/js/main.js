@@ -142,7 +142,7 @@ jQuery(function ($) {
 /***********
 ***********
 ***********
-	Bootstrap JS 
+  Bootstrap JS 
 ***********
 ***********
 ***********/
@@ -167,3 +167,16 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 // 	jQuery(this).tab('show');
 // 	jQuery(tabContentSelector).addClass('active');
 // });
+
+// for date time picker
+$(function () {
+  $('.datepicker-time').daterangepicker({
+    singleDatePicker: true,
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    endDate: moment().startOf('hour').add(32, 'hour'),
+    locale: {
+      format: 'DD/MM/YYYY hh:mm A'
+    }
+  });
+});  

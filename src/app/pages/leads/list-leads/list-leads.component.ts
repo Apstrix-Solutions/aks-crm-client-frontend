@@ -79,6 +79,7 @@ export class ListLeadsComponent implements OnInit {
         this.getLeads();
         this.closebutton.nativeElement.click();
         this.toastr.success(res['message'], 'Success!');
+        this.newLeadForm.patchValue({firstName : null, lastName: null, title: null, primaryNumber: null, secondaryNumber: null, email: null});
       } else {
         this.toastr.error(res['errorMessage'], 'Error!');
       }
