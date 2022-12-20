@@ -170,8 +170,8 @@ export class ListLeadsComponent implements OnInit {
         this.refreshToken = res.headers.get('refresh_token');
         this.getLeads();
 
-        if (res['code'] == 200) {
-          this.toastr.success(res['message'], 'Success!');
+        if (res['body']['code'] == 200) {
+          this.toastr.success('Lead has been deleted successfully', 'Success!');
         } else {
           this.toastr.error(res['errorMessage'], 'Error!');
         }
