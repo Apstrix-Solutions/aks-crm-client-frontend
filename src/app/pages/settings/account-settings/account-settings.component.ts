@@ -23,7 +23,6 @@ export class AccountSettingsComponent implements OnInit {
   uploadedFileResponse:any =[];
   settingsList: any = [];
   refreshToken:string;
-
   constructor(
     private formBuilder: FormBuilder, 
     private route: ActivatedRoute,
@@ -50,22 +49,18 @@ export class AccountSettingsComponent implements OnInit {
     this.ImageProp="../../../../assets/img/user.svg";
 
     this.settingsService.getSettings().pipe(first()).subscribe(res => {
-      
       this.refreshToken = res.headers.get('refresh_token');
       localStorage.setItem('refreshToken', this.refreshToken)
-
       this.settingsList = res['data']['data'];
       console.log(this.settingsList)
       this.showFormData();
     });
   }
-
   ngDoCheck() {
     if (this.refreshToken) {
       localStorage.setItem('refreshToken', this.refreshToken)
     }
   }
-
   get f() { return this.newSettingsData.controls; }
 
   updateSettings() {
