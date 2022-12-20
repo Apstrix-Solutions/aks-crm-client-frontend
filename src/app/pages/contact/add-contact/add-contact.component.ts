@@ -51,9 +51,10 @@ export class AddContactComponent implements OnInit {
       this.getContactByContactId();
       this.newContact = true;
     }
-  }
+  };
 
   addContact() {
+    this.newAddContactForm.patchValue({lead_id:this.id})
     this.contactService
       .createContact(this.newAddContactForm.value)
       .subscribe((data) => {
@@ -71,7 +72,7 @@ export class AddContactComponent implements OnInit {
           this.toastr.error(data['message'], 'Error!');
         }
       });
-  }
+  };
 
   updateContact() {
     this.contactService
@@ -90,7 +91,7 @@ export class AddContactComponent implements OnInit {
           this.toastr.error(data['message'], 'Error!');
         }
       });
-  }
+  };
 
   getContactById() {
     this.contactService
@@ -98,7 +99,7 @@ export class AddContactComponent implements OnInit {
       .subscribe((data) => {
         this.ContactListById = data['data']['contact'];
       });
-  }
+  };
 
   onSubmit() {
     if (this.newAddContactForm.invalid) {
@@ -109,11 +110,7 @@ export class AddContactComponent implements OnInit {
     } else if (this.selectedContactId) {
       this.updateContact();
     }
-  }
-
-  get f() {
-    return this.newAddContactForm.controls;
-  }
+  };
 
   getContactByContactId() {
     this.contactService
@@ -122,5 +119,9 @@ export class AddContactComponent implements OnInit {
         this.ContactListById = data['data']['contact'];
         this.newAddContactForm.patchValue(this.ContactListById);
       });
-  }
+  };
+
+  get f() {
+    return this.newAddContactForm.controls;
+  };
 }
