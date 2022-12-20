@@ -447,7 +447,7 @@
                                                 <select
                                                     [ngClass]="{'is-invalid': f['industryId'].touched && f['industryId'].invalid}"
                                                     name="industryId" formControlName="industryId">
-                                                    <option value="{{list}}" *ngFor="let list of industryNames">
+                                                    <option value="{{list.id}}" *ngFor="let list of industryNames">
                                                         {{list.name}}</option>
                                                 </select>
                                             </div>
