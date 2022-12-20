@@ -29,17 +29,21 @@
                                         <li>
                                             <span class="stat-icon" data-bs-toggle="modal"
                                                 data-bs-target="#editContact">
-                                                <i class="icon-phone"></i>
+                                                <a href="tel:leadDetails.primaryNumber"><i class="icon-phone"></i></a>
                                             </span>
                                         </li>
                                         <li>
                                             <span class="stat-icon">
-                                                <i class="icon-message"></i>
+                                                <a href="tel:leadDetails.primaryNumber">
+                                                    <i class="icon-message"></i>
+                                                </a>
                                             </span>
                                         </li>
                                         <li>
                                             <span class="stat-icon">
-                                                <i class="icon-mail"></i>
+                                                <a href="mailto:leadDetails.email">
+                                                    <i class="icon-mail"></i>
+                                                </a>
                                             </span>
                                         </li>
                                     </ul>
@@ -55,14 +59,17 @@
                         <div class="card-body">
                             <div class="customScroll250">
                                 <div class="timeline-activity">
-                                    <div class="activity-log">
-                                        <p class="log-name">User</p>
-                                        <div class="log-details" *ngFor="let activity of activityList">
-                                            {{activity.contact_mode}}
-                                            <span class="text-success ml-1"> # {{activity.createdAt | date:'yyyy-MM-dd @h:mma'}}</span>
-                                            <span> <i class="icon-delete text-primary"  (click)="openConfirmBox(content,activity.id)"></i></span>
+                                    <ng-container *ngFor="let activity of activityList">
+                                        <div class="activity-log">
+                                            <p class="log-name">{{activity.comment}}</p>
+                                            <div class="log-details">
+                                                {{activity.contact_mode}}
+                                                <span class="text-success ml-1"> # {{activity.createdAt |
+                                                    date:'yyyy-MM-dd @
+                                                    h:mma'}}</span>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </ng-container>
                                 </div>
                             </div>
                         </div>
@@ -83,11 +90,10 @@
                                 <div class="row gutters">
                                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
                                     <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
-                                        <a class="btn btn-outline-primary btn-sm" (click)="addContact()">New Lead
-                                            Contact</a>
+                                        <a class="btn btn-outline-primary btn-sm" (click)="addContact()">New Contact</a>
                                         <a class="btn btn-outline-success btn-sm"
-                                            [routerLink]="['/contacts', leadDetails.id]">Lead Contacts</a>
-                                        <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                            [routerLink]="['/contacts', leadDetails.id]">Contacts</a>
+                                        <a class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#ActivityModal">Activity</a>
 
                                     </div>
