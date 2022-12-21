@@ -22,6 +22,7 @@ export class ImportLeadsComponent implements OnInit {
     public toastr: ToastrService,
     private formBuilder: FormBuilder, 
     private ngZone: NgZone,
+    private router: Router,
 
   ) { }
 
@@ -36,23 +37,6 @@ export class ImportLeadsComponent implements OnInit {
       localStorage.setItem('refreshToken', this.refreshToken);
     }
   }
-
-  // requiredFileType(type: string){
-  //   return (control: FormControl) => {
-  //     const file = control.value;
-  //     console.log('file',file);
-
-  //     if(file){
-  //         const extension = file.split('.')[1].toLowerCase();
-  //         console.log('extension',extension);
-  //         if(type.toLowerCase() != extension.toLowerCase()){
-  //           return true;
-  //         }
-  //         return false;
-  //     }
-  //     return false;
-  //   }
-  // }
 
   onFilePicked(event: any){
     this.file = event.target.files[0];
@@ -72,19 +56,17 @@ export class ImportLeadsComponent implements OnInit {
     
     this.leadsService.importLead(this.file).subscribe( res => {
       this.refreshToken = res.headers.get('refresh_token');
-      console.log(res)
-      if (res['body']['code'] == 200) {
-        this.toastr.success(res['message'], 'Success');
+      const duplicateLead = res['body']['data']['duplicates'];
+
+      if (res['body']['code'] == 200 && !duplicateLead) {
+        this.toastr.success(res['message'], 'Leads has been imported successfully');
+        this.ngZone.run(() => this.router.navigateByUrl('/leads'));
+      } else if (res['body']['code'] == 200 && duplicateLead) {
+        this.toastr.error(duplicateLead, 'emails already existing!');
+        this.ngZone.run(() => this.router.navigateByUrl('/leads'));
       } else {
         this.toastr.error(res['message'], 'Error!');
       }
-
-      const duplicateLead = res['body']['data']['duplicates'];
-
-      if(duplicateLead){
-        this.toastr.error(duplicateLead, 'Already exist!');
-      }
-    
   })
 };
 
