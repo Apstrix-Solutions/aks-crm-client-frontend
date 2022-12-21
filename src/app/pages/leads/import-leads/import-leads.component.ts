@@ -58,11 +58,12 @@ export class ImportLeadsComponent implements OnInit {
       this.refreshToken = res.headers.get('refresh_token');
       const duplicateLead = res['body']['data']['duplicates'];
 
-      if (res['body']['code'] == 200 && !duplicateLead) {
+      if (res['body']['code'] == 200 && duplicateLead.length == 0) {
         this.toastr.success(res['message'], 'Leads has been imported successfully');
         this.ngZone.run(() => this.router.navigateByUrl('/leads'));
-      } else if (res['body']['code'] == 200 && duplicateLead) {
-        this.toastr.error(duplicateLead, 'emails already existing!');
+      } else if (res['body']['code'] == 200 && duplicateLead.length > 0) {
+        this.toastr.success(res['message'], 'Leads has been imported successfully');
+        this.toastr.error(duplicateLead, 'Few  emails already existing!');
         this.ngZone.run(() => this.router.navigateByUrl('/leads'));
       } else {
         this.toastr.error(res['message'], 'Error!');
