@@ -72,14 +72,21 @@ export class ImportLeadsComponent implements OnInit {
     
     this.leadsService.importLead(this.file).subscribe( res => {
       this.refreshToken = res.headers.get('refresh_token');
+      console.log(res)
       if (res['body']['code'] == 200) {
         this.toastr.success(res['message'], 'Success');
       } else {
         this.toastr.error(res['message'], 'Error!');
       }
+
+      const duplicateLead = res['body']['data']['duplicates'];
+
+      if(duplicateLead){
+        this.toastr.error(duplicateLead, 'Already exist!');
+      }
     
   })
-}
+};
 
   get f(){ return this.importLeadsData.controls; }
 
