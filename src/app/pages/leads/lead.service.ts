@@ -120,6 +120,10 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'industry-all'}`,{observe: 'response'});
   }
 
+  public getCompanyByLeadId(leadId: any){
+    return this.httpClient.get(`${environment.apiUrl}${'leadcompany-detail/'}${leadId}`,{observe: 'response'});
+  }
+
   // Error handling
   errorHandl(error) {
     let errorMessage = '';
