@@ -120,6 +120,18 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'industry-all'}`,{observe: 'response'});
   }
 
+  public getCompanyByLeadId(leadId: any){
+    return this.httpClient.get(`${environment.apiUrl}${'leadcompany-detail/'}${leadId}`,{observe: 'response'});
+  }
+
+  public getStatusById(id: any){
+    return this.httpClient.get(`${environment.apiUrl}${'status/'}${id}`,{observe: 'response'});
+  }
+
+  public getIndustryById(id: any){
+    return this.httpClient.get(`${environment.apiUrl}${'industry/'}${id}`,{observe: 'response'});
+  }
+
   // Error handling
   errorHandl(error) {
     let errorMessage = '';

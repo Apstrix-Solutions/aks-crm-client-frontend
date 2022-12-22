@@ -26,6 +26,7 @@ export class ViewLeadsComponent implements OnInit {
   currentUser: any;
   activityList: any = [];
   IsmodelShow:boolean = false;
+  leadCompanyDetails :any = [];
 
 
   constructor(
@@ -57,6 +58,7 @@ export class ViewLeadsComponent implements OnInit {
 
     this.activityForm.patchValue({user_id:this.currentUser,lead_id:this.leadId})
     this.getActivitiesByeLeadId();
+    this.getCompanyById();
   }
 
   ngDoCheck() {
@@ -74,10 +76,43 @@ export class ViewLeadsComponent implements OnInit {
     this.leadService.getLeadById(this.leadId).subscribe((res) => {
       this.refreshToken = res.headers.get('refresh_token');
       res['body']['data']['users'].forEach((lead: any) => { 
+       
+        if(lead.currentStatus){
+          this.getStatusById(lead.currentStatus);
+        }
         this.leadDetails = lead;
       });
+      console.log('getLeadById',this.leadDetails)
     });
   }
+
+  getStatusById(statusId:any){
+    this.leadService.getStatusById(statusId).subscribe(res => {
+      const status = res['body']['data']['status']
+      this.leadDetails.leadStatus = status.name
+    })
+  }
+
+  getCompanyById(){
+    this.leadService.getCompanyByLeadId(this.leadId).subscribe(res => {
+      // this.leadCompanyDetails = res['body']['data']
+      const data = res['body']['data']['data'];
+      if(data){
+        this.getIndustryById(data.industry_id);
+      }
+      this.leadCompanyDetails = data;
+      console.log('-----------com',res)
+    })
+  }
+  getIndustryById(industryId:any){
+    this.leadService.getIndustryById(industryId).subscribe(res => {
+      const data = res['body']['data']['data']
+      console.log('ind_name',data)
+      this.leadCompanyDetails.name = data.name
+    })
+  }
+ 
+
 
   getLeadSocialById() {
     this.leadService.getLeadSocialsByLeadId(this.leadId).subscribe((res) => {
@@ -85,6 +120,7 @@ export class ViewLeadsComponent implements OnInit {
       res['body']['data']['social'].forEach((social: any) => {
         this.leadSocialDetails = social;
       });
+      console.log('getLeadSocialById',this.leadSocialDetails)
     });
   }
 
@@ -94,6 +130,7 @@ export class ViewLeadsComponent implements OnInit {
       res['body']['data']['address'].forEach((address: any) => {
         this.leadAddressDetails = address;
       });
+      console.log('getLeadAddressById',this.leadAddressDetails)
     });
   }
 
@@ -102,6 +139,7 @@ export class ViewLeadsComponent implements OnInit {
       this.refreshToken = res.headers.get('refresh_token');
       this.usersList = res;
     })
+    console.log('getAllUserDetails',this.usersList)
   }
 
 

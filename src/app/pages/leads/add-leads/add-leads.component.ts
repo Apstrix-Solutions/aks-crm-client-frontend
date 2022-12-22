@@ -85,6 +85,7 @@ export class AddLeadsComponent implements OnInit {
 
         this.getLeadAddress();
         this.getLeadSocials();
+        this.getCompanyById();
       });
     }
 
@@ -213,6 +214,20 @@ export class AddLeadsComponent implements OnInit {
 
   get f() {
     return this.newAddLeadForm.controls;
+  }
+
+  getCompanyById(){
+    this.leadService.getCompanyByLeadId(this.id).subscribe(res => {
+      const companyData = res['body']['data']['data'];
+
+      if(companyData) {
+        this.newAddLeadForm.patchValue({
+          companyName: companyData.name,
+          designation: companyData.designation,
+          industryId: companyData.industry_id,
+        });
+      }
+    })
   }
 
 }

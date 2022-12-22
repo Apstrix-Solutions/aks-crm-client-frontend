@@ -30,7 +30,7 @@ export class ListLeadsComponent implements OnInit {
   closeResult: string;
   convertedLeads = [];
   isConverted: any = false;
-  contactsList:any  = [];
+  customerList:any  = [];
   leadID: any  ;
   
 
@@ -116,8 +116,8 @@ export class ListLeadsComponent implements OnInit {
       console.log('leadData',leadData);
       
       
-      if( leadData.length!=0 && this.contactsList.length!=0 ){
-        this.contactsList.forEach( contact =>{
+      if( leadData.length!=0 && this.customerList.length!=0 ){
+        this.customerList.forEach( contact =>{
           leadData.forEach( (lead: any) =>{
             if(contact.lead_id === lead.id){
               lead['customer'] = true;
@@ -140,25 +140,28 @@ export class ListLeadsComponent implements OnInit {
     
     this.leadService.customerConversion(leadId).subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
-      if(data['code']==200){
+
+      if(data['body']['code']==200){
+
         this.convertedLeads.push(leadId)
-        // console.log('convereted leads',this.convertedLeads)
-        this.toastr.success(data['message'], 'Success!');
         this.leadService.leadStatusUpdate(leadId).subscribe((data) => {
-          console.log(data)
+          if(data['code']== 200){
+            this.toastr.success(data['message'], 'Success!');
+          }
         })
       }
-      else  if(data['code']==500){
+      else  if(data['body']['code']==500){
         this.toastr.error(data['error'],'Error!')
       }
     })
   }
+  
 
   getAllCustomer(){
     this.leadService.getAllCustomer().subscribe( (data) =>{
       this.refreshToken = data.headers.get('refresh_token');
-       this.contactsList = data['body']['data']['data'];
-       console.log('contactsList',this.contactsList)
+       this.customerList = data['body']['data']['data'];
+       console.log('customerList',this.customerList)
     })
   }
 
