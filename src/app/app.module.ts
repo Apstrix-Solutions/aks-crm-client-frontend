@@ -107,7 +107,7 @@ import { LandingPageModule } from './pages/marketing/campaigns/landing-page/land
         providers: [
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('894397105306540'),
+            provider: new FacebookLoginProvider('1473922069701469'),
           },
         ],
       } as SocialAuthServiceConfig,
