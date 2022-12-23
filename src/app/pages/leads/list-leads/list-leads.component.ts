@@ -79,7 +79,15 @@ export class ListLeadsComponent implements OnInit {
         this.getLeads();
         this.closebutton.nativeElement.click();
         this.toastr.success(res['message'], 'Success!');
-        this.newLeadForm.patchValue({firstName : null, lastName: null, title: null, primaryNumber: null, secondaryNumber: null, email: null});
+        // this.newLeadForm.patchValue({firstName : '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: ''});
+         this.newLeadForm = this.formBulider.group({
+          firstName: [null, [Validators.required]],
+          lastName: [null, [Validators.required]],
+          title: [null, [Validators.required]],
+          primaryNumber: [null, [Validators.required]],
+          secondaryNumber: [null, [Validators.required]],
+          email: [null, [Validators.required, Validators.email]],
+          });
       } else {
         this.toastr.error(res['errorMessage'], 'Error!');
       }
