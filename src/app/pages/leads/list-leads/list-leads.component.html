@@ -222,6 +222,11 @@
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#addUserModal">Quick Lead</button>
                                 </div>
+
+                                <div class="custom-btn-group quick_lead_btn">
+                                    <button type="button" class="btn btn-primary" (click)="reset()"
+                                        > <span class="icon-refresh-ccw"></span></button>
+                                </div>
                             </div>
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -350,14 +355,12 @@
                                 <!-- Field wrapper start -->
                                 <div class="field-wrapper">
                                     <div class="input-group">
-                                        <input [ngClass]="{'is-invalid': f['title'].touched && f['title'].invalid}"
+                                        <input
                                             value="{{editLeadsList?editLeadsList.firstName:leadListById.title}}"
                                             type="text" name="title" formControlName="title">
 
                                     </div>
-                                    <p *ngIf="f['title'].touched && f['title'].invalid"
-                                        class="small text-danger font-italic">*Company is required.</p>
-                                    <div class="field-placeholder">Title <span class="text-danger">*</span></div>
+                                    <div class="field-placeholder">Title</div>
                                 </div>
                                 <!-- Field wrapper end -->
                             </div>
@@ -367,14 +370,11 @@
                                 <div class="field-wrapper">
                                     <div class="input-group">
                                         <input
-                                            [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}"
                                             value="{{editLeadsList?editLeadsList.primaryNumber:leadListById.title}}"
                                             type="text" name="primaryNumber" formControlName="primaryNumber">
 
                                     </div>
-                                    <p *ngIf="f['primaryNumber'].touched && f['primaryNumber'].invalid"
-                                        class="small text-danger font-italic">*Contact number is required.</p>
-                                    <div class="field-placeholder">Phone <span class="text-danger">*</span></div>
+                                    <div class="field-placeholder">Phone</div>
                                 </div>
                                 <!-- Field wrapper end -->
                             </div>
@@ -384,14 +384,11 @@
                                 <div class="field-wrapper">
                                     <div class="input-group">
                                         <input
-                                            [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}"
                                             value="{{editLeadsList?editLeadsList.secondaryNumber:leadListById.title}}"
                                             type="text" name="secondaryNumber" formControlName="secondaryNumber">
 
                                     </div>
-                                    <p *ngIf="f['secondaryNumber'].touched && f['secondaryNumber'].invalid"
-                                        class="small text-danger font-italic">*phone no is required.</p>
-                                    <div class="field-placeholder">Mobile <span class="text-danger">*</span></div>
+                                    <div class="field-placeholder">Mobile</div>
                                 </div>
                                 <!-- Field wrapper end -->
                             </div>

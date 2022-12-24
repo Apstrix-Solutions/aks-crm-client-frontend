@@ -71,6 +71,14 @@ export class ImportLeadsComponent implements OnInit {
   })
 };
 
+downloadFile(data: any) {
+  const blob = new Blob([data], { type: 'text/csv' });
+  const url= window.URL.createObjectURL(blob);
+  window.open(url);
+  this.toastr.success('File downloaded successfully');
+}
+
+
   get f(){ return this.importLeadsData.controls; }
 
 

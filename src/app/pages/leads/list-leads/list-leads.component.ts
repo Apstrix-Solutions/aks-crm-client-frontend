@@ -51,9 +51,9 @@ export class ListLeadsComponent implements OnInit {
     this.newLeadForm = this.formBulider.group({
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
-      title: [null, [Validators.required]],
-      primaryNumber: [null, [Validators.required]],
-      secondaryNumber: [null, [Validators.required]],
+      title: [null],
+      primaryNumber: [null],
+      secondaryNumber: [null],
       email: [null, [Validators.required, Validators.email]],
     });
 
@@ -83,9 +83,9 @@ export class ListLeadsComponent implements OnInit {
          this.newLeadForm = this.formBulider.group({
           firstName: [null, [Validators.required]],
           lastName: [null, [Validators.required]],
-          title: [null, [Validators.required]],
-          primaryNumber: [null, [Validators.required]],
-          secondaryNumber: [null, [Validators.required]],
+          title: [null],
+          primaryNumber: [null],
+          secondaryNumber: [null],
           email: [null, [Validators.required, Validators.email]],
           });
       } else {
@@ -121,7 +121,7 @@ export class ListLeadsComponent implements OnInit {
     this.leadService.getLead().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
       const leadData =  data['body']['data']['leads'];
-      console.log('leadData',leadData);
+      // console.log('leadData',leadData);
       
       
       if( leadData.length!=0 && this.customerList.length!=0 ){
@@ -188,6 +188,11 @@ export class ListLeadsComponent implements OnInit {
         }
       });
     }
+  }
+
+  reset(){
+    this.getLeads();
+    this.newSearchForm.patchValue({ firstName: '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: '' })
   }
 
   onSubmit() {
