@@ -210,6 +210,10 @@
 
                                                         <div class="search-footer">
                                                             <button class="btn btn-primary">search</button>
+                                                            <button type="button" class="btn btn-warning"
+                                                                (click)="reset()">
+                                                                <span class="icon-refresh-ccw"></span>
+                                                            </button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -221,11 +225,6 @@
                                 <div class="custom-btn-group quick_lead_btn">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#addUserModal">Quick Lead</button>
-                                </div>
-
-                                <div class="custom-btn-group quick_lead_btn">
-                                    <button type="button" class="btn btn-primary" (click)="reset()"
-                                        > <span class="icon-refresh-ccw"></span></button>
                                 </div>
                             </div>
                             <div class="row gutters">
@@ -355,8 +354,7 @@
                                 <!-- Field wrapper start -->
                                 <div class="field-wrapper">
                                     <div class="input-group">
-                                        <input
-                                            value="{{editLeadsList?editLeadsList.firstName:leadListById.title}}"
+                                        <input value="{{editLeadsList?editLeadsList.firstName:leadListById.title}}"
                                             type="text" name="title" formControlName="title">
 
                                     </div>
@@ -369,11 +367,13 @@
                                 <!-- Field wrapper start -->
                                 <div class="field-wrapper">
                                     <div class="input-group">
-                                        <input
-                                            value="{{editLeadsList?editLeadsList.primaryNumber:leadListById.title}}"
+                                        <input value="{{editLeadsList?editLeadsList.primaryNumber:leadListById.title}}"
                                             type="text" name="primaryNumber" formControlName="primaryNumber">
 
                                     </div>
+                                    <p *ngIf="f['primaryNumber'].touched && f['primaryNumber'].invalid"
+                                        class="small text-danger font-italic">*Valid phone number is required(10-12
+                                        digits).</p>
                                     <div class="field-placeholder">Phone</div>
                                 </div>
                                 <!-- Field wrapper end -->
@@ -388,6 +388,9 @@
                                             type="text" name="secondaryNumber" formControlName="secondaryNumber">
 
                                     </div>
+                                    <p *ngIf="f['secondaryNumber'].touched && f['secondaryNumber'].invalid"
+                                        class="small text-danger font-italic">*Valid mobile number is required (10-12
+                                        digits).</p>
                                     <div class="field-placeholder">Mobile</div>
                                 </div>
                                 <!-- Field wrapper end -->

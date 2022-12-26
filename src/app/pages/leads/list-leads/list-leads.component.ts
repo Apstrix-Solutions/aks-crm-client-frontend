@@ -52,10 +52,40 @@ export class ListLeadsComponent implements OnInit {
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
       title: [null],
-      primaryNumber: [null],
-      secondaryNumber: [null],
+      primaryNumber: ['', [
+          Validators.pattern("^[0-9]*$"),
+          Validators.maxLength(12),
+          Validators.minLength(10),
+        ]
+      ],
+      secondaryNumber: ['', [
+          Validators.pattern("^[0-9]*$"),
+          Validators.maxLength(12),
+          Validators.minLength(10),
+        ]
+      ],
       email: [null, [Validators.required, Validators.email]],
-    });
+    }, {
+      validators: [phoneConditionallyRequiredValidator, mobileConditionallyRequiredValidator] 
+  });
+
+  function phoneConditionallyRequiredValidator(formGroup: FormGroup) {
+    if (formGroup.value.primaryNumber) {
+      return Validators.required(formGroup.get('primaryNumber')) ? {
+        phoneConditionallyRequiredValidator: true,
+      } : null;
+    }
+    return null;
+  }
+
+  function mobileConditionallyRequiredValidator(formGroup: FormGroup) {
+    if (formGroup.value.secondaryNumber) {
+      return Validators.required(formGroup.get('secondaryNumber')) ? {
+        mobileConditionallyRequiredValidator: true,
+      } : null;
+    }
+    return null;
+  }
 
     this.newSearchForm = this.formBulider.group({
       firstName: [null],
