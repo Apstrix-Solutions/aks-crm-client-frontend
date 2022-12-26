@@ -114,7 +114,7 @@ export class ListLeadsComponent implements OnInit {
     this.leadService.getLead().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
       const leadData =  data['body']['data']['leads'];
-      console.log('leadData',leadData);
+      // console.log('leadData',leadData);
 
        leadData.forEach((lead:any)=>{
         if(lead.currentStatus){
@@ -172,20 +172,14 @@ export class ListLeadsComponent implements OnInit {
     this.leadService.getAllCustomer().subscribe( (data) =>{
       this.refreshToken = data.headers.get('refresh_token');
        this.customerList = data['body']['data']['data'];
-       console.log('customerList',this.customerList)
+      //  console.log('customerList',this.customerList)
     })
   }
 
   getStatusById(statusId:any){
-    // console.log('statusId',statusId)
     this.leadService.getStatusById(statusId).subscribe(res => {
       const status = res['body']['data']['status']
        this.statusName = status.name;
-      // console.log('sts---',status)
-
-      // this.leadsList.forEach( (lead: any) => {
-      //   lead['currentStatusName']=status.name;
-      // })
     })
     
   }
