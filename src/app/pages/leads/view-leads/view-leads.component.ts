@@ -101,13 +101,11 @@ export class ViewLeadsComponent implements OnInit {
         this.getIndustryById(data.industry_id);
       }
       this.leadCompanyDetails = data;
-      console.log('-----------com',res)
     })
   }
   getIndustryById(industryId:any){
     this.leadService.getIndustryById(industryId).subscribe(res => {
       const data = res['body']['data']['data']
-      console.log('ind_name',data)
       this.leadCompanyDetails.name = data.name
     })
   }

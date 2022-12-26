@@ -32,6 +32,7 @@ export class ListLeadsComponent implements OnInit {
   isConverted: any = false;
   customerList:any  = [];
   leadID: any  ;
+  statusName:any;
   
 
   constructor(
@@ -114,6 +115,15 @@ export class ListLeadsComponent implements OnInit {
       this.refreshToken = data.headers.get('refresh_token');
       const leadData =  data['body']['data']['leads'];
       console.log('leadData',leadData);
+
+       leadData.forEach((lead:any)=>{
+        if(lead.currentStatus){
+          this.leadService.getStatusById(lead.currentStatus).subscribe(res => {
+            const status = res['body']['data']['status']
+            status ? lead['currentStatusName']=status.name:'';
+          })
+        }
+        })
       
       
       if( leadData.length!=0 && this.customerList.length!=0 ){
@@ -124,6 +134,7 @@ export class ListLeadsComponent implements OnInit {
             }
           })
         })
+       
         this.leadsList = leadData;
       }else{
         this.leadsList = data['body']['data']['leads'];
@@ -163,6 +174,20 @@ export class ListLeadsComponent implements OnInit {
        this.customerList = data['body']['data']['data'];
        console.log('customerList',this.customerList)
     })
+  }
+
+  getStatusById(statusId:any){
+    // console.log('statusId',statusId)
+    this.leadService.getStatusById(statusId).subscribe(res => {
+      const status = res['body']['data']['status']
+       this.statusName = status.name;
+      // console.log('sts---',status)
+
+      // this.leadsList.forEach( (lead: any) => {
+      //   lead['currentStatusName']=status.name;
+      // })
+    })
+    
   }
 
 
