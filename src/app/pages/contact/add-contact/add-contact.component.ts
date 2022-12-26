@@ -38,7 +38,7 @@ export class AddContactComponent implements OnInit {
 
     this.newAddContactForm = this.formBulider.group({
       name: [null, [Validators.required]],
-      phone: [null, [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      phone: [null, [Validators.required]],
       address: [null, [Validators.required]],
       lead_id: [this.selectedLeadId, [Validators.required]],
       is_active: [1],
