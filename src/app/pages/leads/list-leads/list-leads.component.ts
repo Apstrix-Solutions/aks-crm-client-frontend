@@ -33,6 +33,8 @@ export class ListLeadsComponent implements OnInit {
   customerList:any  = [];
   leadID: any  ;
   statusName:any;
+  AgencyId:any;
+
   
 
   constructor(
@@ -48,6 +50,8 @@ export class ListLeadsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCustomer();
     this.getLeads();
+
+    console.log('localStorage',localStorage)
 
     this.newLeadForm = this.formBulider.group({
       firstName: [null, [Validators.required]],
@@ -66,6 +70,8 @@ export class ListLeadsComponent implements OnInit {
       secondaryNumber: [null],
       email: [null],
     });
+
+    this.AgencyId = localStorage.getItem('AgencyId');
     
   }
   ngDoCheck() {
@@ -113,8 +119,9 @@ export class ListLeadsComponent implements OnInit {
     
     this.leadService.getLead().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
-      const leadData =  data['body']['data']['leads'];
-      // console.log('leadData',leadData);
+      const leadByAgencyId = data['body']['data']['leads'];
+      const leadData = leadByAgencyId.filter((data)=> {return data.agencyId==this.AgencyId });
+      console.log('leadData',leadData);
 
        leadData.forEach((lead:any)=>{
         if(lead.currentStatus){
@@ -156,8 +163,9 @@ export class ListLeadsComponent implements OnInit {
 
         this.convertedLeads.push(leadId)
         this.leadService.leadStatusUpdate(leadId).subscribe((data) => {
-          if(data['code']== 200){
+          if(data['body']['code']== 200){
             this.toastr.success(data['message'], 'Success!');
+            this.getLeads();
           }
         })
       }

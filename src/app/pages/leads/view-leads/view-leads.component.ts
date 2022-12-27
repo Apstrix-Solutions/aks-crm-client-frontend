@@ -132,15 +132,6 @@ export class ViewLeadsComponent implements OnInit {
     });
   }
 
-  getAllUserDetails(){
-    this.leadService.getAllUserDetails().subscribe((res) => {
-      this.refreshToken = res.headers.get('refresh_token');
-      this.usersList = res;
-    })
-    console.log('getAllUserDetails',this.usersList)
-  }
-
-
   leadAssignedTo(){
   
     console.log('lead Assignment form',this.leadAssignForm.value)

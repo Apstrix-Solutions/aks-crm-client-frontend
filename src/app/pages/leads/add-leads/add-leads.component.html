@@ -277,11 +277,7 @@
                                                 <select class="form-control" name="assigned_to"
                                                     (change)="leadAssign($event)">
 
-                                                    <option value="">Users</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-
-                                                    <!-- <option *ngFor="let user of usersList" value="{{user}}">{{user}}</option> -->
+                                                    <option *ngFor="let user of usersList" value="{{user.email}}">{{user.email}}</option>
                                                 </select>
 
                                             </div>

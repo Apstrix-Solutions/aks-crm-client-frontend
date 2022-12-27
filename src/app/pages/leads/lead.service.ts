@@ -93,7 +93,8 @@ export class LeadService {
   }
 
   public getAllUserDetails(){
-    return this.httpClient.get(`${environment.apiUrl}${''}`,{observe: 'response'})
+    const agencyId = localStorage.getItem('AgencyId')
+    return this.httpClient.post(`${environment.serverUrl}${'agency-users/'}${agencyId}`,agencyId,{observe: 'response'})
   }
 
   public leadAssignment(data : any){
@@ -130,6 +131,29 @@ export class LeadService {
 
   public getIndustryById(id: any){
     return this.httpClient.get(`${environment.apiUrl}${'industry/'}${id}`,{observe: 'response'});
+  }
+
+  public createAppoinments(data: any){
+    return this.httpClient.post(`${environment.apiUrl}${'appoinment'}`, JSON.stringify(data), {observe: 'response'})
+  }
+  public getAppoinmentsById(id: any){
+    return this.httpClient.get(`${environment.apiUrl}${'appointment/'}${id}`,{observe: 'response'});
+  }
+
+  public getAllAppoinments(){
+    return this.httpClient.get(`${environment.apiUrl}${'appoinment-all'}`,{observe: 'response'});
+  }
+
+  public getAllAppoinmentsById(leadId: any){
+    return this.httpClient.get(`${environment.apiUrl}${'appointment-lead-all/'}${leadId}`, {observe: 'response'})
+  }
+
+  public updateAppoinments(id: any, data: any){
+    return this.httpClient.put(`${environment.apiUrl}${'appoinment-edit/'}${id}`,JSON.stringify(data), {observe:'response'})
+  }
+
+  public deleteAppoinments(id: any){
+    return this.httpClient.put(`${environment.apiUrl}${'appoinment-delete/'}${id}`,{observe: 'response'})
   }
 
   // Error handling

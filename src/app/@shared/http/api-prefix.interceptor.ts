@@ -48,11 +48,21 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
         request = request.clone({ headers: request.headers.delete('content-type','application/json') });
     }
   }
-
     return next.handle(request).pipe(
       tap(
         (event: HttpEvent<any>) => {
           if (event instanceof HttpResponse) {
+            if(event['body']['message']=='Successfully Authenticated User'){
+              const data = event['body']['data']['data'];
+              if(data.agency_id){
+                 localStorage.setItem('AgencyId',data.agency_id);
+              };
+              if(data.id){
+                localStorage.setItem('userId',data.id);
+             };
+            }
+          
+            
             // do stuff with response if you want
             if (0 == this._requestCount) {
               this._hideLoader();
