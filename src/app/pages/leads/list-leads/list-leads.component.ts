@@ -51,8 +51,6 @@ export class ListLeadsComponent implements OnInit {
     this.getAllCustomer();
     this.getLeads();
 
-    console.log('localStorage',localStorage)
-
     this.newLeadForm = this.formBulider.group({
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],

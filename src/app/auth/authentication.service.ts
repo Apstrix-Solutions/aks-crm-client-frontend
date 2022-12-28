@@ -41,6 +41,8 @@ export class AuthenticationService {
         //   email:
         //  }
         const response = { email: res.data.data.email, token: res.data.token };
+        localStorage.setItem('AgencyId',res.data.data.agency_id);
+        localStorage.setItem('userId',res.data.data.id);
         this.credentialsService.setCredentials(response, true);
         return res;
       })
