@@ -1,0 +1,84 @@
+
+<div class="main-container">
+    <app-topbar></app-topbar>
+    <div class="content-wrapper-scroll">
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <!-- card start -->
+                    <div class="card">
+                        <!-- <div class="card-header">
+                            <div class="card-title">Appoinments</div>
+                        </div> -->
+                        <div class="card-body">
+
+                        <div class="d-flex justify-content-end">
+                            <div class="custom-btn-group">
+                                    <button type="button" class="btn btn-primary btn-md"
+                                    (click)="goBackToLead()">Back to Lead</button>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered m-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Comment</th>
+                                                <th>Meet Link</th>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                                <th>Time</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of appoinmentsList">
+                                                <td>{{ item.id }}</td>
+                                                <td>{{ item.comment}}</td>
+                                                <td>{{ item.meet_link}}</td>
+                                                <td>{{ item.status}}</td>
+                                                <td>{{ item.date}}</td>
+                                                <td>{{ item.time}}</td>
+                                                <td>
+                                                    <!-- <i class="icon-edit1 text-primary" (click)="editContact(list.id,list.lead_id)"></i> -->
+                                                    <i class="icon-delete text-primary"
+                                                    (click)="open(content,item.id)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                      
+                        </div>
+                    </div>
+                    <!-- card end -->
+                </div>
+            </div>
+            <!-- Row end -->
+            <app-footer></app-footer>
+        </div>
+        <!-- content-wrapper end -->
+    </div>
+</div>
+
+<ng-template #content id="deleteConfirmModal" let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure to delete this?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+    </div>
+</ng-template>
