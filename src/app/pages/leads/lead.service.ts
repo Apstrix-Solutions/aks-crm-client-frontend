@@ -93,7 +93,8 @@ export class LeadService {
   }
 
   public getAllUserDetails(){
-    return this.httpClient.get(`${environment.apiUrl}${''}`,{observe: 'response'})
+    const agencyId = localStorage.getItem('AgencyId')
+    return this.httpClient.post(`${environment.serverUrl}${'agency-users/'}${agencyId}`,agencyId,{observe: 'response'})
   }
 
   public leadAssignment(data : any){
@@ -131,6 +132,7 @@ export class LeadService {
   public getIndustryById(id: any){
     return this.httpClient.get(`${environment.apiUrl}${'industry/'}${id}`,{observe: 'response'});
   }
+  
 
   // Error handling
   errorHandl(error) {
