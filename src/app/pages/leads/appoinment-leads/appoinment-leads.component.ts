@@ -24,17 +24,14 @@ export class AppoinmentLeadsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.getAllAppointments();
+    this.getAllAppoinmentsById();
   }
 
-  getAllAppointments(){
+  getAllAppoinmentsById(){
     this.leadService.getAllAppoinmentsById(this.id).subscribe((res) => {
       this.appoinmentsList = res['body']['data']['data'];
-      console.log('res',this.appoinmentsList)
     })
   }
-
-
 
   goBackToLead() {
     this.ngZone.run(() => this.router.navigateByUrl(`view-lead/${this.id}`));
@@ -44,7 +41,7 @@ export class AppoinmentLeadsComponent implements OnInit {
   open(content, appoinmentId) {
     if (confirm('Are you sure to delete ?')) {
       this.leadService.deleteAppoinments(appoinmentId).subscribe((res) => {
-        this.getAllAppointments();
+        this.getAllAppoinmentsById();
 
         if (res['body']['code'] == 200) {
           this.toastr.success(res['message'], 'Success!');

@@ -140,7 +140,7 @@ export class LeadService {
   }
 
   public getAllAppoinments(){
-    return this.httpClient.get(`${environment.apiUrl}${'appoinment-all'}`,{observe: 'response'});
+    return this.httpClient.get(`${environment.apiUrl}${'appointment-all'}`,{observe: 'response'});
   }
 
   public getAllAppoinmentsById(leadId: any){
@@ -148,11 +148,11 @@ export class LeadService {
   }
 
   public updateAppoinments(id: any, data: any){
-    return this.httpClient.put(`${environment.apiUrl}${'appoinment-edit/'}${id}`,JSON.stringify(data), {observe:'response'})
+    return this.httpClient.put(`${environment.apiUrl}${'appointment-edit/'}${id}`,JSON.stringify(data), {observe:'response'})
   }
 
-  public deleteAppoinments(id: any){
-    return this.httpClient.put(`${environment.apiUrl}${'appoinment-delete/'}${id}`,{observe: 'response'})
+  public deleteAppoinments(appoinmentId: any){
+    return this.httpClient.put(`${environment.apiUrl}${'appointment-delete'}`,{id:appoinmentId},{observe: 'response'})
   }
 
   // Error handling

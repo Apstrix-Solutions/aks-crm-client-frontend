@@ -9,9 +9,6 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                     <!-- card start -->
                     <div class="card">
-                        <!-- <div class="card-header">
-                            <div class="card-title">Appoinments</div>
-                        </div> -->
                         <div class="card-body">
 
                         <div class="d-flex justify-content-end">
@@ -41,10 +38,9 @@
                                                 <td>{{ item.comment}}</td>
                                                 <td>{{ item.meet_link}}</td>
                                                 <td>{{ item.status}}</td>
-                                                <td>{{ item.date}}</td>
+                                                <td>{{ item.date | date: 'dd-MM-yyyy'}}</td>
                                                 <td>{{ item.time}}</td>
                                                 <td>
-                                                    <!-- <i class="icon-edit1 text-primary" (click)="editContact(list.id,list.lead_id)"></i> -->
                                                     <i class="icon-delete text-primary"
                                                     (click)="open(content,item.id)"></i>
                                                 </td>

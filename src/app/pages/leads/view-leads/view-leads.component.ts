@@ -157,22 +157,6 @@ export class ViewLeadsComponent implements OnInit {
     console.log('getAllUserDetails',this.usersList)
   }
 
-
-  // leadAssignedTo(){
-  
-  //   console.log('lead Assignment form',this.leadAssignForm.value)
-  //   this.leadService.leadAssignment(this.leadAssignForm.value).subscribe((res) => {
-  //     // console.log(res)
-  //     if(res['code']==200){
-  //       this.toastr.success(res['message'],'Success!');
-  //     }
-  //     else{
-  //       this.toastr.error(res['message'],'Error!');
-  //     }
-  //   })
-
-  // }
-
   createActivity(){
     
     this.leadService.createActivities(this.activityForm.value).subscribe((res) => {
@@ -203,6 +187,12 @@ export class ViewLeadsComponent implements OnInit {
     this.leadService.createAppoinments(this.addAppoinmentForm.value).subscribe((res) => {
       this.refreshToken = res.headers.get('refresh_token');
       console.log(res)
+      if(res['body']['code']==200){
+        this.toastr.success(res['message'], 'Success!'); 
+        this.closeModal('addAppoinmentModal');
+        const id = this.addAppoinmentForm.value.lead_id
+        this.ngZone.run(() => this.router.navigateByUrl(`appoinments/${id}`));
+      }
     })
   }
 

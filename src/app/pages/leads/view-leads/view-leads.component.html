@@ -97,7 +97,7 @@
                                             data-bs-target="#ActivityModal">Activity</a>
                                         <a class="btn btn-outline-primary btn-sm"  
                                             [routerLink]="['/appoinments', leadDetails.id]">Appoinments</a>
-                                        <a class="btn btn-outline-primary btn-sm"
+                                        <a class="btn btn-outline-primary btn-sm mt-2"
                                             data-bs-toggle="modal" data-bs-target="#addAppoinmentModal">Add Appoinments</a>
 
                                     </div>
@@ -675,7 +675,7 @@
                   </div>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-primary" >Save</button>
+                <button class="btn btn-primary" [disabled]="addAppoinmentForm.invalid" >Save</button>
             </div>
           </form>
          
