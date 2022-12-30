@@ -71,6 +71,14 @@ export class ImportLeadsComponent implements OnInit {
   })
 };
 
+downloadFile(data: any) {
+  let link = document.createElement("a");
+  link.download = "sample csv";
+  link.href = "assets/img/docs/sampledata.csv";
+  link.click();
+}
+
+
   get f(){ return this.importLeadsData.controls; }
 
 

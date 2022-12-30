@@ -43,6 +43,7 @@ import { ListPostModule } from './pages/marketing/organicpost/list-post/list-pos
 import { ListCampainsModule } from './pages/marketing/campaigns/list-campains/list-campains.module';
 import { LandingModule } from './pages/marketing/organicpost/lanading-page/landing-page.module';
 import { LandingPageModule } from './pages/marketing/campaigns/landing-page/landing-page.module';
+import { AppoinmentLeadsModule } from './pages/leads/appoinment-leads/appoinment-leads.module';
 // <============
 
 @NgModule({
@@ -79,6 +80,7 @@ import { LandingPageModule } from './pages/marketing/campaigns/landing-page/land
     ListCampainsModule,
     LandingModule,
     LandingPageModule,
+    AppoinmentLeadsModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
