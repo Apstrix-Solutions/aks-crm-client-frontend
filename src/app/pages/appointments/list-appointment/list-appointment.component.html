@@ -40,11 +40,13 @@
                                                 <td>{{ item.subject}}</td>
                                                 <td>{{ item.meet_link}}</td>
                                                 <td>{{ item.status}}</td>
+                                                <td>{{ item.Location}}</td>
                                                 <td>{{ item.date | date: 'dd-MM-yyyy'}}</td>
                                                 <td>{{ item.time}}</td>
                                                 <td>{{ item.comment}}</td>
                                                 <td>
-                                                    <i class="icon-edit1 text-primary" (click)="editAppointment(item.id)"></i>
+                                                    <i class="icon-edit1 text-primary" 
+                                                    [routerLink]="['/add-appointments', item.id]"></i>
                                                     <i class="icon-delete text-primary"
                                                     (click)="open(content,item.id)"></i>
                                                 </td>

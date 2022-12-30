@@ -1,209 +1,234 @@
 <div class="main-container">
     <app-topbar></app-topbar>
 
-  <!-- Content wrapper scroll start -->
-  <div class="content-wrapper-scroll">
-      <!-- Content wrapper start -->
-      <div class="content-wrapper">
-  
-          <!-- Row start -->
-          <div class="row gutters">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-  
-                  <!-- Card start -->
-                  <div class="card">
-                      <div class="card-body">
-                          <form class="form-horizontal" [formGroup]= "newAppointmentForm" (ngSubmit)="onSubmit()">
-                              <!-- Row start -->
-                              <div class="row gutters">
-                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
-                                      <div class="form-section-header">New Appointment</div>
-                                  </div>
-                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                      <!-- field wrapper start -->
-                                    <div class="field-wrapper">
-                                        <div class="input-group">
-                                            <input 
-                                            [ngClass]="{'is-invalid': f['subject'].touched && f['subject'].invalid}"   
-                                            type="text"  
-                                            class="form-control"  
-                                            formControlName="subject" 
-                                            >
-                                        </div>
-                                        <p *ngIf="f['subject'].touched && f['subject'].invalid" class="small text-danger font-italic">*Subject is required.</p>
-                                        <div  class="field-placeholder">Subject <span class="text-danger">*</span></div>
+    <!-- Content wrapper scroll start -->
+    <div class="content-wrapper-scroll">
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <!-- Card start -->
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal" [formGroup]="newAppointmentForm" (ngSubmit)="onSubmit()">
+                                <!-- Row start -->
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
+                                        <div class="form-section-header">New Appointment</div>
                                     </div>
-                                    <!-- field wrapper end -->
-                                </div>
-
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-
-                                    <div class="field-wrapper">
-                                        <div class="input-group">
-                                            <select
-                                                [ngClass]="{'is-invalid': f['lead_id'].touched && f['lead_id'].invalid}"
-                                                type="text"
-                                                name="lead_id" 
-                                                formControlName="lead_id"
-                                                >
-                                                <option value="{{list.id}}" *ngFor="let list of leadIds">
-                                                    {{list}}</option>
-                                            </select>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <!-- field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <input
+                                                    [ngClass]="{'is-invalid': f['subject'].touched && f['subject'].invalid}"
+                                                    type="text" class="form-control" formControlName="subject"
+                                                    value="{{appointmentListById.subject}}">
+                                            </div>
+                                            <p *ngIf="f['subject'].touched && f['subject'].invalid"
+                                                class="small text-danger font-italic">*Subject is required.</p>
+                                            <div class="field-placeholder">Subject <span class="text-danger">*</span>
+                                            </div>
                                         </div>
+                                        <!-- field wrapper end -->
+                                    </div>
+
+                                    <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <select
+                                                    [ngClass]="{'is-invalid': f['lead_id'].touched && f['lead_id'].invalid}"
+                                                    type="text" name="lead_id" formControlName="lead_id">
+                                                    <option value="{{list.id}}" *ngFor="let list of leadIds">
+                                                        {{list}}</option>
+                                                </select>
+                                            </div>
+                                            <p *ngIf="f['lead_id'].touched && f['lead_id'].invalid"
+                                                class="small text-danger font-italic">*Participants is required.</p>
+                                            <div class="field-placeholder">Participants<span
+                                                    class="text-danger">*</span></div>
+                                        </div>
+                                    </div> -->
+<!-- 
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <select
+                                                    [ngClass]="{'is-invalid': f['lead_id'].touched && f['lead_id'].invalid}"
+                                                    name="lead_id" formControlName="lead_id">
+                                                    <option value="{{list.id}}" *ngFor="let list of userIds">
+                                                        {{list}}</option>
+                                                </select>
+                                            </div>
+                                            <p *ngIf="f['lead_id'].touched && f['lead_id'].invalid"
+                                                class="small text-danger font-italic">*Agency Participants is required.
+                                            </p>
+                                            <div class="field-placeholder">Agency Participants<span
+                                                    class="text-danger">*</span></div>
+                                        </div>
+                                    </div> -->
+
+                                    <div class="clear"></div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <!-- field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <input
+                                                    [ngClass]="{'is-invalid': f['meet_link'].touched && f['meet_link'].invalid}"
+                                                    type="text" class="form-control" formControlName="meet_link"
+                                                    value="{{appointmentListById.meet_link}}">
+                                            </div>
+                                            <p *ngIf="f['meet_link'].touched && f['meet_link'].invalid"
+                                                class="small text-danger font-italic">*Meet Link is required.</p>
+                                            <div class="field-placeholder">Meet Link <span class="text-danger">*</span>
+                                            </div>
+                                        </div>
+                                        <!-- field wrapper end -->
+                                    </div>
+
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <!-- field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <input
+                                                    [ngClass]="{'is-invalid': f['status'].touched && f['status'].invalid}"
+                                                    type="text" class="form-control" formControlName="status"
+                                                    value="{{appointmentListById.status}}">
+                                            </div>
+                                            <p *ngIf="f['status'].touched && f['status'].invalid"
+                                                class="small text-danger font-italic">*Status is required.</p>
+                                            <div class="field-placeholder">Status <span class="text-danger">*</span>
+                                            </div>
+                                        </div>
+                                        <!-- field wrapper end -->
+                                    </div>
+
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <input type="date" name="date" class="form-control datepicker"
+                                                    formControlName="date"
+                                                    [ngClass]="{'is-invalid':f['date'].touched && f['date'].invalid}"
+                                                    value="{{appointmentListById.date}}">
+                                            </div>
+                                            <p *ngIf="f['date'].touched && f['date'].invalid"
+                                                class="small text-danger font-italic">
+                                                *Date is required
+                                            </p>
+                                            <div class="field-placeholder">Date<span class="text-danger">*</span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <!-- field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <input
+                                                    [ngClass]="{'is-invalid': f['time'].touched && f['time'].invalid}"
+                                                    type="time" class="form-control" formControlName="time"
+                                                    value="{{appointmentListById.time}}">
+                                            </div>
+                                            <p *ngIf="f['time'].touched && f['time'].invalid"
+                                                class="small text-danger font-italic">*Time is required.</p>
+                                            <div class="field-placeholder">Time <span class="text-danger">*</span></div>
+                                        </div>
+                                        <!-- field wrapper end -->
+                                    </div>
+
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <!-- field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <input
+                                                    [ngClass]="{'is-invalid': f['location'].touched && f['location'].invalid}"
+                                                    type="text" class="form-control" formControlName="location"
+                                                    value="{{appointmentListById.Location}}">
+                                            </div>
+                                            <p *ngIf="f['location'].touched && f['location'].invalid"
+                                                class="small text-danger font-italic">*Location is required.</p>
+                                            <div class="field-placeholder">Location <span class="text-danger">*</span>
+                                            </div>
+                                        </div>
+                                        <!-- field wrapper end -->
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                        <!-- field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" formControlName="comment"   value="{{appointmentListById.comment}}">
+                                            </div>
+                                            <div class="field-placeholder">Comment </div>
+                                        </div>
+                                        <!-- field wrapper end -->
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 ">
+                                        <ng-multiselect-dropdown 
+                                        [placeholder]="'Select Users'"
+                                        formControlName="user_id" 
+                                        [settings]="userDropdownSettings"
+                                        [data]="userDropdownList"
+                                        (onSelect)="selectUser($event)"
+                                        (onSelectAll)="selectUserAll($event)"
+
+                                        (onDeSelect)="deSelectUser($event)"
+                                        (onDeSelectAll)="deSelectUserAll($event)"
+                                        >
+                                        </ng-multiselect-dropdown>
+
+                                        <!-- </div> -->
+                                    </div>
+
+                                    <div style="width: 400px;">
+                                        <ng-multiselect-dropdown 
+                                        [placeholder]="'Select Leads'"
+                                        formControlName="lead_id"
+                                        [settings]="leadDropdownSettings"
+                                        [data]="leadDropdownList"
+                                        (onSelect)="selectLead($event)"
+                                        (onSelectAll)="selectLeadAll($event)"
+
+                                        (onDeSelect)="deSelectLead($event)"
+                                        (onDeSelectAll)="deSelectLeadAll($event)"
+                                        [ngClass]="{'is-invalid': f['lead_id'].touched && f['lead_id'].invalid}"
+                                        >
+                                        </ng-multiselect-dropdown>
                                         <p *ngIf="f['lead_id'].touched && f['lead_id'].invalid"
-                                            class="small text-danger font-italic">*Participants is required.</p>
-                                        <div class="field-placeholder">Participants<span class="text-danger">*</span></div>
+                                        class="small text-danger font-italic">*Participant is required.</p>
+                                    </div>
+
+
+                                    <div class="clear"></div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                        <button class="btn btn-primary" routerLink="/list-appointments">Cancel</button>
+                                        <button class="btn btn-primary" [disabled]="newAppointmentForm.invalid">Save</button>
+                                        <!-- <button class="btn btn-primary">Save</button> -->
                                     </div>
                                 </div>
+                                <!-- Row end -->
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
 
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                <!-- Row end -->
+            </div>
+            <!-- Content wrapper end -->
 
-                                    <!-- Field wrapper start -->
-                                    <div class="field-wrapper">
-                                        <div class="input-group">
-                                            <select
-                                                [ngClass]="{'is-invalid': f['lead_id'].touched && f['lead_id'].invalid}"
-                                                name="lead_id" 
-                                                formControlName="lead_id"
-                                                >
-                                                <option value="{{list.id}}" *ngFor="let list of userIds">
-                                                    {{list}}</option>
-                                            </select>
-                                        </div>
-                                        <p *ngIf="f['lead_id'].touched && f['lead_id'].invalid"
-                                            class="small text-danger font-italic">*Agency Participants is required.</p>
-                                        <div class="field-placeholder">Agency Participants<span class="text-danger">*</span></div>
-                                    </div>
-                                    <!-- Field wrapper end -->
-                                </div>
+            <app-footer></app-footer>
 
-                                <div class="clear"></div>
-
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <!-- field wrapper start -->
-                                  <div class="field-wrapper">
-                                      <div class="input-group">
-                                          <input 
-                                          [ngClass]="{'is-invalid': f['meet_link'].touched && f['meet_link'].invalid}"   
-                                          type="text"  
-                                          class="form-control"  
-                                          formControlName="meet_link" >
-                                      </div>
-                                      <p *ngIf="f['meet_link'].touched && f['meet_link'].invalid" class="small text-danger font-italic">*Meet Link is required.</p>
-                                      <div  class="field-placeholder">Meet Link <span class="text-danger">*</span></div>
-                                  </div>
-                                  <!-- field wrapper end -->
-                                </div>
-
-                             
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <!-- field wrapper start -->
-                                  <div class="field-wrapper">
-                                      <div class="input-group">
-                                          <input 
-                                          [ngClass]="{'is-invalid': f['status'].touched && f['status'].invalid}"   
-                                          type="text"  
-                                          class="form-control"  
-                                          formControlName="status" 
-                                          >
-                                      </div>
-                                      <p *ngIf="f['status'].touched && f['status'].invalid" class="small text-danger font-italic">*Status is required.</p>
-                                      <div  class="field-placeholder">Status <span class="text-danger">*</span></div>
-                                  </div>
-                                  <!-- field wrapper end -->
-                              </div>
-
-          
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <div class="field-wrapper">
-                                        <div class="input-group">
-                                            <input 
-                                            type="date" 
-                                            name="date" 
-                                            class="form-control datepicker"
-                                            formControlName="date"
-                                            [ngClass]="{'is-invalid':f['date'].touched && f['date'].invalid}"
-                                            >
-                                        </div>
-                                        <p *ngIf="f['date'].touched && f['date'].invalid" class="small text-danger font-italic">
-                                            *Date is required
-                                        </p>
-                                        <div class="field-placeholder">Date<span class="text-danger">*</span></div>
-                                    </div>
-                                </div>
-          
-                                
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <!-- field wrapper start -->
-                                  <div class="field-wrapper">
-                                      <div class="input-group">
-                                          <input 
-                                          [ngClass]="{'is-invalid': f['time'].touched && f['time'].invalid}"   
-                                          type="time"  
-                                          class="form-control"  
-                                          formControlName="time" 
-                                          >
-                                      </div>
-                                      <p *ngIf="f['time'].touched && f['time'].invalid" class="small text-danger font-italic">*Time is required.</p>
-                                      <div  class="field-placeholder">Time <span class="text-danger">*</span></div>
-                                  </div>
-                                  <!-- field wrapper end -->
-                                </div>
-
-
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <!-- field wrapper start -->
-                                  <div class="field-wrapper">
-                                      <div class="input-group">
-                                          <input 
-                                          [ngClass]="{'is-invalid': f['location'].touched && f['location'].invalid}"   
-                                          type="text"  
-                                          class="form-control"  
-                                          formControlName="location" 
-                                          >
-                                      </div>
-                                      <p *ngIf="f['location'].touched && f['location'].invalid" class="small text-danger font-italic">*Location is required.</p>
-                                      <div  class="field-placeholder">Location <span class="text-danger">*</span></div>
-                                  </div>
-                                  <!-- field wrapper end -->
-                                </div>
-
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                    <!-- field wrapper start -->
-                                  <div class="field-wrapper">
-                                      <div class="input-group">
-                                          <input 
-                                          type="text"  
-                                          class="form-control"  
-                                          formControlName="comment" >
-                                      </div>
-                                      <div  class="field-placeholder">Comment </div>
-                                  </div>
-                                  <!-- field wrapper end -->
-                                </div>
-
-                              
-
-                                <div class="clear"></div>
-                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                                      <!-- <button class="btn btn-primary" [routerLink]="['/list-appointments', id]">Cancel</button> -->
-                                      <!-- <button class="btn btn-primary" [disabled]="newAppointmentForm.invalid">Save</button> -->
-                                      <button class="btn btn-primary" >Save</button>
-                                  </div>
-                              </div>
-                          <!-- Row end -->
-                          </form>
-                      </div>
-                  </div>
-                  <!-- Card end --> 
-              </div>
-          
-          <!-- Row end -->
-      </div>
-      <!-- Content wrapper end -->
-  
-      <app-footer></app-footer>
-
-  </div>
-  <!-- Content wrapper scroll end -->
-  </div>
+        </div>
+        <!-- Content wrapper scroll end -->
+    </div>

@@ -6,6 +6,7 @@ import { AddAppointmentComponent } from './add-appointment.component';
 import { AddAppointmentRoutingModule } from './add-appointment-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   declarations: [AddAppointmentComponent],
 })

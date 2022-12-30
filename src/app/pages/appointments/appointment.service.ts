@@ -10,23 +10,24 @@ export class AppointmentService {
   constructor(private httpClient: HttpClient) {}
 
   createAppointment(data: any){
-    return this.httpClient.post(`${environment.apiUrl}${''}`, JSON.stringify(data), {observe: 'response'})
+    console.log('data',data)
+    return this.httpClient.post(`${environment.apiUrl}${'appointment'}`, data, {observe: 'response'})
   }
 
   updateAppointment(data: any, id: any){
-    return this.httpClient.put(`${environment.apiUrl}${'/'}${id}`,JSON.stringify(data), {observe:'response'})
+    return this.httpClient.put(`${environment.apiUrl}${'appointment-edit/'}${id}`,data, {observe:'response'})
   }
 
-  getAllAppointment(){
-    return this.httpClient.get(`${environment.apiUrl}${''}`, {observe: 'response'})
+  getAppointment(id: any){
+    return this.httpClient.get(`${environment.apiUrl}${'appointment/'}${id}`, {observe: 'response'})
   }
 
-  getAllAppointmentsByLeadId(leadId: any){
-    return this.httpClient.get(`${environment.apiUrl}${'/'}${leadId}`, {observe: 'response'})
+  getAllAppointmentsByAgencyId(agencyId: any){
+    return this.httpClient.get(`${environment.apiUrl}${'appointment-agency-all/'}${agencyId}`, {observe: 'response'})
   }
 
-  deteteAppointment(){
-    return this.httpClient.put(`${environment.apiUrl}${''}`,{observe: 'response'})
+  deteteAppointment(id:any){
+    return this.httpClient.put(`${environment.apiUrl}${'appointment-delete/'}${id}`,{observe: 'response'})
   }
 
 
