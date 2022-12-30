@@ -45,9 +45,19 @@ export class AddLeadsComponent implements OnInit {
       firstName: [null, [Validators.required]],
       middleName: [null],
       lastName: [null, [Validators.required]],
-      primaryNumber: [null, [Validators.required]],
-      secondaryNumber: [null],
-      whatsappNumber: [null],
+      primaryNumber: [null,[
+          Validators.required,
+          Validators.pattern("^[0-9]*$")
+        ]
+      ],
+      secondaryNumber: [null,[
+          Validators.pattern("^[0-9]*$")
+        ]
+      ],
+      whatsappNumber: [null,[
+          Validators.pattern("^[0-9]*$")
+        ]
+      ],
       leadScore: [null],
       leadValue: [null],
       email: [null, [Validators.required, Validators.email]],
@@ -185,14 +195,18 @@ export class AddLeadsComponent implements OnInit {
   };
 
   updateLeadAssignment(){
-    this.leadService.updateLeadAssignment(this.assigned_to,this.id).subscribe( (res) => {
-      this.refreshToken = res.headers.get('refresh_token');
-      if(res['body']['code']==200){
-        this.toastr.success(res['message'], 'Success');
-      }else{
-        this.toastr.error(res['message'],'Error')
-      }
-    })
+
+    if(this.assigned_to){
+      this.leadService.updateLeadAssignment(this.assigned_to,this.id).subscribe( (res) => {
+        this.refreshToken = res.headers.get('refresh_token');
+        if(res['body']['code']==200){
+          this.toastr.success(res['message'], 'Success');
+        }else{
+          this.toastr.error(res['message'],'Error')
+        }
+      })
+    }
+
   };
 
   leadAssign(event: any){
@@ -207,7 +221,7 @@ export class AddLeadsComponent implements OnInit {
       this.addLeads();
     } else {
       this.updateLeads();
-      this.updateLeadAssignment();
+      // this.updateLeadAssignment();
     }
   }
 

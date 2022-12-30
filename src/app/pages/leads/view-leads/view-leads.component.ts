@@ -110,23 +110,20 @@ export class ViewLeadsComponent implements OnInit {
 
   getCompanyById(){
     this.leadService.getCompanyByLeadId(this.leadId).subscribe(res => {
-      // this.leadCompanyDetails = res['body']['data']
       const data = res['body']['data']['data'];
       if(data){
         this.getIndustryById(data.industry_id);
       }
       this.leadCompanyDetails = data;
-      console.log('-----------com',res)
     })
   }
+
   getIndustryById(industryId:any){
     this.leadService.getIndustryById(industryId).subscribe(res => {
       const data = res['body']['data']['data']
-      console.log('ind_name',data)
-      this.leadCompanyDetails.name = data.name
+      this.leadCompanyDetails.indName = data.name
     })
-  }
- 
+  } 
 
 
   getLeadSocialById() {
