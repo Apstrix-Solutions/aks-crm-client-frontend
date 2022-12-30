@@ -51,11 +51,41 @@ export class ListLeadsComponent implements OnInit {
     this.newLeadForm = this.formBulider.group({
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
-      title: [null, [Validators.required]],
-      primaryNumber: [null, [Validators.required]],
-      secondaryNumber: [null, [Validators.required]],
+      title: [null],
+      primaryNumber: ['', [
+          Validators.pattern("^[0-9]*$"),
+          Validators.maxLength(12),
+          Validators.minLength(10),
+        ]
+      ],
+      secondaryNumber: ['', [
+          Validators.pattern("^[0-9]*$"),
+          Validators.maxLength(12),
+          Validators.minLength(10),
+        ]
+      ],
       email: [null, [Validators.required, Validators.email]],
-    });
+    }, {
+      validators: [phoneConditionallyRequiredValidator, mobileConditionallyRequiredValidator] 
+  });
+
+  function phoneConditionallyRequiredValidator(formGroup: FormGroup) {
+    if (formGroup.value.primaryNumber) {
+      return Validators.required(formGroup.get('primaryNumber')) ? {
+        phoneConditionallyRequiredValidator: true,
+      } : null;
+    }
+    return null;
+  }
+
+  function mobileConditionallyRequiredValidator(formGroup: FormGroup) {
+    if (formGroup.value.secondaryNumber) {
+      return Validators.required(formGroup.get('secondaryNumber')) ? {
+        mobileConditionallyRequiredValidator: true,
+      } : null;
+    }
+    return null;
+  }
 
     this.newSearchForm = this.formBulider.group({
       firstName: [null],
@@ -79,7 +109,15 @@ export class ListLeadsComponent implements OnInit {
         this.getLeads();
         this.closebutton.nativeElement.click();
         this.toastr.success(res['message'], 'Success!');
-        this.newLeadForm.patchValue({firstName : null, lastName: null, title: null, primaryNumber: null, secondaryNumber: null, email: null});
+        // this.newLeadForm.patchValue({firstName : '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: ''});
+         this.newLeadForm = this.formBulider.group({
+          firstName: [null, [Validators.required]],
+          lastName: [null, [Validators.required]],
+          title: [null],
+          primaryNumber: [null],
+          secondaryNumber: [null],
+          email: [null, [Validators.required, Validators.email]],
+          });
       } else {
         this.toastr.error(res['errorMessage'], 'Error!');
       }
@@ -113,7 +151,7 @@ export class ListLeadsComponent implements OnInit {
     this.leadService.getLead().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
       const leadData =  data['body']['data']['leads'];
-      console.log('leadData',leadData);
+      // console.log('leadData',leadData);
       
       
       if( leadData.length!=0 && this.customerList.length!=0 ){
@@ -180,6 +218,11 @@ export class ListLeadsComponent implements OnInit {
         }
       });
     }
+  }
+
+  reset(){
+    this.getLeads();
+    this.newSearchForm.patchValue({ firstName: '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: '' })
   }
 
   onSubmit() {

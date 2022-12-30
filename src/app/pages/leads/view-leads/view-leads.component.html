@@ -95,6 +95,10 @@
                                             [routerLink]="['/contacts', leadDetails.id]">Contacts</a>
                                         <a class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#ActivityModal">Activity</a>
+                                        <a class="btn btn-outline-primary btn-sm"  
+                                            [routerLink]="['/appoinments', leadDetails.id]">Appoinments</a>
+                                        <a class="btn btn-outline-primary btn-sm mt-2"
+                                            data-bs-toggle="modal" data-bs-target="#addAppoinmentModal">Add Appoinments</a>
 
                                     </div>
                                     <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1"></div>
@@ -393,23 +397,23 @@
 
                                     <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
 
-                                        <!-- Field wrapper start -->
-                                        <div class="field-wrapper">
-                                            <div class="input-group">
-                                                <input value="{{leadCompanyDetails.name}}" type="text"
-                                                    class="form-control-details" readonly>
-                                            </div>
-                                            <div class="field-placeholder">Company Name </div>
+                                       <!-- Field wrapper start -->
+                                       <div class="field-wrapper">
+                                        <div class="input-group">
+                                            <input value="{{leadCompanyDetails?leadCompanyDetails.name:''}}" type="text"
+                                                class="form-control-details" readonly>
                                         </div>
-                                        <!-- Field wrapper end -->
+                                        <div class="field-placeholder">Company Name </div>
+                                    </div>
+                                    <!-- Field wrapper end -->
 
                                     </div>
                                     <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
 
-                                        <!-- Field wrapper start -->
-                                        <div class="field-wrapper">
+                                         <!-- Field wrapper start -->
+                                         <div class="field-wrapper">
                                             <div class="input-group">
-                                                <input value="{{leadCompanyDetails.designation}}" type="text"
+                                                <input value="{{leadCompanyDetails?leadCompanyDetails.designation:''}}" type="text"
                                                     class="form-control-details" readonly>
                                             </div>
                                             <div class="field-placeholder">Designation </div>
@@ -419,15 +423,15 @@
                                     </div>
                                     <div class="col-xl-10 col-lg-11 col-md-11 col-sm-11 col-11 ms-3">
 
-                                        <!-- Field wrapper start -->
-                                        <div class="field-wrapper">
-                                            <div class="input-group">
-                                                <input value="{{leadCompanyDetails.name}}" type="text"
-                                                    class="form-control-details" readonly>
-                                            </div>
-                                            <div class="field-placeholder">Industry </div>
+                                       <!-- Field wrapper start -->
+                                       <div class="field-wrapper">
+                                        <div class="input-group">
+                                            <input value="{{leadCompanyDetails?leadCompanyDetails.indName:''}}" type="text"
+                                                class="form-control-details" readonly>
                                         </div>
-                                        <!-- Field wrapper end -->
+                                        <div class="field-placeholder">Industry </div>
+                                    </div>
+                                    <!-- Field wrapper end -->
 
                                     </div>
                                    
@@ -571,3 +575,111 @@
     </div>
 </ng-template>
 <!-- Confirmation box end -->
+
+  <!-- Modal start to display add appoinment popup  -->
+  <div class="modal fade" id="addAppoinmentModal" tabindex="-1" aria-labelledby="AddAppoinmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="AddAppoinmentModalLabel">Create Appoinment</h5>
+              <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form class="form-horizondal" [formGroup]="addAppoinmentForm" (ngSubmit)="addAppoinment()">
+              <div class="modal-body">
+                  <div class="row gutters">
+                      
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="field-wrapper">
+                              <div class="input-group">
+                                  <input 
+                                  type="text" 
+                                  name="comment" 
+                                  formControlName="comment"
+                                  >
+                              </div>
+                              <!-- <p *ngIf="f['comment'].touched && f['comment'].invalid" class="small text-danger font-italic">
+                                  * Comment is required
+                              </p> -->
+                              <div class="field-placeholder">Comment</div>
+                          </div>
+                      </div>
+
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="field-wrapper">
+                              <div class="input-group">
+                                  <input 
+                                  type="text" 
+                                  name="meet_link" 
+                                  formControlName="meet_link"
+                                  [ngClass]="{'is-invalid':f['meet_link'].touched && f['meet_link'].invalid}"
+                                  >
+                              </div>
+                              <p *ngIf="f['meet_link'].touched && f['meet_link'].invalid" class="small text-danger font-italic">
+                                  * Meet Link is required
+                              </p>
+                              <div class="field-placeholder">meet_link<span class="text-danger">*</span></div>
+                          </div>
+                      </div>
+
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="field-wrapper">
+                              <div class="input-group">
+                                  <input 
+                                  type="text" 
+                                  name="status" 
+                                  formControlName="status"
+                                  [ngClass]="{'is-invalid':f['status'].touched && f['status'].invalid}"
+                                  >
+                              </div>
+                              <p *ngIf="f['status'].touched && f['status'].invalid" class="small text-danger font-italic">
+                                  * Status is required
+                              </p>
+                              <div class="field-placeholder">Status<span class="text-danger">*</span></div>
+                          </div>
+                      </div>
+
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="field-wrapper">
+                              <div class="input-group">
+                                  <input 
+                                  type="text" 
+                                  name="date" 
+                                  formControlName="date"
+                                  [ngClass]="{'is-invalid':f['date'].touched && f['date'].invalid}"
+                                  >
+                              </div>
+                              <p *ngIf="f['date'].touched && f['date'].invalid" class="small text-danger font-italic">
+                                  *Date is required
+                              </p>
+                              <div class="field-placeholder">Date<span class="text-danger">*</span></div>
+                          </div>
+                      </div>
+
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <div class="field-wrapper">
+                              <div class="input-group">
+                                  <input 
+                                  type="text" 
+                                  name="time" 
+                                  formControlName="time"
+                                  [ngClass]="{'is-invalid':f['time'].touched && f['time'].invalid}"
+                                  >
+                              </div>
+                              <p *ngIf="f['time'].touched && f['time'].invalid" class="small text-danger font-italic">
+                                  * Time is required
+                              </p>
+                              <div class="field-placeholder">Time<span class="text-danger">*</span></div>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary" [disabled]="addAppoinmentForm.invalid" >Save</button>
+            </div>
+          </form>
+         
+      </div>
+    </div>
+</div>
+<!-- Modal end -->

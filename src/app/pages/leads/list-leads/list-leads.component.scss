@@ -1,11 +1,11 @@
 .filter-form {
     border: 1px solid #1273eb;
-    padding:10px;
+    padding: 10px;
 }
 
 .container-md {
-    border:1px solid rgb(216, 213, 213);
-    border-radius:2px;
+    border: 1px solid rgb(216, 213, 213);
+    border-radius: 2px;
 }
 
 .form-control-search {
@@ -18,21 +18,23 @@
 
 .search-footer button {
     margin-bottom: 3px;
-    text-align: right; 
-    margin-left: 396px;
-    margin-top: 30px; 
+    text-align: right;
+    /* margin-left: 11px; */
+    margin-top: 30px;
     border-radius: 5px;
+    float: right;
+    margin-right: 15px;
 }
 
 .quick_lead_btn {
-    display: -webkit-box!important;
+    display: -webkit-box !important;
     margin: 10px 0 0;
-    
+
 }
 
 .quick_lead_btn button {
     padding: 8px 0.75rem;
-    
+
 }
 
 .convert-btn {

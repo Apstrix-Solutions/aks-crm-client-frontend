@@ -1,0 +1,2 @@
+title,firstName,middleName,lastName,primaryNumber,secondaryNumber,whatsappNumber,email,currentStatus,defaultLanguage,leadScore,leadSource,leadSourceId,leadValue,agencyId,companyId,name,designation,industryId,address,city,state,country,zip,website,linkedin,facebook,background_info,phone
+Sample title,John,W,Adams,9632587412,4569852147,9632587412,johnadams@gmail.com,1,en,100,1,1,2001,1001,10,ABS devs,Lead,1,secondStreet,ernakulam,kerala,india,965874,www.web.com,linkedin.com,facebook.com,test data,9874785896
