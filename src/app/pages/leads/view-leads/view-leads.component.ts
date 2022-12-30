@@ -16,6 +16,7 @@ export class ViewLeadsComponent implements OnInit {
   ImageProp = '../../../../assets/img/user.svg';
   leadAssignForm!: FormGroup;
   activityForm!: FormGroup;
+  addAppoinmentForm!: FormGroup;
   refreshToken: string;
   leadDetails: any = [];
   leadSocialDetails: any = [];
@@ -50,6 +51,18 @@ export class ViewLeadsComponent implements OnInit {
       comment:[null,[Validators.required]]
     });
 
+  
+    this.addAppoinmentForm = this.formBulider.group({
+      lead_id:[],
+      user_id:[],
+      comment:[null],
+      meet_link:[null,Validators.required],
+      status:[null,Validators.required],
+      date:[null,Validators.required],
+      time:[null,Validators.required]
+    });
+
+
 
     this.getLeadById();
     this.getLeadAddressById();
@@ -57,6 +70,8 @@ export class ViewLeadsComponent implements OnInit {
     this.currentUser = localStorage.getItem('userId');
 
     this.activityForm.patchValue({user_id:this.currentUser,lead_id:this.leadId})
+
+    this.addAppoinmentForm.patchValue({lead_id:this.leadId,user_id:this.currentUser});
     this.getActivitiesByeLeadId();
     this.getCompanyById();
   }
@@ -142,22 +157,6 @@ export class ViewLeadsComponent implements OnInit {
     console.log('getAllUserDetails',this.usersList)
   }
 
-
-  leadAssignedTo(){
-  
-    console.log('lead Assignment form',this.leadAssignForm.value)
-    this.leadService.leadAssignment(this.leadAssignForm.value).subscribe((res) => {
-      // console.log(res)
-      if(res['code']==200){
-        this.toastr.success(res['message'],'Success!');
-      }
-      else{
-        this.toastr.error(res['message'],'Error!');
-      }
-    })
-
-  }
-
   createActivity(){
     
     this.leadService.createActivities(this.activityForm.value).subscribe((res) => {
@@ -179,6 +178,21 @@ export class ViewLeadsComponent implements OnInit {
     this.leadService.getActivitiesByLeadId(this.leadId).subscribe((res) =>{
       this.refreshToken = res.headers.get('refresh_token');
       this.activityList = res['body']['data']['activities']
+    })
+  }
+
+  //create appoinment
+  addAppoinment(){
+    console.log('addAppoinmentForm',this.addAppoinmentForm)
+    this.leadService.createAppoinments(this.addAppoinmentForm.value).subscribe((res) => {
+      this.refreshToken = res.headers.get('refresh_token');
+      console.log(res)
+      if(res['body']['code']==200){
+        this.toastr.success(res['message'], 'Success!'); 
+        this.closeModal('addAppoinmentModal');
+        const id = this.addAppoinmentForm.value.lead_id
+        this.ngZone.run(() => this.router.navigateByUrl(`appoinments/${id}`));
+      }
     })
   }
 
@@ -207,4 +221,9 @@ export class ViewLeadsComponent implements OnInit {
   get log(){
     return this.activityForm.controls;
   }
+
+  get f(){
+    return this.addAppoinmentForm.controls;
+  }
+
 }
