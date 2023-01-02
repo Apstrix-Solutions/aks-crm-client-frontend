@@ -1,4 +1,3 @@
-
 <div class="main-container">
     <app-topbar></app-topbar>
     <div class="content-wrapper-scroll">
@@ -11,52 +10,50 @@
                     <div class="card">
                         <div class="card-body">
 
-                        <div class="d-flex justify-content-end">
-                            <div class="custom-btn-group">
+                            <div class="d-flex justify-content-end">
+                                <div class="custom-btn-group">
                                     <button type="button" class="btn btn-primary btn-md"
-                                    (click)="goBack()">Back to Appointments</button>
-                            </div>
-                        </div>
-                        <div class="row gutters">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-bordered m-0">
-                                        <thead>
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Subject</th>
-                                                <th>Meet Link</th>
-                                                <th>Status</th>
-                                                <th>Location</th>
-                                                <th>Date</th>
-                                                <th>Time</th>
-                                                <th>Comment</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let item of appoinmentsList">
-                                                <td>{{ item.id }}</td>
-                                                <td>{{ item.subject}}</td>
-                                                <td>{{ item.meet_link}}</td>
-                                                <td>{{ item.status}}</td>
-                                                <td>{{ item.Location}}</td>
-                                                <td>{{ item.date | date: 'dd-MM-yyyy'}}</td>
-                                                <td>{{ item.time}}</td>
-                                                <td>{{ item.comment}}</td>
-                                                <td>
-                                                    <i class="icon-edit1 text-primary" 
-                                                    [routerLink]="['/add-appointments', item.id]"></i>
-                                                    <i class="icon-delete text-primary"
-                                                    (click)="open(content,item.id)"></i>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        [routerLink]="['/add-appointments']">Add Appointments</button>
                                 </div>
                             </div>
-                        </div>
-                      
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Subject</th>
+                                                    <th>Meet Link</th>
+                                                    <th>Location</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+                                                    <th>Comment</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of appoinmentsList">
+                                                    <td>{{ item.id }}</td>
+                                                    <td>{{ item.subject}}</td>
+                                                    <td>{{ item.meet_link}}</td>
+                                                    <td>{{ item.Location}}</td>
+                                                    <td>{{ item.date | date: 'dd-MM-yyyy'}}</td>
+                                                    <td>{{ item.time}}</td>
+                                                    <td>{{ item.comment}}</td>
+                                                    <td>
+                                                        <i class="icon-edit1 text-primary"
+                                                            [routerLink]="['/add-appointments', item.id]"></i>
+                                                        <i class="icon-delete text-primary"
+                                                            (click)="open(content,item.id)"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <!-- card end -->

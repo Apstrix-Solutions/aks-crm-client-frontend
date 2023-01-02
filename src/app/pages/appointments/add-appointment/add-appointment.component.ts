@@ -45,17 +45,16 @@ export class AddAppointmentComponent implements OnInit {
     this.isAddMode = !this.id;
 
     this.agencyId = localStorage.getItem('AgencyId');
-
     this.newAppointmentForm = this.formBulider.group({
       subject: [null, Validators.required],
       lead_id: [null, Validators.required],
       user_id: [null, Validators.required],
-      agencyId:[null],
+      agency_id:[this.agencyId],
       comment: [null],
-      meet_link:[null, Validators.required],
-      // meet_link: [null, Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')],
-      status: [null, Validators.required],
-      location: [null, Validators.required],
+      Regarding: [null],
+      meet_link:[null, [Validators.required]],
+      status: ['Pending'],
+      Location: [null, Validators.required],
       date: [null, Validators.required],
       time: [null, Validators.required]
     });
@@ -74,20 +73,20 @@ export class AddAppointmentComponent implements OnInit {
     })
 
     //get lead in the dropdown
-    this.leadService.getLead().subscribe((data) => {
+    this.leadService.getAgencyLeads().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
       const leadData = data['body']['data']['leads'];
       leadData.forEach((lead: any) => { this.leadIds.push( {lead_id:lead.id,name:lead.firstName} ) });
       this.leadDropdownList = this.leadIds;
-      console.log(this.leadIds)
       this.leadDropdownSettings = {
         idField: 'lead_id',
         textField: 'name',
       };
     });
 
-    this.getAppointment();
-    
+    if(this.id) {
+      this.getAppointment();
+    }
   }
 
   ngDoCheck() {
@@ -100,7 +99,7 @@ export class AddAppointmentComponent implements OnInit {
   addNewAppointment() {
     this.appointmentService.createAppointment(this.newAppointmentForm.value).subscribe( (res) => {
       if (res['body']['code'] == 200) {
-        this.ngZone.run(() => this.router.navigateByUrl(`list-appointments/${this.agencyId}`));
+        this.ngZone.run(() => this.router.navigateByUrl(`list-appointments`));
         this.toastr.success(res['message'],'Successfully created the contact');
       } else {
         this.toastr.error(res['message'], 'Error!');
@@ -109,10 +108,10 @@ export class AddAppointmentComponent implements OnInit {
   }
 
   editAppointment() {
-    const id = this.newAppointmentForm.value.id
+    const id = this.id
     this.appointmentService.updateAppointment(this.newAppointmentForm.value,id).subscribe( (res) => {
       if (res['body']['code'] == 200) {
-        // this.ngZone.run(() => this.router.navigateByUrl(`list-appointments/${this.id}`));
+        this.ngZone.run(() => this.router.navigateByUrl(`list-appointments/${this.agencyId}`));
         this.toastr.success(res['message'],'Successfully updated the contact');
       } else {
         this.toastr.error(res['message'], 'Error!');
@@ -121,22 +120,45 @@ export class AddAppointmentComponent implements OnInit {
   }
 
   getAppointment(){
-    console.log('form to edit',this.newAppointmentForm.value)
 
     this.appointmentService.getAppointment(this.id).subscribe( (res) => {
-      this.appointmentListById = res['body']['data']['data'];
+      this.appointmentListById = res['body']['data']['data'][0];
 
-      console.log('appointmentListById',this.appointmentListById)
-      this.selectUser(this.appointmentListById.Appointment_user);
-      this.selectLead(this.appointmentListById.Appointments_lead);
+      if(this.appointmentListById.Appointment_users) {
+        let userData = this.appointmentListById.Appointment_users;
 
+        for (var i = 0; i < userData.length; i++) {
+          this.selectedUsers.push(userData[i].user_id);
+        }
+      }
+
+      if(this.appointmentListById.Appointments_leads) {
+        let leadsData = this.appointmentListById.Appointments_leads;
+
+        for (var i = 0; i < leadsData.length; i++) {
+          this.selectedLeads.push(leadsData[i].lead_id);
+        }
+      }
+      
+      this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
+      this.newAppointmentForm.patchValue({lead_id:this.selectedLeads});
       const data = this.appointmentListById
-      this.newAppointmentForm.patchValue({data})
+      this.newAppointmentForm.patchValue({
+        subject: this.appointmentListById.subject,
+        Regarding: this.appointmentListById.Regarding,
+        meet_link: this.appointmentListById.meet_link,
+        time: this.appointmentListById.time,
+        status: this.appointmentListById.status,
+        Location: this.appointmentListById.Location,
+        comment: this.appointmentListById.comment,
+      })
+      this.newAppointmentForm.patchValue({date:"2022-10-10s"});
     })
   }
  
   selectUser(event){
      this.selectedUsers.push(event.user_id) 
+     console.log('---select---', this.selectedUsers)
      this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
   }
   deSelectUser(event){

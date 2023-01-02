@@ -25,6 +25,12 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'leads'}`,{observe: 'response'});
   }
 
+  public getAgencyLeads() {
+    let agencyId = localStorage.getItem('AgencyId');
+    
+    return this.httpClient.get(`${environment.apiUrl}${'agency-leads'}/${agencyId}`,{observe: 'response'});
+  }
+
   public addLead(data: any) {
     return this.httpClient
       .post(`${environment.apiUrl}${'leads'}`, JSON.stringify(data),{observe: 'response'})
