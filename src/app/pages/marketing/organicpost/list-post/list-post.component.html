@@ -220,8 +220,10 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>ID</th>
-                                                                <th>created Time</th>
-                                                              
+                                                                <th>Title</th>
+                                                                <th>Ownership</th>
+                                                                <th>Contents Type</th>
+                                                                <th>Created On</th>
                                                                 <th>Edit</th>
                                                                 <th>Delete</th>
                                                                 <th>View</th>
@@ -229,10 +231,13 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr *ngFor="let list of postList">
-            
-                                                                <td>{{ list.id}}</td>
-                                                                <td>{{ list.created_time}}</td>
-                                                                
+                                                                <td>{{ list.activity_id}}</td>
+                                                                <td>{{ list.title}}</td>
+                                                                <td><span *ngIf= "list.ownership==true else elseBlock">Agency</span>
+                                                                    <ng-template #elseBlock>Client</ng-template>
+                                                                </td>
+                                                                <td>{{ list.activity_type.name}}</td>
+                                                                <td>{{ list.created_on}}</td>
                                                                 <td>
                                                                     <i class="icon-edit1 text-primary"
                                                                         ></i>

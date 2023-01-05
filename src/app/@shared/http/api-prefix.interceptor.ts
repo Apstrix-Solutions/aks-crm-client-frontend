@@ -43,7 +43,7 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
         'Access-Token-Facebook': this.authService.getFbAuthToken()
       },
     });
-    if(request.url.endsWith('upload') ||  request.url.endsWith('upload-photo') ){
+    if(request.url.endsWith('upload') ||  request.url.endsWith('upload-photo') || request.url.endsWith('upload-video') ){
       if (request.headers.has('content-type')) {
         request = request.clone({ headers: request.headers.delete('content-type','application/json') });
     }

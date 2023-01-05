@@ -38,8 +38,18 @@ export class MarketingService {
     .pipe(retry(1),catchError(this.errorHandl));
     //return this.httpClient.get(`${environment.smiApiUrl}${'upload-photo'}`,{observe: 'response'});
   }
+  public addVideoFiles(data:any){
+    let formParams = new FormData();
+    formParams.set('video_attachment', data)
+    return this.httpClient.post(`${environment.smiApiUrl}${'upload-video'}`,
+        formParams,
+        {observe: 'response'}
+    )
+    .pipe(retry(1),catchError(this.errorHandl));
+    //return this.httpClient.get(`${environment.smiApiUrl}${'upload-photo'}`,{observe: 'response'});
+  }
   getPost(){
-    return this.httpClient.get(`${environment.smiApiUrl}${'posts'}`);
+    return this.httpClient.get(`${environment.smiApiUrl}${'activity'}`);
   }
     // Error handling
     errorHandl(error) {

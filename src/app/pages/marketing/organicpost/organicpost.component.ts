@@ -71,8 +71,6 @@ export class OrganicpostComponent implements OnInit {
       }),
       is_deleted: [false],
       content_status: [1],
-      //page:[null],
-      //instaPage:[null]
     });
 
   }
@@ -169,13 +167,12 @@ export class OrganicpostComponent implements OnInit {
     
   }
   setsmInfo(){
-    debugger;
     for(let i=0; i<this.smInfo.length; i++){
       this.smInfo[i] ['schedule_date'] = this.sDate;
     }
     if(this.smInfo.length != 0){
       this.newSmContentsForm.get(['activity_records']).setValue([this.smInfo]);
-      console.log([this.smInfo]);
+     // console.log([this.smInfo]);
       return true;
     }
     else{
@@ -183,16 +180,28 @@ export class OrganicpostComponent implements OnInit {
     }
   }
   uploadFile(){
-    
     if(this.files){
       let fileslength = this.files.length;
-      this.marketingService.addedFiles(this.files[fileslength-1]).subscribe( (res) => {
+      if(this.files[fileslength-1].type == 'video/mp4'){
+        this.marketingService.addVideoFiles(this.files[fileslength-1]).subscribe( (res) => {
+          this.refreshToken = res.headers.get('refresh_token');
+          this.uploadedFileResponse ['id']=res['body']['data']['data'].id;
+          this.uploadedFileResponse ['file_url']=res['body']['data']['data'].url;
+          this.uploadInfo.push(this.uploadedFileResponse);
+          this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
+        
+        })
+      }
+      else{
+        this.marketingService.addedFiles(this.files[fileslength-1]).subscribe( (res) => {
         this.refreshToken = res.headers.get('refresh_token');
         this.uploadedFileResponse ['id']=res['body']['data']['data'].id;
         this.uploadedFileResponse ['file_url']=res['body']['data']['data'].url;
         this.uploadInfo.push(this.uploadedFileResponse);
         this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
-      })
+       
+        })
+      }
     }
   }
   onSubmit() {

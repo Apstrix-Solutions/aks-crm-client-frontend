@@ -14,8 +14,7 @@ export class ListPostComponent implements OnInit {
   ngOnInit(): void {
     this.MarketingService.getPost().subscribe((data)=>{
       let response = data;
-      this.postList = response['data']['data'][0]['posts']['data'];
-      console.log (this.postList);
+      this.postList = response['data']['data'];
     });
   }
 
