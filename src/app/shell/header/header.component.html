@@ -20,7 +20,7 @@
               <span class="menu-text">Dashboards</span>
             </a>
           </li>
-         
+
           <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHidden }">
             <a (click)="toggleMenu()">
               <i class="icon-calendar1"></i>
@@ -38,7 +38,7 @@
             </div>
           </li>
 
-          <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenContact }">
+          <!-- <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenContact }">
             <a (click)="toggleMenuContact()">
               <i class="icon-user1"></i>
               <span class="menu-text">Contacts</span>
@@ -50,9 +50,9 @@
                 </li>
               </ul>
             </div>
-          </li>
-      
-        
+          </li> -->
+
+
           <li class="default-sidebar-dropdown" [ngClass]="{'active': marketingMenuHidden }">
             <a (click)="toggleMarketingMenu()">
               <i class="icon-shopping-basket"></i>
@@ -88,9 +88,9 @@
                     </li>
                   </ul>
                 </div>
-                
+
               </div>
-            
+
               <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
                 <a (click)="toggleCampaignMenu()">
                   <span class="menu-text">Campaigns</span>
@@ -108,11 +108,11 @@
                     </li>
                   </ul>
                 </div>
-                
+
               </div>
             </ul>
-           
-          
+
+
           <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
             <a (click)="toggleSettingsMenu()">
               <i class="icon-calendar1"></i>

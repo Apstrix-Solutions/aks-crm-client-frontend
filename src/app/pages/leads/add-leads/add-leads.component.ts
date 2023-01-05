@@ -45,9 +45,19 @@ export class AddLeadsComponent implements OnInit {
       firstName: [null, [Validators.required]],
       middleName: [null],
       lastName: [null, [Validators.required]],
-      primaryNumber: [null, [Validators.required]],
-      secondaryNumber: [null],
-      whatsappNumber: [null],
+      primaryNumber: [null,[
+          Validators.required,
+          Validators.pattern("^[0-9]*$")
+        ]
+      ],
+      secondaryNumber: [null,[
+          Validators.pattern("^[0-9]*$")
+        ]
+      ],
+      whatsappNumber: [null,[
+          Validators.pattern("^[0-9]*$")
+        ]
+      ],
       leadScore: [null],
       leadValue: [null],
       email: [null, [Validators.required, Validators.email]],
@@ -78,13 +88,14 @@ export class AddLeadsComponent implements OnInit {
       });
     } else {
       this.leadService.getLeadById(this.id).subscribe((res) => {
-        res['data']['users'].forEach( data => {
+        res['body']['data']['users'].forEach( data => {
           this.recievedData = data
         })
         this.newAddLeadForm.patchValue(this.recievedData);
 
         this.getLeadAddress();
         this.getLeadSocials();
+        this.getCompanyById();
       });
     }
 
@@ -143,7 +154,7 @@ export class AddLeadsComponent implements OnInit {
 
   getLeadAddress() {
     this.leadService.getLeadAddressByLeadId(this.id).subscribe((res) => {
-      let addressdata = res['data']['address'];
+      let addressdata = res['body']['data']['address'];
       
       addressdata.forEach( data => this.addLeadListById = data);
 
@@ -161,7 +172,7 @@ export class AddLeadsComponent implements OnInit {
 
   getLeadSocials() {
     this.leadService.getLeadSocialsByLeadId(this.id).subscribe((res) => {
-      let socialdata = res['data']['social'];
+      let socialdata = res['body']['data']['social'];
       
       socialdata.forEach( data => this.socialData = data);
 
@@ -184,14 +195,18 @@ export class AddLeadsComponent implements OnInit {
   };
 
   updateLeadAssignment(){
-    this.leadService.updateLeadAssignment(this.assigned_to,this.id).subscribe( (res) => {
-      this.refreshToken = res.headers.get('refresh_token');
-      if(res['body']['code']==200){
-        this.toastr.success(res['message'], 'Success');
-      }else{
-        this.toastr.error(res['message'],'Error')
-      }
-    })
+
+    if(this.assigned_to){
+      this.leadService.updateLeadAssignment(this.assigned_to,this.id).subscribe( (res) => {
+        this.refreshToken = res.headers.get('refresh_token');
+        if(res['body']['code']==200){
+          this.toastr.success(res['message'], 'Success');
+        }else{
+          this.toastr.error(res['message'],'Error')
+        }
+      })
+    }
+
   };
 
   leadAssign(event: any){
@@ -206,13 +221,27 @@ export class AddLeadsComponent implements OnInit {
       this.addLeads();
     } else {
       this.updateLeads();
-      this.updateLeadAssignment();
+      // this.updateLeadAssignment();
     }
   }
 
 
   get f() {
     return this.newAddLeadForm.controls;
+  }
+
+  getCompanyById(){
+    this.leadService.getCompanyByLeadId(this.id).subscribe(res => {
+      const companyData = res['body']['data']['data'];
+
+      if(companyData) {
+        this.newAddLeadForm.patchValue({
+          companyName: companyData.name,
+          designation: companyData.designation,
+          industryId: companyData.industry_id,
+        });
+      }
+    })
   }
 
 }

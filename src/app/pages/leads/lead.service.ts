@@ -120,6 +120,41 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'industry-all'}`,{observe: 'response'});
   }
 
+  public getCompanyByLeadId(leadId: any){
+    return this.httpClient.get(`${environment.apiUrl}${'leadcompany-detail/'}${leadId}`,{observe: 'response'});
+  }
+
+  public getStatusById(id: any){
+    return this.httpClient.get(`${environment.apiUrl}${'status/'}${id}`,{observe: 'response'});
+  }
+
+  public getIndustryById(id: any){
+    return this.httpClient.get(`${environment.apiUrl}${'industry/'}${id}`,{observe: 'response'});
+  }
+  //lead appoinments
+  public createAppoinments(data: any){
+    return this.httpClient.post(`${environment.apiUrl}${'appointment'}`, JSON.stringify(data), {observe: 'response'})
+  }
+  public getAppoinmentsById(id: any){
+    return this.httpClient.get(`${environment.apiUrl}${'appointment/'}${id}`,{observe: 'response'});
+  }
+
+  public getAllAppoinments(){
+    return this.httpClient.get(`${environment.apiUrl}${'appointment-all'}`,{observe: 'response'});
+  }
+
+  public getAllAppoinmentsById(leadId: any){
+    return this.httpClient.get(`${environment.apiUrl}${'appointment-lead-all/'}${leadId}`, {observe: 'response'})
+  }
+
+  public updateAppoinments(id: any, data: any){
+    return this.httpClient.put(`${environment.apiUrl}${'appointment-edit/'}${id}`,JSON.stringify(data), {observe:'response'})
+  }
+
+  public deleteAppoinments(appoinmentId: any){
+    return this.httpClient.put(`${environment.apiUrl}${'appointment-delete'}`,{id:appoinmentId},{observe: 'response'})
+  }
+
   // Error handling
   errorHandl(error) {
     let errorMessage = '';
