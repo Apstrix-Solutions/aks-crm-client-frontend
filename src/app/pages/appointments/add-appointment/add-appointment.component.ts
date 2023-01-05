@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LeadService } from '@app/pages/leads/lead.service';
 import { AppointmentService } from '../appointment.service';
 import { IDropdownSettings} from 'ng-multiselect-dropdown';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-appointment',
@@ -27,7 +28,8 @@ export class AddAppointmentComponent implements OnInit {
   userDropdownSettings:IDropdownSettings={};
   selectedUsers:any = [];
   selectedLeads:any = [];
-
+  date:any;
+  currentDate: any;
 
 
   constructor(
@@ -37,7 +39,8 @@ export class AddAppointmentComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
     private route: ActivatedRoute,
-    public toastr: ToastrService
+    public toastr: ToastrService,
+    public datepipe: DatePipe
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +48,11 @@ export class AddAppointmentComponent implements OnInit {
     this.isAddMode = !this.id;
 
     this.agencyId = localStorage.getItem('AgencyId');
+    let date: Date = new Date();  
+    console.log("Date = " + date);
+   
+    this.currentDate =  this.datepipe.transform(date, 'yyyy-MM-dd');
+
     this.newAppointmentForm = this.formBulider.group({
       subject: [null, Validators.required],
       lead_id: [null, Validators.required],
@@ -52,11 +60,12 @@ export class AddAppointmentComponent implements OnInit {
       agency_id:[this.agencyId],
       comment: [null],
       Regarding: [null],
-      meet_link:[null, [Validators.required]],
+      meet_link:[null, [Validators.required, Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')]],
       status: ['Pending'],
       Location: [null, Validators.required],
       date: [null, Validators.required],
-      time: [null, Validators.required]
+      time: [null, Validators.required],
+      test:[null]
     });
 
     this.newAppointmentForm.patchValue({'agency_id':this.agencyId});
@@ -64,6 +73,7 @@ export class AddAppointmentComponent implements OnInit {
     //get user under agency in the dropdown
     this.leadService.getAllUserDetails().subscribe((data) => {
       const userData = data['body']['data']['data']
+      // console.log('userData',userData)
       userData.forEach((user: any) => { this.userIds.push( {user_id:user.id,name:user.fullname} ) });
       this.userDropdownList = this.userIds;
       this.userDropdownSettings = {
@@ -75,7 +85,8 @@ export class AddAppointmentComponent implements OnInit {
     //get lead in the dropdown
     this.leadService.getAgencyLeads().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
-      const leadData = data['body']['data']['leads'];
+      const leadData = data['body']['data']['lead'];
+      // console.log('leadData',leadData)
       leadData.forEach((lead: any) => { this.leadIds.push( {lead_id:lead.id,name:lead.firstName} ) });
       this.leadDropdownList = this.leadIds;
       this.leadDropdownSettings = {
@@ -87,6 +98,7 @@ export class AddAppointmentComponent implements OnInit {
     if(this.id) {
       this.getAppointment();
     }
+
   }
 
   ngDoCheck() {
@@ -97,6 +109,10 @@ export class AddAppointmentComponent implements OnInit {
 
 
   addNewAppointment() {
+    this.newAppointmentForm.patchValue({user_id:this.selectedUsers});
+    this.newAppointmentForm.patchValue({lead_id:this.selectedLeads});
+    console.log('this.newAppointmentForm.value',this.newAppointmentForm.value)
+
     this.appointmentService.createAppointment(this.newAppointmentForm.value).subscribe( (res) => {
       if (res['body']['code'] == 200) {
         this.ngZone.run(() => this.router.navigateByUrl(`list-appointments`));
@@ -109,6 +125,10 @@ export class AddAppointmentComponent implements OnInit {
 
   editAppointment() {
     const id = this.id
+    this.newAppointmentForm.patchValue({user_id:this.selectedUsers});
+    this.newAppointmentForm.patchValue({lead_id:this.selectedLeads});
+    console.log('edit appoinment form',this.newAppointmentForm.value)
+
     this.appointmentService.updateAppointment(this.newAppointmentForm.value,id).subscribe( (res) => {
       if (res['body']['code'] == 200) {
         this.ngZone.run(() => this.router.navigateByUrl(`list-appointments/${this.agencyId}`));
@@ -123,6 +143,7 @@ export class AddAppointmentComponent implements OnInit {
 
     this.appointmentService.getAppointment(this.id).subscribe( (res) => {
       this.appointmentListById = res['body']['data']['data'][0];
+      console.log(this.appointmentListById)
 
       if(this.appointmentListById.Appointment_users) {
         let userData = this.appointmentListById.Appointment_users;
@@ -142,64 +163,61 @@ export class AddAppointmentComponent implements OnInit {
       
       this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
       this.newAppointmentForm.patchValue({lead_id:this.selectedLeads});
+
       const data = this.appointmentListById
+      this.date = this.datepipe.transform(this.appointmentListById.date, 'yyyy-MM-dd');
+      this.currentDate = this.date;
+
       this.newAppointmentForm.patchValue({
         subject: this.appointmentListById.subject,
         Regarding: this.appointmentListById.Regarding,
         meet_link: this.appointmentListById.meet_link,
+        date:this.date,
         time: this.appointmentListById.time,
         status: this.appointmentListById.status,
         Location: this.appointmentListById.Location,
         comment: this.appointmentListById.comment,
       })
-      this.newAppointmentForm.patchValue({date:"2022-10-10s"});
+      // this.newAppointmentForm.patchValue({date:date});
+      
     })
   }
  
   selectUser(event){
      this.selectedUsers.push(event.user_id) 
-     console.log('---select---', this.selectedUsers)
-     this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
   }
   deSelectUser(event){
     this.selectedUsers =  this.selectedUsers.filter( (user: any) => { return user!=event.user_id});
-    this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
-    // console.log('de event',this.selectedUsers)
   }
 
   selectLead(event){
     this.selectedLeads.push(event.lead_id);
-    this.newAppointmentForm.patchValue({lead_id:this.selectedLeads});
   }
   deSelectLead(event){
     this.selectedLeads =  this.selectedLeads.filter( (lead: any) => { return lead!=event.lead_id});
-    this.newAppointmentForm.patchValue({lead_id:this.selectedLeads})
   }
 
   //All
   selectUserAll(event){
-
-    this.selectedUsers.push(event.user_id) 
-     this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
+    event.forEach( (event: any) => {
+      this.selectedUsers.push(event.user_id) 
+    })
+   
   }
 
   deSelectUserAll(event){
-    this.selectedUsers =  this.selectedUsers.filter( (user: any) => { return user!=event.user_id});
-    this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
+    this.selectedUsers = event;
   }
 
   selectLeadAll(event){
-    this.selectedLeads.push(event.lead_id);
-    this.newAppointmentForm.patchValue({lead_id:this.selectedLeads});
-
+    event.forEach( (event: any) => {
+      this.selectedLeads.push(event.lead_id) 
+    })
   }
 
   deSelectLeadAll(event){
-    this.selectedLeads =  this.selectedLeads.filter( (lead: any) => { return lead!=event.lead_id});
-    this.newAppointmentForm.patchValue({lead_id:this.selectedLeads})
-
+    this.selectedLeads = event;
   }
-
 
 
   onSubmit() {

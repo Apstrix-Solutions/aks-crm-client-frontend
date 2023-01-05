@@ -7,7 +7,7 @@ import { AddAppointmentRoutingModule } from './add-appointment-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
+import { DatePipe } from '@angular/common';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,5 +20,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     NgMultiSelectDropDownModule.forRoot(),
   ],
   declarations: [AddAppointmentComponent],
+  providers: [ DatePipe ],
 })
 export class AddAppointmentModule {}
