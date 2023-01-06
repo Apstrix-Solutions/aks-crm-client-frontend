@@ -28,9 +28,9 @@ export class AppoinmentLeadsComponent implements OnInit {
   }
 
   getAllAppoinmentsById(){
-    this.leadService.getAllAppoinmentsById(this.id).subscribe((res) => {
-      this.appoinmentsList = res['body']['data']['data'];
-    })
+    // this.leadService.getAllAppoinmentsById(this.id).subscribe((res) => {
+    //   this.appoinmentsList = res['body']['data']['data'];
+    // })
   }
 
   goBackToLead() {
@@ -40,15 +40,15 @@ export class AppoinmentLeadsComponent implements OnInit {
 
   open(content, appoinmentId) {
     if (confirm('Are you sure to delete ?')) {
-      this.leadService.deleteAppoinments(appoinmentId).subscribe((res) => {
-        this.getAllAppoinmentsById();
+      // this.leadService.deleteAppoinments(appoinmentId).subscribe((res) => {
+      //   this.getAllAppoinmentsById();
 
-        if (res['body']['code'] == 200) {
-          this.toastr.success(res['message'], 'Success!');
-        } else {
-          this.toastr.error(res['errorMessage'], 'Error!');
-        }
-      });
+      //   if (res['body']['code'] == 200) {
+      //     this.toastr.success(res['message'], 'Success!');
+      //   } else {
+      //     this.toastr.error(res['errorMessage'], 'Error!');
+      //   }
+      // });
     }
   }
 
