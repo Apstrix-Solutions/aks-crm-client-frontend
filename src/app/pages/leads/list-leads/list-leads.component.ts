@@ -35,6 +35,7 @@ export class ListLeadsComponent implements OnInit {
   statusName:any;
   AgencyId:any;
 
+  agencyId:any ;
   
 
   constructor(
@@ -48,6 +49,9 @@ export class ListLeadsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.agencyId = localStorage.getItem('AgencyId');
+
     this.getAllCustomer();
     this.getLeads();
 
@@ -99,7 +103,7 @@ export class ListLeadsComponent implements OnInit {
       email: [null],
     });
 
-    this.AgencyId = localStorage.getItem('AgencyId');
+    // this.AgencyId = localStorage.getItem('AgencyId');
     
   }
   ngDoCheck() {
@@ -156,7 +160,7 @@ export class ListLeadsComponent implements OnInit {
     this.leadService.getLead().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
       const leadByAgencyId = data['body']['data']['leads'];
-      const leadData = leadByAgencyId.filter((data)=> {return data.agencyId==this.AgencyId });
+      const leadData = leadByAgencyId.filter((data)=> {return data.agencyId==this.agencyId });
       console.log('leadData',leadData);
 
        leadData.forEach((lead:any)=>{
@@ -167,7 +171,6 @@ export class ListLeadsComponent implements OnInit {
           })
         }
         })
-      
       
       if( leadData.length!=0 && this.customerList.length!=0 ){
         this.customerList.forEach( contact =>{
