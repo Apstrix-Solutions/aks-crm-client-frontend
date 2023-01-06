@@ -17,6 +17,7 @@ export const environment = {
   serverUrl: 'https://akstech.sg/auth/api/v1/',
   apiUrl: 'https://akstech.sg/client/lead/api/',
   authApiUrl: 'https://akstech.sg/auth/api/v1/',
+  smiApiUrl: 'https://akstech.sg/client/smi/v1/',
   baseUrl: 'https://akstech.sg/',
   apiVersion: 'v1',
   defaultLanguage: 'en-US',

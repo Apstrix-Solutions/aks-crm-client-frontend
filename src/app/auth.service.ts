@@ -15,4 +15,17 @@ export class AuthService {
     return '';
 
   }
+  getFbAuthToken():string {
+    const items = { ...localStorage };
+    let accessToken = localStorage.getItem('fbAccessToken');
+    console.log (accessToken);
+
+    if(accessToken!=null){
+    
+
+      return accessToken;
+    }
+    return '';
+
+  }
 }
