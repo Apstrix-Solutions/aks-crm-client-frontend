@@ -25,6 +25,12 @@ export class LeadService {
     return this.httpClient.get(`${environment.apiUrl}${'leads'}`,{observe: 'response'});
   }
 
+  public getAgencyLeads() {
+    let agencyId = localStorage.getItem('AgencyId');
+    
+    return this.httpClient.get(`${environment.apiUrl}${'agency-leads'}/${agencyId}`,{observe: 'response'});
+  }
+
   public addLead(data: any) {
     return this.httpClient
       .post(`${environment.apiUrl}${'leads'}`, JSON.stringify(data),{observe: 'response'})
@@ -93,7 +99,8 @@ export class LeadService {
   }
 
   public getAllUserDetails(){
-    return this.httpClient.get(`${environment.apiUrl}${''}`,{observe: 'response'})
+    const agencyId = localStorage.getItem('AgencyId')
+    return this.httpClient.post(`${environment.serverUrl}${'agency-users/'}${agencyId}`,agencyId,{observe: 'response'})
   }
 
   public leadAssignment(data : any){
@@ -131,29 +138,7 @@ export class LeadService {
   public getIndustryById(id: any){
     return this.httpClient.get(`${environment.apiUrl}${'industry/'}${id}`,{observe: 'response'});
   }
-  //lead appoinments
-  public createAppoinments(data: any){
-    return this.httpClient.post(`${environment.apiUrl}${'appointment'}`, JSON.stringify(data), {observe: 'response'})
-  }
-  public getAppoinmentsById(id: any){
-    return this.httpClient.get(`${environment.apiUrl}${'appointment/'}${id}`,{observe: 'response'});
-  }
-
-  public getAllAppoinments(){
-    return this.httpClient.get(`${environment.apiUrl}${'appointment-all'}`,{observe: 'response'});
-  }
-
-  public getAllAppoinmentsById(leadId: any){
-    return this.httpClient.get(`${environment.apiUrl}${'appointment-lead-all/'}${leadId}`, {observe: 'response'})
-  }
-
-  public updateAppoinments(id: any, data: any){
-    return this.httpClient.put(`${environment.apiUrl}${'appointment-edit/'}${id}`,JSON.stringify(data), {observe:'response'})
-  }
-
-  public deleteAppoinments(appoinmentId: any){
-    return this.httpClient.put(`${environment.apiUrl}${'appointment-delete'}`,{id:appoinmentId},{observe: 'response'})
-  }
+  
 
   // Error handling
   errorHandl(error) {

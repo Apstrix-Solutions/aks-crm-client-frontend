@@ -32,6 +32,7 @@ export class ListLeadsComponent implements OnInit {
   isConverted: any = false;
   customerList:any  = [];
   leadID: any  ;
+  agencyId:any ;
   
 
   constructor(
@@ -45,6 +46,9 @@ export class ListLeadsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    this.agencyId = localStorage.getItem('AgencyId');
+
     this.getAllCustomer();
     this.getLeads();
 
@@ -150,9 +154,10 @@ export class ListLeadsComponent implements OnInit {
     
     this.leadService.getLead().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
-      const leadData =  data['body']['data']['leads'];
+      let leadData =  data['body']['data']['leads'];
+     
+      leadData = leadData.filter( (lead: any)=> { return lead.agencyId == this.agencyId })
       // console.log('leadData',leadData);
-      
       
       if( leadData.length!=0 && this.customerList.length!=0 ){
         this.customerList.forEach( contact =>{

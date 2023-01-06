@@ -40,10 +40,10 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
         Authorisation: `${this.authService.getAuthToken()}`,
         'x-token': `${this.authService.getAuthToken()}`,
         'content-type': 'application/json',
+        'Access-Token-Facebook': this.authService.getFbAuthToken()
       },
     });
-
-    if(request.url.endsWith('upload')){
+    if(request.url.endsWith('upload') ||  request.url.endsWith('upload-photo') || request.url.endsWith('upload-video') ){
       if (request.headers.has('content-type')) {
         request = request.clone({ headers: request.headers.delete('content-type','application/json') });
     }

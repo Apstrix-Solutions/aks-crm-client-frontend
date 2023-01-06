@@ -9477,4 +9477,13 @@ label {
   padding-right: 10px;
   padding-left: 10px;
 }
+
+span.dropdown-btn {
+  border: 1px solid #dbdaea!important;
+  font-size: 13px;
+  font-weight: 600!important;
+  height: 38px;
+  border-radius: 3px!important;
+  margin: 0 0 10px !important;
+}
 /*# sourceMappingURL=main.css.map */
