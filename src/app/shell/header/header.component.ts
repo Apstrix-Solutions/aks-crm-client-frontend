@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   campaignMenuHidden = false;
   marketingMenuHidden = false;
   postMenuHidden = false;
+  appointmentMenuHidden = false;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -43,6 +44,10 @@ export class HeaderComponent implements OnInit {
   togglePostMenu(){
     this.postMenuHidden =!this.postMenuHidden;
   }
+  toggleAppointmentMenu(){
+    this.appointmentMenuHidden = !this.appointmentMenuHidden
+  }
+
   logout() {
     this.authenticationService.logout().subscribe(() => this.router.navigate(['/login'], { replaceUrl: true }));
   }

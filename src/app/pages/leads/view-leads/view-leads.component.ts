@@ -181,16 +181,16 @@ export class ViewLeadsComponent implements OnInit {
   //create appoinment
   addAppoinment(){
     console.log('addAppoinmentForm',this.addAppoinmentForm)
-    this.leadService.createAppoinments(this.addAppoinmentForm.value).subscribe((res) => {
-      this.refreshToken = res.headers.get('refresh_token');
-      console.log(res)
-      if(res['body']['code']==200){
-        this.toastr.success(res['message'], 'Success!'); 
-        this.closeModal('addAppoinmentModal');
-        const id = this.addAppoinmentForm.value.lead_id
-        this.ngZone.run(() => this.router.navigateByUrl(`appoinments/${id}`));
-      }
-    })
+    // this.leadService.createAppoinments(this.addAppoinmentForm.value).subscribe((res) => {
+    //   this.refreshToken = res.headers.get('refresh_token');
+    //   console.log(res)
+    //   if(res['body']['code']==200){
+    //     this.toastr.success(res['message'], 'Success!'); 
+    //     this.closeModal('addAppoinmentModal');
+    //     const id = this.addAppoinmentForm.value.lead_id
+    //     this.ngZone.run(() => this.router.navigateByUrl(`appoinments/${id}`));
+    //   }
+    // })
   }
 
 

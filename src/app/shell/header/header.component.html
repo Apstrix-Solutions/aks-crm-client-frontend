@@ -38,6 +38,20 @@
             </div>
           </li>
 
+          <li class="default-sidebar-dropdown" [ngClass]="{'active': appointmentMenuHidden }">
+            <a (click)="toggleAppointmentMenu()">
+              <i class="icon-calendar1"></i>
+              <span class="menu-text">Appointments</span>
+            </a>
+            <div class="default-sidebar-submenu" [ngStyle]="{'display': appointmentMenuHidden ? 'block' : 'none' }">
+              <ul>
+                <li>
+                  <a routerLink="/list-appointments">My Appointments</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
           <!-- <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenContact }">
             <a (click)="toggleMenuContact()">
               <i class="icon-user1"></i>
