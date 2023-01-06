@@ -22,7 +22,7 @@ export class MarketingService {
   }
   public addContent(data) {
     console.log(data);
-    debugger;
+    //debugger;
     return this.httpClient
       .post(`${environment.smiApiUrl}${'activity'}`, JSON.stringify(data))
       .pipe(retry(1), catchError(this.errorHandl));
