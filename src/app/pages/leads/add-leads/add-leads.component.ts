@@ -27,6 +27,7 @@ export class AddLeadsComponent implements OnInit {
   socialData:  any = {};
   industryNames: any = [];
   assigned_to: any = 0;
+  usersList:any = [];
 
   constructor(
     private formBulider: FormBuilder,
@@ -41,6 +42,7 @@ export class AddLeadsComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
     this.newAddLeadForm = this.formBulider.group({
+      agencyId:[null],
       title: [null, [Validators.required]],
       firstName: [null, [Validators.required]],
       middleName: [null],
@@ -77,6 +79,9 @@ export class AddLeadsComponent implements OnInit {
       industryId: [null,[Validators.required]],
     });
 
+    const AgencyId = localStorage.getItem('AgencyId');
+    this.newAddLeadForm.patchValue({'agencyId':AgencyId});
+
     //recieving data
     //A subscription is made to listen to changes in the BehaviorSubject.
 
@@ -102,6 +107,7 @@ export class AddLeadsComponent implements OnInit {
     this.leadStatus();
     this.leadSource();
     this.industries();
+    this.getAllUserDetails();
   }
 
   ngDoCheck() {
@@ -212,6 +218,14 @@ export class AddLeadsComponent implements OnInit {
   leadAssign(event: any){
     this.assigned_to = event.target.value;
   };
+
+  getAllUserDetails(){
+    this.leadService.getAllUserDetails().subscribe((res) => {
+      this.refreshToken = res['body']['data'].token;
+      this.usersList = res['body']['data']['data']
+      console.log(this.usersList)
+    })
+  }
 
   onSubmit() {
     if (this.newAddLeadForm.invalid) {

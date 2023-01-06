@@ -48,7 +48,6 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
         request = request.clone({ headers: request.headers.delete('content-type','application/json') });
     }
   }
-
     return next.handle(request).pipe(
       tap(
         (event: HttpEvent<any>) => {

@@ -32,6 +32,9 @@ export class ListLeadsComponent implements OnInit {
   isConverted: any = false;
   customerList:any  = [];
   leadID: any  ;
+  statusName:any;
+  AgencyId:any;
+
   agencyId:any ;
   
 
@@ -99,6 +102,8 @@ export class ListLeadsComponent implements OnInit {
       secondaryNumber: [null],
       email: [null],
     });
+
+    // this.AgencyId = localStorage.getItem('AgencyId');
     
   }
   ngDoCheck() {
@@ -154,10 +159,18 @@ export class ListLeadsComponent implements OnInit {
     
     this.leadService.getLead().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
-      let leadData =  data['body']['data']['leads'];
-     
-      leadData = leadData.filter( (lead: any)=> { return lead.agencyId == this.agencyId })
-      // console.log('leadData',leadData);
+      const leadByAgencyId = data['body']['data']['leads'];
+      const leadData = leadByAgencyId.filter((data)=> {return data.agencyId==this.agencyId });
+      console.log('leadData',leadData);
+
+       leadData.forEach((lead:any)=>{
+        if(lead.currentStatus){
+          this.leadService.getStatusById(lead.currentStatus).subscribe(res => {
+            const status = res['body']['data']['status']
+            status ? lead['currentStatusName']=status.name:'';
+          })
+        }
+        })
       
       if( leadData.length!=0 && this.customerList.length!=0 ){
         this.customerList.forEach( contact =>{
@@ -167,6 +180,7 @@ export class ListLeadsComponent implements OnInit {
             }
           })
         })
+       
         this.leadsList = leadData;
       }else{
         this.leadsList = data['body']['data']['leads'];
@@ -188,8 +202,9 @@ export class ListLeadsComponent implements OnInit {
 
         this.convertedLeads.push(leadId)
         this.leadService.leadStatusUpdate(leadId).subscribe((data) => {
-          if(data['code']== 200){
+          if(data['body']['code']== 200){
             this.toastr.success(data['message'], 'Success!');
+            this.getLeads();
           }
         })
       }
@@ -204,8 +219,16 @@ export class ListLeadsComponent implements OnInit {
     this.leadService.getAllCustomer().subscribe( (data) =>{
       this.refreshToken = data.headers.get('refresh_token');
        this.customerList = data['body']['data']['data'];
-       console.log('customerList',this.customerList)
+      //  console.log('customerList',this.customerList)
     })
+  }
+
+  getStatusById(statusId:any){
+    this.leadService.getStatusById(statusId).subscribe(res => {
+      const status = res['body']['data']['status']
+       this.statusName = status.name;
+    })
+    
   }
 
 

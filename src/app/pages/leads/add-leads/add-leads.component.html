@@ -226,7 +226,7 @@
                                                 </select>
                                             </div>
                                             <p *ngIf="f['currentStatus'].touched && f['currentStatus'].invalid"
-                                                class="small text-danger font-italic">*Source is required.</p>
+                                                class="small text-danger font-italic">*Status is required.</p>
                                             <div class="field-placeholder">Lead Status <span
                                                     class="text-danger">*</span></div>
                                         </div>
@@ -279,18 +279,13 @@
                                                 <select class="form-control" name="assigned_to"
                                                     (change)="leadAssign($event)">
 
-                                                    <option value="">Users</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-
-                                                    <!-- <option *ngFor="let user of usersList" value="{{user}}">{{user}}</option> -->
+                                                    <option *ngFor="let user of usersList" value="{{user.email}}">{{user.email}}</option>
                                                 </select>
 
                                             </div>
                                             <!-- <p *ngIf="!assigned_to"
                                             class="small text-danger font-italic">*User is required.</p> -->
-                                            <div class="field-placeholder">Assign To<span class="text-danger">*</span>
-                                            </div>
+                                            <div class="field-placeholder">Assign To </div>
                                         </div>
                                     </div>
 
