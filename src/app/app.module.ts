@@ -43,6 +43,8 @@ import { ListPostModule } from './pages/marketing/organicpost/list-post/list-pos
 import { ListCampainsModule } from './pages/marketing/campaigns/list-campains/list-campains.module';
 import { LandingModule } from './pages/marketing/organicpost/lanading-page/landing-page.module';
 import { LandingPageModule } from './pages/marketing/campaigns/landing-page/landing-page.module';
+import { AppoinmentLeadsModule } from './pages/leads/appoinment-leads/appoinment-leads.module';
+import { ListCustomerModule } from './pages/customer/list-customer/list-customer.module';
 import { AddAppointmentModule } from './pages/appointments/add-appointment/add-appointment.module';
 import { ListAppointmentModule } from './pages/appointments/list-appointment/list-appointment.module';
 // <============
@@ -81,6 +83,8 @@ import { ListAppointmentModule } from './pages/appointments/list-appointment/lis
     ListCampainsModule,
     LandingModule,
     LandingPageModule,
+    AppoinmentLeadsModule,
+    ListCustomerModule,
     AddAppointmentModule,
     ListAppointmentModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
