@@ -29,6 +29,7 @@ export class OrganicpostComponent implements OnInit {
   smInfoResponse:any =[];
   sDate:string;
   ownershipInfo:string = '';
+  post_type :number;
   constructor(
     private formBulider: FormBuilder,
     private socialAuthService: SocialAuthService,
@@ -62,7 +63,7 @@ export class OrganicpostComponent implements OnInit {
       activity_type:[1],
       start_date:[null],
       end_date:['0001-01-01 00:00:00'],
-      post_type:[null],
+      post_type:[null,[Validators.required]],
       activity_records :this.formBulider.group([null]),
       social_media_content:this.formBulider.group({
         content_title:['Title of the Sample Post No:1 Created'],

@@ -32,10 +32,9 @@ import { OrganicpostModule } from './pages/marketing/organicpost/organicpost.mod
 import { CalenderModule } from './pages/marketing/calender/calender.module';
 import { CreateContentsModule } from './pages/marketing/campaigns/create-contents/create-contents.module';
 import { AddCampaignModule } from './pages/marketing/campaigns/add-campaign/add-campaign.module';
- // <============
-
+import { ViewPostModule } from './pages/marketing/organicpost/view-post/view-post.module';
 import { AddContactModule } from './pages/contact/add-contact/add-contact.module';
-import { ListContactModule } from './pages/contact/list-contact/list-contact.module'; // <============
+import { ListContactModule } from './pages/contact/list-contact/list-contact.module'; 
 import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { ViewLeadsModule } from './pages/leads/view-leads/view-leads.module';
 import { ImportLeadsModule } from './pages/leads/import-leads/import-leads.module';
@@ -74,6 +73,7 @@ import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/
     CreateContentsModule,
     DashbordModule,
     OrganicpostModule,
+    ViewPostModule,
     CalenderModule,
     AddContactModule,
     ListContactModule,
