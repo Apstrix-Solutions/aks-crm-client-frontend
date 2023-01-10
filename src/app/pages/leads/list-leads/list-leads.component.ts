@@ -56,6 +56,7 @@ export class ListLeadsComponent implements OnInit {
     this.getLeads();
 
     this.newLeadForm = this.formBulider.group({
+      agencyId:[null],
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
       title: [null],
@@ -104,6 +105,7 @@ export class ListLeadsComponent implements OnInit {
     });
 
     // this.AgencyId = localStorage.getItem('AgencyId');
+    this.newLeadForm.patchValue({agencyId:this.agencyId});
     
   }
   ngDoCheck() {
