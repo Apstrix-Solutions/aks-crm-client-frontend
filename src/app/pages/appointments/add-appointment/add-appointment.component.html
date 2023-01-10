@@ -37,30 +37,47 @@
                                     </div>
 
                                     <div class="clear"></div>
-
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 ">
-                                        <ng-multiselect-dropdown [placeholder]="'Select Users'"
-                                            formControlName="user_id" [settings]="userDropdownSettings"
-                                            [data]="userDropdownList" (onSelect)="selectUser($event)"
-                                            (onSelectAll)="selectUserAll($event)" (onDeSelect)="deSelectUser($event)"
-                                            (onDeSelectAll)="deSelectUserAll($event)">
-                                        </ng-multiselect-dropdown>
-
-                                        <!-- </div> -->
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 tag-selector">
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <ng-select [items]="userDropdownList"
+                                                bindLabel="name"
+                                                bindValue="user_id"
+                                                [multiple]="true"
+                                                placeholder="Select Users"
+                                                (change)="selectUser($event)"
+                                                class="select"
+                                                formControlName="user_id"
+                                                [(ngModel)]="selectedUsers"
+                                                >
+                                            </ng-select>
+                                            <div class="field-placeholder">Users<span class="text-danger">*</span></div>
+                                            </div></div>
+                                       
+                                        <p *ngIf="f['user_id'].touched && f['user_id'].invalid"
+                                            class="small text-danger font-italic">*Agency Participant is required.</p>
                                     </div>
 
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 ">
-                                        <ng-multiselect-dropdown [placeholder]="'Select Leads'"
-                                            formControlName="lead_id" [settings]="leadDropdownSettings"
-                                            [data]="leadDropdownList" (onSelect)="selectLead($event)"
-                                            (onSelectAll)="selectLeadAll($event)" (onDeSelect)="deSelectLead($event)"
-                                            (onDeSelectAll)="deSelectLeadAll($event)"
-                                            [ngClass]="{'is-invalid': f['lead_id'].touched && f['lead_id'].invalid}">
-                                        </ng-multiselect-dropdown>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 tag-selector">
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <ng-select [items]="leadDropdownList"
+                                                bindLabel="name"
+                                                bindValue="lead_id"
+                                                [multiple]="true"
+                                                placeholder="Select Leads"
+                                                (change)="selectLead($event)"
+                                                class="select"
+                                                formControlName="lead_id"
+                                                [(ngModel)]="selectedLeads"
+                                                >
+                                            </ng-select>
+                                            <div class="field-placeholder">Leads<span class="text-danger">*</span></div>
+                                            </div></div>
+                                       
                                         <p *ngIf="f['lead_id'].touched && f['lead_id'].invalid"
-                                            class="small text-danger font-italic">*Participant is required.</p>
+                                            class="small text-danger font-italic">*Lead Participant is required.</p>
                                     </div>
-
 
                                     <div class="clear"></div>
 
@@ -177,6 +194,13 @@
                                         </div>
                                         <!-- field wrapper end -->
                                     </div>
+
+                                    
+                                  
+
+
+                                    <div class="clear"></div>
+
                             
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
                                         <button class="btn btn-primary" routerLink="/list-appointments">Cancel</button>
