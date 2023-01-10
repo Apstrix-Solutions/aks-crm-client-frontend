@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DatePipe } from '@angular/common';
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   imports: [
     CommonModule,
@@ -18,6 +19,7 @@ import { DatePipe } from '@angular/common';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
+    NgSelectModule
   ],
   declarations: [AddAppointmentComponent],
   providers: [ DatePipe ],

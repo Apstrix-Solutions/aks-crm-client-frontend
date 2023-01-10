@@ -6,6 +6,8 @@ import { LeadService } from '@app/pages/leads/lead.service';
 import { AppointmentService } from '../appointment.service';
 import { IDropdownSettings} from 'ng-multiselect-dropdown';
 import { DatePipe } from '@angular/common';
+import {NgSelectModule, NgOption} from '@ng-select/ng-select';
+import {FormControl, ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-add-appointment',
@@ -30,7 +32,6 @@ export class AddAppointmentComponent implements OnInit {
   selectedLeads:any = [];
   date:any;
   currentDate: any;
-
 
   constructor(
     private appointmentService: AppointmentService,
@@ -76,10 +77,6 @@ export class AddAppointmentComponent implements OnInit {
       // console.log('userData',userData)
       userData.forEach((user: any) => { this.userIds.push( {user_id:user.id,name:user.fullname} ) });
       this.userDropdownList = this.userIds;
-      this.userDropdownSettings = {
-        idField: 'user_id',
-        textField: 'name',
-      };
     })
 
     //get lead in the dropdown
@@ -89,10 +86,6 @@ export class AddAppointmentComponent implements OnInit {
       // console.log('leadData',leadData)
       leadData.forEach((lead: any) => { this.leadIds.push( {lead_id:lead.id,name:lead.firstName} ) });
       this.leadDropdownList = this.leadIds;
-      this.leadDropdownSettings = {
-        idField: 'lead_id',
-        textField: 'name',
-      };
     });
 
     if(this.id) {
@@ -142,24 +135,34 @@ export class AddAppointmentComponent implements OnInit {
   getAppointment(){
 
     this.appointmentService.getAppointment(this.id).subscribe( (res) => {
+
+      const response = res['body']['data']['data'];
       this.appointmentListById = res['body']['data']['data'][0];
-      console.log(this.appointmentListById)
+      // console.log(this.appointmentListById)
 
-      if(this.appointmentListById.Appointment_users) {
-        let userData = this.appointmentListById.Appointment_users;
+      const user = response.map( (item:any) => { return item.Appointment_user.user_id  });
+      const lead = response.map( (item:any) => { return item.Appointments_lead.lead_id  });
+      this.selectedUsers = user
+      this.selectedLeads = lead
 
-        for (var i = 0; i < userData.length; i++) {
-          this.selectedUsers.push(userData[i].user_id);
-        }
-      }
+      this.selectedUsers = this.selectedUsers.filter((item, index) => this.selectedUsers.indexOf(item) === index);
+      this.selectedLeads = this.selectedLeads.filter((item, index) => this.selectedLeads.indexOf(item) === index);
 
-      if(this.appointmentListById.Appointments_leads) {
-        let leadsData = this.appointmentListById.Appointments_leads;
+      // if(this.appointmentListById.Appointment_users) {
+      //   let userData = this.appointmentListById.Appointment_users;
 
-        for (var i = 0; i < leadsData.length; i++) {
-          this.selectedLeads.push(leadsData[i].lead_id);
-        }
-      }
+      //   for (var i = 0; i < userData.length; i++) {
+      //     this.selectedUsers.push(userData[i].user_id);
+      //   }
+      // }
+
+      // if(this.appointmentListById.Appointments_leads) {
+      //   let leadsData = this.appointmentListById.Appointments_leads;
+
+      //   for (var i = 0; i < leadsData.length; i++) {
+      //     this.selectedLeads.push(leadsData[i].lead_id);
+      //   }
+      // }
       
       this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
       this.newAppointmentForm.patchValue({lead_id:this.selectedLeads});
@@ -179,46 +182,12 @@ export class AddAppointmentComponent implements OnInit {
         comment: this.appointmentListById.comment,
       })
       // this.newAppointmentForm.patchValue({date:date});
+      console.log('newAppointmentForm',this.newAppointmentForm.value)
       
     })
-  }
- 
-  selectUser(event){
-     this.selectedUsers.push(event.user_id) 
-  }
-  deSelectUser(event){
-    this.selectedUsers =  this.selectedUsers.filter( (user: any) => { return user!=event.user_id});
-  }
 
-  selectLead(event){
-    this.selectedLeads.push(event.lead_id);
+    
   }
-  deSelectLead(event){
-    this.selectedLeads =  this.selectedLeads.filter( (lead: any) => { return lead!=event.lead_id});
-  }
-
-  //All
-  selectUserAll(event){
-    event.forEach( (event: any) => {
-      this.selectedUsers.push(event.user_id) 
-    })
-   
-  }
-
-  deSelectUserAll(event){
-    this.selectedUsers = event;
-  }
-
-  selectLeadAll(event){
-    event.forEach( (event: any) => {
-      this.selectedLeads.push(event.lead_id) 
-    })
-  }
-
-  deSelectLeadAll(event){
-    this.selectedLeads = event;
-  }
-
 
   onSubmit() {
     if (this.newAppointmentForm.invalid) {
@@ -231,6 +200,17 @@ export class AddAppointmentComponent implements OnInit {
     }
    
   };
+  selectUser(event:any){
+    // console.log(event)
+    // console.log(this.selectedUsers)
+    this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
+  }
+
+  selectLead(event:any){
+    // console.log(event)
+    // console.log(this.selectedLeads)
+    this.newAppointmentForm.patchValue({lead_id:this.selectedLeads})
+  }
 
 
   get f() {
