@@ -9552,4 +9552,11 @@ span.dropdown-btn {
   margin: 5px 10px 0 0;
   padding: 0 10px;
 }
+
+
+.float-right {
+  text-align: right;
+  margin-top: 30px;
+  margin-bottom: -4px;
+}
 /*# sourceMappingURL=main.css.map */
