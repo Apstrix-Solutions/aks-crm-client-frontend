@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
         (error) => {
           log.debug(`Login error: ${error}`);
           this.error = error;
+          this.startTime();
         }
       );
   }
@@ -66,6 +67,16 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
+
+  startTime() {
+    if(this.error){
+      setTimeout(() => {
+        this.error = '';
+      }, 4000);
+    }
+
+  }
+
   get f(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
   }

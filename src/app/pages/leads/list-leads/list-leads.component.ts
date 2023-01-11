@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
+
 @Component({
   selector: 'app-list-leads',
   templateUrl: './list-leads.component.html',
@@ -117,6 +118,7 @@ export class ListLeadsComponent implements OnInit {
   addLead() {
     this.leadService.addLead(this.newLeadForm.value).subscribe((res) => {
       this.refreshToken = res.headers.get('refresh_token');
+      
       if (res['body']['code'] == 200) {
         this.getLeads();
         this.closebutton.nativeElement.click();
@@ -131,7 +133,7 @@ export class ListLeadsComponent implements OnInit {
           email: [null, [Validators.required, Validators.email]],
           });
       } else {
-        this.toastr.error(res['errorMessage'], 'Error!');
+        this.toastr.error(res['body']['error'], 'Error!');
       }
     });
   }
@@ -256,9 +258,14 @@ export class ListLeadsComponent implements OnInit {
     this.newSearchForm.patchValue({ firstName: '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: '' })
   }
 
+  clearForm(){
+    this.newSearchForm.patchValue({ firstName: '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: '' })
+  }
+
   pageChangeEvent(event: number){
     this.p = event;
 }
+
 
   onSubmit() {
     if (this.newLeadForm.invalid) {

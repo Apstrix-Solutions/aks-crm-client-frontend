@@ -214,6 +214,7 @@
                                                                 (click)="reset()">
                                                                 <span class="icon-refresh-ccw"></span>
                                                             </button>
+                                                            <button class="btn btn-primary" (click)="clearForm()"> clear form </button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -269,10 +270,20 @@
                                                             [routerLink]="['/view-lead',list.id]"></i>
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-outline-primary btn-sm convert-btn"
+                                                        <button 
+                                                            *ngIf="! (list.customer || this.convertedLeads.includes(list.id))"
+                                                            class="btn btn-outline-primary btn-sm convert-btn"
                                                             [disabled]="list.customer || this.convertedLeads.includes(list.id)"
                                                             id="{{list.id}}"
                                                             (click)="customerConversion(list.id)">convert</button>
+
+                                                        <button 
+                                                        class="btn btn-outline-primary btn-sm convert-btn"
+                                                        *ngIf="list.customer || this.convertedLeads.includes(list.id)"
+                                                        [disabled]="list.customer || this.convertedLeads.includes(list.id)"
+                                                        >
+                                                        converted
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             </tbody>
