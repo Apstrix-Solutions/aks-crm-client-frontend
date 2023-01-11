@@ -248,7 +248,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let list of leadsList">
+                                                <tr *ngFor="let list of leadsList  | paginate: { itemsPerPage: 5, currentPage: p } ">
 
                                                     <td>{{ list.firstName}}</td>
                                                     <td>{{ list.lastName}}</td>
@@ -290,6 +290,7 @@
                                         </table>
                                     </div>
                                 </div>
+                                <pagination-controls  (pageChange)="pageChangeEvent($event)" class="float-right mt-4"></pagination-controls>
                             </div>
                         </div>
 
