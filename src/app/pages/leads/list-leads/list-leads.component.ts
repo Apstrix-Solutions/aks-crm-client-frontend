@@ -36,6 +36,7 @@ export class ListLeadsComponent implements OnInit {
   AgencyId:any;
 
   agencyId:any ;
+  p: number = 1;
   
 
   constructor(
@@ -254,6 +255,10 @@ export class ListLeadsComponent implements OnInit {
     this.getLeads();
     this.newSearchForm.patchValue({ firstName: '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: '' })
   }
+
+  pageChangeEvent(event: number){
+    this.p = event;
+}
 
   onSubmit() {
     if (this.newLeadForm.invalid) {
