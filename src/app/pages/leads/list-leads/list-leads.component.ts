@@ -38,7 +38,8 @@ export class ListLeadsComponent implements OnInit {
 
   agencyId:any ;
   p: number = 1;
-  
+  show:boolean = false;
+
 
   constructor(
     private formBulider: FormBuilder,
@@ -156,6 +157,10 @@ export class ListLeadsComponent implements OnInit {
     this.leadService.searchLead(queryParams).subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
       this.leadsList = data['body']['data']['leads'];
+
+      if(data['body']['code']==200){
+        this.show = false;
+      }
     });
   }
   
@@ -255,7 +260,7 @@ export class ListLeadsComponent implements OnInit {
 
   reset(){
     this.getLeads();
-    this.newSearchForm.patchValue({ firstName: '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: '' })
+    this.clearForm();
   }
 
   clearForm(){
@@ -264,7 +269,20 @@ export class ListLeadsComponent implements OnInit {
 
   pageChangeEvent(event: number){
     this.p = event;
-}
+  }
+
+  closeModal(idElm: any) {
+    let element: HTMLElement = document.getElementById(idElm) as HTMLElement;
+    element.click();
+  }
+
+  openSearchForm(){
+    this.show = true;
+  }
+
+  closeSearchForm(){
+    this.show = false;
+  }
 
 
   onSubmit() {
