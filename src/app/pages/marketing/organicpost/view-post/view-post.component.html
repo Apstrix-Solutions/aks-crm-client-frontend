@@ -10,7 +10,7 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <div class="card-header-lg">
-                                <h4>MY POSTS</h4>
+                                <h4>MY POSTS/Contents Details</h4>
                                 <div class="d-flex justify-content-end">
                                     <div class="custom-btn-group">
                                         <button class="btn btn-primary" type="button"  routerLink="/organic">Create Organic Contents</button>
@@ -25,20 +25,89 @@
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
       <div class="card h-320">
         <div class="card-header">
-          <div class="card-title">Contents view</div>
+          <div class="card-title">Content view in Social Accounts </div>
         </div>
         <div class="card-body">
+           <!-- Faq start -->
+           <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                     View On Facebook - <b>AKS TECH PTE LTD</b>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <figure class="user-card">
+                        <figcaption>
+                         
+                          <h5>Happy Chinese New Year - 2023</h5>
+
+                          <img src="../../../../../assets/img/ChineseNewYear.jpg" alt="post image" class="img-fluid">
+                        </figcaption>
+                      </figure>                    
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      View On Instagram - <b>akstechsg</b>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                      <figure class="user-card">
+                        <figcaption>
+                        
+                          <h5>Happy Chinese New Year - 2023</h5>
+
+                          <img src="../../../../../assets/img/ChineseNewYear.jpg" alt="post image" class="img-fluid" >
+                          <!-- <h5>Content Informations</h5> -->
+                          <!-- <ul class="list-group">
+                            <li class="list-group-item"><span>Creating For : </span>{{postDetails.schedule_date}}</li>
+                            <li class="list-group-item"><span>Publish as: </span>{{postDetails.page_id}}</li>
+                            <li class="list-group-item"><span>Schedule date: </span>{{postDetails.page_name}}</li>
+                            <li class="list-group-item"><span>Selected Profile in Facebook: </span>{{postDetails.page_id}}</li>
+                            <li class="list-group-item"><span>Selected Profile in Intagram: </span>{{postDetails.page_id}}</li>
+                            <li class="list-group-item"><span>content status: </span>{{postDetails.page_id}}</li>
           
+                            
+                          </ul> -->
+                        </figcaption>
+                      </figure>                    </div>
+                </div>
+            </div>
+          
+        </div>
+        <!-- Faq end -->
         </div>
       </div>
     </div>
     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
       <div class="card h-320">
-        <div class="card-header">
-          <div class="card-title">Contents Details</div>
-        </div>
+        <!-- <div class="card-header">
+          <div class="card-title"></div>
+        </div> -->
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
         <div class="card-body">
-          
+            <figure class="user-card">
+              <figcaption>
+               
+                <h5>Content Informations</h5>
+                <ul class="list-group">
+                  <li class="list-group-item"><span>Creating For : </span>Agency</li>
+                  <li class="list-group-item"><span>Publish as: </span>Post</li>
+                  <li class="list-group-item"><span>Schedule date: </span>23-01-2023</li>
+                  <li class="list-group-item"><span>Selected Profiles : </span>AKS TECH PTE LTD,akstechsg</li>
+                  <li class="list-group-item"><span>content status: </span>Pending</li>
+
+                  
+                </ul>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </div>

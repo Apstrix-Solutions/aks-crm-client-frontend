@@ -51,6 +51,9 @@ export class MarketingService {
   getPost(){
     return this.httpClient.get(`${environment.smiApiUrl}${'activity'}`);
   }
+  getPostById(id: string) {
+    return this.httpClient.get(`${environment.smiApiUrl}${'activity/'}${id}`,{observe: 'response'});
+  }
     // Error handling
     errorHandl(error) {
       let errorMessage = '';
