@@ -1,25 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import { AddCampaignComponent } from './add-campaign.component';
+import { AddCampainsService } from './add-campains.service';
 
-describe('AddCampaignComponent', () => {
-  let component: AddCampaignComponent;
-  let fixture: ComponentFixture<AddCampaignComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AddCampaignComponent ]
-    })
-    .compileComponents();
-  });
+describe('AddCampainsService', () => {
+  let service: AddCampainsService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddCampaignComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(AddCampainsService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    expect(service).toBeTruthy();
   });
 });

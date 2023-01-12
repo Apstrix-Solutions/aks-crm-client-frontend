@@ -38,33 +38,19 @@
             </div>
           </li>
 
-          <li class="default-sidebar-dropdown" [ngClass]="{'active': appointmentMenuHidden }">
-            <a (click)="toggleAppointmentMenu()">
-              <i class="icon-calendar1"></i>
-              <span class="menu-text">Appointments</span>
-            </a>
-            <div class="default-sidebar-submenu" [ngStyle]="{'display': appointmentMenuHidden ? 'block' : 'none' }">
-              <ul>
-                <li>
-                  <a routerLink="/list-appointments">My Appointments</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-           <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenContact }">
+          <!-- <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenContact }">
             <a (click)="toggleMenuContact()">
               <i class="icon-user1"></i>
-              <span class="menu-text">Contact Management</span>
+              <span class="menu-text">Contacts</span>
             </a>
             <div class="default-sidebar-submenu" [ngStyle]="{'display': menuHiddenContact ? 'block' : 'none' }">
               <ul>
                 <li>
-                  <a routerLink="/list-customer">List Contact</a>
+                  <a routerLink="/contacts">List Contact</a>
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
 
           <li class="default-sidebar-dropdown" [ngClass]="{'active': marketingMenuHidden }">
@@ -86,7 +72,7 @@
                 </a>
               </div>
               <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
-                <a (click)="togglePostMenu()">
+                <a (click)="togglePostMenu()" routerLink="/organicpost">
                   <span class="menu-text">Organic Contents</span>
                 </a>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': postMenuHidden ? 'block' : 'none' }">
@@ -107,30 +93,49 @@
 
               <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
                 <a (click)="toggleCampaignMenu()">
-                  <span class="menu-text">Campaigns</span>
+                  <span class="menu-text">Email & Text marketing</span>
                 </a>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
                   <ul>
-                    <li>
+                    <!-- <li>
                       <a routerLink="/campaign">Campaign </a>
+                    </li> -->
+                    <li>
+                      <a routerLink="/text-marketing-list">List Text Marketing</a>
                     </li>
                     <li>
-                      <a routerLink="/add-campaigns">Add Campaign </a>
-                    </li>
-                    <li>
-                      <a routerLink="/list-campains">List Campaigns</a>
-                    </li>
-                    <li>
-                      <a routerLink="/submit-contact">Submit Contact Form</a>
+                      <a routerLink="/email-marketing-list">List Email Marketing</a>
                     </li>
                   </ul>
                 </div>
 
               </div>
+
+              <!-- <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+                <a (click)="toggleMarketingmenu()">
+                  <span class="menu-text">Campaign</span>
+                </a>
+                <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenusHidden ? 'block' : 'none' }">
+                  <ul>
+                    <li>
+                      <a routerLink="/text-marketing">Add Campaign</a>
+                    </li>
+                    <li>
+                      <a routerLink="/email-marketing">List Campaign </a>
+                    </li>
+                    
+                  </ul>
+                </div>
+
+              </div> -->
+
+
+
+
             </ul>
 
 
-          <!-- <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
+          <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
             <a (click)="toggleSettingsMenu()">
               <i class="icon-calendar1"></i>
               <span class="menu-text">Settings</span>
@@ -142,7 +147,7 @@
                 </li>
               </ul>
             </div>
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>

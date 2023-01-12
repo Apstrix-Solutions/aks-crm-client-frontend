@@ -1,25 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-import { ListCampainsComponent } from './list-campains.component';
+import { ListCampainsService } from './list-campains.service';
 
-describe('ListCampainsComponent', () => {
-  let component: ListCampainsComponent;
-  let fixture: ComponentFixture<ListCampainsComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ListCampainsComponent ]
-    })
-    .compileComponents();
-  });
+describe('ListCampainsService', () => {
+  let service: ListCampainsService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListCampainsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ListCampainsService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    expect(service).toBeTruthy();
   });
 });

@@ -10,6 +10,11 @@ const routes: Routes = [
       component: AddCampaignComponent,
       data: { title: marker('Add Campaigns') },
     },
+    {
+      path: 'add-campaigns/:id',
+      component: AddCampaignComponent,
+      data: { title: marker('Add Campaign') },
+    },
   ]),
 ];
 

@@ -9477,23 +9477,13 @@ label {
   padding-right: 10px;
   padding-left: 10px;
 }
-
-span.dropdown-btn {
-  border: 1px solid #dbdaea!important;
-  font-size: 13px;
-  font-weight: 600!important;
-  height: 38px;
-  border-radius: 3px!important;
-  margin: 0 0 10px !important;
-}
-
+/*# sourceMappingURL=main.css.map */
 .tag-selector .input-group {
   width: 100%;
   display: block;
 }
-
 .tag-selector .select {
-  border: 1px solid #dbdaea!important;
+  border: 1px solid #DBDAEA!important;
   font-size: 13px;
   font-weight: 600!important;
   height: 38px;
@@ -9502,7 +9492,6 @@ span.dropdown-btn {
   padding: 0;
   width: 100%;
 }
-
 .tag-selector .select:before {
   position: absolute;
   right: 10px;
@@ -9547,16 +9536,12 @@ span.dropdown-btn {
   white-space: normal!important;
   font-size: .9em;
   color: #333;
-  background-color: #ebf5ff;
+  background-color: #EBF5FF;
   border-radius: 2px;
   margin: 5px 10px 0 0;
   padding: 0 10px;
 }
-
-
-.float-right {
-  text-align: right;
-  margin-top: 30px;
-  margin-bottom: -4px;
+.gutter_row {
+  max-width: 500px;
+  margin: 0 auto;
 }
-/*# sourceMappingURL=main.css.map */

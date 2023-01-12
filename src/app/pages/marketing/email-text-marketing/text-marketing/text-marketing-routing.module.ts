@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
-import {ListCampainsComponent } from './list-campains.component';
+
 import { Shell } from '@app/shell/shell.service';
+import { TextMarketingComponent} from './text-marketing.component'
+
 const routes: Routes = [
   Shell.childRoutes([
     {
-      path: 'list-campaign',
-      component: ListCampainsComponent,
-      data: { title: marker('List campaign') },
-    },
-    {
-      path: 'list-campaign/:id',
-      component: ListCampainsComponent,
-      data: { title: marker('List campaign') },
-    },
+      path:'text-marketing-list',
+      component: TextMarketingComponent,
+      data: { title: marker('Text') },
+    }
   ]),
 ];
 
@@ -23,4 +20,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class ListCampainsRoutingModule {}
+export class TextMarketingRoutingModule {}

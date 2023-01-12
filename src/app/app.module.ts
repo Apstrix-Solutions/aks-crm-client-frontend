@@ -47,6 +47,9 @@ import { AddAppointmentModule } from './pages/appointments/add-appointment/add-a
 import { ListAppointmentModule } from './pages/appointments/list-appointment/list-appointment.module';
 import { AppoinmentLeadsModule } from './pages/leads/appoinment-leads/appoinment-leads.module';
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
+import { TextMarketingModule } from './pages/marketing/email-text-marketing/text-marketing/text-marketing.module';
+import { EmailMarketingModule } from './pages/marketing/email-text-marketing/email-marketing/email-marketing.module';
+
 // <============
 
 @NgModule({
@@ -87,6 +90,8 @@ import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/
     AppoinmentLeadsModule,
     ListCustomerModule,
     AddAppointmentModule,
+    EmailMarketingModule,
+    TextMarketingModule,
     ListAppointmentModule,
     SubmitContactModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!

@@ -15,6 +15,20 @@
 	line-height: 1em;
 	box-shadow: 20px 30px 30px rgba(0, 0, 0, 0.2);
 }
+.btn_submit button {
+    margin: 0 0 0 15px;
+}
+.btn_submit {
+    display: flex;
+    justify-content: end;
+}
+.row gutters{
+	display:block
+}
+.gutter_row {
+	max-width: 500px;
+	margin: 0 auto;
+  }
 
 .daterangepicker:after {
 	position: absolute;
@@ -26,11 +40,12 @@
 	border-bottom: 9px solid #fff;
 	border-left: 9px solid transparent;
 }
-
+.field-wrapper select{
+    background: transparent;
+}
 .daterangepicker.opensleft:before {
 	right: 9px;
 }
-
 .daterangepicker.opensleft:after {
 	right: 10px;
 }
