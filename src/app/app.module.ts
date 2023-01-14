@@ -46,7 +46,14 @@ import { ListCustomerModule } from './pages/customer/list-customer/list-customer
 import { AddAppointmentModule } from './pages/appointments/add-appointment/add-appointment.module';
 import { ListAppointmentModule } from './pages/appointments/list-appointment/list-appointment.module';
 import { AppoinmentLeadsModule } from './pages/leads/appoinment-leads/appoinment-leads.module';
+import { AddEmailModule } from './pages/marketing/email/add-email/add-email.module';
+import { ListEmailModule } from './pages/marketing/email/list-email/list-email.module';
+import {AddTextModule} from './pages/marketing/text/add-text/add-text.module';
+import {ListTextModule} from './pages/marketing/text/list-text/list-text.module'
+
+
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
+
 // <============
 
 @NgModule({
@@ -89,6 +96,10 @@ import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/
     AddAppointmentModule,
     ListAppointmentModule,
     SubmitContactModule,
+    AddEmailModule,
+    ListEmailModule,
+    AddTextModule,
+    ListTextModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
