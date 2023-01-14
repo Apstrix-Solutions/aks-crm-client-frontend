@@ -130,7 +130,7 @@ updateLeads(){
   this.addtextservice.updateLeads(this.id,this.newAddLeadForm.value).subscribe((data:any)=>{
     if (data['status'] == true) {
       this.toastr.success(
-        data['message'],
+        'updated successfully',
       );                
     } else {
       this.toastr.error(data['message'], 'Error!');
