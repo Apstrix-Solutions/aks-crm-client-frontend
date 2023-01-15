@@ -53,6 +53,7 @@ import {ListTextModule} from './pages/marketing/text/list-text/list-text.module'
 
 
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 // <============
 
@@ -100,6 +101,7 @@ import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/
     ListEmailModule,
     AddTextModule,
     ListTextModule,
+    FullCalendarModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
