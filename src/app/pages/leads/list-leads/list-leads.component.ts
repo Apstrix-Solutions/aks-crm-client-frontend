@@ -260,10 +260,10 @@ export class ListLeadsComponent implements OnInit {
 
   reset(){
     this.getLeads();
-    this.clearForm();
+    this.clearSearchForm();
   }
 
-  clearForm(){
+  clearSearchForm(){
     this.newSearchForm.patchValue({ firstName: '', lastName: '', title: '', primaryNumber: '', secondaryNumber: '', email: '' })
   }
 

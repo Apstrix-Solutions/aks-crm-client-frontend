@@ -34,7 +34,7 @@
                                                 id="notifications">
                                                 <div>
                                                     <form class="form-horizontal" [formGroup]="newSearchForm"
-                                                        (ngSubmit)="searchLead()">
+                                                        >
                                                         <!-- Row start -->
                                                         <div class="wrapper container ">
                                                             <div class="row gutters "
@@ -153,7 +153,7 @@
                                                         </div>
                                                         <!-- Row end -->
                                                         <!-- Row start -->
-                                                        <div class="wrapper container ">
+                                                        <!-- <div class="wrapper container ">
                                                             <div class="row gutters "
                                                                 style="display: flex;justify-content:space-between">
                                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-8">
@@ -180,10 +180,10 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <!-- Row end -->
                                                         <!-- Row start -->
-                                                        <div class="wrapper container ">
+                                                        <!-- <div class="wrapper container ">
                                                             <div class="row gutters "
                                                                 style="display: flex;justify-content:space-between">
                                                                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-8">
@@ -208,13 +208,14 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <!-- Row end -->
 
                                                         <div class="search-footer">
+                                                            <button class="btn btn-warning" (click)="clearSearchForm()">clear</button>
                                                             <button class="btn btn-danger" (click)="closeSearchForm()">Cancel</button>
-                                                            <button class="btn btn-primary">Search</button>
-                                                            <button class="btn btn-primary" (click)="clearForm()"> Clear Form </button>
+                                                            <button class="btn btn-primary" (click)="searchLead()">Search</button>
+                                                            <!-- <button class="btn btn-warning" (click)="clear()"> Clear</button> -->
                                                         </div>
                                                     </form>
                                                 </div>
