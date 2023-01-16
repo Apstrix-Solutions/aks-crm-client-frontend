@@ -7,6 +7,8 @@ import {NgSelectModule, NgOption} from '@ng-select/ng-select';
 import {FormControl, ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { ThisReceiver } from '@angular/compiler';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-add-text',
   templateUrl: './add-text.component.html',
@@ -28,16 +30,26 @@ export class AddTextComponent implements OnInit {
   currentUser:any
   selectId:Number
   updateList:any
+  date:any;
+  currentDate: any;
 
   constructor(public addtextservice:AddTextService,
     private formBulider: FormBuilder,     
     private route: ActivatedRoute,  
-     public toastr: ToastrService
+     public toastr: ToastrService,
+     public datepipe: DatePipe,
+     public router:Router
+
+
     ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     console.log('this.id',this.id);
+    let date: Date = new Date();  
+    console.log("Date = " + date);
+   
+    this.currentDate =  this.datepipe.transform(date, 'yyyy-MM-dd');
     
     const AgencyId = localStorage.getItem('AgencyId'); 
     this.AgencyId = Number(AgencyId)
@@ -99,8 +111,20 @@ export class AddTextComponent implements OnInit {
       console.log('this.updateList',this.updateList);
       
       this.newAddLeadForm.patchValue(getEmailById);
+
       console.log('----data',this.newAddLeadForm.value)
-      
+
+      const datas =  this.updateList
+      this.date = this.datepipe.transform( this.updateList.scheduled,'yyyy-MM-dd');
+      this.currentDate = this.date;
+      this.newAddLeadForm.patchValue({scheduled:this.date})
+      console.log('date', this.date);
+      const messagecontent =this.updateList.messageContent
+
+      this.messagepreview.push(messagecontent)
+
+
+            
     })
   }
   saveCampaigns(){
@@ -131,7 +155,9 @@ updateLeads(){
     if (data['status'] == true) {
       this.toastr.success(
         'updated successfully',
-      );                
+      ); 
+      this.router.navigateByUrl('/list-text')
+
     } else {
       this.toastr.error(data['message'], 'Error!');
     } 

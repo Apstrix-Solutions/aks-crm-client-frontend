@@ -14,7 +14,7 @@ export class ListTextComponent implements OnInit {
 
   constructor(
     public listtextservice:ListTextService,     
-    public toastr: ToastrService
+    public toastr: ToastrService,
     ) { }
 
   ngOnInit(): void {
@@ -33,12 +33,13 @@ export class ListTextComponent implements OnInit {
     
     if (confirm('Are you sure to delete ?')) {
       this.listtextservice.deleteMarketing(id).subscribe((res) => {
-        console.log('res',res);
+        console.log('res in dele',res);
         
-        this.getMarketing()
+        // this.getMarketing()
 
-        if (res['body']['code'] == 200) {
-          this.toastr.success('Lead has been deleted successfully', 'Success!');
+        if (res['status'] == true) {
+          this.toastr.success(res['campaign'], 'Success!');
+
         } else {
           this.toastr.error(res['errorMessage'], 'Error!');
         }

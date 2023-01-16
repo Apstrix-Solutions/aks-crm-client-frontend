@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {AddEmailService } from './add-email.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-add-email',
@@ -34,6 +36,9 @@ export class AddEmailComponent implements OnInit {
     public Addemailservice:AddEmailService,
     public toastr: ToastrService,
     private formBulider: FormBuilder,
+    public datepipe: DatePipe,
+    public router:Router
+
     ) { }
 
   ngOnInit(): void {
@@ -42,10 +47,10 @@ export class AddEmailComponent implements OnInit {
     console.log('id',this.id);
     
 
-    // let date: Date = new Date();  
-    // console.log("Date = " + date);
+    let date: Date = new Date();  
+    console.log("Date = " + date);
    
-    // this.currentDate =  this.datepipe.transform(date, 'yyyy-MM-dd');
+    this.currentDate =  this.datepipe.transform(date, 'yyyy-MM-dd');
 
     const AgencyId = localStorage.getItem('AgencyId'); 
     this.AgencyId = Number(AgencyId)
@@ -77,17 +82,19 @@ export class AddEmailComponent implements OnInit {
    }
    GetMarketing(){
     this.Addemailservice.GetMarketing(this.id).subscribe((data:any)=>{
-      console.log('getMarketing',data)
-     
+      console.log(data);      
+      // this.updateList = data.campaign[0]
+      // console.log('one list',this.updateList);
       const getEmailById = data.campaign[0];
-      console.log('getEmailById',getEmailById)
-
       this.updateList =getEmailById;
-      console.log('this.updateList',this.updateList);
-      
+      console.log('this.updateList',this.updateList);     
       this.newAddLeadForm.patchValue(getEmailById);
-      console.log('----data',this.newAddLeadForm.value)
-      
+      const datas =  this.updateList
+      this.date = this.datepipe.transform( this.updateList.scheduled,'yyyy-MM-dd');
+      this.currentDate = this.date;
+      this.newAddLeadForm.patchValue({scheduled:this.date})
+      console.log('date', this.date);
+            
     })
   }
   get f() {
@@ -138,7 +145,9 @@ updateLeads(){
     if (data['status'] == true) {
       this.toastr.success('campaign updated successfully'
        ,
-      );                
+      ); 
+      this.router.navigateByUrl('/list-email')
+               
     } else {
       this.toastr.error(data['message'], 'Error!');
     } 

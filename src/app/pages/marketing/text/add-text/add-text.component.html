@@ -67,6 +67,8 @@
                             }"
                             formControlName="scheduled"
                             type="date"
+                            value="{{date}}"
+
                             class="form-control"
                           />
                         </div>
@@ -269,9 +271,8 @@
                                 </span></button> -->
                       </div>
                     </div>
-  
+   
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                      <!-- Field wrapper start -->
                       <div class="field-wrapper">
                         <textarea value="{{updateList?.body}}"
                           formControlName="messageContent"
@@ -300,8 +301,23 @@
                           Please enter a small description.
                         </div>
                       </div>
-                      <!-- Field wrapper end -->
-                    </div>
+                    </div> 
+
+                    <!-- <editor
+                                    apiKey="dpx9m7e03njbbk7saiwzc6g76sjhk97tjslabrnh613ixapp"
+                                    [init]="{
+                                            icons: 'material',
+                                            skin: 'borderless',
+                                            plugins: 'wordcount',
+                                            menubar: false,
+                                            min_height: 50
+                                          }"
+                                    plugins="lists code"
+                                    outputFormat="text"
+                                    [(ngModel)]="messagepreview"
+                                    [ngModelOptions]="{standalone: true}"
+                                    >
+                                    </editor> -->
   
                     <div class="btn_submit col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                       <button routerLink="/list-text" class="btn btn-outline-secondary">Cancel</button>

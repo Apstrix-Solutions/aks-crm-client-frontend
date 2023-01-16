@@ -6,7 +6,8 @@ import { AddTextComponent } from './add-text.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import {NgSelectModule, NgOption} from '@ng-select/ng-select';
-import {AddTextRoutingModule} from './add-text.routing'
+import {AddTextRoutingModule} from './add-text.routing';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {AddTextRoutingModule} from './add-text.routing'
     ShellModule,
     FormsModule,
     ReactiveFormsModule,
+    EditorModule,
     ToastrModule.forRoot(),
   ],
   declarations: [AddTextComponent],

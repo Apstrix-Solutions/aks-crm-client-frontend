@@ -19,7 +19,7 @@ export class ListTextService {
 
   }
   deleteMarketing(id:any){
-    return this.httpClient.delete(`${environment.apiUrl}${'remove-campaign-data'}${id}`)
+    return this.httpClient.delete(`${environment.apiUrl}${'remove-campaign-data/'}${id}`)
 
   }
 }

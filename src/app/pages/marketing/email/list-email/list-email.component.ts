@@ -32,7 +32,7 @@ export class ListEmailComponent implements OnInit {
       this.listemailservice.deleteMarketing(id).subscribe((res) => {
         console.log('res in dele',res);
         
-        this.getMarketing()
+        // this.getMarketing()
 
         if (res['status'] == true) {
           this.toastr.success(res['campaign'], 'Success!');
