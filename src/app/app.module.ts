@@ -39,7 +39,6 @@ import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } fro
 import { ViewLeadsModule } from './pages/leads/view-leads/view-leads.module';
 import { ImportLeadsModule } from './pages/leads/import-leads/import-leads.module';
 import { ListPostModule } from './pages/marketing/organicpost/list-post/list-post.module';
-import { ListCampainsModule } from './pages/marketing/campaigns/list-campains/list-campains.module';
 import { LandingModule } from './pages/marketing/organicpost/lanading-page/landing-page.module';
 import { LandingPageModule } from './pages/marketing/campaigns/landing-page/landing-page.module';
 import { ListCustomerModule } from './pages/customer/list-customer/list-customer.module';
@@ -47,6 +46,7 @@ import { AddAppointmentModule } from './pages/appointments/add-appointment/add-a
 import { ListAppointmentModule } from './pages/appointments/list-appointment/list-appointment.module';
 import { AppoinmentLeadsModule } from './pages/leads/appoinment-leads/appoinment-leads.module';
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
+import { ListCampaignModule } from './pages/marketing/campaigns/list-campaign/list-campaign.module';
 // <============
 
 @NgModule({
@@ -81,7 +81,6 @@ import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/
     ViewLeadsModule,
     ImportLeadsModule,
     ListPostModule,
-    ListCampainsModule,
     LandingModule,
     LandingPageModule,
     AppoinmentLeadsModule,
@@ -89,6 +88,7 @@ import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/
     AddAppointmentModule,
     ListAppointmentModule,
     SubmitContactModule,
+    ListCampaignModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

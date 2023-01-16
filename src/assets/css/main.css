@@ -9559,4 +9559,35 @@ span.dropdown-btn {
   margin-top: 30px;
   margin-bottom: -4px;
 }
+
+.tox.tox-tinymce {
+  box-shadow: 0 3px 10px #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  height: 200px!important;
+  margin: 0 0 30px;
+}
+
+.doc-block {
+  padding-bottom: 100px;
+}
+
+.field-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  min-width: 90px;
+  padding: 0 2px;
+}
+.checkbox-container .form-check.email_check {
+  margin: 0!important;
+}
+input#chcekEmail {
+  margin: 5px 0 0;
+}p#duration {
+  margin: 5px 0 0;
+}
+input.select-date:hover {
+  border: none;
+}
 /*# sourceMappingURL=main.css.map */

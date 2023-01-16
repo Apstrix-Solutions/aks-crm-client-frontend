@@ -419,3 +419,59 @@
 		clear: none !important;
 	}
 }
+
+.campaign .col-form-label {
+    margin: 10px 0 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.social {
+    width: 80%;
+    display: flex;
+}
+
+.social section {
+    margin: 0 10px 0 0;
+}
+
+.footer-campaign {
+    display: flex;
+    justify-content: end;
+}
+
+.footer-campaign button {
+    margin: 0 0 0 10px;
+}	
+
+.preview-icon{
+	width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border-top: solid 1px #ccc;
+    margin: 60px 0 0;
+
+}
+
+.field-wrapper .select-date{
+	color: #8a96a0;
+	background-color: #e5e5e5;
+}
+
+ul.list-group.campaign {
+    width: 20%;
+}
+
+.container {
+    max-width: 1320px;
+    box-shadow: tan;
+    border: 1px solid #00000026;
+	height: 345px;
+    box-shadow: turquoise;
+    box-shadow: 3px 2px 5px grey;
+}
+
+.container .doc-block {
+    padding-bottom: 162px;
+    padding: 5px 0px 126px 0px;
+}

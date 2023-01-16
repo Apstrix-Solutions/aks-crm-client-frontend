@@ -28,6 +28,8 @@
                                             <!-- <p class="small text-danger font-italic" *ngIf="!fileChosen"> *File with .csv is required.</p> -->
                                             <p *ngIf="f['fileSelected'].touched && f['fileSelected'].invalid || fileChosen"
                                                 class="small text-danger font-italic">*File with .csv is required.</p>
+
+                                            <p class="warn-csv"><span>only csv is allowed!</span></p>
                                         </div>
                                         <!-- Field wrapper end -->
                                         <div class="col-12">
