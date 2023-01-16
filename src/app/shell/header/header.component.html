@@ -127,6 +127,30 @@
                 </div>
 
               </div>
+              <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+                <a (click)="toggleEmailTextMenu()">
+                  <span class="menu-text">Email & Text marketing</span>
+                </a>
+                <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenusHidden ? 'block' : 'none' }">
+                  <ul>
+                    <!-- <li>
+                      <a routerLink="/campaign">Campaign </a>
+                    </li> -->
+                    <li>
+                      <a routerLink="/list-text">List Text Marketing </a>
+                    </li>
+                    <li>
+                      <a routerLink="/list-email">List Email Marketing</a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+
+
+
+
+
             </ul>
 
 

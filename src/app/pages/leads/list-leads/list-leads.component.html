@@ -22,13 +22,16 @@
                                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
                                     <ul class="header-actions">
                                         <li class="dropdown">
-                                            <div class="container-md ml-2 mt-3 p-2 rounded-2">Filter
+                                            <div class="container-md ml-2 mt-3 p-2 rounded-2"
+                                                (click)="openSearchForm()">Filter
                                                 <span class="icon-filter_list ms-5" id="notifications"
-                                                    data-toggle="dropdown" aria-haspopup="true"> </span>
+                                                    data-toggle="notifications" data-bs-target="#notifications"
+                                                    aria-expanded="false"> </span>
                                             </div>
 
-                                            <div class="dropdown-menu dropdown-menu-end lrg " style="width: 500px;"
-                                                aria-labelledby="notifications">
+                                            <div *ngIf="show" class="dropdown-menu dropdown-menu-end lrg "
+                                                style="width: 500px;" aria-labelledby="notifications"
+                                                id="notifications">
                                                 <div>
                                                     <form class="form-horizontal" [formGroup]="newSearchForm"
                                                         (ngSubmit)="searchLead()">
@@ -209,18 +212,20 @@
                                                         <!-- Row end -->
 
                                                         <div class="search-footer">
-                                                            <button class="btn btn-primary">search</button>
-                                                            <button type="button" class="btn btn-warning"
-                                                                (click)="reset()">
-                                                                <span class="icon-refresh-ccw"></span>
-                                                            </button>
-                                                            <button class="btn btn-primary" (click)="clearForm()"> clear form </button>
+                                                            <button class="btn btn-danger" (click)="closeSearchForm()">Cancel</button>
+                                                            <button class="btn btn-primary">Search</button>
+                                                            <button class="btn btn-primary" (click)="clearForm()"> Clear Form </button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
+                                </div>
+                                <div class="custom-btn-group quick_lead_btn ms-2">
+                                    <button type="button" class="btn btn-warning" (click)="reset()">
+                                        Refresh
+                                    </button>
                                 </div>
 
                                 <div class="custom-btn-group quick_lead_btn">
@@ -248,7 +253,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let list of leadsList  | paginate: { itemsPerPage: 5, currentPage: p } ">
+                                                <tr
+                                                    *ngFor="let list of leadsList  | paginate: { itemsPerPage: 5, currentPage: p } ">
 
                                                     <td>{{ list.firstName}}</td>
                                                     <td>{{ list.lastName}}</td>
@@ -270,19 +276,17 @@
                                                             [routerLink]="['/view-lead',list.id]"></i>
                                                     </td>
                                                     <td>
-                                                        <button 
+                                                        <button
                                                             *ngIf="! (list.customer || this.convertedLeads.includes(list.id))"
                                                             class="btn btn-outline-primary btn-sm convert-btn"
                                                             [disabled]="list.customer || this.convertedLeads.includes(list.id)"
                                                             id="{{list.id}}"
                                                             (click)="customerConversion(list.id)">convert</button>
 
-                                                        <button 
-                                                        class="btn btn-outline-primary btn-sm convert-btn"
-                                                        *ngIf="list.customer || this.convertedLeads.includes(list.id)"
-                                                        [disabled]="list.customer || this.convertedLeads.includes(list.id)"
-                                                        >
-                                                        converted
+                                                        <button class="btn btn-outline-primary btn-sm convert-btn"
+                                                            *ngIf="list.customer || this.convertedLeads.includes(list.id)"
+                                                            [disabled]="list.customer || this.convertedLeads.includes(list.id)">
+                                                            converted
                                                         </button>
                                                     </td>
                                                 </tr>
@@ -290,7 +294,8 @@
                                         </table>
                                     </div>
                                 </div>
-                                <pagination-controls  (pageChange)="pageChangeEvent($event)" class="float-right mt-4"></pagination-controls>
+                                <pagination-controls (pageChange)="pageChangeEvent($event)"
+                                    class="float-right mt-4"></pagination-controls>
                             </div>
                         </div>
 

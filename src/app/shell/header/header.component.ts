@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
   marketingMenuHidden = false;
   postMenuHidden = false;
   appointmentMenuHidden = false;
+  marketingMenusHidden = false
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -26,6 +28,9 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
+  }
+  toggleEmailTextMenu(){
+    this.marketingMenusHidden =!this.marketingMenusHidden;
   }
 
   toggleMenuContact() {

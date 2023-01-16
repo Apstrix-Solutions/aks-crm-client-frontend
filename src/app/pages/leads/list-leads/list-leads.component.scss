@@ -38,5 +38,17 @@
 }
 
 .convert-btn {
-    font-size: 11px;
+    font-size: 12px;
+    width: 100px;
+    margin: auto;
+    display: block;
+
+}
+
+.custom-btn-group.quick_lead_btn button.btn.btn-primary {
+    margin: 5px 0 10px 10px;
+}
+
+div#notifications {
+    display: block;
 }
