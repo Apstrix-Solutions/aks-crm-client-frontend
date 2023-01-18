@@ -9590,4 +9590,18 @@ input#chcekEmail {
 input.select-date:hover {
   border: none;
 }
+div#passwordHelpBlock2 {
+  width: 92%;
+  height: 200px;
+  overflow-y: auto;
+}
+
+
+.camp-wrap input:hover, .camp-wrap input:focus  {
+  border: 1px solid  #dbdaea;
+  outline: none; 
+  box-shadow: none;
+}
+
+
 /*# sourceMappingURL=main.css.map */
