@@ -17,6 +17,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-end">
                                 <div class="custom-btn-group">
+                                    <button class="btn btn-primary" routerLink="/add-customer">Create Customer</button>
                                 </div>
                             </div>
                             <div class="row gutters">
@@ -39,7 +40,8 @@
                                                     <td>{{ list.createdAt}}</td>
                                                     <td>{{ list.field}}</td>
                                                     <td>
-                                                        <i class="icon-edit1 text-primary" ></i>
+                                                        <i class="icon-edit1 text-primary"
+                                                        [routerLink]="['/add-customer',list.id]"  ></i>
                                                         <i class="icon-delete text-primary"
                                                         (click)="open(content,list.id)"></i>
                                                     </td>

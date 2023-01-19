@@ -86,6 +86,7 @@ export class LeadService {
   public leadStatusUpdate(leadId: any){
     return this.httpClient.put(`${environment.apiUrl}${'leads_status_update/'}${leadId}`,{currentStatus:environment.leadStatus},{observe: 'response'})
   }
+  
 
   public setData(data: any) {
     this.dataSource.next(data);

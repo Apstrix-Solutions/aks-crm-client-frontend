@@ -14,6 +14,22 @@ export class CustomerService {
     return this.httpClient.get(`${environment.apiUrl}${'customer_all'}`,{observe: 'response'});
   }
 
+  getCustomerById(customerId: any) {
+    return this.httpClient.get(`${environment.apiUrl}${'new-customer/'}${customerId}`,{observe:'response'})
+  }
+
+  addCustomer(data: any) {
+    return this.httpClient.post(`${environment.apiUrl}${'new-customer-create'}`,data,{observe: 'response'});
+  }
+
+  updateCustomer(data: any, id: any){
+    return this.httpClient.put(`${environment.apiUrl}${'new-customer-update/'}${id}`,data,{observe: 'response'});
+  }
+
+  deleteCustomer(customerId: any){
+    return this.httpClient.put(`${environment.apiUrl}${'new-customer-delete'}`,{id: customerId},{observe:'response'});
+  }
+
  
 
   // Error handling

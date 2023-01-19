@@ -33,6 +33,7 @@ export class ContactService {
   }
 
   getContactById(id: string) {
+    //get all contact under leadId
     return this.httpClient.get(`${environment.apiUrl}${'contacts-all/'}${id}`);
   }
 
