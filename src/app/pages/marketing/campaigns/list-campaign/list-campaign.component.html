@@ -1,0 +1,894 @@
+
+<div class="main-container">
+
+<app-topbar></app-topbar>
+    <!-- Content wrapper scroll start -->
+<div class="content-wrapper-scroll">
+
+        <!-- Content wrapper start -->
+  <div class="content-wrapper">
+
+            <!-- Row start -->
+    <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+             <!-- Card start -->
+         <div class="card">
+            <div class="card-header-lg">
+                <h4> Campaigns List </h4>
+                <div class="d-flex justify-content-end">
+                    <div class="custom-btn-group">
+                        <button type="button" class="btn btn-primary btn-md" [routerLink]="['/add-campaigns']">Create Campaign</button>
+                    </div>
+                </div>
+            </div>
+          <div class="card-body">
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-3">
+                    <!-- Card start -->
+                    <div class="card" style="min-height: 491px">
+                        <div class="card-header">
+                            <div class="card-title">Campaign1</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="customScroll200">
+                                <!-- Note - Below is empty div - Place your content below... if content height is more than 300px automatically scrollbar will enable. -->
+                                <div style="height: 450px;">
+
+                                        <!-- Row start -->
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                  
+                                                    <div class="field-placeholder">Campaign Name  </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Target Audience </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Currencies </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">  Budgets </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                                <button class="btn btn-danger btn-sm">Next</button>
+                                                <button class="btn btn-primary btn-sm" [disabled]="campaignForm.invalid">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- Row end -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+                <div class="col-xl-3">
+                    <!-- Card start -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Campaign2</div>
+                        </div>
+                        <div class="card-body" style="min-height: 491px">
+                            <div class="customScroll200">
+                                <!-- Note - Below is empty div - Place your content below... if content height is more than 300px automatically scrollbar will enable. -->
+                                <div style="height: 450px;">
+
+                                   
+                                        <!-- Row start -->
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">Campaign Name </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input
+                                                            type="text" class="form-control-camp" 
+                                                            readonly >
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input
+                                                            type="text" class="form-control-camp" readonly >
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly >
+                                                    </div>
+                                                    <div class="field-placeholder"> End Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp"  readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Target Audience </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp"  readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Currencies </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input
+                                                            type="text" class="form-control-camp"  readonl > 
+                                                    </div>
+                                                    <div class="field-placeholder">  Budgets </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right"
+                                                style="padding: 0 18px;"
+                                                >
+                                                <button class="btn btn-danger btn-sm" >Next</button>
+                                                <button class="btn btn-primary btn-sm" [disabled]="campaignForm.invalid" >Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- Row end -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+                <div class="col-xl-3">
+                    <!-- Card start -->
+                    <div class="card" style="min-height: 491px">
+                        <div class="card-header">
+                            <div class="card-title">Campaign3</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="customScroll200">
+                                <!-- Note - Below is empty div - Place your content below... if content height is more than 300px automatically scrollbar will enable. -->
+                                <div style="height: 450px;">
+                                
+                                   
+                                        <!-- Row start -->
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">Campaign Name 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Target Audience </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Currencies </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">  Budgets </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                                <button class="btn btn-danger btn-sm">Next</button>
+                                                <button class="btn btn-primary btn-sm" [disabled]="campaignForm.invalid">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- Row end -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+                <div class="col-xl-3">
+                    <!-- Card start -->
+                    <div class="card" style="min-height: 491px">
+                        <div class="card-header">
+                            <div class="card-title">Campaign4</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="customScroll200">
+                                <!-- Note - Below is empty div - Place your content below... if content height is more than 300px automatically scrollbar will enable. -->
+                                <div style="height: 450px;">
+                                
+                                    
+                                        <!-- Row start -->
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">Campaign Name 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Target Audience </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Currencies </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">  Budgets </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                                <button class="btn btn-danger btn-sm">Next</button>
+                                                <button class="btn btn-primary btn-sm" [disabled]="campaignForm.invalid">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- Row end -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+
+                <div class="col-xl-3">
+                    <!-- Card start -->
+                    <div class="card" style="min-height: 491px">
+                        <div class="card-header">
+                            <div class="card-title">Campaign5</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="customScroll200">
+                                <!-- Note - Below is empty div - Place your content below... if content height is more than 300px automatically scrollbar will enable. -->
+                                <div style="height: 450px;">
+
+                                    
+                                        <!-- Row start -->
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input
+                                                            type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                  
+                                                    <div class="field-placeholder">Campaign Name test  </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Target Audience </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Currencies </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">  Budgets </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                                <button class="btn btn-danger btn-sm">Next</button>
+                                                <button class="btn btn-primary btn-sm" [disabled]="campaignForm.invalid">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- Row end -->
+                                 
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+
+                <div class="col-xl-3">
+                    <!-- Card start -->
+                    <div class="card" style="min-height: 491px">
+                        <div class="card-header">
+                            <div class="card-title">Campaign6</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="customScroll200">
+                                <!-- Note - Below is empty div - Place your content below... if content height is more than 300px automatically scrollbar will enable. -->
+                                <div style="height: 450px;">
+
+                                 
+                                        <!-- Row start -->
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input
+                                                            type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                  
+                                                    <div class="field-placeholder">Campaign Name  </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Target Audience </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Currencies </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">  Budgets </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                                <button class="btn btn-danger btn-sm">Next</button>
+                                                <button class="btn btn-primary btn-sm" [disabled]="campaignForm.invalid">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- Row end -->
+                                  
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+
+                <div class="col-xl-3">
+                    <!-- Card start -->
+                    <div class="card" style="min-height: 491px">
+                        <div class="card-header">
+                            <div class="card-title">Campaign7</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="customScroll200">
+                                <!-- Note - Below is empty div - Place your content below... if content height is more than 300px automatically scrollbar will enable. -->
+                                <div style="height: 450px;">
+
+                                        <!-- Row start -->
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input
+                                                            type="text" class="form-control-camp"readonly>
+                                                    </div>
+                                                  
+                                                    <div class="field-placeholder">Campaign Name  </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Target Audience </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Currencies </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">  Budgets </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                                <button class="btn btn-danger btn-sm">Next</button>
+                                                <button class="btn btn-primary btn-sm" [disabled]="campaignForm.invalid">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- Row end -->
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+
+                <div class="col-xl-3">
+                    <!-- Card start -->
+                    <div class="card" style="min-height: 491px">
+                        <div class="card-header">
+                            <div class="card-title">Campaign8</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="customScroll200">
+                                <div style="height: 450px;">
+
+                                   
+                                        <!-- Row start -->
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                        <input
+                                                            type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                  
+                                                    <div class="field-placeholder">Campaign Name  </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Start Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                      <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Date </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> End Time </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Target Audience </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder"> Currencies </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="field-wrapper camp-wrap">
+                                                    <div class="input-group">
+                                                       <input type="text" class="form-control-camp" readonly>
+                                                    </div>
+                                                    <div class="field-placeholder">  Budgets </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                                <button class="btn btn-danger btn-sm">Next</button>
+                                                <button class="btn btn-primary btn-sm" [disabled]="campaignForm.invalid">Save</button>
+                                            </div>
+                                        </div>
+                                        <!-- Row end -->
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+            </div>
+            <!-- Row end -->
+        </div>
+    </div>
+    <!-- Card end -->
+
+                </div>
+            </div>
+            <!-- Row end -->
+
+        </div>
+        <!-- Content wrapper end -->
+
+        <app-footer></app-footer>
+
+
+    </div>
+    <!-- Content wrapper scroll end -->
+
+</div>
+

@@ -39,7 +39,6 @@ import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } fro
 import { ViewLeadsModule } from './pages/leads/view-leads/view-leads.module';
 import { ImportLeadsModule } from './pages/leads/import-leads/import-leads.module';
 import { ListPostModule } from './pages/marketing/organicpost/list-post/list-post.module';
-import { ListCampainsModule } from './pages/marketing/campaigns/list-campains/list-campains.module';
 import { LandingModule } from './pages/marketing/organicpost/lanading-page/landing-page.module';
 import { LandingPageModule } from './pages/marketing/campaigns/landing-page/landing-page.module';
 import { ListCustomerModule } from './pages/customer/list-customer/list-customer.module';
@@ -50,10 +49,9 @@ import { AddEmailModule } from './pages/marketing/email/add-email/add-email.modu
 import { ListEmailModule } from './pages/marketing/email/list-email/list-email.module';
 import {AddTextModule} from './pages/marketing/text/add-text/add-text.module';
 import {ListTextModule} from './pages/marketing/text/list-text/list-text.module'
-
-
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ListCampaignModule } from './pages/marketing/campaigns/list-campaign/list-campaign.module';
 
 // <============
 
@@ -89,7 +87,6 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ViewLeadsModule,
     ImportLeadsModule,
     ListPostModule,
-    ListCampainsModule,
     LandingModule,
     LandingPageModule,
     AppoinmentLeadsModule,
@@ -102,6 +99,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     AddTextModule,
     ListTextModule,
     FullCalendarModule,
+    ListCampaignModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

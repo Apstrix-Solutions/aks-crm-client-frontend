@@ -5,3 +5,14 @@
 .field-wrapper input {
     padding: 5px 12px;
 }
+
+p.warn-csv {
+    display: flex;
+    justify-content: end;
+    font-size: 13px;
+}
+p.warn-csv span {
+    background: #ff9900;
+    color: #fff;
+    padding: 2px 10px;
+}
