@@ -31,8 +31,11 @@ export class AddCampaignComponent implements OnInit {
 
   ngOnInit(): void {
     this.newCampaignForm = this.formBulider.group({
-      creatingFor: [null, [Validators.required]],
-      publishAs: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      status: [null, [Validators.required]],
+      objective:[null,[Validators.required]],
+      category:[null,[Validators.required]],
+      acc_id:[null]
     });
 
     this.socialAuthService.authState.subscribe((user) => {
@@ -41,7 +44,7 @@ export class AddCampaignComponent implements OnInit {
     });
     this.socialAuthService.authState.subscribe((user) => {
       this.facebookAuthToken = user.authToken;
-      localStorage.setItem('fbAccessToken', this.facebookAuthToken)
+      localStorage.setItem('fbAccessToken', this.facebookAuthToken) 
     })
   }
 
@@ -73,6 +76,7 @@ export class AddCampaignComponent implements OnInit {
 
   instaPage() {
     this.marketingService.instaPage().subscribe((data) => {
+      console.log('data-----',data)
       this.refreshToken = data.headers.get('refresh_token');
       this.listInstaPage = this.formatListPage( data['body']['data']['data']);
     });

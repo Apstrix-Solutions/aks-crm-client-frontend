@@ -30,26 +30,6 @@
                                         <div class="form-section-header">New Campaign</div>
                                     </div>
 
-                                    <div class="row gutters mb-3">
-                                        <label class="col-sm-2 col-form-label mb-2">Creating For</label>
-                                        <div class="col-sm-5">
-                                            <div class="field-wrapper">
-                                                <div class="input-group">
-                                                    <select
-                                                    [ngClass]="{'is-invalid': f['creatingFor'].touched && f['creatingFor'].invalid}"
-                                                    formControlName="creatingFor"
-                                                    name="creating-for"
-                                                    >
-                                                        <option>Agency</option>
-                                                        <option>Lead</option>
-                                                    </select>
-                                                </div>
-                                                <p *ngIf="f['creatingFor'].touched && f['creatingFor'].invalid" class="small text-danger font-italic">*CreatingFor is required.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
                                     <div class="row gutters ">
                                         <label class="col-sm-2 col-form-label mb-2">Social Login</label>
                                         <div class="social">
@@ -69,7 +49,7 @@
                                                 <div class="field-wrapper">
                                                     <div class="input-group">
                                                         <div>
-                                                            <button type="button" (click)="loginWithFacebook()"
+                                                            <button type="button" 
                                                                 class="btn btn-outline-primary  btn-block"> <i
                                                                     class="icon-google"></i>Connect to Google</button>
                                                         </div>
@@ -81,7 +61,7 @@
                                                 <div class="field-wrapper mr-4">
                                                     <div class="input-group">
                                                         <div>
-                                                            <button type="button" (click)="loginWithFacebook()"
+                                                            <button type="button"
                                                                 class="btn btn-primary btn-block"> <i
                                                                     class="icon-instagram-with-circle"></i>Connect to
                                                                 Instagram</button>
@@ -93,62 +73,104 @@
 
                                     </div>
 
-                                    <div class="row gutters mb-3">
-                                        <label class="col-sm-2 col-form-label mb-2">Profile</label>
-                                        <div class="col-sm-5">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        
+                                           <!-- Field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <input
+                                                    [ngClass]="{'is-invalid': f['name'].touched && f['name'].invalid}"
+                                                    class="form-control" type="text"
+                                                    name="name" formControlName="name">
+                                            </div>
+                                            <p *ngIf="f['name'].touched && f['name'].invalid"
+                                                class="small text-danger font-italic">*Name id is required.</p>
+                                                <div class="field-placeholder">Name <span class="text-danger">*</span>
+                                                </div>
+                                            </div>
+                                        <!-- Field wrapper end -->
+                                        
+                                    </div>
+
+
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
+                                            <!-- Field wrapper start -->
+                                       <div class="field-wrapper camp">
+                                           <div class="input-group">
+                                               <select
+                                                   [ngClass]="{'is-invalid': f['objective'].touched && f['objective'].invalid}"
+                                                   name="objective" formControlName="objective">
+                                                   <option>www.fb.com</option>
+                                                   <option>www.insta.com</option>
+                                               </select>
+                                           </div>
+                                           <p *ngIf="f['objective'].touched && f['objective'].invalid"
+                                               class="small text-danger font-italic">*Objective is required.</p>
+                                               <div class="field-placeholder">Objective <span class="text-danger">*</span>
+                                               </div>
+                                       </div>
+                                       <!-- Field wrapper end -->
+                                       
+                                    </div>
+
+                                   
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                           <!-- Field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <select
+                                                    [ngClass]="{'is-invalid': f['status'].touched && f['status'].invalid}"
+                                                    name="status" formControlName="status">
+                                                    <option>Enabled</option>
+                                                    <option>Paused</option>
+                                                </select>
+                                            </div>
+                                            <p *ngIf="f['status'].touched && f['status'].invalid"
+                                                class="small text-danger font-italic">*Status is required.</p>
+                                                <div class="field-placeholder">Status <span class="text-danger">*</span>
+                                                </div>
+                                        </div>
+                                        <!-- Field wrapper end -->
+                                        
+                                    </div>
+
+
+                                   
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                             <!-- Field wrapper start -->
+                                        <div class="field-wrapper">
+                                            <div class="input-group">
+                                                <select
+                                                    [ngClass]="{'is-invalid': f['category'].touched && f['category'].invalid}"
+                                                    name="category" formControlName="category">
+                                                    <option>Enable</option>
+                                                    <option>Pause</option>
+                                                </select>
+                                            </div>
+                                            <p *ngIf="f['category'].touched && f['category'].invalid"
+                                                class="small text-danger font-italic">*Category is required.</p>
+                                             <div class="field-placeholder">Special Add Categories <span class="text-danger">*</span>
+                                             </div>
+                                           
+                                        </div>
+                                        <!-- Field wrapper end -->
+                                        </div>
+                                    
+                                   
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                             <div class="field-wrapper">
                                                 <div class="input-group">
-                                                    <select
-                                                    [ngClass]="{'is-invalid': f['creatingFor'].touched && f['creatingFor'].invalid}"
-                                                    formControlName="creatingFor"
-                                                    name="creating-for"
+                                                    <input 
+                                                    type="text"  
+                                                    class="form-control"  
+                                                    formControlName="acc_id"
+                                                    readonly 
                                                     >
-                                                        <option>profile1</option>
-                                                        <option>profile2</option>
-                                                    </select>
+  
                                                 </div>
+                                                <div class="field-placeholder">Account Id </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row gutters mb-3">
-                                        <label class="col-sm-2 col-form-label mb-2">Publish to</label>
-                                        <div class="col-sm-5">
-                                            <div class="field-wrapper">
-                                                <div class="input-group">
-                                                    <div class="create-offer-container">
-                                                        <div class="share-thoughts-footer">
-                                                            <div class="share-icons">
-                                                                <a href="#">
-                                                                    <i class="icon-facebook"></i>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <i class="icon-google"></i>
-                                                                </a>
-                                                                <a href="#">
-                                                                    <i class="icon-instagram-with-circle"></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row gutters mb-3">
-                                        <label class="col-sm-2 col-form-label mb-2">Publish as</label>
-                                        <div class="col-sm-5">
-                                            <div class="field-wrapper">
-                                                <div class="input-group">
-                                                    <select>
-                                                        <option>Agency</option>
-                                                        <option>Lead</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                 </div>
 
@@ -188,8 +210,6 @@
                                     <p id="duration" class="col-xl-3 col-lg-3"><span>Duration: </span></p>
 
                                     </div>
-
-                                   
 
                                     <ul class="list-group campaign">
                                         <li class="list-group-item"><i class="icon-facebook"></i> Facebook</li>
