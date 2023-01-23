@@ -1,0 +1,164 @@
+<div class="main-container general-quick-lead">
+
+
+  <!-- Content wrapper scroll start -->
+  <div class="content-wrapper-scroll">
+      <!-- Content wrapper start -->
+      <div class="content-wrapper">
+  
+          <!-- Row start -->
+          <div class="row gutters">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+  
+                  <!-- Card start -->
+                  <div class="card">
+                      <div class="card-body">
+                          <form class="form-horizontal" [formGroup]= "newLeadForm" (ngSubmit)="onSubmit()">
+                              <!-- Row start -->
+                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                <div class="form-section-header quick-lead">General</div>
+                            </div>
+                              <div class="row gutters">
+                                 
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                        
+                                            <input [ngClass]="{'is-invalid': f['firstName'].touched && f['firstName'].invalid}"  type="text"  class="form-control"  formControlName="firstName" >
+  
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['firstName'].touched && f['firstName'].invalid" class="small text-danger font-italic">*First name is required.</p>
+                                        <div  class="field-placeholder">Firt Name <span class="text-danger">*</span></div>
+                                    </div>
+
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                        
+                                            <input [ngClass]="{'is-invalid': f['lastName'].touched && f['lastName'].invalid}"  type="text"  class="form-control"  formControlName="lastName" >
+  
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['lastName'].touched && f['lastName'].invalid" class="small text-danger font-italic">*Last name  is required.</p>
+                                        <div  class="field-placeholder">Last Name <span class="text-danger">*</span></div>
+                                    </div>
+
+                                </div>
+                                <div class="clear"></div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                        
+                                            <input  type="text"  class="form-control"  formControlName="title" >
+  
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <div  class="field-placeholder">Title </div>
+                                    </div>
+
+                                </div>
+                                <div class="clear"></div>
+
+
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+
+                                      <div class="field-wrapper">
+                                          <div class="input-group">
+                                          
+                                              <input [ngClass]="{'is-invalid': f['primaryNumber'].touched && f['primaryNumber'].invalid}" 
+                                              type="text"  name="primaryNumber" class="form-control"  formControlName="primaryNumber" >
+    
+                                              <span class="input-group-text">
+                                                  <i class="icon-phone"></i>
+                                              </span>
+                                          </div>
+                                          <p *ngIf="f['primaryNumber'].touched && f['primaryNumber'].invalid" class="small text-danger font-italic">
+                                            *Valid phone number is required(10-12 digits).
+                                          </p>
+                                          <div  class="field-placeholder">Phone</div>
+                                      </div>
+
+                                  </div>
+                                  <div class="clear"></div>
+
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                        
+                                            <input [ngClass]="{'is-invalid': f['secondaryNumber'].touched && f['secondaryNumber'].invalid}" 
+                                            type="text"  name="secondaryNumber" class="form-control"  formControlName="secondaryNumber" >
+  
+                                            <span class="input-group-text">
+                                                <i class="icon-phone"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['secondaryNumber'].touched && f['secondaryNumber'].invalid" class="small text-danger font-italic">
+                                            *Valid mobile number is required(10-12 digits).
+                                        </p>
+                                        <div  class="field-placeholder">Mobile </div>
+                                    </div>
+
+                                </div>
+                                <div class="clear"></div>
+
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                          
+                                            <input [ngClass]="{'is-invalid': f['email'].touched && f['email'].invalid}" 
+                                             class="form-control" type="text" name="email" formControlName="email">
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['email'].touched && f['email'].invalid" class="small text-danger font-italic">*Email  is required.</p>
+                                        <div class="field-placeholder">Email <span class="text-danger">*</span></div>
+                                    </div>
+
+                                </div>
+                                <div class="clear"></div>
+                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                    <div class="align-quick-lead-button">
+                                      <button class="btn btn-primary btn-lg" >Cancel</button>
+                                      <button class="btn btn-primary btn-lg" [disabled]="newLeadForm.invalid" >Save</button>
+                                    </div>
+                                  </div>
+                              </div>
+                          <!-- Row end -->
+                          </form>
+                      </div>
+                  </div>
+                  <!-- Card end --> 
+              </div>
+          
+          <!-- Row end -->
+      </div>
+      <!-- Content wrapper end -->
+
+
+  </div>
+  <!-- Content wrapper scroll end -->
+  </div>
+  </div>    

@@ -52,6 +52,7 @@ import {ListTextModule} from './pages/marketing/text/list-text/list-text.module'
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ListCampaignModule } from './pages/marketing/campaigns/list-campaign/list-campaign.module';
+import { QuickLeadModule } from './pages/embed/quick-lead/quick-lead.module';
 
 // <============
 
@@ -100,6 +101,7 @@ import { ListCampaignModule } from './pages/marketing/campaigns/list-campaign/li
     ListTextModule,
     FullCalendarModule,
     ListCampaignModule,
+    QuickLeadModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

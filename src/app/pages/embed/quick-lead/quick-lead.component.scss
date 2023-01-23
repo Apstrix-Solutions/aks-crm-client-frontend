@@ -1,0 +1,51 @@
+.default-sidebar-wrapper {
+    width: 260px;
+    display: block;
+    padding: 0;
+    display: none;
+    background: #f6f6fd;
+    height: calc(100vh - 20px);
+    border-radius: 4px 0 0 4px;
+}
+
+
+
+.card {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.gutters {
+    justify-content: center;
+}
+
+.form-section-header {
+    display: flex;
+    justify-content: center
+}
+
+.quick-lead {
+    max-width: 32.333%;
+    margin: 0 auto 30px;
+}
+
+.align-quick-lead-button button {
+    width: 50%;
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+.align-quick-lead-button {
+    max-width: 33%;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+.main-container.general-quick-lead {
+    padding: 0!important;
+}
+
+
+
