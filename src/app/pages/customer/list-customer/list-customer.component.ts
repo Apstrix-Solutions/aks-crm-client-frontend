@@ -25,22 +25,21 @@ export class ListCustomerComponent implements OnInit {
 
   getAllCustomer(){
     this.customerService.getAllCustomer().subscribe( (res) => {
-      console.log(res)
       this.customerList = res['body']['data']['data']
     })
   }
 
-  open(content, contactId) {
+  open(content, id: any) {
     if (confirm('Are you sure to delete ?')) {
-      // this.customerService.deleteContact(contactId).subscribe((res) => {
-      //   // this.getContactById();
+      this.customerService.deleteCustomer(id).subscribe((res) => {
 
-      //   if (res['code'] == 200) {
-      //     this.toastr.success(res['message'], 'Success!');
-      //   } else {
-      //     this.toastr.error(res['errorMessage'], 'Error!');
-      //   }
-      // });
+        if (res['body']['code'] == 200) {
+          this.toastr.success('Success!');
+          this.getAllCustomer();
+        } else {
+          this.toastr.error(res['errorMessage'], 'Error!');
+        }
+      });
     }
   }
 

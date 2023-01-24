@@ -82,7 +82,7 @@ export class AddAppointmentComponent implements OnInit {
     //get lead in the dropdown
     this.leadService.getAgencyLeads().subscribe((data) => {
       this.refreshToken = data.headers.get('refresh_token');
-      const leadData = data['body']['data']['lead'];
+      const leadData = data['body']['data']['leads'];
       // console.log('leadData',leadData)
       leadData.forEach((lead: any) => { this.leadIds.push( {lead_id:lead.id,name:lead.firstName} ) });
       this.leadDropdownList = this.leadIds;
