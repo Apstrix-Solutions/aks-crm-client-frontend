@@ -135,18 +135,21 @@ export class AddAppointmentComponent implements OnInit {
   getAppointment(){
 
     this.appointmentService.getAppointment(this.id).subscribe( (res) => {
+      console.log('res------',res)
 
       const response = res['body']['data']['data'];
       this.appointmentListById = res['body']['data']['data'][0];
       // console.log(this.appointmentListById)
 
-      const user = response.map( (item:any) => { return item.Appointment_user.user_id  });
-      const lead = response.map( (item:any) => { return item.Appointments_lead.lead_id  });
-      this.selectedUsers = user
-      this.selectedLeads = lead
+      const user = response.map( (item:any) => { return item.Appointment_users.map( u => { return u.user_id })  });
+      const lead = response.map( (item:any) => { return item.Appointments_leads.map( l => { return l.lead_id })  });
+      console.log(user[0])
+      this.selectedUsers = user[0]
+      this.selectedLeads = lead[0]
+      console.log('selectedUsers',this.selectedUsers)
 
-      this.selectedUsers = this.selectedUsers.filter((item, index) => this.selectedUsers.indexOf(item) === index);
-      this.selectedLeads = this.selectedLeads.filter((item, index) => this.selectedLeads.indexOf(item) === index);
+      // this.selectedUsers = this.selectedUsers.filter((item, index) => this.selectedUsers.indexOf(item) === index);
+      // this.selectedLeads = this.selectedLeads.filter((item, index) => this.selectedLeads.indexOf(item) === index);
 
       // if(this.appointmentListById.Appointment_users) {
       //   let userData = this.appointmentListById.Appointment_users;
@@ -164,7 +167,7 @@ export class AddAppointmentComponent implements OnInit {
       //   }
       // }
       
-      this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
+      this.newAppointmentForm.patchValue({user_id:this.selectedUsers});
       this.newAppointmentForm.patchValue({lead_id:this.selectedLeads});
 
       const data = this.appointmentListById
@@ -202,7 +205,7 @@ export class AddAppointmentComponent implements OnInit {
   };
   selectUser(event:any){
     // console.log(event)
-    // console.log(this.selectedUsers)
+    console.log(this.selectedUsers)
     this.newAppointmentForm.patchValue({user_id:this.selectedUsers})
   }
 
