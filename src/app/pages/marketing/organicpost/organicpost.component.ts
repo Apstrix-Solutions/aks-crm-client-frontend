@@ -1,6 +1,6 @@
 import { Component,NgZone, OnInit } from '@angular/core';
 import { FacebookLoginProvider, SocialAuthService,  SocialUser, } from 'angularx-social-login';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MarketingService } from '../marketing.service';
 import { ToastrService } from 'ngx-toastr';
@@ -24,12 +24,17 @@ export class OrganicpostComponent implements OnInit {
   files: File[] = [];
   social_media_content: any=[];
   uploadInfo:  any = [];
-  uploadedFileResponse:any =[];
+  uploadedFileResponse:any ={};
   smInfo: any = [];
   smInfoResponse:any =[];
   sDate:string;
   ownershipInfo:string = '';
   post_type :number;
+  post_data = [
+    {id:1,type:'Post'},
+    {id:2,type:'Story'},
+    {id:3,type:'Reel'}
+  ];
   constructor(
     private formBulider: FormBuilder,
     private socialAuthService: SocialAuthService,
@@ -64,7 +69,8 @@ export class OrganicpostComponent implements OnInit {
       start_date:[null],
       end_date:['0001-01-01 00:00:00'],
       post_type:[null,[Validators.required]],
-      activity_records :this.formBulider.group([null]),
+      // activity_records :this.formBulider.group([null]),
+      activity_records:[null],
       social_media_content:this.formBulider.group({
         content_title:['Title of the Sample Post No:1 Created'],
         content_description:[null],
@@ -98,6 +104,7 @@ export class OrganicpostComponent implements OnInit {
     this.marketingService.ownedPage().subscribe((data) => {
     this.refreshToken = data.headers.get('refresh_token');
     this.listPage = this.formatListPage( data['body']['data']['data']);
+    console.log('listPage in ownedPage() -> ',this.listPage)
     });
   };
   clientPage() {
@@ -108,8 +115,15 @@ export class OrganicpostComponent implements OnInit {
   };
   instaPage() {
     this.marketingService.instaPage().subscribe((data) => {
-      this.refreshToken = data.headers.get('refresh_token');
-      this.listInstaPage = this.formatListPage( data['body']['data']['data']);
+      if(data['body']['error']){
+        const msg = data['body']['message'];
+        this.toastr.error(msg);
+        // console.log(msg)
+      }else{
+        this.refreshToken = data.headers.get('refresh_token');
+        this.listInstaPage = this.formatListPage( data['body']['data']['data']);
+      }
+      
     });
   };
   scheduleDate(value:string):void{
@@ -134,12 +148,13 @@ export class OrganicpostComponent implements OnInit {
   return data;
   }
   pageInfo(value):void{
-    let smData = [];
+    let smData = {};
     smData['sms_id'] = 1;
     smData['page_id'] = this.listPage[value].id;
     smData['page_name'] = this.listPage[value].global_brand_page_name;
     smData['schedule_date'] = this.sDate;
     this.smInfo.push(smData);
+    console.log('smData',smData)
   }
   instaPageInfo(value):void{
     let smData = [];
@@ -148,11 +163,15 @@ export class OrganicpostComponent implements OnInit {
     smData['page_name'] = this.listInstaPage[value].username;
     smData['schedule_date'] = this.sDate;
      this.smInfo.push(smData);
-    // console.log(this.smInfo);
+  
   }
   addContent() {
    let validaction = this.setsmInfo();
    if(validaction == true ){
+
+    this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
+
+    // console.log('newSmContentsForm',this.newSmContentsForm.value)
     this.marketingService.addContent(this.newSmContentsForm.value).subscribe((res) => {
       if(res['status'] == 200) {
         this.toastr.success(res['message'], 'Success!');
@@ -167,13 +186,20 @@ export class OrganicpostComponent implements OnInit {
    }
     
   }
+
+  selectPost(event){
+   
+    const postId = parseInt(event.target.value);
+    this.newSmContentsForm.patchValue({'post_type':postId})
+  }
   setsmInfo(){
+
     for(let i=0; i<this.smInfo.length; i++){
       this.smInfo[i] ['schedule_date'] = this.sDate;
     }
     if(this.smInfo.length != 0){
-      this.newSmContentsForm.get(['activity_records']).setValue([this.smInfo]);
-     // console.log([this.smInfo]);
+      // this.newSmContentsForm.get('activity_records').setValue(this.smInfo);
+      this.newSmContentsForm.patchValue({'activity_records':this.smInfo})
       return true;
     }
     else{
@@ -183,13 +209,15 @@ export class OrganicpostComponent implements OnInit {
   uploadFile(){
     if(this.files){
       let fileslength = this.files.length;
+      console.log(fileslength)
+
       if(this.files[fileslength-1].type == 'video/mp4'){
         this.marketingService.addVideoFiles(this.files[fileslength-1]).subscribe( (res) => {
           this.refreshToken = res.headers.get('refresh_token');
           this.uploadedFileResponse ['id']=res['body']['data']['data'].id;
           this.uploadedFileResponse ['file_url']=res['body']['data']['data'].url;
           this.uploadInfo.push(this.uploadedFileResponse);
-          this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
+          // this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
         
         })
       }
@@ -199,7 +227,7 @@ export class OrganicpostComponent implements OnInit {
         this.uploadedFileResponse ['id']=res['body']['data']['data'].id;
         this.uploadedFileResponse ['file_url']=res['body']['data']['data'].url;
         this.uploadInfo.push(this.uploadedFileResponse);
-        this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
+        // this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
        
         })
       }
