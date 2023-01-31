@@ -10,15 +10,15 @@ export class ListEmailService {
 
   constructor(private httpClient: HttpClient) { }
   addCampaign(data: any){
-   return this.httpClient.post(`${environment.apiUrl}${'campaign'}`,JSON.stringify(data))
+   return this.httpClient.post(`${environment.marketingApiUrl}${'campaign'}`,JSON.stringify(data))
   }
  
   getMarketing(){
-    return this.httpClient.get(`${environment.apiUrl}${'get-campaign'}`)
+    return this.httpClient.get(`${environment.marketingApiUrl}${'get-campaign'}`)
 
   }
   deleteMarketing(id:any){
-    return this.httpClient.delete(`${environment.apiUrl}${'remove-campaign-data/'}${id}`)
+    return this.httpClient.delete(`${environment.marketingApiUrl}${'remove-campaign-data/'}${id}`)
 
   }
   }

@@ -9560,3 +9560,17 @@ span.dropdown-btn {
   margin-bottom: -4px;
 }
 /*# sourceMappingURL=main.css.map */
+
+.tag-selector .input-group {
+  padding: 10px 0 0;
+}
+.tag-selector .input-group .select {
+  margin: 0!important;
+}
+.tag-selector .input-group .field-placeholder {
+  margin: 10px 0 0;
+}
+.tag-selector .input-group .ng-value-container {
+  height: 30px;
+  overflow: hidden;
+}

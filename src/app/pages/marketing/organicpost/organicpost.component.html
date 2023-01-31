@@ -51,10 +51,12 @@
                                 <!-- Field wrapper start -->
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-4 col-12">
                                     <div class="field-wrapper">
-                                        <select name="post_type" formControlName="post_type" [ngClass]="{'is-invalid': f['post_type'].touched && f['post_type'].invalid}">
-                                            <option  value="1">Post</option>
-                                            <option  value="2">Reel</option>
-                                            <option  value="3">Story</option> 
+                                        <select name="post_type"
+                                        (change)="selectPost($event)"  formControlName="post_type" [ngClass]="{'is-invalid': f['post_type'].touched && f['post_type'].invalid}">
+                                            <!-- <option  value=1>Post</option>
+                                            <option  value=2>Reel</option>
+                                            <option  value=3>Story</option>  -->
+                                            <option value="{{post.id}}"  *ngFor="let post of post_data">{{post.type}}</option>
                                         </select>
                                         <div class="field-placeholder">Publish as<span class="text-danger">*</span></div>
                                     </div>

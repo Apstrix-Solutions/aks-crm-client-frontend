@@ -1,0 +1,90 @@
+<div class="main-container">
+    <app-topbar></app-topbar>
+
+  <!-- Content wrapper scroll start -->
+  <div class="content-wrapper-scroll">
+      <!-- Content wrapper start -->
+      <div class="content-wrapper">
+  
+          <!-- Row start -->
+          <div class="row gutters">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+  
+                  <!-- Card start -->
+                  <div class="card">
+                      <div class="card-body">
+                          <form class="form-horizontal" [formGroup]= "newCustomerForm" (ngSubmit)="onSubmit()">
+                              <!-- Row start -->
+                              <div class="row gutters">
+                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
+                                      <div class="form-section-header">General</div>
+                                  </div>
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+
+                                    <div class="field-wrapper">
+                                        <div class="input-group">
+                                        
+                                            <input 
+                                            [ngClass]="{'is-invalid': f['customerName'].touched && f['customerName'].invalid}"   
+                                            type="text"  
+                                            class="form-control"  
+                                            formControlName="customerName" 
+                                            >
+  
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['customerName'].touched && f['customerName'].invalid" class="small text-danger font-italic">*Name is required.</p>
+                                        <div  class="field-placeholder">Name <span class="text-danger">*</span></div>
+                                    </div>
+
+                                </div>
+
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      
+
+                                      <div class="field-wrapper">
+                                          <div class="input-group">
+                                          
+                                              <input 
+                                              [ngClass]="{'is-invalid': f['field'].touched && f['field'].invalid}"   
+                                              type="text"  
+                                              name="field" 
+                                              class="form-control"  
+                                              formControlName="field" 
+                                              >
+    
+                                              <span class="input-group-text">
+                                                  <i class="icon-user1"></i>
+                                              </span>
+                                          </div>
+                                          <p *ngIf="f['field'].touched && f['field'].invalid" class="small text-danger font-italic">*field is required.</p>
+                                          <div  class="field-placeholder">field <span class="text-danger">*</span></div>
+                                      </div>
+
+                                  </div>
+                                 
+                                <div class="clear"></div>
+                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                      <button class="btn btn-primary">Cancel</button>
+                                      <button class="btn btn-primary" [disabled]="newCustomerForm.invalid">Save</button>
+                                  </div>
+                              </div>
+                          <!-- Row end -->
+                          </form>
+                      </div>
+                  </div>
+                  <!-- Card end --> 
+              </div>
+          
+          <!-- Row end -->
+      </div>
+      <!-- Content wrapper end -->
+  
+      <app-footer></app-footer>
+
+  </div>
+  <!-- Content wrapper scroll end -->
+  </div>
