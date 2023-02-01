@@ -21,8 +21,8 @@ export class MarketingService {
     return this.httpClient.get(`${environment.smiApiUrl}${'insta-adaccounts'}`,{observe: 'response'});
   }
   public addContent(data) {
-    console.log(data);
-    debugger;
+    // console.log(data);
+    // debugger;
     return this.httpClient
       .post(`${environment.smiApiUrl}${'activity'}`, JSON.stringify(data))
       .pipe(retry(1), catchError(this.errorHandl));
