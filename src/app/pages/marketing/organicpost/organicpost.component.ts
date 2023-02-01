@@ -157,7 +157,7 @@ export class OrganicpostComponent implements OnInit {
     console.log('smData',smData)
   }
   instaPageInfo(value):void{
-    let smData = [];
+    let smData = {};
     smData['sms_id'] = 2;
     smData['page_id'] = this.listInstaPage[value].id;
     smData['page_name'] = this.listInstaPage[value].username;
