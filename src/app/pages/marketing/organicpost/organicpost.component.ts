@@ -214,20 +214,36 @@ export class OrganicpostComponent implements OnInit {
       if(this.files[fileslength-1].type == 'video/mp4'){
         this.marketingService.addVideoFiles(this.files[fileslength-1]).subscribe( (res) => {
           this.refreshToken = res.headers.get('refresh_token');
-          this.uploadedFileResponse ['id']=res['body']['data']['data'].id;
-          this.uploadedFileResponse ['file_url']=res['body']['data']['data'].url;
-          this.uploadInfo.push(this.uploadedFileResponse);
+          // this.uploadedFileResponse ['id']=res['body']['data']['data'].id;
+          // this.uploadedFileResponse ['file_url']=res['body']['data']['data'].url;
+          // this.uploadInfo.push(this.uploadedFileResponse);
           // this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
+
+        const Obj = {};
+        const id = res['body']['data']['data'].id;
+        const url = res['body']['data']['data'].url;
+        Obj['id'] = id;
+        Obj['url'] = url;
+        this.uploadInfo.push(Obj)
         
         })
       }
       else{
         this.marketingService.addedFiles(this.files[fileslength-1]).subscribe( (res) => {
         this.refreshToken = res.headers.get('refresh_token');
-        this.uploadedFileResponse ['id']=res['body']['data']['data'].id;
-        this.uploadedFileResponse ['file_url']=res['body']['data']['data'].url;
-        this.uploadInfo.push(this.uploadedFileResponse);
+        // this.uploadedFileResponse ['id']=res['body']['data']['data'].id;
+        // this.uploadedFileResponse ['file_url']=res['body']['data']['data'].url;
+        // this.uploadInfo.push(this.uploadedFileResponse);
         // this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
+
+
+        const Obj = {};
+        const id = res['body']['data']['data'].id;
+        const url = res['body']['data']['data'].url;
+        Obj['id'] = id;
+        Obj['url'] = url;
+        this.uploadInfo.push(Obj)
+        console.log(this.uploadInfo)
        
         })
       }
