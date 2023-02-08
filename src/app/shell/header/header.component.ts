@@ -16,7 +16,8 @@ export class HeaderComponent implements OnInit {
   marketingMenuHidden = false;
   postMenuHidden = false;
   appointmentMenuHidden = false;
-  marketingMenusHidden = false
+  marketingMenusHidden = false;
+  workflowMenuHidden = false;
 
   constructor(
     private router: Router,
@@ -51,6 +52,10 @@ export class HeaderComponent implements OnInit {
   }
   toggleAppointmentMenu(){
     this.appointmentMenuHidden = !this.appointmentMenuHidden
+  }
+
+  toggleMenuWorkflow(){
+    this.workflowMenuHidden = !this.workflowMenuHidden;
   }
 
   logout() {

@@ -49,9 +49,9 @@ import { AppoinmentLeadsModule } from './pages/leads/appoinment-leads/appoinment
 import { AddEmailModule } from './pages/marketing/email/add-email/add-email.module';
 import { ListEmailModule } from './pages/marketing/email/list-email/list-email.module';
 import {AddTextModule} from './pages/marketing/text/add-text/add-text.module';
-import {ListTextModule} from './pages/marketing/text/list-text/list-text.module'
-
-
+import {ListTextModule} from './pages/marketing/text/list-text/list-text.module';
+import { AddWorkflowModule } from './pages/workflow/add-workflow/add-workflow.module';
+import { ListWorkflowModule } from './pages/workflow/list-workflow/list-workflow.module';
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AddCustomerModule } from './pages/customer/add-customer/add-customer.module';
@@ -104,6 +104,8 @@ import { AddCustomerModule } from './pages/customer/add-customer/add-customer.mo
     ListTextModule,
     FullCalendarModule,
     AddCustomerModule,
+    AddWorkflowModule,
+    ListWorkflowModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

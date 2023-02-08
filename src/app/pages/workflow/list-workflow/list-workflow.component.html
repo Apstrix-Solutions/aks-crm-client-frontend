@@ -1,0 +1,82 @@
+<div class="main-container">
+    <app-topbar></app-topbar>
+	  <div class="content-wrapper-scroll">
+      <div class="content-wrapper">
+            <div class="row gutters">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">List Workflow </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- <div class="d-flex justify-content-end">
+                            <div class="custom-btn-group">
+                                <button type="button" class="btn btn-primary btn-md"
+                                [routerLink]="['/add-workflow']">Add Workflow</button>
+                            </div>
+                        </div> -->
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-bordered m-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Name</th>
+                                                <th>Action Type</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let list of workFlowList" >
+                                                <td>{{list.id}}</td>
+                                                <td>{{list.name}}</td>
+                                                <td>{{list.actionType}}</td>
+                                                <td>{{list.status}}</td>
+                                                <td>
+                                                    <i class="icon-edit1 text-primary" 
+                                                    [routerLink]="['/add-workflow',list.id]"></i>
+                                                    <i class="icon-delete text-primary"
+                                                    (click)="open(content,list.id)"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end -->
+              </div>
+          
+          <!-- Row end -->
+      </div>
+      <!-- Content wrapper end -->
+      <!-- Date Range JS -->
+      <script src="../../../../../assets/vendor/daterange/daterange.js"></script>
+      <script src="../../../../../assets/vendor/daterange/custom-daterange.js"></script>
+      <app-footer></app-footer>
+
+  </div>
+  <!-- Content wrapper scroll end -->
+
+  </div>
+
+
+  <ng-template #content id="deleteConfirmModal" let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure to delete this?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+    </div>
+</ng-template>
