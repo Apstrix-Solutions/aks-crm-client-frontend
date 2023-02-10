@@ -162,6 +162,23 @@
                 </ul>
               </div>
             </li>
+
+            <li class="default-sidebar-dropdown" [ngClass]="{'active': campaignMenuHidden }">
+              <a (click)="toggleCampaignMenu()">
+                <i class="icon-user1"></i>
+                <span class="menu-text">Google</span>
+              </a>
+              <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
+                <ul>
+                  <!-- <li>
+                    <a routerLink="/add-google-ads">Add Ads </a>
+                  </li> -->
+                  <li>
+                    <a routerLink="/list-google-ads">List Ads</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
   
 
 

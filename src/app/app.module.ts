@@ -55,6 +55,10 @@ import { ListWorkflowModule } from './pages/workflow/list-workflow/list-workflow
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AddCustomerModule } from './pages/customer/add-customer/add-customer.module';
+import { AddGoogleAdsModule } from './pages/google-ads-campaign/add-google-ads/add-google-ads.module';
+import { ListGoogleAdsModule } from './pages/google-ads-campaign/list-google-ads/list-google-ads.module';
+import { AdSearchModule } from './pages/google-ads-campaign/ad-search/ad-search.module';
+import { AdsKeywordsModule } from './pages/google-ads-campaign/ads-keywords/ads-keywords.module';
 
 // <============
 
@@ -106,6 +110,10 @@ import { AddCustomerModule } from './pages/customer/add-customer/add-customer.mo
     AddCustomerModule,
     AddWorkflowModule,
     ListWorkflowModule,
+    AddGoogleAdsModule,
+    ListGoogleAdsModule,
+    AdSearchModule,
+    AdsKeywordsModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
