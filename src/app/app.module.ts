@@ -55,6 +55,9 @@ import {ListTextModule} from './pages/marketing/text/list-text/list-text.module'
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AddCustomerModule } from './pages/customer/add-customer/add-customer.module';
+import { AddFbCampaignModule } from './pages/facebook-campaign/add-fb-campaign/add-fb-campaign.module';
+import { ListFbCampaignModule } from './pages/facebook-campaign/list-fb-campaign/list-fb-campaign.module';
+import { SetFbCampaignModule } from './pages/facebook-campaign/set-fb-campaign/set-fb-campaign.module';
 
 // <============
 
@@ -104,6 +107,9 @@ import { AddCustomerModule } from './pages/customer/add-customer/add-customer.mo
     ListTextModule,
     FullCalendarModule,
     AddCustomerModule,
+    AddFbCampaignModule,
+    ListFbCampaignModule,
+    SetFbCampaignModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],

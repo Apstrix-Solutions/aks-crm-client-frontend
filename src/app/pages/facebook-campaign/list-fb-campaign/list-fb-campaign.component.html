@@ -1,0 +1,84 @@
+
+<div class="main-container">
+
+    <app-topbar></app-topbar>
+
+    <!-- Content wrapper scroll start -->
+    <div class="content-wrapper-scroll">
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-end">
+                                <div class="custom-btn-group">
+                                    <button type="button" class="btn btn-primary btn-md"
+                                    routerLink="'add-fb-campaign'">Add Facebook Campaign</button>
+                                        
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-bordered m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Name</th>
+                                                    <th>Objective</th>
+                                                    <th>Status</th>
+                                                    <th>Special Ad Categories</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let list of fbCampaignList">
+                                                    <td>{{ list.id }}</td>
+                                                    <td>{{ list.name}}</td>
+                                                    <td>{{ list.objective}}</td>
+                                                    <td>{{ list.status}}</td>
+                                                    <td>{{ list.special_ad_categories}}</td>
+                                                    <td>
+                                                        <i class="icon-edit1 text-primary" 
+                                                        routerLink="'add-fb-campaign'"></i>
+                                                        <i class="icon-delete text-primary"
+                                                        (click)="open(content,list.id)"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Row end -->
+            </div>
+            <!-- Content wrapper end -->
+            <app-footer></app-footer>
+        </div>
+        <!-- Content wrapper scroll end -->
+    </div>
+
+
+    <ng-template #content id="deleteConfirmModal" let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure to delete this?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+            <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+        </div>
+    </ng-template>
