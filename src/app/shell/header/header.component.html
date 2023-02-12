@@ -152,6 +152,27 @@
 
 
             </ul>
+            </li>
+
+            <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenFbCampaign }">
+              <a (click)="toggleMenuFbCampaign()">
+                <i class="icon-user1"></i>
+                <span class="menu-text">Facebook Campagin</span>
+              </a>
+              <div class="default-sidebar-submenu" [ngStyle]="{'display': menuHiddenFbCampaign ? 'block' : 'none' }">
+                <ul>
+                  <li>
+                    <a routerLink="/add-fb-campaign">Add Facebook-campaign</a>
+                  </li>
+                  <li>
+                    <a routerLink="/list-fb-campaign">List Facebook-campaign</a>
+                  </li>
+                  <li>
+                    <a routerLink="/set-fb-campaign">Set Facebook-campaign</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
 
 
           <!-- <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
