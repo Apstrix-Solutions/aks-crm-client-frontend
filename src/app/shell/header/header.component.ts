@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   marketingMenusHidden = false;
   workflowMenuHidden = false;
   googleAdsMenuHidden = false;
+  menuHiddenFbCampaign= false;
 
   constructor(
     private router: Router,
@@ -52,7 +53,11 @@ export class HeaderComponent implements OnInit {
     this.postMenuHidden =!this.postMenuHidden;
   }
   toggleAppointmentMenu(){
-    this.appointmentMenuHidden = !this.appointmentMenuHidden
+    this.appointmentMenuHidden = !this.appointmentMenuHidden;
+  }
+
+  toggleMenuFbCampaign(){
+    this.menuHiddenFbCampaign = ! this.menuHiddenFbCampaign;
   }
 
   toggleMenuWorkflow(){

@@ -59,6 +59,9 @@ import { AddGoogleAdsModule } from './pages/google-ads-campaign/add-google-ads/a
 import { ListGoogleAdsModule } from './pages/google-ads-campaign/list-google-ads/list-google-ads.module';
 import { AdSearchModule } from './pages/google-ads-campaign/ad-search/ad-search.module';
 import { AdsKeywordsModule } from './pages/google-ads-campaign/ads-keywords/ads-keywords.module';
+import { AddFbCampaignModule } from './pages/facebook-campaign/add-fb-campaign/add-fb-campaign.module';
+import { ListFbCampaignModule } from './pages/facebook-campaign/list-fb-campaign/list-fb-campaign.module';
+import { SetFbCampaignModule } from './pages/facebook-campaign/set-fb-campaign/set-fb-campaign.module';
 
 // <============
 
@@ -114,6 +117,9 @@ import { AdsKeywordsModule } from './pages/google-ads-campaign/ads-keywords/ads-
     ListGoogleAdsModule,
     AdSearchModule,
     AdsKeywordsModule,
+    AddFbCampaignModule,
+    ListFbCampaignModule,
+    SetFbCampaignModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
