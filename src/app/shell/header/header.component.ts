@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   postMenuHidden = false;
   appointmentMenuHidden = false;
   marketingMenusHidden = false;
+  workflowMenuHidden = false;
+  googleAdsMenuHidden = false;
   menuHiddenFbCampaign= false;
 
   constructor(
@@ -56,6 +58,14 @@ export class HeaderComponent implements OnInit {
 
   toggleMenuFbCampaign(){
     this.menuHiddenFbCampaign = ! this.menuHiddenFbCampaign;
+  }
+
+  toggleMenuWorkflow(){
+    this.workflowMenuHidden = !this.workflowMenuHidden;
+  }
+
+  toggleGoogleAdsMenu(){
+    this.googleAdsMenuHidden = ! this.googleAdsMenuHidden;
   }
 
   logout() {

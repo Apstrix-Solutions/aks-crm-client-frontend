@@ -1,0 +1,478 @@
+<div class="main-container">
+    <app-topbar></app-topbar>
+    <!-- Content wrapper scroll start -->
+    <div class="content-wrapper-scroll">
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+
+            <!-- Row start -->
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <!-- Card start -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row-select-cards">
+                                <div class="card" class="card-select">
+                                    <div class="card-body">
+                                        <i class="bi bi-tag"></i>
+                                        <h5 class="card-title">Sales</h5>
+                                        <p class="card-text">
+                                            Drive sales online, in app, by phone or in store
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card" class="card-select  select-card-lead">
+                                    <span  class="icon-check-circle "></span>
+                                    <div class="card-body">
+                                        <i class="bi bi-people-fill"></i>
+                                        <h5 class="card-title">Leads</h5>
+                                        <p class="card-text">
+                                            Get leads and other conversions by encouraging customers to take action.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card" class="card-select">
+                                    <div class="card-body">
+                                        <i class="bi bi-gear"></i>
+                                        <h5 class="card-title">Website traffic</h5>
+                                        <p class="card-text">
+                                            Drive visits to local shops, including restaurants and dealerships.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card" class="card-select">
+                                    <div class="card-body">
+                                        <i class="bi bi-stars"></i>
+                                        <h5 class="card-title">Product and brand consideration</h5>
+                                        <p class="card-text">
+                                            Encourage people to explore your products or services.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                <div class="card-body selected-leads improve-leads">
+                                    <h5 class="card-title">Use these conversion goals to improve Leads</h5>
+                                    
+                                    <section class="card-content">
+                                    <p class="card-text">
+                                        Conversion goals labelled as account default will use data from all of
+                                        your campaigns to improve your bid strategy and campaign performance,
+                                        even if they don't seem directly related to Leads.
+                                    </p>
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-bordered m-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Conversion goals</th>
+                                                        <th>Conversion Source</th>
+                                                        <th>Conversion Actions</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <p><b>Submit lead forms</b>(account default)</p>
+                                                        </td>
+                                                        <td>Website</td>
+                                                        <td>
+
+
+                                                        </td>
+                                                        <td><i class="icon-delete"></i></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </section>
+
+                                </div>
+
+                            </div>
+                            <!-- Start campaign box -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="showCampaignList">
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <h5  class="card-title"> Select a campaign type</h5>
+
+                                    <section class="card-content">
+                                    <div 
+                                    class="card-select" 
+                                    [ngClass]="{'active': item.id==showSelectedCampaign && isSelected}" 
+                                    *ngFor="let item of campaignTypes"
+                                    data-target="#Search"
+                                    >
+                                  
+                                        <div class="card-body" (click)="selectCampaign(item.id, item.heading)">
+                                            <span *ngIf="item.id==showSelectedCampaign && isSelected " class="icon-check-circle "></span>
+                                            <h5 class="card-title">{{item.heading}}</h5>
+                                            <p class="card-text">{{item.description}} </p>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                </div>
+                            </div>
+                            <!-- End campaign box -->
+
+                            <!-- Start campaign box-search -->
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Search' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <section class="card-content">
+                                        <div class="search-campaign-main-content">
+                                        <p>Select the ways you'd like to reach your goal help_outlin</p>
+                                        
+                                        <div class="search-campaign-content">
+                                            <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" href="#collapseExample1"  >
+                                            <label>Website visits</label>
+                                            <div class="collapse" id="collapseExample1">
+                                                <div class="card card-body">
+
+                                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                                        <div class="field-wrapper">
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">
+                                                                    <i class="icon-link-2"></i>
+                                                                </span>
+                                                                <input  type="text"  class="form-control" placeholder="Your business's website"  >
+                                                            </div>
+                                                            <!-- <div  class="field-placeholder"></div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="search-campaign-content">
+                                            <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" href="#collapseExample2"  >
+                                            <label>Phone calls</label>
+                                            <div class="collapse" id="collapseExample2">
+                                                <div class="card card-body phone-calls">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                        <div class="field-wrapper">
+                                                            <div class="input-group">
+                                                                 <input class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                        <div class="field-wrapper">
+                                                            <div class="input-group">
+                                                                <input  type="text"  class="form-control"   >
+                                                            </div>
+                                                            <div  class="field-placeholder text-grey">Phone number</div>
+                                                             <span class="example-text">Example: ‪(201) 555-0123‬</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="search-campaign-content">
+                                            <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" href="#collapseExample3"  >
+                                            <label>Shop visits</label>
+                                            <div class="collapse" id="collapseExample3">
+                                                <div class="card card-body">
+                                                    <!-- <input class="form-control"> -->
+                                                    <span class="example-text">Enter location on the next step</span>
+                                                </div>
+                                              </div>
+                                        </div>
+
+                                        <div class="search-campaign-content">
+                                            <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" href="#collapseExample4"  >
+                                            <label> App downloads</label>
+                                            <div class="collapse" id="collapseExample4">
+                                                <div class="card card-body">
+                                                    <div class="app-platform-content">
+                                                        <h5>Select your mobile app's platform</h5>
+                                                        <div class="radio-select">
+                                                            <input type="radio" name='options' (click)="appDownload($event)"><label>Android</label>
+                                                        </div>
+                                                        <div class="radio-select">
+                                                            <input type="radio" name='options' (click)="appDownload($event)"><label>iOS</label>
+                                                        </div>
+                                                    </div>
+                                                    
+
+                                                    <div class="app-content">
+                                                        <h5>Look up your app</h5>
+                                                        <input [disabled]="!appDownOption" class="form-control">
+                                                    </div>
+                                                </div>
+                                              </div>
+                                        </div>
+
+                                        <div class="search-campaign-content">
+                                            <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" href="#collapseExample5"  >
+                                            <label>Lead form submissions</label>
+                                            <div class="collapse" id="collapseExample5">
+                                                <div class="card card-body">
+                                                    <span class="example-text">Add lead form on the next step</span>
+                                                </div>
+                                              </div>
+                                        </div>
+
+                                       
+                                    </div>
+                                    </section>
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Search' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <h5  class="card-title"> Campaign name</h5>
+
+                                    <div class="card card-body">
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                                    <input type="text" class="form-control" placeholder="Leads-Search-6">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- End campaign box-search -->
+
+                            <!-- Start campaign box-Performance Max -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Performance Max' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <h5  class="card-title"> Campaign name</h5>
+
+                                    <div class="card card-body">
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                                    <input type="text" class="form-control" placeholder="Leads-Performance Max-1">
+                                        </div>
+
+                                        <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                            <div class="field-wrapper">
+                                                <div class="input-group">
+                                                
+                                                    <input  type="text"  class="form-control"   >
+                                                    <span class="input-group-text">
+                                                        <i class="icon-user1"></i>
+                                                    </span>
+
+                                                </div>
+                                                <div  class="field-placeholder"></div>
+                                            </div>
+                                        </div> -->
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <!-- End campaign box-Performance Max -->
+
+                            <!-- Start campaign box-Display -->
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Display' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <section class="card-content">
+                                        <div class="box-display">
+                                          <span class="example-text-title">This is the web page people will go to after clicking your ad  <i class="icon-help-circle"></i></span>
+                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                                <input type="text" class="form-control form-control-length" value="Leads-Display-1">
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Display' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <h5  class="card-title"> Campaign name</h5>
+
+                                    <div class="card card-body">
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                                    <input type="text" class="form-control" value="Leads-Display-1">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- End campaign box-Display -->
+
+                            <!-- Start campaign box-Shopping -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Shopping' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <section class="card-content">
+
+                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                                            <p   style="font-size: 15px;">Select a linked account with products to advertise in this campaign</p>
+                                            <p class="linked-accounts"><i class="bi bi-exclamation-triangle-fill text-warning"></i>No linked accounts</p>
+                                            <p   style="font-size: 15px;">All products from the selected account will be available to advertise in this campaign Select specific feeds</p>
+                                        </div>
+
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                                            <div class="linked-accounts-section">
+                                                <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+                                                <p  style="font-size: 15px;">
+                                                    <b>Before you go on</b> You'll need to link your Merchant Center 
+                                                account with your product data. Send the link request from 
+                                                Merchant Center.
+                                                <a href="#">Learn more</a>
+                                                </p>
+                                                
+                                            </div>
+                                        </div>
+                                      
+                                    </section>
+                                   
+
+                                </div>
+                            </div>
+                            <!-- End campaign box-Shopping -->
+
+                            <!-- Start campaign box-Video -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Video' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <section class="card-content">
+                                        <div class="box-display">
+                                            <p class="box-video-title" >Drive conversions</p>
+                                            <p class="box-video-content">
+                                              Get more conversions with video ads designed to encourage 
+                                              valuable interactions with your business 
+                                              <a href="#">Learn more</a>
+                                            </p>
+                                        </div>
+                                    </section>
+
+                                </div>
+                            </div>
+                            <!-- End campaign box-Video -->
+
+                            <!-- Start campaign box-Discovery -->
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Discovery' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <section class="card-content">
+                                        <div class="box-display">
+                                            <span class="example-text-title">This is the web page people will go to after clicking your ad  <i class="icon-help-circle"></i></span>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                                        <input type="text" class="form-control" value="Leads-Discovery-2">
+                                            </div>
+                                        </div>
+                                    </section>
+                                   
+
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="selectedCampaign=='Discovery' && isSelected" #Search>
+                                <div class="card-body selected-leads improve-leads ">
+
+                                    <h5  class="card-title"> Campaign name</h5>
+
+                                    <div class="card card-body">
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                                    <input type="text" class="form-control" placeholder="Leads-Discovery-2">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- End campaign box-Discovery -->
+
+
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                <button type="button" class="btn btn-light text-primary">Cancel</button>
+                                <button 
+                                   *ngIf="!showModalCampaign"
+                                   type="button" 
+                                   class="btn btn-primary"
+                                   (click)="continue()"
+                                   >
+                                   Continue
+                                </button>
+                                <button 
+                                *ngIf="showModalCampaign"
+                                type="button" 
+                                class="btn btn-primary"
+                                (click)="continue()"
+                                data-bs-toggle="modal" 
+                                data-bs-target="#campaignDetails"
+                                >
+                                Continue
+                             </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Card end -->
+                </div>
+
+            </div>
+            <!-- Row end -->
+        </div>
+        <!-- Content wrapper end -->
+        <app-footer></app-footer>
+    </div>
+    <!-- Content wrapper scroll end -->
+</div>
+
+
+  <!-- Modal start to display add appoinment popup  -->
+  <div class="modal fade " id="campaignDetails" tabindex="-1" aria-labelledby="selectedCampaignLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="selectedCampaignLabel">Create a new campaign or finish a saved draft?</h5>
+              <button type="button" #closebutton class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>First Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#00001</td>
+                            <td>Alia</td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light text-primary rounded-1" data-bs-dismiss="modal">Go back</button>
+            <a href="/ad-search">
+                <button  
+                type="button" 
+                class="btn btn-light text-primary rounded-1"
+                >
+                Start new
+            </button>
+
+            </a>
+          </div>
+          
+      </div>
+    </div>
+</div>
+<!-- Modal end -->

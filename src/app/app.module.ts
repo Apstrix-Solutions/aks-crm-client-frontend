@@ -49,12 +49,16 @@ import { AppoinmentLeadsModule } from './pages/leads/appoinment-leads/appoinment
 import { AddEmailModule } from './pages/marketing/email/add-email/add-email.module';
 import { ListEmailModule } from './pages/marketing/email/list-email/list-email.module';
 import {AddTextModule} from './pages/marketing/text/add-text/add-text.module';
-import {ListTextModule} from './pages/marketing/text/list-text/list-text.module'
-
-
+import {ListTextModule} from './pages/marketing/text/list-text/list-text.module';
+import { AddWorkflowModule } from './pages/workflow/add-workflow/add-workflow.module';
+import { ListWorkflowModule } from './pages/workflow/list-workflow/list-workflow.module';
 import { SubmitContactModule } from './pages/marketing/campaigns/submit-contact/submit-contact.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AddCustomerModule } from './pages/customer/add-customer/add-customer.module';
+import { AddGoogleAdsModule } from './pages/google-ads-campaign/add-google-ads/add-google-ads.module';
+import { ListGoogleAdsModule } from './pages/google-ads-campaign/list-google-ads/list-google-ads.module';
+import { AdSearchModule } from './pages/google-ads-campaign/ad-search/ad-search.module';
+import { AdsKeywordsModule } from './pages/google-ads-campaign/ads-keywords/ads-keywords.module';
 import { AddFbCampaignModule } from './pages/facebook-campaign/add-fb-campaign/add-fb-campaign.module';
 import { ListFbCampaignModule } from './pages/facebook-campaign/list-fb-campaign/list-fb-campaign.module';
 import { SetFbCampaignModule } from './pages/facebook-campaign/set-fb-campaign/set-fb-campaign.module';
@@ -107,6 +111,12 @@ import { SetFbCampaignModule } from './pages/facebook-campaign/set-fb-campaign/s
     ListTextModule,
     FullCalendarModule,
     AddCustomerModule,
+    AddWorkflowModule,
+    ListWorkflowModule,
+    AddGoogleAdsModule,
+    ListGoogleAdsModule,
+    AdSearchModule,
+    AdsKeywordsModule,
     AddFbCampaignModule,
     ListFbCampaignModule,
     SetFbCampaignModule,

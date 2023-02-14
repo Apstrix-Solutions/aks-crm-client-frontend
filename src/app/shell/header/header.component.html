@@ -146,14 +146,40 @@
                 </div>
 
               </div>
-
-
-
-
-
             </ul>
             </li>
 
+            <li class="default-sidebar-dropdown" [ngClass]="{'active': workflowMenuHidden }">
+              <a (click)="toggleMenuWorkflow()">
+                <i class="icon-user1"></i>
+                <span class="menu-text">Workflow</span>
+              </a>
+              <div class="default-sidebar-submenu" [ngStyle]="{'display': workflowMenuHidden ? 'block' : 'none' }">
+                <ul>
+                  <li>
+                    <a routerLink="/list-workflow">List workflow</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="default-sidebar-dropdown" [ngClass]="{'active': campaignMenuHidden }">
+              <a (click)="toggleCampaignMenu()">
+                <i class="icon-user1"></i>
+                <span class="menu-text">Google</span>
+              </a>
+              <div class="default-sidebar-submenu" [ngStyle]="{'display': campaignMenuHidden ? 'block' : 'none' }">
+                <ul>
+                  <!-- <li>
+                    <a routerLink="/add-google-ads">Add Ads </a>
+                  </li> -->
+                  <li>
+                    <a routerLink="/list-google-ads">List Ads</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            
             <li class="default-sidebar-dropdown" [ngClass]="{'active': menuHiddenFbCampaign }">
               <a (click)="toggleMenuFbCampaign()">
                 <i class="icon-user1"></i>
@@ -173,6 +199,7 @@
                 </ul>
               </div>
             </li>
+  
 
 
           <!-- <li class="default-sidebar-dropdown" [ngClass]="{'active': settingsMenuHidden }">
