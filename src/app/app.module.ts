@@ -58,6 +58,7 @@ import { AddCustomerModule } from './pages/customer/add-customer/add-customer.mo
 import { AddFbCampaignModule } from './pages/facebook-campaign/add-fb-campaign/add-fb-campaign.module';
 import { ListFbCampaignModule } from './pages/facebook-campaign/list-fb-campaign/list-fb-campaign.module';
 import { SetFbCampaignModule } from './pages/facebook-campaign/set-fb-campaign/set-fb-campaign.module';
+import { CampaignAddSetModule } from './pages/facebook-campaign/campaign-add-set/campaign-add-set.module';
 
 // <============
 
@@ -110,6 +111,7 @@ import { SetFbCampaignModule } from './pages/facebook-campaign/set-fb-campaign/s
     AddFbCampaignModule,
     ListFbCampaignModule,
     SetFbCampaignModule,
+    CampaignAddSetModule,
     NgHttpLoaderModule.forRoot(), // <============ Don't forget to call 'forRoot()'!
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
