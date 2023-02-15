@@ -12,9 +12,6 @@
 }
 
 .bid-label {
-    // font-size: 13px;
-    // font-weight: 450;
-    // color: #888d;
     font-size: .875rem;
     letter-spacing: .0142857143em;
     font-weight: 400;
@@ -22,10 +19,6 @@
 }
 .network-content {
     margin: 0 0 30px;
-}
-
-.example-heading{
-
 }
 
 .location-content{
@@ -94,4 +87,36 @@ ul#myTab {
 
 .container-audience {
     margin: 0 0 25px;
+}
+
+.budget-container {
+    border: 1px solid #ddd;
+    padding: 28px 20px 10px;
+    box-shadow: 2px 4px 5px #ddd;
+}
+
+.bud-section {
+    border-left: 1px solid #dddd;
+}
+
+.content-left {
+    margin: 0 17px;
+}
+
+.custom-tabs-container .nav-tabs .nav-link {
+   
+    font-size: 14px !important;
+}
+
+.card-settings {
+    background: #fff;
+    padding: 20px 0 0;
+}
+
+.card-settings .card-header {
+    background: #fff;
+}
+
+.card-settings .card-header section.campaign-header {
+    padding: 0 20px;
 }

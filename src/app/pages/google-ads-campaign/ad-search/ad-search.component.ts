@@ -10,6 +10,7 @@ export class AdSearchComponent implements OnInit {
   DisplayNetImg  = '../../../../assets/img/google-ads-images/display-network.png';
   SearchNetImg  = '../../../../assets/img/google-ads-images/search-network.png'
   Languages :any = [];
+  activeTab = 'bidding';
 
   constructor() { }
 
@@ -23,6 +24,11 @@ export class AdSearchComponent implements OnInit {
   goToNext(){
     this.showSettings = true;
 
+  }
+
+  nextTab(activeTab: any){
+    this.activeTab = activeTab;
+    console.log('net',activeTab)
   }
 
 }

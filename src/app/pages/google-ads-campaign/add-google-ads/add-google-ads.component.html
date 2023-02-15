@@ -119,7 +119,8 @@
                                             <p class="card-text">{{item.description}} </p>
                                         </div>
                                     </div>
-                                </section>
+                                    </section>
+                                    <p *ngIf="!isSelected" class="example-text text-danger">Please select  a channel</p>
 
                                 </div>
                             </div>
@@ -190,7 +191,8 @@
                                         </div>
 
                                         <div class="search-campaign-content">
-                                            <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" href="#collapseExample4"  >
+                                            <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" 
+                                                href="#collapseExample4"   >
                                             <label> App downloads</label>
                                             <div class="collapse" id="collapseExample4">
                                                 <div class="card card-body">
@@ -238,7 +240,7 @@
 
                                     <div class="card card-body">
                                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                                    <input type="text" class="form-control" placeholder="Leads-Search-6">
+                                                    <input type="text" class="form-control" value="Leads-Search-6">
                                         </div>
                                     </div>
 
@@ -254,23 +256,8 @@
 
                                     <div class="card card-body">
                                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                                    <input type="text" class="form-control" placeholder="Leads-Performance Max-1">
+                                                    <input type="text" class="form-control" value="Leads-Performance Max-1">
                                         </div>
-
-                                        <!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                            <div class="field-wrapper">
-                                                <div class="input-group">
-                                                
-                                                    <input  type="text"  class="form-control"   >
-                                                    <span class="input-group-text">
-                                                        <i class="icon-user1"></i>
-                                                    </span>
-
-                                                </div>
-                                                <div  class="field-placeholder"></div>
-                                            </div>
-                                        </div> -->
-
                                     </div>
 
                                 </div>
@@ -368,7 +355,7 @@
                                     <section class="card-content">
                                         <div class="box-display">
                                             <span class="example-text-title">This is the web page people will go to after clicking your ad  <i class="icon-help-circle"></i></span>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
                                                         <input type="text" class="form-control" value="Leads-Discovery-2">
                                             </div>
                                         </div>
@@ -396,7 +383,13 @@
 
 
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                                <button type="button" class="btn btn-light text-primary">Cancel</button>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-light text-primary"
+                                    (click)="isSelected=false"
+                                >
+                                Cancel
+                                </button>
                                 <button 
                                    *ngIf="!showModalCampaign"
                                    type="button" 
@@ -409,9 +402,9 @@
                                 *ngIf="showModalCampaign"
                                 type="button" 
                                 class="btn btn-primary"
-                                (click)="continue()"
                                 data-bs-toggle="modal" 
                                 data-bs-target="#campaignDetails"
+                                #continueBtn
                                 >
                                 Continue
                              </button>

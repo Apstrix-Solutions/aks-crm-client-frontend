@@ -3,454 +3,613 @@
 
   <!-- Content wrapper scroll start -->
   <div class="content-wrapper-scroll">
+
     <!-- Content wrapper start -->
     <div class="content-wrapper">
 
-      <!-- Row start -->
       <div class="row gutters">
+
+        <!-- Column start -->
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-          <!-- Card Bidding start -->
-          <div class="card" *ngIf="!showSettings">
-            <div class="card-header">
-              <div class="card-title">Bidding</div>
-            </div>
-            <div class="card-body">
+          <!-- Tab Start -->
+          <div id="tabs" #tabs>
+            <!-- Tabs Head -->
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" id="bidding" data-bs-toggle="tab"
+                  [ngClass]="{ 'active':activeTab==='bidding'}" (click)="nextTab('bidding')">
+                  Bidding
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="settings" data-bs-toggle="tab" [ngClass]="{ 'active':activeTab==='settings'}"
+                  (click)="nextTab('settings')">
+                  Campaign settings
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="keywords" data-bs-toggle="tab" [ngClass]="{ 'active':activeTab==='keywords'}"
+                  (click)="nextTab('keywords')">
+                  Keywords and ads
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="budget" data-bs-toggle="tab" [ngClass]="{ 'active':activeTab==='budget'}"
+                  (click)="nextTab('budget')">
+                  Budget
+                </a>
+              </li>
+            </ul>
+            <!-- Tabs Head End -->
 
-              <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Bidding
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <span class="example-text">What do you want to focus on? <i class="icon-help-circle"></i></span>
-                      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mt-3">
-                        <select type="text" class="form-control" value="Leads-Discovery-2">
-                          <option>1</option>
-                        </select>
+            <!-- Tabs Content Start -->
+            <div class="tab-content">
 
-                      </div>
+              <div class="tab-pane fade show active" id="bidding" [ngClass]="{ 'active':activeTab==='bidding'}">
 
-                      <div class="search-campaign-content mt-4">
-                        <input class="btn btn-primary" type="checkbox" data-bs-toggle="collapse"
-                          href="#collapseExample3">
-                        <label class="bid-label">Set a target cost per action (optional)</label>
-
-                        <div class="collapse" id="collapseExample3">
-                          <div class="card card-body">
-
-                            <span class="example-text">Target CPA <i class="icon-help-circle"></i></span>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                              <div class="field-wrapper">
-                                <div class="input-group">
-                                  <span class="input-group-text">
-                                    <i class="icon-link-2"></i>
-                                  </span>
-                                  <input type="text" class="form-control">
-                                </div>
-                              </div>
-                            </div>
-
-                          </div>
-                        </div>
-                      </div>
-
-                    </div>
+                <!-- Card Bidding start -->
+                <div class="card">
+                  <div class="card-header">
+                    <div class="card-title">Bidding</div>
                   </div>
-                </div>
+                  <div class="card-body">
 
-              </div>
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Bidding
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                          data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <span class="example-text">What do you want to focus on? <i
+                                class="icon-help-circle"></i></span>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mt-3">
+                              <select type="text" class="form-control" value="Leads-Discovery-2">
+                                <option>1</option>
+                              </select>
 
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                <button type="button" class="btn btn-primary" (click)="showSettings = true">
-                  next
-                </button>
-
-              </div>
-
-            </div>
-          </div>
-          <!-- Card Bidding end -->
-
-          <!-- Card campaign settings start -->
-          <div class="card" *ngIf="showSettings">
-            <div class="card-header">
-              <section class="campaign-header">
-                <div class="card-title">Campaign settings</div>
-                <p class="example-text">To reach the right people, start by defining key settings for your campaign</p>
-              </section>
-             
-            </div>
-
-            <!-- card body start -->
-            <div class="card-body" >
-              <!-- Networks box -->
-              <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#networks" aria-expanded="true" aria-controls="collapseOne">
-                     NetWorks
-                    </button>
-                  </h2>
-                  <div id="networks" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <!-- Row start -->
-                      <div class="row gutters network-content">
-                       
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
-                            <img src="{{SearchNetImg}}">
-
-
-                         </div>
-
-                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
-                          <h5>Search Network</h5>
-                          <p class="example-text">Ads can appear near Google Search results and other Google sites when people search for terms that are relevant to your keywords.</p>
-                          <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" href="#collapseSearchNet"  >
-                          <span class="example-text">Include Google search partners<i  class="icon-help-circle"></i></span>
-                          <div class="collapse" id="collapseSearchNet">
-                            <div class="card card-body">
-
-                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
-                                    <div class="field-wrapper">
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <i class="icon-link-2"></i>
-                                            </span>
-                                            <input  type="text"  class="form-control" placeholder="Your business's website"  >
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-
-                        </div>
-                        
-                    </div>
-                    <div class="clear"></div>
-                    <!-- Row end -->
-
-                     <!-- Row start -->
-                      <div class="row gutters network-content">
-                       
-                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
-                          <img src="{{DisplayNetImg}}">
-
-                         </div>
-
-                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
-                          <h5>Display Network</h5>
-                          <p class="example-text">Easy way to get additional conversions at similar or lower costs than Search with unused Search budget.</p>
-                          <input class="btn btn-primary"  type="checkbox" data-bs-toggle="collapse" href="#collapseSearchNet"  >
-                          <span class="example-text">Include Google Display Network<i  class="icon-help-circle"></i></span>
-                          <div class="collapse" id="collapseSearchNet">
-                            <div class="card card-body">
-
-                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
-                                    <div class="field-wrapper">
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <i class="icon-link-2"></i>
-                                            </span>
-                                            <input  type="text"  class="form-control" placeholder="Your business's website"  >
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-
-                        </div>
-                        
-                    </div>
-                    <div class="clear"></div>
-                            
-                      <!-- Row end -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-               <!-- Networks box end -->
-
-               <!-- Locations box start-->
-               <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#location" aria-expanded="true" aria-controls="collapseOne">
-                     Locations
-                    </button>
-                  </h2>
-                  <div id="location" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <!-- Location content start -->
-                            <div class="location-content">
-                            <span class="example-text" style="color: #6a6a6a;">Select locations to target<i  class="icon-help-circle"></i></span>
-
-                              <div class="radio-select">
-                                  <input type="radio" name='options' ><label>All contries and territories</label>
-                              </div>
-                              <div class="radio-select">
-                                  <input type="radio" name='options' ><label>India</label>
-                              </div>
-                              <div class="radio-select">
-                                <input 
-                                type="radio" 
-                                name='options' 
-                               
-                                data-bs-toggle="collapse" 
-                                href="#collapseLocationSearch" 
-                                >
-                                <label>Enter another location</label>
                             </div>
 
-                            <div class="collapse" id="collapseLocationSearch">
-                              <div class="card card-body">
-  
+                            <div class="search-campaign-content mt-4">
+                              <input class="btn btn-primary" type="checkbox" data-bs-toggle="collapse"
+                                href="#collapseExample3">
+                              <label class="bid-label">Set a target cost per action (optional)</label>
+
+                              <div class="collapse" id="collapseExample3">
+                                <div class="card card-body">
+
+                                  <span class="example-text">Target CPA <i class="icon-help-circle"></i></span>
                                   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                                      <div class="field-wrapper">
-                                          <div class="input-group">
-                                              <span class="input-group-text">
-                                                  <i class="icon-link-2"></i>
-                                              </span>
-                                              <input  type="text"  class="form-control" placeholder="Your business's website"  >
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-
-                            <!-- Accordion Start -->
-                            <div class="inner-accordion">
-
-                            <div class="accordion" id="accordionExample">
-                              <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                   Location
-                                  </button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                  <div class="accordion-body">
-                                    <div class="target">
-                                      <span class="example-text">Target<i class="icon-help-circle"></i></span>
-                                      <div class="radio-group">
-                                        <div class="radio-select">
-                                          <input type="radio" name='options' >
-                                          <p> Presence or interest: People in, regularly in or who've shown interest in your targeted locations (recommended)</p>
-                                      </div>
-                                      <div class="radio-select">
-                                          <input type="radio" name='options' >
-                                          <p> Presence: People in or regularly in your targeted locations</p>
-                                      </div>
-                                      <div class="radio-select">
-                                        <input type="radio" name='options' >
-                                        <p> Search interest: People searching for your targeted locations</p>
-                                    </div>
-
-                                      </div>
-
-                                    </div>
-                                    <div class="exclude">
-                                      <span class="example-text">Exclude<i class="icon-help-circle"></i></span>
-                                      <div class="radio-group">
-                                        <div class="radio-select">
-                                          <input type="radio" name='options' >
-                                          <p> Presence: People in your excluded locations (recommended)</p>
-                                      </div>
-                                      <div class="radio-select">
-                                          <input type="radio" name='options' >
-                                          <p>  Presence or interest: People in, regularly in or who’ve shown interest in your excluded locations</p>
+                                    <div class="field-wrapper">
+                                      <div class="input-group">
+                                        <span class="input-group-text">
+                                          <i class="icon-link-2"></i>
+                                        </span>
+                                        <input type="text" class="form-control">
                                       </div>
                                     </div>
                                   </div>
+
                                 </div>
                               </div>
                             </div>
 
                           </div>
-
-                            <!-- Accordion End -->
-                          </div>
-                      <!-- Location content end -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-               
-               <!-- Locations box end-->
-
-               <!-- Languages box start-->
-               <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#languages" aria-expanded="true" aria-controls="collapseOne">
-                     Languages
-                    </button>
-                  </h2>
-                  <div id="languages" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <span class="example-text" style="color: #6a6a6a;">
-                        Select the languages that your customers speak.
-                        <i  class="icon-help-circle"></i>
-                      </span>
-
-                      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 tag-selector">
-                        <div class="field-wrapper">
-                            <div class="input-group">
-                                <ng-select 
-                                [items]="Languages"
-                                bindLabel="lang"
-                                bindValue="id"
-                                [multiple]="true"
-                                placeholder="Select a language"
-                                class="select"
-                                >
-                            </ng-select>
-                            </div></div>
-                       
-                      
-                    </div>
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
-               <!-- Languages box end-->
-
-               <!-- Audience segments box start-->
-
-               <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#languages" aria-expanded="true" aria-controls="collapseOne">
-                      Audience segments
-                    </button>
-                  </h2>
-                  <div id="languages" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <span class="example-text" style="color: #6a6a6a;">
-                        Select audience segments to add to your campaign.You can create new segments in
-                        <a href="#">Audience Manager</a>
-                        <i  class="icon-help-circle"></i>
-                      </span>
-
-                      
-
-                      <div class="container-audience ">
-
-                        <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                          <div class="custom-tabs-container">
-                            <!-- Tabs Head -->
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                              <li class="nav-item" role="presentation">
-                                <a 
-                                class="nav-link active" 
-                                id="first-tab" 
-                                data-bs-toggle="tab" 
-                                href="#first" 
-                                role="tab" 
-                                aria-controls="first" 
-                                aria-selected="true"
-                                >
-                                Search
-                              </a>
-                              </li>
-                              <li class="nav-item" role="presentation">
-                                <a 
-                                class="nav-link" 
-                                id="second-tab" 
-                                data-bs-toggle="tab" 
-                                href="#second" 
-                                role="tab" 
-                                aria-controls="second" 
-                                aria-selected="false"
-                                >
-                                Browse
-                              </a>
-                              </li>
-                            </ul>
-                            <!-- Tabs Head End -->
-
-                            <!-- Tabs Content Start -->
-                            <div class="tab-content" id="myTabContent">
-                              <div class="tab-pane fade show active" id="first" role="tabpanel">
-      
-                                <p class="text-muter">
-                                  In other words, UX design is the process of designing (digital or physical) products that are useful, easy to use, and delightful to interact with. It's about enhancing the experience that people have while interacting with your product, and making sure they find value in what you're providing.
-                                </p>
-      
-                              </div>
-                              <div class="tab-pane fade" id="second" role="tabpanel">
-                                
-                                <p class="text-muter">User experience is a person's emotions and attitudes about using a particular product, system or service. It includes the practical, experiential, affective, meaningful, and valuable aspects of human–computer interaction and product ownership.</p>
-      
-                              </div>
-                             
-                            </div>
-                            <!-- Tabs Content End-->
-
-                          </div>
-                        </div>
-
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                          <div class="">
-                            <div class="row">
-                            <span class="example-text">None Selected</span>
-                            </div>
-
-                            <span class="audience-section" >Select one or more segments to observe.</span>
-                          </div> 
                         </div>
                       </div>
 
-                      </div>
+                    </div>
 
-                      <span class="example-text" style="color: #6a6a6a;">Select locations to target<i  class="icon-help-circle"></i></span>
-                      <div class="radio-group">
-                        <div class="radio-select radio-search">
-                          <input type="radio" name='options' >
-                          <span class="example-text">Targeting</span>
-                          <p> Narrow the reach of your campaign to the selected segments, with the option to adjust the bids</p>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                      <!-- <button  type="button" class="btn btn-primary" data-bs-toggle="tab"  role="tab"
+                       aria-controls="settings" aria-selected="false" (click)="nextTab('settings')">
+                        next
+                      </button> -->
+                      <button type="button" class="btn btn-primary" (click)="nextTab('settings')">
+                        next
+                      </button>
+
+                    </div>
+
+                  </div>
+                </div>
+                <!-- Card Bidding end -->
+
+              </div>
+
+
+              <!-- Tabs Settings start -->
+              <div class="tab-pane" id="settings" [ngClass]="{ 'active':activeTab==='settings'}">
+
+                <!-- Card campaign settings start -->
+                <div class="card-settings">
+                  <div class="card-header">
+                    <section class="campaign-header">
+                      <div class="card-title">Campaign settings</div>
+                      <p class="example-text">To reach the right people, start by defining key settings for your
+                        campaign</p>
+                    </section>
+
+                    <!-- card body start -->
+                    <div class="card-body">
+                      <!-- Networks box -->
+                      <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#networks" aria-expanded="true" aria-controls="collapseOne">
+                              NetWorks
+                            </button>
+                          </h2>
+                          <div id="networks" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <!-- Row start -->
+                              <div class="row gutters network-content">
+
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
+                                  <img src="{{SearchNetImg}}">
+
+
+                                </div>
+
+                                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
+                                  <h5>Search Network</h5>
+                                  <p class="example-text">Ads can appear near Google Search results and other Google
+                                    sites when
+                                    people search for terms that are relevant to your keywords.</p>
+                                  <input class="btn btn-primary" type="checkbox" data-bs-toggle="collapse"
+                                    href="#collapseSearchNet">
+                                  <span class="example-text">Include Google search partners<i
+                                      class="icon-help-circle"></i></span>
+                                  <div class="collapse" id="collapseSearchNet">
+                                    <div class="card card-body">
+
+                                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                        <div class="field-wrapper">
+                                          <div class="input-group">
+                                            <span class="input-group-text">
+                                              <i class="icon-link-2"></i>
+                                            </span>
+                                            <input type="text" class="form-control"
+                                              placeholder="Your business's website">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+
+                              </div>
+                              <div class="clear"></div>
+                              <!-- Row end -->
+
+                              <!-- Row start -->
+                              <div class="row gutters network-content">
+
+                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12">
+                                  <img src="{{DisplayNetImg}}">
+
+                                </div>
+
+                                <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
+                                  <h5>Display Network</h5>
+                                  <p class="example-text">Easy way to get additional conversions at similar or lower
+                                    costs than
+                                    Search with unused Search budget.</p>
+                                  <input class="btn btn-primary" type="checkbox" data-bs-toggle="collapse"
+                                    href="#collapseSearchNet">
+                                  <span class="example-text">Include Google Display Network<i
+                                      class="icon-help-circle"></i></span>
+                                  <div class="collapse" id="collapseSearchNet">
+                                    <div class="card card-body">
+
+                                      <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                                        <div class="field-wrapper">
+                                          <div class="input-group">
+                                            <span class="input-group-text">
+                                              <i class="icon-link-2"></i>
+                                            </span>
+                                            <input type="text" class="form-control"
+                                              placeholder="Your business's website">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+
+                              </div>
+                              <div class="clear"></div>
+
+                              <!-- Row end -->
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="radio-select radio-search">
-                          <input type="radio" name='options' >
-                          <span class="example-text">Observation (recommended)</span>
-                          <p> Don't narrow the reach of your campaign, with the option to adjust the bids on the selected segments</p>
+                      <!-- Networks box end -->
+
+                      <!-- Locations box start-->
+                      <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#location" aria-expanded="true" aria-controls="collapseOne">
+                              Locations
+                            </button>
+                          </h2>
+                          <div id="location" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <!-- Location content start -->
+                              <div class="location-content">
+                                <span class="example-text" style="color: #6a6a6a;">Select locations to target<i
+                                    class="icon-help-circle"></i></span>
+
+                                <div class="radio-select">
+                                  <input type="radio" name='options'><label>All contries and territories</label>
+                                </div>
+                                <div class="radio-select">
+                                  <input type="radio" name='options'><label>India</label>
+                                </div>
+                                <div class="radio-select">
+                                  <input type="radio" name='options' data-bs-toggle="collapse"
+                                    href="#collapseLocationSearch">
+                                  <label>Enter another location</label>
+                                </div>
+
+                                <div class="collapse" id="collapseLocationSearch">
+                                  <div class="card card-body">
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                      <div class="field-wrapper">
+                                        <div class="input-group">
+                                          <span class="input-group-text">
+                                            <i class="icon-link-2"></i>
+                                          </span>
+                                          <input type="text" class="form-control"
+                                            placeholder="Enter a location to target or exclude">
+                                          <p class="example-text">For example, a country, city,region or postcode</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- Accordion Start -->
+                                <div class="inner-accordion">
+
+                                  <div class="accordion" id="accordionExample">
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                          data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                          aria-expanded="false" aria-controls="collapseThree">
+                                          Location
+                                        </button>
+                                      </h2>
+                                      <div id="collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                          <div class="target">
+                                            <span class="example-text">Target<i class="icon-help-circle"></i></span>
+                                            <div class="radio-group">
+                                              <div class="radio-select">
+                                                <input type="radio" name='options'>
+                                                <p> Presence or interest: People in, regularly in or who've shown
+                                                  interest in
+                                                  your targeted locations (recommended)</p>
+                                              </div>
+                                              <div class="radio-select">
+                                                <input type="radio" name='options'>
+                                                <p> Presence: People in or regularly in your targeted locations</p>
+                                              </div>
+                                              <div class="radio-select">
+                                                <input type="radio" name='options'>
+                                                <p> Search interest: People searching for your targeted locations</p>
+                                              </div>
+
+                                            </div>
+
+                                          </div>
+                                          <div class="exclude">
+                                            <span class="example-text">Exclude<i class="icon-help-circle"></i></span>
+                                            <div class="radio-group">
+                                              <div class="radio-select">
+                                                <input type="radio" name='options'>
+                                                <p> Presence: People in your excluded locations (recommended)</p>
+                                              </div>
+                                              <div class="radio-select">
+                                                <input type="radio" name='options'>
+                                                <p> Presence or interest: People in, regularly in or who’ve shown
+                                                  interest in
+                                                  your excluded locations</p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+                                  <!-- Accordion End -->
+                                </div>
+                                <!-- Location content end -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Locations box end-->
+
+                        <!-- Languages box start-->
+                        <div class="accordion" id="accordionExample">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#languages" aria-expanded="true" aria-controls="collapseOne">
+                                Languages
+                              </button>
+                            </h2>
+                            <div id="languages" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                              data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                                <span class="example-text" style="color: #6a6a6a;">
+                                  Select the languages that your customers speak.
+                                  <i class="icon-help-circle"></i>
+                                </span>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 tag-selector">
+                                  <div class="field-wrapper">
+                                    <div class="input-group">
+                                      <ng-select [items]="Languages" bindLabel="lang" bindValue="id" [multiple]="true"
+                                        placeholder="Select a language" class="select">
+                                      </ng-select>
+                                    </div>
+                                  </div>
+
+
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Languages box end-->
+
+                        <!-- Audience segments box start-->
+
+                        <div class="accordion" id="accordionExample">
+                          <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#languages" aria-expanded="true" aria-controls="collapseOne">
+                                Audience segments
+                              </button>
+                            </h2>
+                            <div id="languages" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                              data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                                <span class="example-text" style="color: #6a6a6a;">
+                                  Select audience segments to add to your campaign.You can create new segments in
+                                  <a href="#">Audience Manager</a>
+                                  <i class="icon-help-circle"></i>
+                                </span>
+
+
+
+                                <div class="container-audience ">
+
+                                  <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                      <div class="custom-tabs-container">
+                                        <!-- Tabs Head -->
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                          <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="first-tab" data-bs-toggle="tab" href="#first"
+                                              role="tab" aria-controls="first" aria-selected="true">
+                                              Search
+                                            </a>
+                                          </li>
+                                          <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="second-tab" data-bs-toggle="tab" href="#second"
+                                              role="tab" aria-controls="second" aria-selected="false">
+                                              Browse
+                                            </a>
+                                          </li>
+                                        </ul>
+                                        <!-- Tabs Head End -->
+
+                                        <!-- Tabs Content Start -->
+                                        <div class="tab-content" id="myTabContent">
+                                          <div class="tab-pane fade show active" id="first" role="tabpanel">
+
+                                            <p class="text-muter">
+                                              In other words, UX design is the process of designing (digital or
+                                              physical)
+                                              products that are useful, easy to use, and delightful to interact with.
+                                              It's about
+                                              enhancing the experience that people have while interacting with your
+                                              product, and
+                                              making sure they find value in what you're providing.
+                                            </p>
+
+                                          </div>
+                                          <div class="tab-pane fade" id="second" role="tabpanel">
+
+                                            <p class="text-muter">User experience is a person's emotions and attitudes
+                                              about
+                                              using a particular product, system or service. It includes the practical,
+                                              experiential, affective, meaningful, and valuable aspects of
+                                              human–computer
+                                              interaction and product ownership.</p>
+
+                                          </div>
+
+                                        </div>
+                                        <!-- Tabs Content End-->
+
+                                      </div>
+                                    </div>
+
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                                      <div class="">
+                                        <div class="row">
+                                          <span class="example-text">None Selected</span>
+                                        </div>
+
+                                        <span class="audience-section">Select one or more segments to observe.</span>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+
+                                <span class="example-text" style="color: #6a6a6a;">Select locations to target<i
+                                    class="icon-help-circle"></i></span>
+                                <div class="radio-group">
+                                  <div class="radio-select radio-search">
+                                    <input type="radio" name='options'>
+                                    <span class="example-text">Targeting</span>
+                                    <p> Narrow the reach of your campaign to the selected segments, with the option to
+                                      adjust
+                                      the bids</p>
+                                  </div>
+                                  <div class="radio-select radio-search">
+                                    <input type="radio" name='options'>
+                                    <span class="example-text">Observation (recommended)</span>
+                                    <p> Don't narrow the reach of your campaign, with the option to adjust the bids on
+                                      the
+                                      selected segments</p>
+                                  </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Audience segments box end-->
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                          <button type="button" class="btn btn-primary" (click)="nextTab('keywords')">
+                            next
+                          </button>
+                        </div>
                       </div>
-                      
+                      <!-- card body end -->
+                      <!-- Card campaign settings end -->
+
+
+                    </div>
+                    <!-- Tab settings end -->
+                  </div>
+                  <!-- Tabs  Settings End-->
+
+
+                </div>
+              </div>
+
+              <!-- Tabs Ads keywords start -->
+              <div class="tab-pane" id="keywords" [ngClass]="{ 'active':activeTab==='keywords'}">
+
+                <div class="card">
+
+                  <div class="card-body">
+                    <app-ads-keywords></app-ads-keywords>
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                      <button type="button" class="btn btn-primary" (click)="nextTab('budget')">
+                        next
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+              <!-- Tabs Ads keyword end -->
+
+              <!-- Tabs budget start -->
+              <div class="tab-pane" id="budget" [ngClass]="{ 'active':activeTab==='budget'}">
+                <!-- Card start -->
+                <div class="card">
+
+                  <div class="card-header">
+                    <section class="campaign-header">
+                      <div class="card-title">Budget</div>
+                      <p class="example-text">Select the average that you want to spend each day.</p>
+                    </section>
+                  </div>
+
+
+                  <div class="card-body">
+                    <div class="budget-container">
+                      <div class="row gutters">
+
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                          <span class="example-text">Set your average daily budget for this campaign</span>
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="field-wrapper">
+                              <div class="input-group">
+                                <i class="bi bi-currency-rupee"></i>
+                                <input type="text" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                          <div class="bud-section">
+                            <p class="example-text content-left">
+                              For the month, you won't pay more than your daily budget times the average
+                              number of days in a month. Some days you might spend less than your daily budget,
+                              and on others you might spend up to twice as much.
+                              <a href="#">Learn more.</a>
+                            </p>
+                          </div>
+                        </div>
 
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-               
-               <!-- Audience segments box end-->
 
-               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                <button type="button" class="btn btn-primary" routerLink="/ads-keywords" (click)="goToNext()">
-                  next
-                </button>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                      <button type="button" class="btn btn-primary">
+                        next
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- Card end -->
               </div>
+              <!-- Tabs budget end -->
             </div>
-            <!-- card body end -->
 
           </div>
-          <!-- Card campaign settings end -->
+          <!-- Tab End -->
 
         </div>
+        <!-- Column end -->
 
-        <!-- Row end -->
       </div>
-      <!-- Content wrapper end -->
-
-      <app-footer></app-footer>
+      <!-- Row end -->
 
     </div>
-    <!-- Content wrapper scroll end -->
+    <!-- Content wrapper end -->
+
+    <app-footer></app-footer>
+
   </div>
+  <!-- Content wrapper scroll end -->
+
+</div>
