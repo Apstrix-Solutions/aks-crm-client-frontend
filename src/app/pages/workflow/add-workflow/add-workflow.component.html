@@ -1,0 +1,149 @@
+<div class="main-container">
+    <app-topbar></app-topbar>
+
+  <!-- Content wrapper scroll start -->
+  <div class="content-wrapper-scroll">
+      <!-- Content wrapper start -->
+      <div class="content-wrapper">
+  
+          <!-- Row start -->
+          <div class="row gutters">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+  
+                  <!-- Card start -->
+                  <div class="card">
+                      <div class="card-body">
+                          <form class="form-horizontal" [formGroup]= "addWorkflowForm" (ngSubmit)="onSubmit()">
+                              <!-- Row start -->
+                              <div class="row gutters">
+                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-4 col-12">
+                                      <div class="form-section-header">General</div>
+                                  </div>
+
+                                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12" *ngIf="isActionType === 'webhook'">
+
+                                    <div class="field-wrapper">
+                                        <label class="field-label">Title</label>
+                                        <div class="input-group">
+                                        
+                                            <input [ngClass]="{'is-invalid': f['name'].touched && f['name'].invalid}" type="text"  class="form-control"  formControlName="name" >
+  
+                                            <span class="input-group-text">
+                                                <i class="icon-user1"></i>
+                                            </span>
+                                        </div>
+                                        <p *ngIf="f['name'].touched && f['name'].invalid" class="small text-danger font-italic">*Title is required.</p>
+                                        <!-- <div  class="field-placeholder">Title <span class="text-danger">*</span></div> -->
+                                    </div>
+
+                                 </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12"  *ngIf="isActionType === 'email_notification'">
+                                    <div class="field-wrapper-text-area">
+                                        <div class="input-groups-text-area">
+                                            <label class="field-label">Title</label>
+                                            <textarea
+                                                [ngClass]="{'is-invalid': f['name'].touched && f['name'].invalid}"
+                                                class="form-control rounded-0" name="name" formControlName="name">
+                                            </textarea>
+                                        </div>
+                                        <p *ngIf="f['name'].touched && f['name'].invalid"
+                                            class="small text-danger font-italic">*Title is required.</p>
+                                       
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12"  *ngIf="isActionType === 'function'">
+
+                                    <!-- Field wrapper start -->
+                                    <div class="field-wrapper">
+                                        <label class="field-label">Title</label>
+                                        <div class="input-group">
+                                            <select
+                                                [ngClass]="{'is-invalid': f['name'].touched && f['name'].invalid}"
+                                                name="name" formControlName="name">
+                                                <option value="1" >function1</option>
+                                                <option value="2" >function2</option>
+                                                <option value="3" >function3</option>
+                                            </select>
+                                        </div>
+                                        <p *ngIf="f['name'].touched && f['name'].invalid"
+                                            class="small text-danger font-italic">*Title is required.</p>
+                                        <!-- <div class="field-placeholder">Title</div> -->
+                                    </div>
+                                    <!-- Field wrapper end -->
+                                </div>
+
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12" >
+
+                                    <div class="field-wrapper">
+                                        <label class="field-label">Condition</label>
+                                        <div class="input-group">
+                                        
+                                            <input  type="text"  class="form-control" formControlName="condition" >
+  
+                                        </div>
+                                        <!-- <p *ngIf="f['name'].touched && f['name'].invalid" class="small text-danger font-italic">*Title is required.</p> -->
+                                        <!-- <div  class="field-placeholder">Title <span class="text-danger">*</span></div> -->
+                                    </div>
+
+                                 </div>
+
+                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12"  >
+
+                                    <!-- Field wrapper start -->
+                                    <div class="field-wrapper">
+                                        <label class="field-label">Action Type</label>
+                                        <div class="input-group">
+                                            <select name="action_type" formControlName="actionType" (change)="changeActionType($event)" >
+                                                <option value="webhook" >Webhook</option>
+                                                <option value="email_notification" >Email Notification</option>
+                                                <option value="function" >Function</option>
+                                            </select>
+                                        </div>
+                                        <!-- <p *ngIf="f['name'].touched && f['name'].invalid" class="small text-danger font-italic">*Action Type is required.</p> -->
+                                        <!-- <div class="field-placeholder">Title</div> -->
+                                    </div>
+                                    <!-- Field wrapper end -->
+                                </div>
+
+                                <div class="field-wrapper mt-2 col-xl-3 col-lg-3">
+                                    <div class="checkbox-container">
+                                        <div class="form-check form-check-inline email_check">
+                                            <label class="field-label">Status</label>
+                                            <input 
+                                            class="form-check-input" 
+                                            type="checkbox" 
+                                            #checkStatus
+                                            formControlName="status"
+                                            >
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+
+                                 
+                                 
+                                 
+                                <div class="clear"></div>
+                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                                      <button class="btn btn-primary" routerLink="/list-workflow">Cancel</button>
+                                      <button class="btn btn-primary" [disabled]="addWorkflowForm.invalid">Save</button>
+                                  </div>
+                              </div>
+                          <!-- Row end -->
+                          </form>
+                      </div>
+                  </div>
+                  <!-- Card end --> 
+              </div>
+          
+          <!-- Row end -->
+      </div>
+      <!-- Content wrapper end -->
+  
+      <app-footer></app-footer>
+
+  </div>
+  <!-- Content wrapper scroll end -->
+  </div>

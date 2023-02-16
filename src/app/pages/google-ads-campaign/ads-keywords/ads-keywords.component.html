@@ -1,0 +1,366 @@
+<div class="main-container">
+    <app-topbar></app-topbar>
+  
+     <!-- Content wrapper scroll start -->
+     <div class="content-wrapper-scroll">
+  
+      <!-- Content wrapper start -->
+      <div class="content-wrapper">
+  
+        <!-- Row start -->
+        <div class="row gutters">
+  
+          <!-- Card start -->
+          <div class="card"  *ngIf="!showBudget" >
+  
+            <div class="card-header">
+              <section class="campaign-header">
+                <div class="card-title">Keywords and ads</div>
+                <p class="example-text">To reach the right people, start by defining key settings for your campaign</p>
+              </section>
+            </div>
+            <div class="card-title">Ad group 1</div>
+
+  
+            <div class="card-body">
+
+                <!-- Accordion Keywords Start -->
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Keywords
+                        </button>
+                      </h2>
+
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+
+                        <div class="accordion-body">
+                          <span class="example-text">Get keyword suggestions (optional) <i class="icon-help-circle"></i></span>
+                          <p class="example-text">Google Ads can find keywords for you by scanning a web page or seeing what's working for similar products or services</p>
+                          
+                          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                            <div class="field-wrapper">
+                              <div class="input-group">
+                                <span class="input-group-text">
+                                  <i class="icon-link-2"></i>
+                                </span>
+                                <input type="text" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
+                            <div class="field-wrapper">
+                              <div class="input-group">
+                                <span class="input-group-text">
+                                  <i class="icon-link-2"></i>
+                                </span>
+                                <input type="text" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="field-wrapper">
+                              <div class="input-group">
+                                <span class="input-group-text">
+                                  <i class="icon-link-2"></i>
+                                </span>
+                                <input type="text" class="form-control" disabled>
+                              </div>
+                            </div>
+                          </div>
+
+                          <span>Enter keywords <i class="icon-help-circle"></i></span>
+                          <p class="example-text">
+                            Keywords are words or phrases that are used to match your ads with the terms people are searching for
+                            <i class="icon-help-circle"></i>
+                          </p>
+
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="field-wrapper">
+                              <div class="input-group">
+                                <textarea class="form-control rounded-0" name="Comment" >
+                                </textarea>
+                              </div>
+                            </div>
+                          </div>
+    
+                          
+                        </div>
+
+                      </div>
+
+                    </div>
+    
+                  </div>
+                <!-- Accordion Keywords End -->
+
+                <!-- Accordion Ads start -->
+                <div class="accordion" id="accordionAds">
+                    
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingAds">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAds" aria-expanded="false" aria-controls="collapseThree">
+                          Ads
+                        </button>
+                      </h2>
+                      <div id="collapseAds" class="accordion-collapse collapse" aria-labelledby="headingAds" data-bs-parent="#accordionAds">
+                        <div class="accordion-body">
+
+                          <!-- Row Start -->
+                          <div class="row gutters">
+
+                            <!-- Column Start -->
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
+                              <figure class="user-card">
+                                <div class="usersContainerScroll">
+
+                                  <!-- Accordion Final Url Start-->
+                                    <div class="accordion" id="accordionUrl">
+                                   
+                                      <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingUrl">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUrl" aria-expanded="false" aria-controls="collapseUrl">
+                                           Final URL
+                                          </button>
+                                        </h2>
+                                        <div id="collapseUrl" class="accordion-collapse collapse" aria-labelledby="headingUrl" data-bs-parent="#accordionUrl">
+                                          <div class="accordion-body">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" placeholder="Final URL">
+                                                  </div>
+                                              </div>
+                                            </div>
+                                           
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                    <!-- Accordion Final Url end -->
+
+                                    <!-- Accordion Display path Start-->
+                                    <div class="accordion" id="accordionPath">
+                                   
+                                      <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingPath">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePath" aria-expanded="false" aria-controls="collapsePath">
+                                           Display Path
+                                          </button>
+                                        </h2>
+                                        <div id="collapsePath" class="accordion-collapse collapse" aria-labelledby="headingPath" data-bs-parent="#accordionPath">
+                                          <div class="accordion-body">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" placeholder="www.example.com">
+                                                  </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                     <!-- Accordion Display path End-->
+
+                                     <!-- Accordion Headlines Start-->
+                                    <div class="accordion" id="accordionHeadline">
+                                   
+                                      <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingHeadline">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHeadline" aria-expanded="false" aria-controls="collapseHeadline">
+                                          Headlines
+                                          </button>
+                                        </h2>
+                                        <div id="collapseHeadline" class="accordion-collapse collapse" aria-labelledby="headingHeadline" data-bs-parent="#accordionHeadline">
+                                          <div class="accordion-body">
+                                           
+                                            <!-- Conetent start -->
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" >
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" >
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" >
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" >
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <!-- Content end -->
+
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                     <!-- Accordion Headlines End-->
+
+                                      <!-- Accordion Description Start-->
+                                    <div class="accordion" id="accordionDescription">
+                                   
+                                      <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingDescription">
+                                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription" aria-expanded="false" aria-controls="collapseDescription">
+                                          Description
+                                          </button>
+                                        </h2>
+                                        <div id="collapseDescription" class="accordion-collapse collapse" aria-labelledby="headingDescription" data-bs-parent="#accordionDescription">
+                                          <div class="accordion-body">
+
+                                             <!-- Conetent start -->
+                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" >
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" >
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                              <div class="field-wrapper">
+                                                  <div class="input-group">
+                                                      <input  type="text"  class="form-control" >
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <!-- Content end -->
+                                           
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                     <!-- Accordion Description End-->
+
+
+
+
+                                </div>
+                              </figure>
+                            </div>
+                            <!-- Column End -->
+
+                            <!-- Column Start -->
+                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-7">
+                              <span class="example-text">Preview</span>
+
+                              <p>
+                                This preview shows potential ads assembled using your assets. Not all combinations are shown. 
+                                Assets can be shown in any order, so make sure that they make sense individually or in combination,
+                                 and don't violate our policies or local law. Some shortening may also occur in some formats. You 
+                                 can make sure certain text appears in your ad.
+                                 <a href="#">  Learn more </a>
+                              </p>
+
+                            </div>
+                            <!-- Column End -->
+                          </div>
+                           <!-- Row Start -->
+                         
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!-- Accordion Ads End -->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                  <button type="button" class="btn btn-primary" (click)="showBudget=true">
+                    next
+                  </button>
+                </div>
+            </div>
+  
+          </div>
+          <!-- Card end -->
+
+          <!-- Card start -->
+          <div class="card" *ngIf="showBudget" >
+  
+            <div class="card-header">
+              <section class="campaign-header">
+                <div class="card-title">Budget</div>
+                <p class="example-text">Select the average that you want to spend each day.</p>
+              </section>
+            </div>
+           
+  
+            <div class="card-body">
+              <div class="budget-container">
+              <div class="row gutters">
+
+                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+                  <span class="example-text">Set your average daily budget for this campaign</span>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="field-wrapper">
+                        <div class="input-group">
+                            <input  type="text"  class="form-control" >
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                  <div class="bud-section">
+                  <p class="example-text content-left">
+                    For the month, you won't pay more than your daily budget times the average
+                    number of days in a month. Some days you might spend less than your daily budget,
+                    and on others you might spend up to twice as much. 
+                    <a href="#">Learn more.</a>
+                  </p>
+                </div>
+                </div>
+
+              </div>
+            </div>
+
+               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                 <button type="button" class="btn btn-primary" >
+                   next
+                 </button>
+               </div>
+            </div>
+  
+          </div>
+          <!-- Card end -->
+  
+        </div>
+        <!-- Row start -->
+  
+      </div>
+      <!-- Content wrapper end -->
+  
+     </div>
+     <!-- Content wrapper scroll end -->
+  
+  </div>

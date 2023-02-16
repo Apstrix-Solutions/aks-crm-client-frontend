@@ -1,0 +1,97 @@
+.container-accordion {
+    border: 1px solid #dddd;
+    box-shadow: 2px 4px 5px #9999;
+}
+
+.accordion-item {
+    margin: 0 0 10px!important;
+}
+
+.example-text{
+    font-size: 15px;
+}
+
+.bid-label {
+    // font-size: 13px;
+    // font-weight: 450;
+    // color: #888d;
+    font-size: .875rem;
+    letter-spacing: .0142857143em;
+    font-weight: 400;
+    color: #3c4043;
+}
+.network-content {
+    margin: 0 0 30px;
+}
+
+.example-heading{
+
+}
+
+.location-content{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.radio-select {
+    display: flex;
+    margin: 10px 0 0 !important;
+}
+.exclude {
+    margin: 20px 0 0;
+}
+
+.radio-select label {
+    margin: 0 0 0 8px;
+    position: relative;
+    top: -2px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.radio-select p {
+    margin: 0 0 0 8px;
+    position: relative;
+    top: -2px;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+
+.container-audience{
+    border: 1px solid #ddd;
+}
+
+.container-audience .example-text {
+    padding: 11px 10px;
+    border-bottom: 1px solid #e1e8f3;
+    margin: 0 0 0 -12px;
+}
+
+span.audience-section {
+    font-size: 13px;
+    display: block;
+    margin: 22px 0 0 -10px;
+    color: #6a6a6a;
+}
+
+div#myTabContent {
+    padding: 20px;
+}
+
+
+ul#myTab {
+    margin: 0;
+}
+
+.custom-tabs-container {
+    border-right: 1px solid #e1e8f3;
+}
+
+.radio-search {
+    display: block!important;
+}
+
+.container-audience {
+    margin: 0 0 25px;
+}

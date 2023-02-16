@@ -14,7 +14,12 @@
                   <div class="card">
                     <div class="card-header">
                         <div class="card-title">Text Marketing List</div>
+                         <div class="float-right">
+                        <button  type="button" class="btn btn-light text-primary">
+                            <a style="text-decoration: none;" routerLink="/text-marketing">Create</a></button>
                     </div>
+                    </div>
+                   
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover table-bordered m-0">
@@ -54,10 +59,10 @@
                                             <i class="icon-delete text-primary"
                                                 (click)="open(content,datas.id)"></i>
                                         </td>
-                                        <td>
-                                            <a routerLink="/text-marketing"><i class="icon-eye1 text-primary"></i></a>
+                                        <!-- <td>
+                                            <a routerLink="/text-marketing">Create</a>
                                       
-                                        </td>
+                                        </td> -->
                                        
                                     </tr>
                                 </tbody>
