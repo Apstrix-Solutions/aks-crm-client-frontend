@@ -5,13 +5,10 @@ import { environment } from '@env/environment';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class FacebookCampaignService {
-
-
 
   constructor(
     private httpClient: HttpClient, 
@@ -21,8 +18,8 @@ export class FacebookCampaignService {
 
   public addCampaign(data: any) {
     return this.httpClient
-      .post(`${environment.smiApiUrl}${'campaign'}`, JSON.stringify(data),{observe: 'response'})
-      .pipe(retry(1), catchError(this.errorHandl));
+      .post(`${environment.smiApiUrl}${'campaign'}`, JSON.stringify(data))
+      .pipe(retry(1), catchError(err => this.errorHandl(err, this.toastr)));
   } 
 
   public getCampaignObjectives() {
@@ -30,13 +27,13 @@ export class FacebookCampaignService {
   }
 
   public getCampaign() {
-    return this.httpClient.get(`${environment.apiUrl}${''}`,{observe: 'response'});
+    return this.httpClient.get(`${environment.smiApiUrl}${'all-campaigns'}`,{observe: 'response'});
   }
 
   
 
   // Error handling
-  errorHandl(error) {
+  errorHandl(error, toastr) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -45,6 +42,8 @@ export class FacebookCampaignService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
+    toastr.error('Invalid request. Please try again!', 'Error!');
+
     return throwError(() => {
       return errorMessage;
     });

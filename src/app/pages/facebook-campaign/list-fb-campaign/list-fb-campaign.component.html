@@ -1,4 +1,3 @@
-
 <div class="main-container">
 
     <app-topbar></app-topbar>
@@ -18,8 +17,8 @@
                             <div class="d-flex justify-content-end">
                                 <div class="custom-btn-group">
                                     <button type="button" class="btn btn-primary btn-md"
-                                    routerLink="'add-fb-campaign'">Add Facebook Campaign</button>
-                                        
+                                        [routerLink]="['/add-fb-campaign']">Add Facebook Campaign</button>
+
                                 </div>
                             </div>
                             <div class="row gutters">
@@ -28,32 +27,32 @@
                                         <table class="table table-hover table-bordered m-0">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
+                                                    <th>Campaign Id</th>
+                                                    <th>Buying Type</th>
                                                     <th>Name</th>
                                                     <th>Objective</th>
                                                     <th>Status</th>
-                                                    <th>Special Ad Categories</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr *ngFor="let list of fbCampaignList">
-                                                    <td>{{ list.id }}</td>
+                                                <tr
+                                                    *ngFor="let list of fbCampaignList | paginate: { itemsPerPage: 20, currentPage: p } ">
+                                                    <td>{{ list.id}}</td>
+                                                    <td>{{ list.buying_type }}</td>
                                                     <td>{{ list.name}}</td>
                                                     <td>{{ list.objective}}</td>
                                                     <td>{{ list.status}}</td>
-                                                    <td>{{ list.special_ad_categories}}</td>
                                                     <td>
-                                                        <i class="icon-edit1 text-primary" 
-                                                        routerLink="'add-fb-campaign'"></i>
-                                                        <i class="icon-delete text-primary"
-                                                        (click)="open(content,list.id)"></i>
+
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <pagination-controls (pageChange)="pageChangeEvent($event)" class="float-right mt-4">
+                                </pagination-controls>
                             </div>
                         </div>
                     </div>

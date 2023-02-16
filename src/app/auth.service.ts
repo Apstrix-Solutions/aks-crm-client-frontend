@@ -18,7 +18,6 @@ export class AuthService {
   getFbAuthToken():string {
     const items = { ...localStorage };
     let accessToken = localStorage.getItem('fbAccessToken');
-    console.log (accessToken);
 
     if(accessToken!=null){
     
@@ -27,5 +26,16 @@ export class AuthService {
     }
     return '';
 
+  }
+
+  getFbAccountId():string {
+    const items = { ...localStorage };
+    let fbAccountId = localStorage.getItem('fbAccountId');
+
+    if(fbAccountId!=null){
+      return fbAccountId;
+    }
+
+    return '';
   }
 }

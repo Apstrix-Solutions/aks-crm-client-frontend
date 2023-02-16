@@ -11,28 +11,26 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ListFbCampaignComponent implements OnInit {
   fbCampaignList: any  = [];
+  p: number = 1;
   
   constructor(
     public fbCampaignService: FacebookCampaignService,
   ) { }
 
   ngOnInit(): void {
-
-   
+   this.getAllCampaign()
   }
 
   getAllCampaign(){
     this.fbCampaignService.getCampaign().subscribe( (res: any) => {
-      console.log(res);
-      
-      // this.fbCampaignList = res['data'];
+      this.fbCampaignList = res['body']['data']['data'];
+      console.log(this.fbCampaignList)
     })
   }
 
-  open(content, campaignId) {
-    if (confirm('Are you sure to delete ?')) {
-      
-    }
+
+  pageChangeEvent(event: number){
+    this.p = event;
   }
   
 }

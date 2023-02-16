@@ -6,6 +6,7 @@ import { ListFbCampaignComponent } from './list-fb-campaign.component';
 import { ListFbCampaignRoutingModule } from './list-fb-campaign-routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    NgxPaginationModule
   ],
   declarations: [ListFbCampaignComponent],
 })
