@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import {  BehaviorSubject,Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '@env/environment';
 
@@ -8,9 +8,13 @@ import { environment } from '@env/environment';
   providedIn: 'root'
 })
 export class MarketingService {
+  private dataSource = new BehaviorSubject<any>({});
+  sub = this.dataSource.asObservable();
 
   constructor(private httpClient: HttpClient) { }
-  
+  public setData(data: any) {
+    this.dataSource.next(data);
+  }
   public ownedPage() {
     return this.httpClient.get(`${environment.smiApiUrl}${'owned-pages'}`,{observe: 'response'});
   }
