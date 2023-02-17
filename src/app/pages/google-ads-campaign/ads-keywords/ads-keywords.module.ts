@@ -20,5 +20,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ToastrModule.forRoot(),
   ],
   declarations: [AdsKeywordsComponent],
+  exports: [AdsKeywordsComponent ]
 })
 export class AdsKeywordsModule {}

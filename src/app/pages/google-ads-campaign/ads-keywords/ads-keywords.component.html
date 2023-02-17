@@ -1,5 +1,5 @@
-<div class="main-container">
-    <app-topbar></app-topbar>
+<!-- <div class="main-container"> -->
+    <!-- <app-topbar></app-topbar> -->
   
      <!-- Content wrapper scroll start -->
      <div class="content-wrapper-scroll">
@@ -11,7 +11,7 @@
         <div class="row gutters">
   
           <!-- Card start -->
-          <div class="card"  *ngIf="!showBudget" >
+          <div class="card" >
   
             <div class="card-header">
               <section class="campaign-header">
@@ -48,7 +48,7 @@
                                 <span class="input-group-text">
                                   <i class="icon-link-2"></i>
                                 </span>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" placeholder="Enter a URL to scan for keywords">
                               </div>
                             </div>
                           </div>
@@ -59,7 +59,7 @@
                                 <span class="input-group-text">
                                   <i class="icon-link-2"></i>
                                 </span>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" placeholder="Enter products or services to advertise">
                               </div>
                             </div>
                           </div>
@@ -67,10 +67,7 @@
                           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="field-wrapper">
                               <div class="input-group">
-                                <span class="input-group-text">
-                                  <i class="icon-link-2"></i>
-                                </span>
-                                <input type="text" class="form-control" disabled>
+                                <input type="text" class="form-control" placeholder="Get keyword suggestions" disabled>
                               </div>
                             </div>
                           </div>
@@ -136,6 +133,7 @@
                                                   <div class="input-group">
                                                       <input  type="text"  class="form-control" placeholder="Final URL">
                                                   </div>
+                                                  <p class="example-text">This will be used to suggest headlines and descriptions</p>
                                               </div>
                                             </div>
                                            
@@ -187,28 +185,28 @@
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                               <div class="field-wrapper">
                                                   <div class="input-group">
-                                                      <input  type="text"  class="form-control" >
+                                                      <input  type="text"  class="form-control" placeholder="Headline">
                                                   </div>
                                               </div>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                               <div class="field-wrapper">
                                                   <div class="input-group">
-                                                      <input  type="text"  class="form-control" >
+                                                      <input  type="text"  class="form-control" placeholder="Headline">
                                                   </div>
                                               </div>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                               <div class="field-wrapper">
                                                   <div class="input-group">
-                                                      <input  type="text"  class="form-control" >
+                                                      <input  type="text"  class="form-control" placeholder="Headline">
                                                   </div>
                                               </div>
                                             </div>
                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                               <div class="field-wrapper">
                                                   <div class="input-group">
-                                                      <input  type="text"  class="form-control" >
+                                                      <input  type="text"  class="form-control" placeholder="Headline">
                                                   </div>
                                               </div>
                                             </div>
@@ -294,66 +292,17 @@
                     </div>
                 </div>
                 <!-- Accordion Ads End -->
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                  <button type="button" class="btn btn-primary" (click)="showBudget=true">
+                <!-- <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
+                  <button type="button" class="btn btn-primary" (click)="nextTab('budget')">
                     next
                   </button>
-                </div>
+                </div> -->
             </div>
   
           </div>
           <!-- Card end -->
 
-          <!-- Card start -->
-          <div class="card" *ngIf="showBudget" >
-  
-            <div class="card-header">
-              <section class="campaign-header">
-                <div class="card-title">Budget</div>
-                <p class="example-text">Select the average that you want to spend each day.</p>
-              </section>
-            </div>
-           
-  
-            <div class="card-body">
-              <div class="budget-container">
-              <div class="row gutters">
-
-                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
-                  <span class="example-text">Set your average daily budget for this campaign</span>
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="field-wrapper">
-                        <div class="input-group">
-                            <input  type="text"  class="form-control" >
-                        </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-                  <div class="bud-section">
-                  <p class="example-text content-left">
-                    For the month, you won't pay more than your daily budget times the average
-                    number of days in a month. Some days you might spend less than your daily budget,
-                    and on others you might spend up to twice as much. 
-                    <a href="#">Learn more.</a>
-                  </p>
-                </div>
-                </div>
-
-              </div>
-            </div>
-
-               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-right">
-                 <button type="button" class="btn btn-primary" >
-                   next
-                 </button>
-               </div>
-            </div>
-  
-          </div>
-          <!-- Card end -->
-  
+        
         </div>
         <!-- Row start -->
   
@@ -363,4 +312,4 @@
      </div>
      <!-- Content wrapper scroll end -->
   
-  </div>
+  <!-- </div> -->

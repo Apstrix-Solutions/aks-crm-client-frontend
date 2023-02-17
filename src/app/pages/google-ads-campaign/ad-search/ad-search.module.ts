@@ -7,7 +7,7 @@ import { AdSearchRoutingModule } from './ad-search-routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { AdsKeywordsModule } from '../ads-keywords/ads-keywords.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +17,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
+    AdsKeywordsModule,
     ToastrModule.forRoot(),
   ],
   declarations: [AdSearchComponent],
