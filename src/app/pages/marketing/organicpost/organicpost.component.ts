@@ -18,8 +18,8 @@ export class OrganicpostComponent implements OnInit {
   isLoggedin?: boolean = undefined;
   refreshToken: string;
   facebookAuthToken: string;
-  listPage:  any = [];
-  listInstaPage: any =[];
+  //listPage:  any = [];
+  //listInstaPage: any =[];
   activity_records: any=[];
   files: File[] = [];
   social_media_content: any=[];
@@ -28,8 +28,14 @@ export class OrganicpostComponent implements OnInit {
   smInfo: any = [];
   smInfoResponse:any =[];
   sDate:string;
-  ownershipInfo:string = '';
+  //ownershipInfo:string = '';
   post_type :number;
+  recievedData: any = {};
+  ownershipData  ='';
+  fbName  ='';
+  instaName = '';
+
+
   post_data = [
     {id:1,type:'Post'},
     {id:2,type:'Story'},
@@ -43,7 +49,7 @@ export class OrganicpostComponent implements OnInit {
     private ngZone: NgZone,
     private router: Router,
   ) {
-    console.log(this.isLoggedin);
+   // console.log(this.isLoggedin);
   }
 
 
@@ -65,7 +71,7 @@ export class OrganicpostComponent implements OnInit {
     this.newSmContentsForm = this.formBulider.group({
       activity_title: [null,[Validators.required]],
       ownership:[null,[Validators.required]],
-      activity_type:[1],
+      content_type:[1],
       start_date:[null],
       end_date:['0001-01-01 00:00:00'],
       post_type:[null,[Validators.required]],
@@ -79,53 +85,90 @@ export class OrganicpostComponent implements OnInit {
       is_deleted: [false],
       content_status: [1],
     });
+    this.marketingService.sub.subscribe((response) => {
+      //this.id = response.id;
+       this.recievedData = response;
+      if (this.recievedData.ownership == 'true'){
+         this.ownershipData = "Agency";
+      }
+      else {
+         this.ownershipData = "Client";
+      }
 
+      for(let i=0; i<this.recievedData.activity_records.length; i++ ){
+       // console.log (this.recievedData.activity_records[i].sms_id);
+       if (this.recievedData.activity_records[i].sms_id==1){
+        this.fbName = this.recievedData.activity_records[i].page_name;
+        let smData = {};
+        smData['sms_id'] = this.recievedData.activity_records[i].sms_id;
+        smData['page_id'] = this.recievedData.activity_records[i].page_id;
+        smData['page_name'] = this.recievedData.activity_records[i].page_name;
+        smData['schedule_date'] = this.sDate;
+        this.smInfo.push(smData);
+       }
+       else if (this.recievedData.activity_records[i].sms_id==2)
+       {
+        this.instaName = this.recievedData.activity_records[i].page_name;
+        let smData = {};
+        smData['sms_id'] = this.recievedData.activity_records[i].sms_id;
+        smData['page_id'] = this.recievedData.activity_records[i].page_id;
+        smData['page_name'] = this.recievedData.activity_records[i].page_name;
+        smData['schedule_date'] = this.sDate;
+        this.smInfo.push(smData);
+       }
+
+        
+
+      }
+
+       this.newSmContentsForm.patchValue(this.recievedData);
+    });
   }
 
   loginWithFacebook(): void {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    this.instaPage();
+   // this.instaPage();
   }
   signOut(): void {
     this.socialAuthService.signOut();
   }
-  onSelected(value:string): void {
-    this.ownershipInfo = value;
-    if (value == 'agency'){
-      this.ownedPage();
-      this.newSmContentsForm.controls['ownership'].setValue(true);
-    }
-    else if(value == 'client'){
-      this.clientPage();
-      this.newSmContentsForm.controls['ownership'].setValue(false);
-    }
-	}
-  ownedPage() {
-    this.marketingService.ownedPage().subscribe((data) => {
-    this.refreshToken = data.headers.get('refresh_token');
-    this.listPage = this.formatListPage( data['body']['data']['data']);
-    console.log('listPage in ownedPage() -> ',this.listPage)
-    });
-  };
-  clientPage() {
-    this.marketingService.clientPage().subscribe((data) => {
-      this.refreshToken = data.headers.get('refresh_token');
-      this.listPage = this.formatListPage( data['body']['data']['data']);
-    });
-  };
-  instaPage() {
-    this.marketingService.instaPage().subscribe((data) => {
-      if(data['body']['error']){
-        const msg = data['body']['message'];
-        this.toastr.error(msg);
-        // console.log(msg)
-      }else{
-        this.refreshToken = data.headers.get('refresh_token');
-        this.listInstaPage = this.formatListPage( data['body']['data']['data']);
-      }
+  // onSelected(value:string): void {
+  //   this.ownershipInfo = value;
+  //   if (value == 'agency'){
+  //     this.ownedPage();
+  //     this.newSmContentsForm.controls['ownership'].setValue(true);
+  //   }
+  //   else if(value == 'client'){
+  //     this.clientPage();
+  //     this.newSmContentsForm.controls['ownership'].setValue(false);
+  //   }
+	// }
+  // ownedPage() {
+  //   this.marketingService.ownedPage().subscribe((data) => {
+  //   this.refreshToken = data.headers.get('refresh_token');
+  //   this.listPage = this.formatListPage( data['body']['data']['data']);
+  //  // console.log('listPage in ownedPage() -> ',this.listPage)
+  //   });
+  // };
+  // clientPage() {
+  //   this.marketingService.clientPage().subscribe((data) => {
+  //     this.refreshToken = data.headers.get('refresh_token');
+  //     this.listPage = this.formatListPage( data['body']['data']['data']);
+  //   });
+  // };
+  // instaPage() {
+  //   this.marketingService.instaPage().subscribe((data) => {
+  //     if(data['body']['error']){
+  //       const msg = data['body']['message'];
+  //       this.toastr.error(msg);
+  //       // console.log(msg)
+  //     }else{
+  //       this.refreshToken = data.headers.get('refresh_token');
+  //       this.listInstaPage = this.formatListPage( data['body']['data']['data']);
+  //     }
       
-    });
-  };
+  //   });
+  // };
   scheduleDate(value:string):void{
     this.sDate = value;
     this.newSmContentsForm.controls['start_date'].setValue(value);
@@ -147,31 +190,32 @@ export class OrganicpostComponent implements OnInit {
   }
   return data;
   }
-  pageInfo(value):void{
-    let smData = {};
-    smData['sms_id'] = 1;
-    smData['page_id'] = this.listPage[value].id;
-    smData['page_name'] = this.listPage[value].global_brand_page_name;
-    smData['schedule_date'] = this.sDate;
-    this.smInfo.push(smData);
-    console.log('smData',smData)
-  }
-  instaPageInfo(value):void{
-    let smData = {};
-    smData['sms_id'] = 2;
-    smData['page_id'] = this.listInstaPage[value].id;
-    smData['page_name'] = this.listInstaPage[value].username;
-    smData['schedule_date'] = this.sDate;
-     this.smInfo.push(smData);
+  // pageInfo(value):void{
+  //   let smData = {};
+  //   smData['sms_id'] = 1;
+  //   smData['page_id'] = this.listPage[value].id;
+  //   smData['page_name'] = this.listPage[value].global_brand_page_name;
+  //   smData['schedule_date'] = this.sDate;
+  //   this.smInfo.push(smData);
+  //  // console.log('smData',smData)
+  // }
+  // instaPageInfo(value):void{
+  //   let smData = {};
+  //   smData['sms_id'] = 2;
+  //   smData['page_id'] = this.listInstaPage[value].id;
+  //   smData['page_name'] = this.listInstaPage[value].username;
+  //   smData['schedule_date'] = this.sDate;
+  //    this.smInfo.push(smData);
   
-  }
+  // }
   addContent() {
    let validaction = this.setsmInfo();
    if(validaction == true ){
 
     this.newSmContentsForm.get(['social_media_content','content_file']).setValue(this.uploadInfo);
+     console.log('newSmContentsForm',this.newSmContentsForm.value)
+     debugger;
 
-    // console.log('newSmContentsForm',this.newSmContentsForm.value)
     this.marketingService.addContent(this.newSmContentsForm.value).subscribe((res) => {
       if(res['status'] == 200) {
         this.toastr.success(res['message'], 'Success!');
@@ -256,3 +300,7 @@ export class OrganicpostComponent implements OnInit {
     return this.newSmContentsForm.controls;
   }
 }
+function elseif(arg0: boolean) {
+  throw new Error('Function not implemented.');
+}
+

@@ -70,9 +70,74 @@
           <li class="default-sidebar-dropdown" [ngClass]="{'active': marketingMenuHidden }">
             <a (click)="toggleMarketingMenu()">
               <i class="icon-shopping-basket"></i>
-              <span class="menu-text">Marketing</span>
+              <span class="menu-text">Soical Media Planner</span>
             </a>
-            <ul>
+            <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+              <ul>
+                <li>
+                  <a routerLink="/marketingdashbord">
+                    <span class="menu-text"> Dashbord </span>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/calender">
+                    <span class="menu-text">Calendar </span>
+                  </a>
+                </li>
+                <li [ngClass]="{'active': marketingMenuHidden }">
+                  <a routerLink="/list-post">
+                    <span class="menu-text">Activity Planner</span>
+                  </a>
+                  <!-- <div class="default-sidebar-submenu" [ngStyle]="{'display': postMenuHidden ? 'block' : 'none' }">
+                    <ul>
+                      <li>
+                        <a routerLink="/organic">Create Activity Contents</a>
+                      </li>
+                      <li>
+                        <a routerLink="/list-post">List Organic Contents</a>
+                      </li>
+                      <li>
+                        <a routerLink="/list-campains">List Campaigns Contents</a>
+                      </li>
+                    </ul>
+                  </div> -->
+                </li>
+                <li>
+                  <a routerLink="/">
+                    <span class="menu-text">Paid </span>
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="/">
+                    <span class="menu-text">Organic </span>
+                  </a>
+                </li>
+                <li>
+                  <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+                    <a (click)="toggleEmailTextMenu()">
+                      <span class="menu-text">Email & Text marketing</span>
+                    </a>
+                    <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenusHidden ? 'block' : 'none' }">
+                      <ul>
+                        <!-- <li>
+                          <a routerLink="/campaign">Campaign </a>
+                        </li> -->
+                        <li>
+                          <a routerLink="/list-text">List Text Marketing </a>
+                        </li>
+                        <li>
+                          <a routerLink="/list-email">List Email Marketing</a>
+                        </li>
+                      </ul>
+                    </div>
+    
+                  </div>
+                </li>
+               
+              </ul>
+
+            </div>
+            <!-- <ul>
               <li>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
                   <a routerLink="/marketingdashbord">
@@ -87,25 +152,27 @@
               </div>
               <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
                 <a (click)="togglePostMenu()">
-                  <span class="menu-text">Organic Contents</span>
+                  <span class="menu-text">Marketing Activity</span>
                 </a>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': postMenuHidden ? 'block' : 'none' }">
                   <ul>
                     <li>
-                      <a routerLink="/organic">Organic Contents</a>
+                      <a routerLink="/organic">Create Activity Contents</a>
                     </li>
                     <li>
-                      <a routerLink="/organicpost">Add Contents </a>
+                      <a routerLink="/list-post">List Organic Contents</a>
                     </li>
                     <li>
-                      <a routerLink="/list-post">List Contents</a>
+                      <a routerLink="/list-campains">List Campaigns Contents</a>
                     </li>
                   </ul>
                 </div>
-
+                <li>
+                
+                </li>
               </div>
 
-              <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+               <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
                 <a (click)="toggleCampaignMenu()">
                   <span class="menu-text">Campaigns</span>
                 </a>
@@ -126,16 +193,15 @@
                   </ul>
                 </div>
 
-              </div>
-              <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
+              </div> -->
+              
+              <!-- <div class="default-sidebar-dropdown" [ngStyle]="{'display': marketingMenuHidden ? 'block' : 'none' }">
                 <a (click)="toggleEmailTextMenu()">
                   <span class="menu-text">Email & Text marketing</span>
                 </a>
                 <div class="default-sidebar-submenu" [ngStyle]="{'display': marketingMenusHidden ? 'block' : 'none' }">
                   <ul>
-                    <!-- <li>
-                      <a routerLink="/campaign">Campaign </a>
-                    </li> -->
+                  
                     <li>
                       <a routerLink="/list-text">List Text Marketing </a>
                     </li>
@@ -145,9 +211,11 @@
                   </ul>
                 </div>
 
-              </div>
-            </ul>
-            </li>
+              </div> 
+
+
+            </ul> -->
+              
 
             <li class="default-sidebar-dropdown" [ngClass]="{'active': workflowMenuHidden }">
               <a (click)="toggleMenuWorkflow()">
